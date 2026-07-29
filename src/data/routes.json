@@ -1,0 +1,746 @@
+[
+  {
+    "route": "/company/about",
+    "component": "CompanyAbout",
+    "importPath": "./company/CompanyAbout.jsx",
+    "file": "pages/company/CompanyAbout.jsx"
+  },
+  {
+    "route": "/company/careers",
+    "component": "CompanyCareers",
+    "importPath": "./company/CompanyCareers.jsx",
+    "file": "pages/company/CompanyCareers.jsx"
+  },
+  {
+    "route": "/company/leadership",
+    "component": "CompanyLeadership",
+    "importPath": "./company/CompanyLeadership.jsx",
+    "file": "pages/company/CompanyLeadership.jsx"
+  },
+  {
+    "route": "/company/locations",
+    "component": "CompanyLocations",
+    "importPath": "./company/CompanyLocations.jsx",
+    "file": "pages/company/CompanyLocations.jsx"
+  },
+  {
+    "route": "/company/partners",
+    "component": "CompanyPartners",
+    "importPath": "./company/CompanyPartners.jsx",
+    "file": "pages/company/CompanyPartners.jsx"
+  },
+  {
+    "route": "/",
+    "component": "Home",
+    "importPath": "./Home.jsx",
+    "file": "pages/Home.jsx"
+  },
+  {
+    "route": "/industries/construction-field-services",
+    "component": "IndustriesConstructionFieldServices",
+    "importPath": "./industries/IndustriesConstructionFieldServices.jsx",
+    "file": "pages/industries/IndustriesConstructionFieldServices.jsx"
+  },
+  {
+    "route": "/industries/education",
+    "component": "IndustriesEducation",
+    "importPath": "./industries/IndustriesEducation.jsx",
+    "file": "pages/industries/IndustriesEducation.jsx"
+  },
+  {
+    "route": "/industries/financial-services",
+    "component": "IndustriesFinancialServices",
+    "importPath": "./industries/IndustriesFinancialServices.jsx",
+    "file": "pages/industries/IndustriesFinancialServices.jsx"
+  },
+  {
+    "route": "/industries/healthcare",
+    "component": "IndustriesHealthcare",
+    "importPath": "./industries/IndustriesHealthcare.jsx",
+    "file": "pages/industries/IndustriesHealthcare.jsx"
+  },
+  {
+    "route": "/industries",
+    "component": "Industries",
+    "importPath": "./industries/Industries.jsx",
+    "file": "pages/industries/Industries.jsx"
+  },
+  {
+    "route": "/industries/legal",
+    "component": "IndustriesLegal",
+    "importPath": "./industries/IndustriesLegal.jsx",
+    "file": "pages/industries/IndustriesLegal.jsx"
+  },
+  {
+    "route": "/industries/manufacturing",
+    "component": "IndustriesManufacturing",
+    "importPath": "./industries/IndustriesManufacturing.jsx",
+    "file": "pages/industries/IndustriesManufacturing.jsx"
+  },
+  {
+    "route": "/industries/nonprofits-associations",
+    "component": "IndustriesNonprofitsAssociations",
+    "importPath": "./industries/IndustriesNonprofitsAssociations.jsx",
+    "file": "pages/industries/IndustriesNonprofitsAssociations.jsx"
+  },
+  {
+    "route": "/industries/professional-services",
+    "component": "IndustriesProfessionalServices",
+    "importPath": "./industries/IndustriesProfessionalServices.jsx",
+    "file": "pages/industries/IndustriesProfessionalServices.jsx"
+  },
+  {
+    "route": "/industries/public-sector",
+    "component": "IndustriesPublicSector",
+    "importPath": "./industries/IndustriesPublicSector.jsx",
+    "file": "pages/industries/IndustriesPublicSector.jsx"
+  },
+  {
+    "route": "/industries/retail-distribution",
+    "component": "IndustriesRetailDistribution",
+    "importPath": "./industries/IndustriesRetailDistribution.jsx",
+    "file": "pages/industries/IndustriesRetailDistribution.jsx"
+  },
+  {
+    "route": "/industries/small-mid-market",
+    "component": "IndustriesSmallMidMarket",
+    "importPath": "./industries/IndustriesSmallMidMarket.jsx",
+    "file": "pages/industries/IndustriesSmallMidMarket.jsx"
+  },
+  {
+    "route": "/platforms/azure-cloud",
+    "component": "PlatformsAzureCloud",
+    "importPath": "./platforms/PlatformsAzureCloud.jsx",
+    "file": "pages/platforms/PlatformsAzureCloud.jsx"
+  },
+  {
+    "route": "/platforms/azure-virtual-desktop",
+    "component": "PlatformsAzureVirtualDesktop",
+    "importPath": "./platforms/PlatformsAzureVirtualDesktop.jsx",
+    "file": "pages/platforms/PlatformsAzureVirtualDesktop.jsx"
+  },
+  {
+    "route": "/platforms/business-central",
+    "component": "PlatformsBusinessCentral",
+    "importPath": "./platforms/PlatformsBusinessCentral.jsx",
+    "file": "pages/platforms/PlatformsBusinessCentral.jsx"
+  },
+  {
+    "route": "/platforms/d365-contact-center",
+    "component": "PlatformsD365ContactCenter",
+    "importPath": "./platforms/PlatformsD365ContactCenter.jsx",
+    "file": "pages/platforms/PlatformsD365ContactCenter.jsx"
+  },
+  {
+    "route": "/platforms/d365-customer-insights",
+    "component": "PlatformsD365CustomerInsights",
+    "importPath": "./platforms/PlatformsD365CustomerInsights.jsx",
+    "file": "pages/platforms/PlatformsD365CustomerInsights.jsx"
+  },
+  {
+    "route": "/platforms/d365-customer-service",
+    "component": "PlatformsD365CustomerService",
+    "importPath": "./platforms/PlatformsD365CustomerService.jsx",
+    "file": "pages/platforms/PlatformsD365CustomerService.jsx"
+  },
+  {
+    "route": "/platforms/d365-field-service",
+    "component": "PlatformsD365FieldService",
+    "importPath": "./platforms/PlatformsD365FieldService.jsx",
+    "file": "pages/platforms/PlatformsD365FieldService.jsx"
+  },
+  {
+    "route": "/platforms/d365-finance",
+    "component": "PlatformsD365Finance",
+    "importPath": "./platforms/PlatformsD365Finance.jsx",
+    "file": "pages/platforms/PlatformsD365Finance.jsx"
+  },
+  {
+    "route": "/platforms/d365-project-operations",
+    "component": "PlatformsD365ProjectOperations",
+    "importPath": "./platforms/PlatformsD365ProjectOperations.jsx",
+    "file": "pages/platforms/PlatformsD365ProjectOperations.jsx"
+  },
+  {
+    "route": "/platforms/d365-sales",
+    "component": "PlatformsD365Sales",
+    "importPath": "./platforms/PlatformsD365Sales.jsx",
+    "file": "pages/platforms/PlatformsD365Sales.jsx"
+  },
+  {
+    "route": "/platforms",
+    "component": "Platforms",
+    "importPath": "./platforms/Platforms.jsx",
+    "file": "pages/platforms/Platforms.jsx"
+  },
+  {
+    "route": "/platforms/microsoft-365",
+    "component": "PlatformsMicrosoft365",
+    "importPath": "./platforms/PlatformsMicrosoft365.jsx",
+    "file": "pages/platforms/PlatformsMicrosoft365.jsx"
+  },
+  {
+    "route": "/platforms/microsoft-copilot",
+    "component": "PlatformsMicrosoftCopilot",
+    "importPath": "./platforms/PlatformsMicrosoftCopilot.jsx",
+    "file": "pages/platforms/PlatformsMicrosoftCopilot.jsx"
+  },
+  {
+    "route": "/platforms/microsoft-defender",
+    "component": "PlatformsMicrosoftDefender",
+    "importPath": "./platforms/PlatformsMicrosoftDefender.jsx",
+    "file": "pages/platforms/PlatformsMicrosoftDefender.jsx"
+  },
+  {
+    "route": "/platforms/microsoft-fabric",
+    "component": "PlatformsMicrosoftFabric",
+    "importPath": "./platforms/PlatformsMicrosoftFabric.jsx",
+    "file": "pages/platforms/PlatformsMicrosoftFabric.jsx"
+  },
+  {
+    "route": "/platforms/microsoft-intune",
+    "component": "PlatformsMicrosoftIntune",
+    "importPath": "./platforms/PlatformsMicrosoftIntune.jsx",
+    "file": "pages/platforms/PlatformsMicrosoftIntune.jsx"
+  },
+  {
+    "route": "/platforms/microsoft-purview",
+    "component": "PlatformsMicrosoftPurview",
+    "importPath": "./platforms/PlatformsMicrosoftPurview.jsx",
+    "file": "pages/platforms/PlatformsMicrosoftPurview.jsx"
+  },
+  {
+    "route": "/platforms/power-platform",
+    "component": "PlatformsPowerPlatform",
+    "importPath": "./platforms/PlatformsPowerPlatform.jsx",
+    "file": "pages/platforms/PlatformsPowerPlatform.jsx"
+  },
+  {
+    "route": "/services/ai-readiness-copilot-enablement",
+    "component": "ServicesAiReadinessCopilotEnablement",
+    "importPath": "./services/ServicesAiReadinessCopilotEnablement.jsx",
+    "file": "pages/services/ServicesAiReadinessCopilotEnablement.jsx"
+  },
+  {
+    "route": "/services/business-intelligence-reporting",
+    "component": "ServicesBusinessIntelligenceReporting",
+    "importPath": "./services/ServicesBusinessIntelligenceReporting.jsx",
+    "file": "pages/services/ServicesBusinessIntelligenceReporting.jsx"
+  },
+  {
+    "route": "/services/business-process-automation",
+    "component": "ServicesBusinessProcessAutomation",
+    "importPath": "./services/ServicesBusinessProcessAutomation.jsx",
+    "file": "pages/services/ServicesBusinessProcessAutomation.jsx"
+  },
+  {
+    "route": "/services/cloud-infrastructure",
+    "component": "ServicesCloudInfrastructure",
+    "importPath": "./services/ServicesCloudInfrastructure.jsx",
+    "file": "pages/services/ServicesCloudInfrastructure.jsx"
+  },
+  {
+    "route": "/services/contact-center",
+    "component": "ServicesContactCenter",
+    "importPath": "./services/ServicesContactCenter.jsx",
+    "file": "pages/services/ServicesContactCenter.jsx"
+  },
+  {
+    "route": "/services/customer-insights",
+    "component": "ServicesCustomerInsights",
+    "importPath": "./services/ServicesCustomerInsights.jsx",
+    "file": "pages/services/ServicesCustomerInsights.jsx"
+  },
+  {
+    "route": "/services/customer-service",
+    "component": "ServicesCustomerService",
+    "importPath": "./services/ServicesCustomerService.jsx",
+    "file": "pages/services/ServicesCustomerService.jsx"
+  },
+  {
+    "route": "/services/cybersecurity-identity-compliance",
+    "component": "ServicesCybersecurityIdentityCompliance",
+    "importPath": "./services/ServicesCybersecurityIdentityCompliance.jsx",
+    "file": "pages/services/ServicesCybersecurityIdentityCompliance.jsx"
+  },
+  {
+    "route": "/services/data-center-hosting",
+    "component": "ServicesDataCenterHosting",
+    "importPath": "./services/ServicesDataCenterHosting.jsx",
+    "file": "pages/services/ServicesDataCenterHosting.jsx"
+  },
+  {
+    "route": "/services/endpoint-device-management",
+    "component": "ServicesEndpointDeviceManagement",
+    "importPath": "./services/ServicesEndpointDeviceManagement.jsx",
+    "file": "pages/services/ServicesEndpointDeviceManagement.jsx"
+  },
+  {
+    "route": "/services/enterprise-modernization",
+    "component": "ServicesEnterpriseModernization",
+    "importPath": "./services/ServicesEnterpriseModernization.jsx",
+    "file": "pages/services/ServicesEnterpriseModernization.jsx"
+  },
+  {
+    "route": "/services/enterprise-resource-platform",
+    "component": "ServicesEnterpriseResourcePlatform",
+    "importPath": "./services/ServicesEnterpriseResourcePlatform.jsx",
+    "file": "pages/services/ServicesEnterpriseResourcePlatform.jsx"
+  },
+  {
+    "route": "/services/enterprise-system-integration",
+    "component": "ServicesEnterpriseSystemIntegration",
+    "importPath": "./services/ServicesEnterpriseSystemIntegration.jsx",
+    "file": "pages/services/ServicesEnterpriseSystemIntegration.jsx"
+  },
+  {
+    "route": "/services/field-service",
+    "component": "ServicesFieldService",
+    "importPath": "./services/ServicesFieldService.jsx",
+    "file": "pages/services/ServicesFieldService.jsx"
+  },
+  {
+    "route": "/services/finance",
+    "component": "ServicesFinance",
+    "importPath": "./services/ServicesFinance.jsx",
+    "file": "pages/services/ServicesFinance.jsx"
+  },
+  {
+    "route": "/services",
+    "component": "Services",
+    "importPath": "./services/Services.jsx",
+    "file": "pages/services/Services.jsx"
+  },
+  {
+    "route": "/services/intranet-portals-document-management",
+    "component": "ServicesIntranetPortalsDocumentManagement",
+    "importPath": "./services/ServicesIntranetPortalsDocumentManagement.jsx",
+    "file": "pages/services/ServicesIntranetPortalsDocumentManagement.jsx"
+  },
+  {
+    "route": "/services/it-staffing",
+    "component": "ServicesItStaffing",
+    "importPath": "./services/ServicesItStaffing.jsx",
+    "file": "pages/services/ServicesItStaffing.jsx"
+  },
+  {
+    "route": "/services/it-strategy-consulting",
+    "component": "ServicesItStrategyConsulting",
+    "importPath": "./services/ServicesItStrategyConsulting.jsx",
+    "file": "pages/services/ServicesItStrategyConsulting.jsx"
+  },
+  {
+    "route": "/services/managed-it",
+    "component": "ServicesManagedIt",
+    "importPath": "./services/ServicesManagedIt.jsx",
+    "file": "pages/services/ServicesManagedIt.jsx"
+  },
+  {
+    "route": "/services/microsoft-licensing-optimization",
+    "component": "ServicesMicrosoftLicensingOptimization",
+    "importPath": "./services/ServicesMicrosoftLicensingOptimization.jsx",
+    "file": "pages/services/ServicesMicrosoftLicensingOptimization.jsx"
+  },
+  {
+    "route": "/services/modern-workplace",
+    "component": "ServicesModernWorkplace",
+    "importPath": "./services/ServicesModernWorkplace.jsx",
+    "file": "pages/services/ServicesModernWorkplace.jsx"
+  },
+  {
+    "route": "/services/organizational-change-management",
+    "component": "ServicesOrganizationalChangeManagement",
+    "importPath": "./services/ServicesOrganizationalChangeManagement.jsx",
+    "file": "pages/services/ServicesOrganizationalChangeManagement.jsx"
+  },
+  {
+    "route": "/services/project-operations",
+    "component": "ServicesProjectOperations",
+    "importPath": "./services/ServicesProjectOperations.jsx",
+    "file": "pages/services/ServicesProjectOperations.jsx"
+  },
+  {
+    "route": "/services/sales-crm",
+    "component": "ServicesSalesCrm",
+    "importPath": "./services/ServicesSalesCrm.jsx",
+    "file": "pages/services/ServicesSalesCrm.jsx"
+  },
+  {
+    "route": "/services/teams-calling-business-voice",
+    "component": "ServicesTeamsCallingBusinessVoice",
+    "importPath": "./services/ServicesTeamsCallingBusinessVoice.jsx",
+    "file": "pages/services/ServicesTeamsCallingBusinessVoice.jsx"
+  },
+  {
+    "route": "/success/capability-business-applications",
+    "component": "SuccessCapabilityBusinessApplications",
+    "importPath": "./success/SuccessCapabilityBusinessApplications.jsx",
+    "file": "pages/success/SuccessCapabilityBusinessApplications.jsx"
+  },
+  {
+    "route": "/success/capability-data-ai-integration",
+    "component": "SuccessCapabilityDataAiIntegration",
+    "importPath": "./success/SuccessCapabilityDataAiIntegration.jsx",
+    "file": "pages/success/SuccessCapabilityDataAiIntegration.jsx"
+  },
+  {
+    "route": "/success/capability-managed-it-security",
+    "component": "SuccessCapabilityManagedItSecurity",
+    "importPath": "./success/SuccessCapabilityManagedItSecurity.jsx",
+    "file": "pages/success/SuccessCapabilityManagedItSecurity.jsx"
+  },
+  {
+    "route": "/success/capability-modern-work-automation",
+    "component": "SuccessCapabilityModernWorkAutomation",
+    "importPath": "./success/SuccessCapabilityModernWorkAutomation.jsx",
+    "file": "pages/success/SuccessCapabilityModernWorkAutomation.jsx"
+  },
+  {
+    "route": "/success/capability-strategy-transformation",
+    "component": "SuccessCapabilityStrategyTransformation",
+    "importPath": "./success/SuccessCapabilityStrategyTransformation.jsx",
+    "file": "pages/success/SuccessCapabilityStrategyTransformation.jsx"
+  },
+  {
+    "route": "/success/capability-talent",
+    "component": "SuccessCapabilityTalent",
+    "importPath": "./success/SuccessCapabilityTalent.jsx",
+    "file": "pages/success/SuccessCapabilityTalent.jsx"
+  },
+  {
+    "route": "/success/featured",
+    "component": "SuccessFeatured",
+    "importPath": "./success/SuccessFeatured.jsx",
+    "file": "pages/success/SuccessFeatured.jsx"
+  },
+  {
+    "route": "/success",
+    "component": "Success",
+    "importPath": "./success/Success.jsx",
+    "file": "pages/success/Success.jsx"
+  },
+  {
+    "route": "/success/industry-construction-field-services",
+    "component": "SuccessIndustryConstructionFieldServices",
+    "importPath": "./success/SuccessIndustryConstructionFieldServices.jsx",
+    "file": "pages/success/SuccessIndustryConstructionFieldServices.jsx"
+  },
+  {
+    "route": "/success/industry-education",
+    "component": "SuccessIndustryEducation",
+    "importPath": "./success/SuccessIndustryEducation.jsx",
+    "file": "pages/success/SuccessIndustryEducation.jsx"
+  },
+  {
+    "route": "/success/industry-financial-services",
+    "component": "SuccessIndustryFinancialServices",
+    "importPath": "./success/SuccessIndustryFinancialServices.jsx",
+    "file": "pages/success/SuccessIndustryFinancialServices.jsx"
+  },
+  {
+    "route": "/success/industry-healthcare",
+    "component": "SuccessIndustryHealthcare",
+    "importPath": "./success/SuccessIndustryHealthcare.jsx",
+    "file": "pages/success/SuccessIndustryHealthcare.jsx"
+  },
+  {
+    "route": "/success/industry-legal",
+    "component": "SuccessIndustryLegal",
+    "importPath": "./success/SuccessIndustryLegal.jsx",
+    "file": "pages/success/SuccessIndustryLegal.jsx"
+  },
+  {
+    "route": "/success/industry-manufacturing",
+    "component": "SuccessIndustryManufacturing",
+    "importPath": "./success/SuccessIndustryManufacturing.jsx",
+    "file": "pages/success/SuccessIndustryManufacturing.jsx"
+  },
+  {
+    "route": "/success/industry-nonprofits-associations",
+    "component": "SuccessIndustryNonprofitsAssociations",
+    "importPath": "./success/SuccessIndustryNonprofitsAssociations.jsx",
+    "file": "pages/success/SuccessIndustryNonprofitsAssociations.jsx"
+  },
+  {
+    "route": "/success/industry-professional-services",
+    "component": "SuccessIndustryProfessionalServices",
+    "importPath": "./success/SuccessIndustryProfessionalServices.jsx",
+    "file": "pages/success/SuccessIndustryProfessionalServices.jsx"
+  },
+  {
+    "route": "/success/industry-public-sector",
+    "component": "SuccessIndustryPublicSector",
+    "importPath": "./success/SuccessIndustryPublicSector.jsx",
+    "file": "pages/success/SuccessIndustryPublicSector.jsx"
+  },
+  {
+    "route": "/success/industry-retail-distribution",
+    "component": "SuccessIndustryRetailDistribution",
+    "importPath": "./success/SuccessIndustryRetailDistribution.jsx",
+    "file": "pages/success/SuccessIndustryRetailDistribution.jsx"
+  },
+  {
+    "route": "/success/industry-small-mid-market",
+    "component": "SuccessIndustrySmallMidMarket",
+    "importPath": "./success/SuccessIndustrySmallMidMarket.jsx",
+    "file": "pages/success/SuccessIndustrySmallMidMarket.jsx"
+  },
+  {
+    "route": "/success/story-a-customer-experience-rebuilt-on-a-low-code-portal",
+    "component": "SuccessStoryACustomerExperienceRebuiltOnALowCodePortal",
+    "importPath": "./success/SuccessStoryACustomerExperienceRebuiltOnALowCodePortal.jsx",
+    "file": "pages/success/SuccessStoryACustomerExperienceRebuiltOnALowCodePortal.jsx"
+  },
+  {
+    "route": "/success/story-a-dealership-network-brought-into-one-erp-and-crm",
+    "component": "SuccessStoryADealershipNetworkBroughtIntoOneErpAndCrm",
+    "importPath": "./success/SuccessStoryADealershipNetworkBroughtIntoOneErpAndCrm.jsx",
+    "file": "pages/success/SuccessStoryADealershipNetworkBroughtIntoOneErpAndCrm.jsx"
+  },
+  {
+    "route": "/success/story-a-forecast-horizon-extended-from-three-months-to",
+    "component": "SuccessStoryAForecastHorizonExtendedFromThreeMonthsTo",
+    "importPath": "./success/SuccessStoryAForecastHorizonExtendedFromThreeMonthsTo.jsx",
+    "file": "pages/success/SuccessStoryAForecastHorizonExtendedFromThreeMonthsTo.jsx"
+  },
+  {
+    "route": "/success/story-a-heavily-customised-erp-retired-across-twenty-four",
+    "component": "SuccessStoryAHeavilyCustomisedErpRetiredAcrossTwentyFour",
+    "importPath": "./success/SuccessStoryAHeavilyCustomisedErpRetiredAcrossTwentyFour.jsx",
+    "file": "pages/success/SuccessStoryAHeavilyCustomisedErpRetiredAcrossTwentyFour.jsx"
+  },
+  {
+    "route": "/success/story-a-meat-producer-that-decided-to-become-a-technology",
+    "component": "SuccessStoryAMeatProducerThatDecidedToBecomeATechnology",
+    "importPath": "./success/SuccessStoryAMeatProducerThatDecidedToBecomeATechnology.jsx",
+    "file": "pages/success/SuccessStoryAMeatProducerThatDecidedToBecomeATechnology.jsx"
+  },
+  {
+    "route": "/success/story-a-member-programme-portal-for-two-thousand",
+    "component": "SuccessStoryAMemberProgrammePortalForTwoThousand",
+    "importPath": "./success/SuccessStoryAMemberProgrammePortalForTwoThousand.jsx",
+    "file": "pages/success/SuccessStoryAMemberProgrammePortalForTwoThousand.jsx"
+  },
+  {
+    "route": "/success/story-ai-adopted-without-exposing-a-single-client-matter",
+    "component": "SuccessStoryAiAdoptedWithoutExposingASingleClientMatter",
+    "importPath": "./success/SuccessStoryAiAdoptedWithoutExposingASingleClientMatter.jsx",
+    "file": "pages/success/SuccessStoryAiAdoptedWithoutExposingASingleClientMatter.jsx"
+  },
+  {
+    "route": "/success/story-drone-line-inspection-from-three-days-to-overnight",
+    "component": "SuccessStoryDroneLineInspectionFromThreeDaysToOvernight",
+    "importPath": "./success/SuccessStoryDroneLineInspectionFromThreeDaysToOvernight.jsx",
+    "file": "pages/success/SuccessStoryDroneLineInspectionFromThreeDaysToOvernight.jsx"
+  },
+  {
+    "route": "/success/story-fifteen-data-sources-into-one-lakehouse-and-models",
+    "component": "SuccessStoryFifteenDataSourcesIntoOneLakehouseAndModels",
+    "importPath": "./success/SuccessStoryFifteenDataSourcesIntoOneLakehouseAndModels.jsx",
+    "file": "pages/success/SuccessStoryFifteenDataSourcesIntoOneLakehouseAndModels.jsx"
+  },
+  {
+    "route": "/success/story-five-hundred-officer-hours-a-month-returned-to-the",
+    "component": "SuccessStoryFiveHundredOfficerHoursAMonthReturnedToThe",
+    "importPath": "./success/SuccessStoryFiveHundredOfficerHoursAMonthReturnedToThe.jsx",
+    "file": "pages/success/SuccessStoryFiveHundredOfficerHoursAMonthReturnedToThe.jsx"
+  },
+  {
+    "route": "/success/story-forty-hours-a-month-recovered-from-reporting",
+    "component": "SuccessStoryFortyHoursAMonthRecoveredFromReporting",
+    "importPath": "./success/SuccessStoryFortyHoursAMonthRecoveredFromReporting.jsx",
+    "file": "pages/success/SuccessStoryFortyHoursAMonthRecoveredFromReporting.jsx"
+  },
+  {
+    "route": "/success/story-forty-siloed-systems-into-one-citizen-record",
+    "component": "SuccessStoryFortySiloedSystemsIntoOneCitizenRecord",
+    "importPath": "./success/SuccessStoryFortySiloedSystemsIntoOneCitizenRecord.jsx",
+    "file": "pages/success/SuccessStoryFortySiloedSystemsIntoOneCitizenRecord.jsx"
+  },
+  {
+    "route": "/success/story-forty-thousand-web-pages-answered-in-seconds",
+    "component": "SuccessStoryFortyThousandWebPagesAnsweredInSeconds",
+    "importPath": "./success/SuccessStoryFortyThousandWebPagesAnsweredInSeconds.jsx",
+    "file": "pages/success/SuccessStoryFortyThousandWebPagesAnsweredInSeconds.jsx"
+  },
+  {
+    "route": "/success/story-four-thousand-licences-and-a-centre-of-excellence",
+    "component": "SuccessStoryFourThousandLicencesAndACentreOfExcellence",
+    "importPath": "./success/SuccessStoryFourThousandLicencesAndACentreOfExcellence.jsx",
+    "file": "pages/success/SuccessStoryFourThousandLicencesAndACentreOfExcellence.jsx"
+  },
+  {
+    "route": "/success/story-from-180-000-cases-to-370-000-because-staff-finally",
+    "component": "SuccessStoryFrom180000CasesTo370000BecauseStaffFinally",
+    "importPath": "./success/SuccessStoryFrom180000CasesTo370000BecauseStaffFinally.jsx",
+    "file": "pages/success/SuccessStoryFrom180000CasesTo370000BecauseStaffFinally.jsx"
+  },
+  {
+    "route": "/success/story-incident-volume-halved-triage-time-cut-by-four",
+    "component": "SuccessStoryIncidentVolumeHalvedTriageTimeCutByFour",
+    "importPath": "./success/SuccessStoryIncidentVolumeHalvedTriageTimeCutByFour.jsx",
+    "file": "pages/success/SuccessStoryIncidentVolumeHalvedTriageTimeCutByFour.jsx"
+  },
+  {
+    "route": "/success/story-modernizing-forty-year-old-banking-systems-without",
+    "component": "SuccessStoryModernizingFortyYearOldBankingSystemsWithout",
+    "importPath": "./success/SuccessStoryModernizingFortyYearOldBankingSystemsWithout.jsx",
+    "file": "pages/success/SuccessStoryModernizingFortyYearOldBankingSystemsWithout.jsx"
+  },
+  {
+    "route": "/success/story-month-end-close-cut-by-a-quarter-across-sixteen",
+    "component": "SuccessStoryMonthEndCloseCutByAQuarterAcrossSixteen",
+    "importPath": "./success/SuccessStoryMonthEndCloseCutByAQuarterAcrossSixteen.jsx",
+    "file": "pages/success/SuccessStoryMonthEndCloseCutByAQuarterAcrossSixteen.jsx"
+  },
+  {
+    "route": "/success/story-municipal-finance-modernized-and-the-savings",
+    "component": "SuccessStoryMunicipalFinanceModernizedAndTheSavings",
+    "importPath": "./success/SuccessStoryMunicipalFinanceModernizedAndTheSavings.jsx",
+    "file": "pages/success/SuccessStoryMunicipalFinanceModernizedAndTheSavings.jsx"
+  },
+  {
+    "route": "/success/story-ninety-six-per-cent-of-students-on-track-to-graduate",
+    "component": "SuccessStoryNinetySixPerCentOfStudentsOnTrackToGraduate",
+    "importPath": "./success/SuccessStoryNinetySixPerCentOfStudentsOnTrackToGraduate.jsx",
+    "file": "pages/success/SuccessStoryNinetySixPerCentOfStudentsOnTrackToGraduate.jsx"
+  },
+  {
+    "route": "/success/story-one-record-for-the-whole-student-journey",
+    "component": "SuccessStoryOneRecordForTheWholeStudentJourney",
+    "importPath": "./success/SuccessStoryOneRecordForTheWholeStudentJourney.jsx",
+    "file": "pages/success/SuccessStoryOneRecordForTheWholeStudentJourney.jsx"
+  },
+  {
+    "route": "/success/story-one-view-of-the-member-on-every-channel",
+    "component": "SuccessStoryOneViewOfTheMemberOnEveryChannel",
+    "importPath": "./success/SuccessStoryOneViewOfTheMemberOnEveryChannel.jsx",
+    "file": "pages/success/SuccessStoryOneViewOfTheMemberOnEveryChannel.jsx"
+  },
+  {
+    "route": "/success/story-order-to-invoice-scaled-to-two-hundred-thousand",
+    "component": "SuccessStoryOrderToInvoiceScaledToTwoHundredThousand",
+    "importPath": "./success/SuccessStoryOrderToInvoiceScaledToTwoHundredThousand.jsx",
+    "file": "pages/success/SuccessStoryOrderToInvoiceScaledToTwoHundredThousand.jsx"
+  },
+  {
+    "route": "/success/story-patient-outreach-that-people-actually-respond-to",
+    "component": "SuccessStoryPatientOutreachThatPeopleActuallyRespondTo",
+    "importPath": "./success/SuccessStoryPatientOutreachThatPeopleActuallyRespondTo.jsx",
+    "file": "pages/success/SuccessStoryPatientOutreachThatPeopleActuallyRespondTo.jsx"
+  },
+  {
+    "route": "/success/story-roadside-support-resolved-fifteen-per-cent-faster",
+    "component": "SuccessStoryRoadsideSupportResolvedFifteenPerCentFaster",
+    "importPath": "./success/SuccessStoryRoadsideSupportResolvedFifteenPerCentFaster.jsx",
+    "file": "pages/success/SuccessStoryRoadsideSupportResolvedFifteenPerCentFaster.jsx"
+  },
+  {
+    "route": "/success/story-robotic-process-automation-for-repetitive-field",
+    "component": "SuccessStoryRoboticProcessAutomationForRepetitiveField",
+    "importPath": "./success/SuccessStoryRoboticProcessAutomationForRepetitiveField.jsx",
+    "file": "pages/success/SuccessStoryRoboticProcessAutomationForRepetitiveField.jsx"
+  },
+  {
+    "route": "/success/story-scaling-scarce-expertise-instead-of-hiring-it",
+    "component": "SuccessStoryScalingScarceExpertiseInsteadOfHiringIt",
+    "importPath": "./success/SuccessStoryScalingScarceExpertiseInsteadOfHiringIt.jsx",
+    "file": "pages/success/SuccessStoryScalingScarceExpertiseInsteadOfHiringIt.jsx"
+  },
+  {
+    "route": "/success/story-secure-score-improved-and-the-tooling-bill-reduced",
+    "component": "SuccessStorySecureScoreImprovedAndTheToolingBillReduced",
+    "importPath": "./success/SuccessStorySecureScoreImprovedAndTheToolingBillReduced.jsx",
+    "file": "pages/success/SuccessStorySecureScoreImprovedAndTheToolingBillReduced.jsx"
+  },
+  {
+    "route": "/success/story-seventy-five-hundred-technicians-one-service",
+    "component": "SuccessStorySeventyFiveHundredTechniciansOneService",
+    "importPath": "./success/SuccessStorySeventyFiveHundredTechniciansOneService.jsx",
+    "file": "pages/success/SuccessStorySeventyFiveHundredTechniciansOneService.jsx"
+  },
+  {
+    "route": "/success/story-sixteen-hundred-people-live-in-two-months",
+    "component": "SuccessStorySixteenHundredPeopleLiveInTwoMonths",
+    "importPath": "./success/SuccessStorySixteenHundredPeopleLiveInTwoMonths.jsx",
+    "file": "pages/success/SuccessStorySixteenHundredPeopleLiveInTwoMonths.jsx"
+  },
+  {
+    "route": "/success/story-sixty-acquired-companies-onto-one-value-chain",
+    "component": "SuccessStorySixtyAcquiredCompaniesOntoOneValueChain",
+    "importPath": "./success/SuccessStorySixtyAcquiredCompaniesOntoOneValueChain.jsx",
+    "file": "pages/success/SuccessStorySixtyAcquiredCompaniesOntoOneValueChain.jsx"
+  },
+  {
+    "route": "/success/story-student-communication-personalised-from-a-unified",
+    "component": "SuccessStoryStudentCommunicationPersonalisedFromAUnified",
+    "importPath": "./success/SuccessStoryStudentCommunicationPersonalisedFromAUnified.jsx",
+    "file": "pages/success/SuccessStoryStudentCommunicationPersonalisedFromAUnified.jsx"
+  },
+  {
+    "route": "/success/story-student-enquiries-answered-faster-with-less-staff",
+    "component": "SuccessStoryStudentEnquiriesAnsweredFasterWithLessStaff",
+    "importPath": "./success/SuccessStoryStudentEnquiriesAnsweredFasterWithLessStaff.jsx",
+    "file": "pages/success/SuccessStoryStudentEnquiriesAnsweredFasterWithLessStaff.jsx"
+  },
+  {
+    "route": "/success/story-students-trained-as-ambassadors-to-drive-adoption",
+    "component": "SuccessStoryStudentsTrainedAsAmbassadorsToDriveAdoption",
+    "importPath": "./success/SuccessStoryStudentsTrainedAsAmbassadorsToDriveAdoption.jsx",
+    "file": "pages/success/SuccessStoryStudentsTrainedAsAmbassadorsToDriveAdoption.jsx"
+  },
+  {
+    "route": "/success/story-thirty-hours-a-month-of-finance-admin-automated-away",
+    "component": "SuccessStoryThirtyHoursAMonthOfFinanceAdminAutomatedAway",
+    "importPath": "./success/SuccessStoryThirtyHoursAMonthOfFinanceAdminAutomatedAway.jsx",
+    "file": "pages/success/SuccessStoryThirtyHoursAMonthOfFinanceAdminAutomatedAway.jsx"
+  },
+  {
+    "route": "/success/story-thirty-six-hours-a-week-returned-to-the-business",
+    "component": "SuccessStoryThirtySixHoursAWeekReturnedToTheBusiness",
+    "importPath": "./success/SuccessStoryThirtySixHoursAWeekReturnedToTheBusiness.jsx",
+    "file": "pages/success/SuccessStoryThirtySixHoursAWeekReturnedToTheBusiness.jsx"
+  },
+  {
+    "route": "/success/story-thirty-thousand-hours-a-year-automated-by-the-staff",
+    "component": "SuccessStoryThirtyThousandHoursAYearAutomatedByTheStaff",
+    "importPath": "./success/SuccessStoryThirtyThousandHoursAYearAutomatedByTheStaff.jsx",
+    "file": "pages/success/SuccessStoryThirtyThousandHoursAYearAutomatedByTheStaff.jsx"
+  },
+  {
+    "route": "/success/story-thousands-of-service-interactions-a-day-forty-per",
+    "component": "SuccessStoryThousandsOfServiceInteractionsADayFortyPer",
+    "importPath": "./success/SuccessStoryThousandsOfServiceInteractionsADayFortyPer.jsx",
+    "file": "pages/success/SuccessStoryThousandsOfServiceInteractionsADayFortyPer.jsx"
+  },
+  {
+    "route": "/success/story-threat-detection-and-data-governance-across-a-hybrid",
+    "component": "SuccessStoryThreatDetectionAndDataGovernanceAcrossAHybrid",
+    "importPath": "./success/SuccessStoryThreatDetectionAndDataGovernanceAcrossAHybrid.jsx",
+    "file": "pages/success/SuccessStoryThreatDetectionAndDataGovernanceAcrossAHybrid.jsx"
+  },
+  {
+    "route": "/success/story-three-thousand-makers-guided-by-an-agent",
+    "component": "SuccessStoryThreeThousandMakersGuidedByAnAgent",
+    "importPath": "./success/SuccessStoryThreeThousandMakersGuidedByAnAgent.jsx",
+    "file": "pages/success/SuccessStoryThreeThousandMakersGuidedByAnAgent.jsx"
+  },
+  {
+    "route": "/success/story-twenty-million-records-a-year-processed-without-new",
+    "component": "SuccessStoryTwentyMillionRecordsAYearProcessedWithoutNew",
+    "importPath": "./success/SuccessStoryTwentyMillionRecordsAYearProcessedWithoutNew.jsx",
+    "file": "pages/success/SuccessStoryTwentyMillionRecordsAYearProcessedWithoutNew.jsx"
+  },
+  {
+    "route": "/success/story-twenty-six-thousand-hours-recovered-during-rapid",
+    "component": "SuccessStoryTwentySixThousandHoursRecoveredDuringRapid",
+    "importPath": "./success/SuccessStoryTwentySixThousandHoursRecoveredDuringRapid.jsx",
+    "file": "pages/success/SuccessStoryTwentySixThousandHoursRecoveredDuringRapid.jsx"
+  },
+  {
+    "route": "/success/story-underwriting-administration-cut-by-hundreds-of-hours",
+    "component": "SuccessStoryUnderwritingAdministrationCutByHundredsOfHours",
+    "importPath": "./success/SuccessStoryUnderwritingAdministrationCutByHundredsOfHours.jsx",
+    "file": "pages/success/SuccessStoryUnderwritingAdministrationCutByHundredsOfHours.jsx"
+  }
+]
