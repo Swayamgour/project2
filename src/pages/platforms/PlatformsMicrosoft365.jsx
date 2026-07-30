@@ -1,15 +1,570 @@
 import { useRef } from "react";
 import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
+import { useParams } from "react-router-dom";
+import { useGetPlatformBySlugQuery } from "../../redux/api.jsx";
+import HeroSection from "../../components/HeroSection.jsx";
 
 export default function PlatformsMicrosoft365() {
   const mainRef = useRef(null);
-  useDocumentMeta("Microsoft 365 Consulting & Implementation | JJC Systems", "Microsoft 365 consulting, migration and optimization. Get the collaboration, security and governance capability you already pay for actually working.");
+  const { slug } = useParams();
+  const { data, isLoading, error } = useGetPlatformBySlugQuery(slug);
+  const pageData = data?.data;
+
+  // Set meta from API data
+  useDocumentMeta(
+    pageData?.seo?.metaTitle || "Microsoft 365 Consulting & Implementation | JJC Systems",
+    pageData?.seo?.metaDescription || "Microsoft 365 consulting, migration and optimization. Get the collaboration, security and governance capability you already pay for actually working."
+  );
   usePageEffects(mainRef);
+
+  if (isLoading) {
+    return (
+      <main id="main" ref={mainRef}>
+        <div className="wrap" style={{ padding: "80px 0", textAlign: "center" }}>
+          <p>Loading...</p>
+        </div>
+      </main>
+    );
+  }
+
+  if (error || !pageData) {
+    return (
+      <main id="main" ref={mainRef}>
+        <div className="wrap" style={{ padding: "80px 0", textAlign: "center" }}>
+          <h2>Page not found</h2>
+          <p>Unable to load this platform page.</p>
+        </div>
+      </main>
+    );
+  }
+
+  const {
+    hero,
+    challenges,
+    capabilities,
+    industryUseCases,
+    outcomes,
+    pillars,
+    consultingServices,
+    approach,
+    whyUs,
+    successStories,
+    insights,
+    cta,
+    relatedItems,
+    title
+  } = pageData;
+
+  // Helper to render section heading
+  const renderSectionHeading = (eyebrow, title, subtitle, className = "") => (
+    <div className={`sec-head reveal in ${className}`} style={{ marginTop: "clamp(52px, 7vw, 86px)" }}>
+      {eyebrow && <span className="eyebrow">{eyebrow}</span>}
+      {title && <h2 className="h-sec wide">{title}</h2>}
+      {subtitle && <p className="lede">{subtitle}</p>}
+    </div>
+  );
+
+  // Helper to render challenge items
+  const renderChallenges = (items) => (
+    <div className="chal-grid">
+      {items.map((item, index) => (
+        <article className="chal reveal" key={index}>
+          <span className="chal-n">0{index + 1}</span>
+          <div>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+
+  // Helper to render capabilities (feature grid)
+  const renderCapabilities = (items) => (
+    <div className="feat-grid">
+      {items.map((item, index) => (
+        <article className="feat reveal" key={index}>
+          <span className="feat-icon">
+            <svg><use href={`#i-${item.icon}`}></use></svg>
+          </span>
+          <div>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+
+  // Helper to render industry use cases
+  const renderUseCases = (items) => (
+    <div className="seg-grid">
+      {items.map((item, index) => (
+        <article className="seg reveal" key={index}>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </div>
+  );
+
+  // Helper to render metrics
+  const renderMetrics = (metrics) => (
+    <div className="metric-grid reveal">
+      {metrics.map((metric, index) => (
+        <div className="metric" key={index}>
+          <span className="m-label">{metric.label}</span>
+          <b>{metric.value}</b>
+          <p>{metric.description}</p>
+        </div>
+      ))}
+    </div>
+  );
+
+  // Helper to render associated outcomes
+  const renderAssociatedOutcomes = (items) => (
+    <ul className="biz-outcomes reveal">
+      {items.map((item, index) => (
+        <li key={index}>
+          <svg><use href="#i-check"></use></svg>
+          <span><b>{item.title}</b> — {item.description}</span>
+        </li>
+      ))}
+    </ul>
+  );
+
+  // Helper to render pillars
+  const renderPillars = (items) => (
+    <div className="pillar-grid">
+      {items.map((item, index) => (
+        <article className="pillar reveal" key={index}>
+          <div className="icon-tile">
+            <svg><use href={`#i-${item.icon}`}></use></svg>
+          </div>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+          {item.points && item.points.length > 0 && (
+            <ul>
+              {item.points.map((point, idx) => (
+                <li key={idx}>
+                  <svg><use href="#i-check"></use></svg>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </article>
+      ))}
+    </div>
+  );
+
+  // Helper to render consulting services (task board)
+  const renderConsultingServices = (items) => (
+    <div className="task-board">
+      {items.map((item, index) => (
+        <article className="task-row reveal" key={index}>
+          <div className="task-head">
+            <span className="task-tag t-core">{item.tag}</span>
+            <h3>{item.title}</h3>
+          </div>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </div>
+  );
+
+  // Helper to render approach steps
+  const renderSteps = (steps) => (
+    <div className="process reveal">
+      {steps.map((step, index) => (
+        <div className="step" key={index}>
+          <span className="step-n">{index + 1}</span>
+          <h4>{step.title}</h4>
+          <p>{step.description}</p>
+        </div>
+      ))}
+    </div>
+  );
+
+  // Helper to render why us items
+  const renderWhyUsItems = (items) => (
+    <div className="reason-grid">
+      {items.map((item, index) => (
+        <article className="reason reveal" key={index}>
+          <span className="reason-icon">
+            <svg><use href={`#i-${item.icon}`}></use></svg>
+          </span>
+          <div>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+
+  // Helper to render success stories
+  const renderSuccessStories = (stories) => (
+    <div className="success-grid">
+      {stories.map((story, index) => (
+        <article className="story-card reveal" key={index}>
+          <div className="story-top">
+            <div className="story-kicker">
+              <span className="story-industry">{story.industry}</span>
+              {story.isSample && <span className="demo-chip">Sample story</span>}
+            </div>
+            <h3>{story.title}</h3>
+            <p className="story-summary">{story.summary}</p>
+          </div>
+          <div className="story-metrics">
+            {story.metrics.map((metric, idx) => (
+              <div className="story-metric" key={idx}>
+                <b>{metric.value}</b>
+                <span>{metric.label}</span>
+              </div>
+            ))}
+          </div>
+          <div className="story-body">
+            <h4>What changed</h4>
+            <ul className="story-outcomes">
+              {story.outcomes.map((outcome, idx) => (
+                <li key={idx}>
+                  <svg><use href="#i-check"></use></svg>
+                  <span>{outcome}</span>
+                </li>
+              ))}
+            </ul>
+            <a className="link-more" href={story.ctaLink || "/#contact"}>
+              Talk about a similar outcome{" "}
+              <svg><use href="#i-arrow-r"></use></svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+
+  // Helper to render insights
+  const renderInsights = (posts) => (
+    <div className="insights-grid">
+      {posts.map((post, index) => (
+        <a className="post reveal" href={post.link || "/#insights"} key={index}>
+          <div className="post-img">
+            <svg><use href={`#i-${post.tag?.toLowerCase() || 'docs'}`}></use></svg>
+          </div>
+          <div className="post-body">
+            <div className="post-meta">
+              <span className="chip">{post.tag}</span>
+              <span>{post.meta}</span>
+            </div>
+            <h3>{post.title}</h3>
+            <p>{post.description}</p>
+            <span className="link-more">
+              Read more{" "}
+              <svg><use href="#i-arrow-r"></use></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  );
+
+  // Helper to render related items
+  const renderRelatedItems = (items) => (
+    <div className="rel-grid">
+      {items.map((item, index) => (
+        <a className="rel reveal" href={item.link || "#"} key={index}>
+          <div className="icon-tile">
+            <svg><use href={`#i-${item.icon}`}></use></svg>
+          </div>
+          <span>
+            <b>{item.title}</b>
+            <span>{item.description}</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  );
 
   return (
     <main id="main" ref={mainRef}>
-{/* ===================== HERO ===================== */}<section className="svc-hero"><div className="wrap"><nav className="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/platforms">Platforms</a><span>/</span><a href="/platforms#modern-work">Microsoft 365 & Modern Work</a><span>/</span><b>Microsoft 365</b></nav><div className="svc-hero-grid"><div><span className="eyebrow">Microsoft 365 & Modern Work</span><h1>You already own more of this than you are using</h1><p className="lede">Microsoft 365 is the platform almost every organization has and almost none has fully deployed. Teams sprawls, files live in three places, security features sit switched off inside a licence you renew annually. The fastest return available to most businesses is not a new purchase — it is turning on and configuring what is already paid for.</p><div className="svc-cta"><a className="btn btn-primary" href="/#contact?topic=Modern%20workplace%20%26%20automation">Request a tailored demo <svg><use href="#i-arrow-r"></use></svg></a><a className="btn btn-ghost" href="#outcomes">See the business outcomes <svg><use href="#i-arrow-r"></use></svg></a></div></div><aside className="glance"><h2>At a glance</h2><ul><li><svg><use href="#i-check"></use></svg><span>Licensing review: what you own versus what you use</span></li><li><svg><use href="#i-check"></use></svg><span>Teams, SharePoint and OneDrive structured on purpose</span></li><li><svg><use href="#i-check"></use></svg><span>Identity, conditional access and device baselines</span></li><li><svg><use href="#i-check"></use></svg><span>Migration from Google Workspace, file servers or legacy Exchange</span></li><li><svg><use href="#i-check"></use></svg><span>Governance so collaboration does not become sprawl</span></li></ul></aside></div><div className="svc-stats"><div className="svc-stat"><b>E3 → E5</b><span>We model the case both ways</span></div><div className="svc-stat"><b>Own it</b><span>Your team maintains the design</span></div><div className="svc-stat"><b>24/7</b><span>Global support coverage</span></div><div className="svc-stat"><b>1 day</b><span>We reply within one business day</span></div></div></div></section>{/* ===================== IN-PAGE NAV ===================== */}<nav className="svc-subnav" aria-label="On this page"><div className="wrap"><a href="#overview">Overview</a><a href="#capabilities">Capabilities</a><a href="#outcomes">Business outcomes</a><a href="#usecases">Use cases</a><a href="#help">How we help</a><a href="#services">Our services</a><a href="#approach">Approach</a><a href="#why-us">Why JJC</a><a href="#stories">Success</a><a href="#insights">Insights</a><a className="subnav-cta link-more" href="/#contact?topic=Modern%20workplace%20%26%20automation">Request a demo <svg><use href="#i-arrow-r"></use></svg></a></div></nav>{/* ===================== 1. OVERVIEW &amp; PAIN POINTS ===================== */}<section className="section bg-paper" id="overview"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">Overview</span><h2 className="h-sec wide">The platform is fine. The deployment is where it goes wrong</h2><p className="lede">Microsoft 365 is rarely bought badly. It is very often deployed as an email migration and then left, which is how organizations end up paying premium licence prices for a webmail client and a chat tool. These are the four symptoms we see most.</p></div><div className="chal-grid"><article className="chal reveal"><span className="chal-n">01</span><div><h3>Files live wherever the last person put them</h3><p>The same document exists in OneDrive, a Teams channel, an email attachment and the old file server. Nobody is confident which is current, so people email copies, which creates more copies.</p></div></article><article className="chal reveal"><span className="chal-n">02</span><div><h3>Teams grew without a structure and now nobody can find anything</h3><p>Anyone can create a team, so hundreds exist. Half are abandoned, membership is stale, and new joiners are added to whichever ones somebody remembers.</p></div></article><article className="chal reveal"><span className="chal-n">03</span><div><h3>Security capability is licensed but not switched on</h3><p>Conditional access, sensitivity labels, retention and device compliance are included in the subscription and configured minimally or not at all — usually because nobody owned the deployment after the migration.</p></div></article><article className="chal reveal"><span className="chal-n">04</span><div><h3>The intranet is a filing cabinet nobody opens</h3><p>SharePoint was set up once, populated with out-of-date policies, and abandoned. Staff ask each other in chat because searching is slower than asking.</p></div></article></div><div className="value-note reveal"><h3>Configuration is where the return is, not the licence</h3><p>The revenue argument for Microsoft 365 is indirect but real, and it runs through three channels. Time: hours returned each week when finding a document, a decision or a colleague stops being an act of archaeology. Risk: incidents avoided and audit findings not raised, because information protection is actually configured rather than merely licensed. And cost: duplicate tools retired — the separate file-share service, the second chat product, the third e-signature subscription — once the capability you already pay for is deployed properly. In mid-market reviews it is common to find enough duplicate spend to fund the configuration work outright.</p></div></div></section>{/* ===================== 2. CAPABILITIES ===================== */}<section className="section bg-mist" id="capabilities"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">Capabilities & direction</span><h2 className="h-sec wide">What the platform gives you, and where Microsoft is taking it</h2><p className="lede">The pieces worth deploying deliberately rather than accepting as defaults.</p></div><div className="feat-grid"><article className="feat reveal"><span className="feat-icon"><svg><use href="#i-chats"></use></svg></span><div><h3>Teams as the work surface</h3><p>Chat, meetings, calling and channels, with apps and processes surfaced inside the conversation rather than in another tab. Teams is where adoption of everything else is won or lost.</p></div></article><article className="feat reveal"><span className="feat-icon"><svg><use href="#i-docs"></use></svg></span><div><h3>SharePoint and OneDrive with an information architecture</h3><p>Sites, libraries, metadata and permissions designed on purpose. The difference between a document estate and a document problem is entirely in this design.</p></div></article><article className="feat reveal"><span className="feat-icon"><svg><use href="#i-shield"></use></svg></span><div><h3>Identity and conditional access via Entra ID</h3><p>Multi-factor authentication, conditional access policies, device compliance and risk-based sign-in — the controls that actually stop the attacks organizations experience.</p></div></article><article className="feat reveal"><span className="feat-icon"><svg><use href="#i-automation"></use></svg></span><div><h3>Power Platform included at the edges</h3><p>Power Automate and Power Apps entitlements bundled in Microsoft 365 cover a surprising amount of workflow before any additional licensing is needed.</p></div></article><article className="feat reveal"><span className="feat-icon"><svg><use href="#i-ai"></use></svg></span><div><h3>Copilot Chat and agents in the flow of work</h3><p>Microsoft's direction is unambiguous: AI assistance and agents surfaced inside Word, Excel, Outlook and Teams rather than as a separate destination. Readiness for that is a data and permissions question.</p></div></article><article className="feat reveal"><span className="feat-icon"><svg><use href="#i-chart"></use></svg></span><div><h3>Viva and usage analytics</h3><p>Adoption, engagement and usage reporting, so deployment decisions are made from evidence rather than from whoever complains loudest.</p></div></article></div><div className="sol-note reveal"><svg><use href="#i-check"></use></svg><p>The direction of travel matters for your roadmap: Microsoft is putting Copilot and agents into every surface of Microsoft 365. Organizations with a clean permission model and a sane information architecture are ready for that. Organizations with a decade of oversharing are not, and will discover it the week Copilot starts surfacing documents people did not know they could reach.</p></div></div></section>{/* ===================== 3. BUSINESS OUTCOMES ===================== */}<section className="section bg-navy" id="outcomes"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">Business outcomes</span><h2 className="h-sec wide">What we measure a Microsoft 365 engagement against</h2><p className="lede">We baseline from your current licensing, storage and support ticket data before agreeing targets.</p></div><div className="metric-grid reveal"><div className="metric"><span className="m-label">Licence spend</span><b>10–25%</b><p>Reduction from right-sizing and retiring duplicate tools</p></div><div className="metric"><span className="m-label">Per person, per week</span><b>2–4 hrs</b><p>Time recovered from searching for documents and information</p></div><div className="metric"><span className="m-label">Access-related tickets</span><b>30–50%</b><p>Fewer permission and file-location support requests</p></div><div className="metric"><span className="m-label">MFA coverage</span><b>100%</b><p>Conditional access applied across every account</p></div><div className="metric"><span className="m-label">Per document</span><b>1 place</b><p>One authoritative location instead of four copies</p></div><div className="metric"><span className="m-label">Not quarters</span><b>Weeks</b><p>Time to deploy capability you already own</p></div></div><p className="metric-note"><b>How to read these:</b> the figures above are typical ranges we plan and measure against, not guarantees. In your first engagement we agree the baseline, the target and the measurement method in writing, then report against them.</p><div className="sec-head reveal" style={{marginTop: 'clamp(48px,6vw,72px)'}}><h3 className="h-sec wide" style={{fontSize: 'clamp(22px,2.4vw,30px)'}}>The business outcomes Microsoft associates with this platform</h3><p className="lede">Microsoft's own documentation and adoption guidance frame the platform's value around the following. We have written them in plain terms and, where the phrasing is ours, said so.</p></div><ul className="biz-outcomes reveal"><li><svg><use href="#i-check"></use></svg><span><b>Secure collaboration by default</b> — identity, device and information protection applied consistently rather than per application</span></li><li><svg><use href="#i-check"></use></svg><span><b>Reduced tool sprawl</b> — one platform covering communication, files, meetings, workflow and analytics</span></li><li><svg><use href="#i-check"></use></svg><span><b>Information governance at scale</b> — retention, classification and lifecycle policy applied automatically to content</span></li><li><svg><use href="#i-check"></use></svg><span><b>Measured adoption</b> — usage and engagement analytics that let you direct investment at evidence rather than anecdote</span></li><li><svg><use href="#i-check"></use></svg><span><b>Readiness for AI</b> — a permission and data model that makes Copilot deployment safe rather than alarming</span></li><li><svg><use href="#i-check"></use></svg><span><b>Lower total cost of ownership</b> — capability consolidated into an agreement you already hold</span></li></ul><p className="docs-note"><b>Where this comes from:</b> these outcome themes follow Microsoft's published product documentation and adoption guidance on learn.microsoft.com and adoption.microsoft.com. The numeric ranges in the panel above are <b>ours</b>, drawn from engagements of comparable size — they are planning figures, not Microsoft benchmarks, and we agree the measurement method with you before committing to any of them.</p></div></section>{/* ===================== 4. INDUSTRY USE CASES ===================== */}<section className="section bg-paper" id="usecases"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">Industry use cases</span><h2 className="h-sec wide">What organizations actually use it for</h2><p className="lede">The same platform, deployed very differently depending on what the organization does.</p></div><div className="seg-grid"><article className="seg reveal"><h3>Healthcare</h3><p>Clinical team collaboration with PHI handled under sensitivity labels, and secure external sharing with referring practices.</p></article><article className="seg reveal"><h3>Legal</h3><p>Matter-centric SharePoint with ethical walls enforced through permissions, and email filed to the matter from inside Outlook.</p></article><article className="seg reveal"><h3>Financial services</h3><p>Retention and supervision applied to communications, with the evidence an examiner expects produced automatically.</p></article><article className="seg reveal"><h3>Manufacturing</h3><p>Frontline access for plant staff without full desk licences, plus shift communication and standard operating procedure distribution.</p></article><article className="seg reveal"><h3>Professional services</h3><p>Client-facing collaboration spaces with controlled external access, and knowledge that survives an individual's departure.</p></article><article className="seg reveal"><h3>Nonprofits</h3><p>Nonprofit-priced licensing deployed properly, with volunteers and part-time staff handled through appropriate access tiers.</p></article></div></div></section>{/* ===================== 5. HOW WE HELP ===================== */}<section className="section bg-mist" id="help"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">How we help</span><h2 className="h-sec wide">Three ways we work on Microsoft 365</h2><p className="lede">Most engagements start with the licensing review, because it usually changes what the rest of the work should be.</p></div><div className="pillar-grid"><article className="pillar reveal"><div className="icon-tile"><svg><use href="#i-license"></use></svg></div><h3>Assess what you own and what you use</h3><p>A short, evidence-based review that almost always changes the budget conversation.</p><ul><li><svg><use href="#i-check"></use></svg><span>Licence entitlement versus actual usage</span></li><li><svg><use href="#i-check"></use></svg><span>Security capability licensed but not deployed</span></li><li><svg><use href="#i-check"></use></svg><span>Duplicate and shadow subscriptions identified</span></li><li><svg><use href="#i-check"></use></svg><span>A prioritised plan using entitlements first</span></li></ul></article><article className="pillar reveal"><div className="icon-tile"><svg><use href="#i-grid"></use></svg></div><h3>Design and deploy the workplace</h3><p>Teams, SharePoint and OneDrive structured deliberately, with migration handled properly.</p><ul><li><svg><use href="#i-check"></use></svg><span>Information architecture and permission model</span></li><li><svg><use href="#i-check"></use></svg><span>Teams governance, lifecycle and naming</span></li><li><svg><use href="#i-check"></use></svg><span>Migration from Google, file servers or legacy Exchange</span></li><li><svg><use href="#i-check"></use></svg><span>Intranet and document management that people use</span></li></ul></article><article className="pillar reveal"><div className="icon-tile"><svg><use href="#i-shield"></use></svg></div><h3>Secure and govern it</h3><p>The controls that are included in your licensing and, in most tenants, only partly configured.</p><ul><li><svg><use href="#i-check"></use></svg><span>Conditional access and MFA policy design</span></li><li><svg><use href="#i-check"></use></svg><span>Sensitivity labels and retention</span></li><li><svg><use href="#i-check"></use></svg><span>Device compliance baselines</span></li><li><svg><use href="#i-check"></use></svg><span>External sharing rules that are actually enforceable</span></li></ul></article></div></div></section>{/* ===================== 6. OUR SERVICES ===================== */}<section className="section bg-paper" id="services"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">Our consulting services</span><h2 className="h-sec wide">Consulting services for Microsoft 365, tied to outcomes</h2><p className="lede">Implementation, customization, support and integration — each scoped against a business outcome rather than a feature checklist.</p></div><div className="task-board"><article className="task-row reveal"><div className="task-head"><span className="task-tag t-core">Implementation</span><h3>Implementation of Microsoft 365</h3></div><p>Environment design, tenant and licensing setup, configuration, data migration, testing and go-live — scoped to a fixed price and a fixed date, against outcomes agreed in writing before we start. For Microsoft 365 that usually means migration plus the information architecture and security baseline in one engagement, because migrating without them simply relocates the mess.</p></article><article className="task-row reveal"><div className="task-head"><span className="task-tag t-core">Customization</span><h3>Customization of Microsoft 365</h3></div><p>Where the product stops short of your process, we extend it inside the platform rather than beside it, and we build it as configuration you can maintain wherever that is possible. SharePoint sites, Teams templates, approval flows and forms — built with Power Platform entitlements included in your existing licensing wherever possible.</p></article><article className="task-row reveal"><div className="task-head"><span className="task-tag t-core">Support</span><h3>Support of Microsoft 365</h3></div><p>Managed support after go-live: a named team, agreed response times, release management for Microsoft's update cadence, and a backlog we work through with you. Tenant administration, licence management, release readiness for Microsoft's monthly changes, and a service desk your staff can actually reach.</p></article><article className="task-row reveal"><div className="task-head"><span className="task-tag t-core">Integration</span><h3>Integration of Microsoft 365</h3></div><p>Connecting this platform to the systems you are keeping, with monitored, re-runnable interfaces and a documented contract for every field that moves. Single sign-on to your line-of-business systems, plus document and workflow integration with Dynamics 365 or your existing applications.</p></article></div><div className="sol-note reveal"><svg><use href="#i-check"></use></svg><p>We will tell you when the right answer is a licence downgrade. Recommending E3 where E5 was assumed, or Business Premium where enterprise licensing was proposed, is a common outcome of our reviews and it costs us revenue every time we do it.</p></div></div></section>{/* ===================== 7. OUR APPROACH ===================== */}<section className="section bg-mist" id="approach"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">Our approach</span><h2 className="h-sec wide">Understand, deploy, configure, secure</h2><p className="lede">The order matters more than most people expect. Securing after deployment is considerably more expensive than securing during it.</p></div><div className="process reveal"><div className="step"><span className="step-n">1</span><h4>Understand</h4><p>We audit the tenant, the licensing, the data estate and how people actually work today.</p></div><div className="step"><span className="step-n">2</span><h4>Design</h4><p>We agree the information architecture, permission model and security baseline before touching anything.</p></div><div className="step"><span className="step-n">3</span><h4>Configure</h4><p>We build the design in a pilot, test it with a real group, and adjust before wider rollout.</p></div><div className="step"><span className="step-n">4</span><h4>Secure</h4><p>Conditional access, labels, retention and device compliance applied and validated against your risk appetite.</p></div><div className="step"><span className="step-n">5</span><h4>Adopt</h4><p>Training, champions and usage measurement, then a review at ninety days against the baseline.</p></div></div><div className="sol-note reveal"><svg><use href="#i-check"></use></svg><p>We do a permission and oversharing assessment before any Copilot deployment. It is the single most common reason a Copilot pilot has to be paused, and it is entirely avoidable if you look first.</p></div></div></section>{/* ===================== 8. WHY JJC SYSTEMS ===================== */}<section className="section bg-navy" id="why-us"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">Why JJC Systems</span><h2 className="h-sec wide">Why organizations bring us in for Microsoft 365</h2><p className="lede">Almost everyone has this platform. The differentiator is whether it was deployed by someone who thought about it.</p></div><div className="reason-grid"><article className="reason reveal"><span className="reason-icon"><svg><use href="#i-license"></use></svg></span><div><h3>We start with what you already own</h3><p>The first deliverable is usually a licensing and entitlement review. It frequently reduces the engagement we were about to be paid for, and it is the fastest way to establish that our advice is not a sales pitch.</p></div></article><article className="reason reveal"><span className="reason-icon"><svg><use href="#i-award"></use></svg></span><div><h3>Microsoft-certified consultants across the stack</h3><p>Identity, security, collaboration and the business application layer — so the design holds together rather than being four vendors' opinions stapled to a tenant.</p></div></article><article className="reason reveal"><span className="reason-icon"><svg><use href="#i-users"></use></svg></span><div><h3>We design for adoption, not for the architecture diagram</h3><p>A permission model nobody understands gets worked around within a fortnight. We design structures your staff can explain to a new joiner.</p></div></article><article className="reason reveal"><span className="reason-icon"><svg><use href="#i-check"></use></svg></span><div><h3>One partner across the whole environment</h3><p>The tenant, the devices, the network, the applications and the support desk from one accountable team — which is the point of consolidating on Microsoft in the first place.</p></div></article></div></div></section>{/* ===================== 9. CUSTOMER SUCCESS ===================== */}<section className="section bg-paper" id="stories"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">Customer success</span><h2 className="h-sec wide">What good looks like on Microsoft 365</h2><p className="lede">Two illustrative engagements showing the shape of the work.</p></div><div className="success-grid"><article className="story-card reveal"><div className="story-top"><div className="story-kicker"><span className="story-industry">Professional services, 180 staff</span><span className="demo-chip">Sample story</span></div><h3>The licensing review that paid for the project</h3><p className="story-summary">The firm was on enterprise licensing with three additional subscriptions for file sharing, e-signature and a second chat tool, all of which were covered by entitlements already held.</p></div><div className="story-metrics"><div className="story-metric"><b>21%</b><span>Lower annual spend</span></div><div className="story-metric"><b>3</b><span>Subscriptions retired</span></div><div className="story-metric"><b>0</b><span>Capability lost</span></div></div><div className="story-body"><h4>What changed</h4><ul className="story-outcomes"><li><svg><use href="#i-check"></use></svg><span>Entitlement review identifying three tools already covered by existing licensing</span></li><li><svg><use href="#i-check"></use></svg><span>Right-sizing across user types rather than one licence for everyone</span></li><li><svg><use href="#i-check"></use></svg><span>Savings redirected into the deployment work itself</span></li><li><svg><use href="#i-check"></use></svg><span>Security capability switched on for the first time as part of the same engagement</span></li></ul><a className="link-more" href="/#contact?topic=Modern%20workplace%20%26%20automation">Talk about a similar outcome <svg><use href="#i-arrow-r"></use></svg></a></div></article><article className="story-card reveal"><div className="story-top"><div className="story-kicker"><span className="story-industry">Manufacturer, 4 sites</span><span className="demo-chip">Sample story</span></div><h3>A document estate that stopped being a search problem</h3><p className="story-summary">Documents lived across a file server, three SharePoint sites created ad hoc and a large number of personal OneDrives. Nobody trusted search, so people asked colleagues instead.</p></div><div className="story-metrics"><div className="story-metric"><b>1 place</b><span>Per document</span></div><div className="story-metric"><b>47%</b><span>Fewer file-access tickets</span></div><div className="story-metric"><b>4 sites</b><span>One structure</span></div></div><div className="story-body"><h4>What changed</h4><ul className="story-outcomes"><li><svg><use href="#i-check"></use></svg><span>Information architecture designed once and applied across all four sites</span></li><li><svg><use href="#i-check"></use></svg><span>File server migrated with permissions rationalised rather than copied</span></li><li><svg><use href="#i-check"></use></svg><span>Retention and labels applied automatically by library</span></li><li><svg><use href="#i-check"></use></svg><span>Search finally returning the current version of a document</span></li></ul><a className="link-more" href="/#contact?topic=Modern%20workplace%20%26%20automation">Talk about a similar outcome <svg><use href="#i-arrow-r"></use></svg></a></div></article></div><p className="demo-disclaimer"><b>Demo content:</b> the organizations and measurements above are illustrative placeholders written to show the structure of a real story. Replace them with verified client results and approved references before publishing.</p></div></section>{/* ===================== 10. INSIGHTS ===================== */}<section className="section bg-mist" id="insights"><div className="wrap"><div className="sec-head reveal" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: '32px', maxWidth: 'none', flexWrap: 'wrap'}}><div style={{maxWidth: '700px'}}><span className="eyebrow">Insights</span><h2 className="h-sec wide">Microsoft 365, written for people who own the decision</h2><p className="lede">Practical pieces on getting value from a platform you are already paying for.</p></div><a className="btn btn-outline" href="/#insights">View all resources <svg><use href="#i-arrow-r"></use></svg></a></div><div className="insights-grid"><a className="post reveal" href="/#insights"><div className="post-img"><svg><use href="#i-license"></use></svg></div><div className="post-body"><div className="post-meta"><span className="chip">Licensing</span><span>7 min read</span></div><h3>The Microsoft 365 entitlement audit worth doing this quarter</h3><p>How to establish what your agreement already covers, and the tools most organizations are paying for twice.</p><span className="link-more">Read more <svg><use href="#i-arrow-r"></use></svg></span></div></a><a className="post reveal" href="/#insights"><div className="post-img"><svg><use href="#i-shield"></use></svg></div><div className="post-body"><div className="post-meta"><span className="chip">Security</span><span>8 min read</span></div><h3>The conditional access baseline every tenant should have</h3><p>A practical starting configuration, what it blocks, and the exceptions that are worth granting.</p><span className="link-more">Read more <svg><use href="#i-arrow-r"></use></svg></span></div></a><a className="post reveal" href="/#insights"><div className="post-img"><svg><use href="#i-docs"></use></svg></div><div className="post-body"><div className="post-meta"><span className="chip">Information architecture</span><span>9 min read</span></div><h3>Teams sprawl is a governance decision you already made by accident</h3><p>Why unrestricted team creation produces an unusable estate, and how to fix it without taking anything away.</p><span className="link-more">Read more <svg><use href="#i-arrow-r"></use></svg></span></div></a></div></div></section>{/* ===================== 11. REQUEST A DEMO ===================== */}<section className="section bg-paper"><div className="wrap"><div className="cta-band reveal"><div><h2>See what your tenant is actually capable of</h2><p>Give us read access to your tenant configuration and licence position, or just tell us what you are paying for. We will show you what is included and unused, what a properly configured version looks like, and what it would cost to get there.</p></div><div className="cta-actions"><a className="btn btn-primary" href="/#contact?topic=Modern%20workplace%20%26%20automation">Request your demo <svg><use href="#i-arrow-r"></use></svg></a><a className="btn btn-ghost" href="/industries">See it by industry <svg><use href="#i-arrow-r"></use></svg></a><small>We reply to every message within one business day.</small></div></div><div className="sec-head reveal" style={{marginTop: 'clamp(52px,7vw,86px)'}}><span className="eyebrow">Works alongside</span><h2 className="h-sec wide">Related platforms</h2></div><div className="rel-grid"><a className="rel reveal" href="/platforms/microsoft-copilot"><span className="rel-icon"><svg><use href="#i-ai"></use></svg></span><span><b>Microsoft Copilot</b><span>AI in the tools people already use — deployed with the guardrails on.</span></span></a><a className="rel reveal" href="/platforms/microsoft-intune"><span className="rel-icon"><svg><use href="#i-device"></use></svg></span><span><b>Microsoft Intune</b><span>Every device known, compliant, patched and rebuildable.</span></span></a><a className="rel reveal" href="/platforms/microsoft-purview"><span className="rel-icon"><svg><use href="#i-docs"></use></svg></span><span><b>Microsoft Purview</b><span>Know where sensitive data is, who can reach it, and prove it.</span></span></a></div></div></section>
+      {/* ===================== HERO ===================== */}
+      <HeroSection
+        title={title}
+        hero={hero}
+        breadcrumbs={[
+          { label: "Home", link: "/" },
+          { label: "Platforms", link: "/platforms" },
+          { label: "Microsoft 365 & Modern Work", link: "/platforms#modern-work" },
+          { label: title || "Microsoft 365", isCurrent: true }
+        ]}
+      />
+
+      {/* ===================== IN-PAGE NAV ===================== */}
+      <nav className="svc-subnav" aria-label="On this page">
+        <div className="wrap">
+          {challenges?.items?.length > 0 && <a href="#overview">Overview</a>}
+          {capabilities?.items?.length > 0 && <a href="#capabilities">Capabilities</a>}
+          {outcomes?.metrics?.length > 0 && <a href="#outcomes">Business outcomes</a>}
+          {industryUseCases?.items?.length > 0 && <a href="#usecases">Use cases</a>}
+          {pillars?.items?.length > 0 && <a href="#help">How we help</a>}
+          {consultingServices?.items?.length > 0 && <a href="#services">Our services</a>}
+          {approach?.steps?.length > 0 && <a href="#approach">Approach</a>}
+          {whyUs?.items?.length > 0 && <a href="#why-us">Why JJC</a>}
+          {successStories?.stories?.length > 0 && <a href="#stories">Success</a>}
+          {insights?.posts?.length > 0 && <a href="#insights">Insights</a>}
+          <a className="subnav-cta link-more" href={cta?.primaryLink || "/#contact"}>
+            Request a demo{" "}
+            <svg><use href="#i-arrow-r"></use></svg>
+          </a>
+        </div>
+      </nav>
+
+      {/* ===================== 1. OVERVIEW & PAIN POINTS ===================== */}
+      {challenges && challenges.items?.length > 0 && (
+        <section className="section bg-paper" id="overview">
+          <div className="wrap">
+            {renderSectionHeading(
+              challenges.eyebrow,
+              challenges.title,
+              challenges.subtitle
+            )}
+            {renderChallenges(challenges.items)}
+            {challenges.note && (
+              <div className="value-note reveal">
+                <h3>{challenges.noteHighlight || "Configuration is where the return is"}</h3>
+                <p>{challenges.note}</p>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* ===================== 2. CAPABILITIES ===================== */}
+      {capabilities && capabilities.items?.length > 0 && (
+        <section className="section bg-mist" id="capabilities">
+          <div className="wrap">
+            {renderSectionHeading(
+              capabilities.eyebrow,
+              capabilities.title,
+              capabilities.subtitle
+            )}
+            {renderCapabilities(capabilities.items)}
+            {capabilities.note && (
+              <div className="sol-note reveal">
+                <svg><use href="#i-check"></use></svg>
+                <p>{capabilities.note}</p>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* ===================== 3. BUSINESS OUTCOMES ===================== */}
+      {outcomes && outcomes.metrics?.length > 0 && (
+        <section className="section bg-navy" id="outcomes">
+          <div className="wrap">
+            {renderSectionHeading(
+              outcomes.eyebrow,
+              outcomes.title,
+              outcomes.subtitle
+            )}
+            {renderMetrics(outcomes.metrics)}
+            {outcomes.note && (
+              <p className="metric-note">
+                <b>How to read these:</b> {outcomes.note}
+              </p>
+            )}
+
+            {/* Associated Outcomes */}
+            {outcomes.associatedItems && outcomes.associatedItems.length > 0 && (
+              <>
+                <div className="sec-head reveal" style={{ marginTop: 'clamp(48px,6vw,72px)' }}>
+                  <h3 className="h-sec wide" style={{ fontSize: 'clamp(22px,2.4vw,30px)' }}>
+                    {outcomes.associatedTitle || "The business outcomes Microsoft associates with this platform"}
+                  </h3>
+                  <p className="lede">{outcomes.associatedSubtitle}</p>
+                </div>
+                {renderAssociatedOutcomes(outcomes.associatedItems)}
+                {outcomes.associatedNote && (
+                  <p className="docs-note">
+                    <b>Where this comes from:</b> {outcomes.associatedNote}
+                  </p>
+                )}
+              </>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* ===================== 4. INDUSTRY USE CASES ===================== */}
+      {industryUseCases && industryUseCases.items?.length > 0 && (
+        <section className="section bg-paper" id="usecases">
+          <div className="wrap">
+            {renderSectionHeading(
+              industryUseCases.eyebrow,
+              industryUseCases.title,
+              industryUseCases.subtitle
+            )}
+            {renderUseCases(industryUseCases.items)}
+          </div>
+        </section>
+      )}
+
+      {/* ===================== 5. HOW WE HELP ===================== */}
+      {pillars && pillars.items?.length > 0 && (
+        <section className="section bg-mist" id="help">
+          <div className="wrap">
+            {renderSectionHeading(
+              pillars.eyebrow,
+              pillars.title,
+              pillars.subtitle
+            )}
+            {renderPillars(pillars.items)}
+          </div>
+        </section>
+      )}
+
+      {/* ===================== 6. OUR SERVICES ===================== */}
+      {consultingServices && consultingServices.items?.length > 0 && (
+        <section className="section bg-paper" id="services">
+          <div className="wrap">
+            {renderSectionHeading(
+              consultingServices.eyebrow,
+              consultingServices.title,
+              consultingServices.subtitle
+            )}
+            {renderConsultingServices(consultingServices.items)}
+            {consultingServices.note && (
+              <div className="sol-note reveal">
+                <svg><use href="#i-check"></use></svg>
+                <p>{consultingServices.note}</p>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* ===================== 7. OUR APPROACH ===================== */}
+      {approach && approach.steps?.length > 0 && (
+        <section className="section bg-mist" id="approach">
+          <div className="wrap">
+            {renderSectionHeading(
+              approach.eyebrow,
+              approach.title,
+              approach.subtitle
+            )}
+            {renderSteps(approach.steps)}
+            {approach.note && (
+              <div className="sol-note reveal">
+                <svg><use href="#i-check"></use></svg>
+                <p>{approach.note}</p>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* ===================== 8. WHY JJC SYSTEMS ===================== */}
+      {whyUs && whyUs.items?.length > 0 && (
+        <section className="section bg-navy" id="why-us">
+          <div className="wrap">
+            {renderSectionHeading(
+              whyUs.eyebrow,
+              whyUs.title,
+              whyUs.subtitle
+            )}
+            {renderWhyUsItems(whyUs.items)}
+          </div>
+        </section>
+      )}
+
+      {/* ===================== 9. CUSTOMER SUCCESS ===================== */}
+      {successStories && successStories.stories?.length > 0 && (
+        <section className="section bg-paper" id="stories">
+          <div className="wrap">
+            {renderSectionHeading(
+              successStories.eyebrow,
+              successStories.title,
+              successStories.subtitle
+            )}
+            {renderSuccessStories(successStories.stories)}
+            {successStories.disclaimer && (
+              <p className="demo-disclaimer">
+                <b>Demo content:</b> {successStories.disclaimer}
+              </p>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* ===================== 10. INSIGHTS ===================== */}
+      {insights && insights.posts?.length > 0 && (
+        <section className="section bg-mist" id="insights">
+          <div className="wrap">
+            <div className="sec-head reveal" style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "flex-end",
+              gap: "32px",
+              maxWidth: "none",
+              flexWrap: "wrap"
+            }}>
+              <div style={{ maxWidth: "700px" }}>
+                <span className="eyebrow">{insights.eyebrow}</span>
+                <h2 className="h-sec wide">{insights.title}</h2>
+                <p className="lede">{insights.subtitle}</p>
+              </div>
+              <a className="btn btn-outline" href="/#insights">
+                View all resources{" "}
+                <svg><use href="#i-arrow-r"></use></svg>
+              </a>
+            </div>
+            {renderInsights(insights.posts)}
+          </div>
+        </section>
+      )}
+
+      {/* ===================== 11. CTA & RELATED ===================== */}
+      {cta && (
+        <section className="section bg-paper">
+          <div className="wrap">
+            <div className="cta-band reveal">
+              <div>
+                <h2>{cta.title}</h2>
+                <p>{cta.description}</p>
+              </div>
+              <div className="cta-actions">
+                <a className="btn btn-primary" href={cta.primaryLink}>
+                  {cta.primaryLabel}{" "}
+                  <svg><use href="#i-arrow-r"></use></svg>
+                </a>
+                {cta.secondaryLabel && (
+                  <a className="btn btn-ghost" href={cta.secondaryLink}>
+                    {cta.secondaryLabel}{" "}
+                    <svg><use href="#i-arrow-r"></use></svg>
+                  </a>
+                )}
+                {cta.note && <small>{cta.note}</small>}
+              </div>
+            </div>
+
+            {/* Related Items */}
+            {relatedItems && relatedItems.items?.length > 0 && (
+              <>
+                {renderSectionHeading(
+                  relatedItems.eyebrow,
+                  relatedItems.title,
+                  "",
+                  "margin-top:clamp(52px,7vw,86px)"
+                )}
+                {renderRelatedItems(relatedItems.items)}
+              </>
+            )}
+          </div>
+        </section>
+      )}
     </main>
   );
 }

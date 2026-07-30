@@ -1,22 +1,370 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
+import { useParams } from "react-router-dom";
+import { useGetCaseStudyStoryBySlugQuery, useGetRelatedStoryByIdQuery } from "../../redux/api.jsx";
+import HeroSection from "../../components/HeroSection.jsx";
+// import HeroSection from "./components/HeroSection.jsx"; // Adjust the path as needed
 
 export default function SuccessStoryPatientOutreachThatPeopleActuallyRespondTo() {
   const mainRef = useRef(null);
-  useDocumentMeta("Patient outreach that people actually respond to | Client Success | JJC Systems", "Communication delays and fragmented patient data were limiting access to care. Outreach was generic, arrived late, and the organization could not tell which channels were working.");
+  const { slug } = useParams();
+  const { data: response, isLoading, error } = useGetCaseStudyStoryBySlugQuery(slug);
+  const { data } = useGetRelatedStoryByIdQuery(response?.data?._id)
+
+  const pageData = response?.data;
+  console.log(pageData)
+
+  // Set meta tags dynamically
+  useDocumentMeta(
+    pageData?.seo?.title || "Patient outreach that people actually respond to | Client Success | JJC Systems",
+    pageData?.seo?.description || "Communication delays and fragmented patient data were limiting access to care. Outreach was generic, arrived late, and the organization could not tell which channels were working.",
+  );
+
   usePageEffects(mainRef);
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <main id="main" ref={mainRef}>
+        <div className="wrap" style={{ padding: "60px 0", textAlign: "center" }}>
+          <p>Loading...</p>
+        </div>
+      </main>
+    );
+  }
+
+  // Error state
+  if (error || !pageData) {
+    return (
+      <main id="main" ref={mainRef}>
+        <div className="wrap" style={{ padding: "60px 0", textAlign: "center" }}>
+          <p>Unable to load content. Please try again later.</p>
+        </div>
+      </main>
+    );
+  }
+
+  const {
+    title,
+    organization,
+    country,
+    breadcrumbs = [],
+    hero = {},
+    subNavigation = [],
+    situation = {},
+    approach = {},
+    results = {},
+    platforms = {},
+    transfers = {},
+    sourcing = {},
+    cta = {},
+    relatedStoriesTitle = "Others you may want to read",
+    relatedStories = [],
+  } = pageData;
+
+  // Helper function to render outcomes
+  const renderOutcomes = (outcomes = []) => {
+    return outcomes.map((outcome, index) => (
+      <li key={index}>
+        <svg>
+          <use href="#i-check" />
+        </svg>
+        <span>{outcome}</span>
+      </li>
+    ));
+  };
+
+  // Helper function to render process steps
+  const renderProcessSteps = (process = []) => {
+    return process.map((step, index) => (
+      <div className="step" key={index}>
+        <span className="step-n">{step.step}</span>
+        <h4>{step.title}</h4>
+        <p>{step.description}</p>
+      </div>
+    ));
+  };
+
+  // Helper function to render related stories
+  const renderRelatedStories = () => {
+    return relatedStories.map((story, index) => (
+      <Link
+        key={index}
+        className="rel reveal"
+        to={`/success/story-${story.slug}`}
+      >
+        {/* <span className="rel-icon"> */}
+
+
+          <div className="icon-tile">
+            <svg>
+              <use href="#i-grid" />
+            </svg>
+          </div>
+        {/* </span> */}
+        <span>
+          <b>{story.title}</b>
+          <span>Also in {story.category}</span>
+        </span>
+      </Link>
+    ));
+  };
 
   return (
     <main id="main" ref={mainRef}>
-<section className="svc-hero"><div className="wrap"><nav className="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/success">Client Success</a><span>/</span><a href="/success/industry-healthcare">Healthcare</a><span>/</span><b>Report</b></nav><div className="svc-hero-grid"><div><span className="eyebrow">Healthcare · Business Applications</span><h1>Patient outreach that people actually respond to</h1><p className="lede"><b>A multi-site regional health system</b>, United States. Communication delays and fragmented patient data were limiting access to care. Outreach was generic, arrived late, and the organization could not tell which channels were working.</p><div className="svc-cta"><a className="btn btn-primary" href="/#contact">Talk to our team <svg><use href="#i-arrow-r"></use></svg></a><a className="btn btn-ghost" href="#results">See the results <svg><use href="#i-arrow-r"></use></svg></a></div></div><aside className="glance"><h2>At a glance</h2><ul><li><svg><use href="#i-check"></use></svg><span>Sector: Healthcare</span></li><li><svg><use href="#i-check"></use></svg><span>Capability: Business Applications</span></li><li><svg><use href="#i-check"></use></svg><span>Region: United States</span></li><li><svg><use href="#i-check"></use></svg><span>Organization name withheld — see sourcing note below</span></li><li><svg><use href="#i-check"></use></svg><span>Figures reproduced as published, unchanged</span></li></ul></aside></div><div className="svc-stats"><div className="svc-stat"><b>87%</b><span>Patient response rate</span></div><div className="svc-stat"><b>$8M+</b><span>Projected system-wide savings</span></div><div className="svc-stat"><b>1</b><span>Unified patient data view</span></div><div className="svc-stat"><b>2</b><span>Microsoft products involved</span></div></div></div></section><nav className="svc-subnav" aria-label="On this page"><div className="wrap"><a href="#situation">The situation</a><a href="#approach">What was done</a><a href="#results">Results</a><a href="#platforms">Platforms</a><a href="#transfers">What transfers</a><a href="#sourcing">Sourcing & confidentiality</a><a className="subnav-cta link-more" href="/#contact">Talk to us <svg><use href="#i-arrow-r"></use></svg></a></div></nav><section className="section bg-paper" id="situation"><div className="wrap" style={{maxWidth: '900px'}}><div className="sec-head reveal"><span className="eyebrow">The situation</span><h2 className="h-sec wide">What the organization was dealing with</h2></div><div className="feat-block reveal" style={{marginTop: '8px'}}><p>Communication delays and fragmented patient data were limiting access to care. Outreach was generic, arrived late, and the organization could not tell which channels were working.</p><p>Patient outreach is one of the few places in healthcare where a marketing problem and a clinical problem are the same problem. A screening reminder that arrives at the wrong time through the wrong channel is not merely ineffective — it is a missed diagnosis that the organization had the information to prevent. Most providers know this and still send batches, because the patient data needed to do better sits in the clinical system and the outreach tooling cannot reach it.</p></div></div></section><section className="section bg-mist" id="approach"><div className="wrap" style={{maxWidth: '900px'}}><div className="sec-head reveal"><span className="eyebrow">What was done</span><h2 className="h-sec wide">The work, and the part that was actually hard</h2></div><div className="feat-block reveal" style={{marginTop: '8px'}}><p>Patient engagement was rebuilt on Dynamics 365 Customer Insights with Microsoft Cloud for Healthcare unifying the underlying data, so outreach could be personalised by behaviour and channel preference rather than sent in batches.</p><p>The work was less about the campaign tooling than about the data underneath it. Unifying patient data through an industry data model is what made behaviour-based personalisation possible at all; the journey orchestration on top is comparatively straightforward once the profile exists. The published result — an 87% response rate — is a figure that only becomes achievable when the message, the channel and the timing are all derived from the individual rather than from a segment.</p></div></div></section><section className="section bg-navy" id="results"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">Results</span><h2 className="h-sec wide">What was published</h2><p className="lede">These are the figures exactly as reported in the source. Nothing has been rounded, extrapolated or restated.</p></div><div className="metric-grid reveal"><div className="metric"><span className="m-label">Patient response rate</span><b>87%</b></div><div className="metric"><span className="m-label">Projected system-wide savings</span><b>$8M+</b></div><div className="metric"><span className="m-label">Unified patient data view</span><b>1</b></div></div><div className="sec-head reveal" style={{marginTop: 'clamp(46px,6vw,70px)'}}><h3 className="h-sec wide" style={{fontSize: 'clamp(21px,2.3vw,28px)'}}>What changed</h3></div><ul className="biz-outcomes reveal"><li><svg><use href="#i-check"></use></svg><span>Personalised outreach across screening, lab follow-up and preventive care reminders</span></li><li><svg><use href="#i-check"></use></svg><span>Diagnostic revenue increased through improved follow-through on recommended tests</span></li><li><svg><use href="#i-check"></use></svg><span>Message fatigue reduced by adapting to individual channel preferences</span></li><li><svg><use href="#i-check"></use></svg><span>Programme extended to further regions and service lines after early results</span></li></ul></div></section><section className="section bg-paper" id="platforms"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">Platforms involved</span><h2 className="h-sec wide">What each product was doing here</h2><p className="lede">Not a product list — the job each one was actually performing in this engagement.</p></div><div className="task-board"><article className="task-row reveal"><div className="task-head"><span className="app-tag">Dynamics 365</span><h3>Dynamics 365 Customer Insights</h3></div><p>Unifies customer or constituent records from several source systems into one profile, then orchestrates journeys that react to behaviour rather than to a schedule.</p></article><article className="task-row reveal"><div className="task-head"><span className="app-tag">Industry cloud</span><h3>Microsoft Cloud for Healthcare</h3></div><p>Industry data model and connectors that let patient data from clinical systems be used operationally without duplicating the clinical record.</p></article></div></div></section><section className="section bg-mist" id="transfers"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">What transfers</span><h2 className="h-sec wide">If you were to attempt this</h2><p className="lede">The pattern — unify the record first, personalise second, and measure response by cohort rather than in aggregate — transfers to any provider organization with a recall, screening or follow-up obligation.</p></div><div className="chal-note reveal" style={{marginTop: '8px'}}><svg><use href="#i-target"></use></svg><p><b>Where it usually gets harder than expected:</b> The hard part in any replication of this is consent and message fatigue. An organization that unifies its data and then increases outreach volume will see response rates fall, not rise, and the fix is preference management rather than more channels.</p></div><div className="sec-head reveal" style={{marginTop: 'clamp(46px,6vw,70px)'}}><span className="eyebrow">How we would take it on</span><h2 className="h-sec wide">Our approach to Business Applications work</h2></div><div className="process reveal"><div className="step"><span className="step-n">1</span><h4>Shadow the real process</h4><p>We sit with the people doing the work and watch what actually happens, including every workaround. Process documents and reality are rarely the same thing.</p></div><div className="step"><span className="step-n">2</span><h4>Design against your own data</h4><p>We prototype and show you your own records in it, not a demo company, before anything is built.</p></div><div className="step"><span className="step-n">3</span><h4>Go live in a contained phase</h4><p>By site, by practice group or by service line — with the group that wants it most going first, to a fixed price.</p></div><div className="step"><span className="step-n">4</span><h4>Measure against the baseline</h4><p>We report against the numbers agreed at the start, including where the result fell short of the target.</p></div></div></div></section><section className="section bg-paper" id="sourcing"><div className="wrap" style={{maxWidth: '900px'}}><div className="sec-head reveal"><span className="eyebrow">Sourcing & confidentiality</span><h2 className="h-sec wide">Where this report comes from</h2></div><div className="feat-block reveal" style={{marginTop: '8px'}}><p>This report is drawn from a case study published by Microsoft about one of its own customers.
-      It is a <b>reference outcome</b> — evidence of what these platforms have delivered elsewhere.
-      It is <b>not</b> a JJC Systems client engagement, and we do not present it as our own work.</p><p>The organization's name and any identifying detail have been withheld. Named individuals,
-      internal system names, commercial terms and anything else that could identify the customer or its
-      suppliers have been removed. What remains is the operational situation, the approach and the
-      published results — reproduced without alteration.</p><p>We hold the full source reference, including the organization name and the URL, and will
-      provide it on request. When our own client work is approved for publication it will appear here
-      under the same structure, clearly marked as ours.</p></div><div className="prov-note reveal"><svg><use href="#i-check"></use></svg><p><b>In short:</b> published by Microsoft, about its customer, not about ours. Names withheld, figures unchanged, sources available on request.</p></div></div></section><section className="section bg-mist"><div className="wrap"><div className="cta-band reveal"><div><h2>Recognise the problem?</h2><p>If any of the above describes your organization, tell us where it hurts most. We will tell you what the same platforms could realistically do in your environment, what we would measure, and whether we think it is worth doing at all.</p></div><div className="cta-actions"><a className="btn btn-primary" href="/#contact">Talk to our team <svg><use href="#i-arrow-r"></use></svg></a><a className="btn btn-ghost" href="/success/capability-business-applications">More Business Applications stories <svg><use href="#i-arrow-r"></use></svg></a><small>We reply to every message within one business day.</small></div></div><div className="sec-head reveal" style={{marginTop: 'clamp(52px,7vw,86px)'}}><span className="eyebrow">Related reports</span><h2 className="h-sec wide">Others you may want to read</h2></div><div className="rel-grid"><a className="rel reveal" href="/success/story-twenty-million-records-a-year-processed-without-new"><span className="rel-icon"><svg><use href="#i-grid"></use></svg></span><span><b>Twenty million records a year, processed without new headcount</b><span>Also in Healthcare</span></span></a><a className="rel reveal" href="/success/story-one-view-of-the-member-on-every-channel"><span className="rel-icon"><svg><use href="#i-erp"></use></svg></span><span><b>One view of the member, on every channel</b><span>Also in Business Applications</span></span></a><a className="rel reveal" href="/success/story-thousands-of-service-interactions-a-day-forty-per"><span className="rel-icon"><svg><use href="#i-erp"></use></svg></span><span><b>Thousands of service interactions a day, forty per cent automated</b><span>Also in Business Applications</span></span></a><a className="rel reveal" href="/success/story-forty-siloed-systems-into-one-citizen-record"><span className="rel-icon"><svg><use href="#i-erp"></use></svg></span><span><b>Forty siloed systems into one citizen record</b><span>Also in Business Applications</span></span></a></div></div></section>
+      {/* Hero Section - Using the HeroSection component */}
+      <HeroSection
+        title={title}
+        hero={{
+          eyebrow: hero?.eyebrow,
+          heading: hero?.title || title,
+          lede: `${organization}, ${country}. ${hero?.subtitle || ""}`,
+          primaryCtaText: hero?.primaryButton?.label || "Talk to our team",
+          primaryCtaLink: hero?.primaryButton?.link || "/#contact",
+          secondaryCtaText: hero?.secondaryButton?.label || "See the results",
+          secondaryCtaLink: hero?.secondaryButton?.link || "#results",
+          glance: {
+            title: hero?.glanceTitle || "At a glance",
+            items: hero?.glance || [],
+          },
+          stats: hero?.stats || [],
+        }}
+        breadcrumbs={breadcrumbs.map(item => ({
+          label: item.label,
+          link: item.link || null,
+        }))}
+      />
+
+      {/* Sub Navigation */}
+      {subNavigation.length > 0 && (
+        <nav className="svc-subnav" aria-label="On this page">
+          <div className="wrap">
+            {subNavigation.map((item, index) => (
+              <a key={index} href={item.link}>
+                {item.label}
+              </a>
+            ))}
+            <a className="subnav-cta link-more" href="/#contact">
+              Talk to us
+              <svg>
+                <use href="#i-arrow-r" />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      )}
+
+      {/* Situation Section */}
+      <section className="section bg-paper" id="situation">
+        <div className="wrap" style={{ maxWidth: "900px" }}>
+          <div className="sec-head reveal">
+            <span className="eyebrow">{situation?.eyebrow || "The situation"}</span>
+            <h2 className="h-sec wide">{situation?.title || "What the organization was dealing with"}</h2>
+          </div>
+          <div className="feat-block reveal" style={{ marginTop: "8px" }}>
+            {situation?.paragraphs?.map((paragraph, index) => (
+              <p key={index} dangerouslySetInnerHTML={{ __html: paragraph }} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Approach Section */}
+      <section className="section bg-mist" id="approach">
+        <div className="wrap" style={{ maxWidth: "900px" }}>
+          <div className="sec-head reveal">
+            <span className="eyebrow">{approach?.eyebrow || "What was done"}</span>
+            <h2 className="h-sec wide">{approach?.title || "The work, and the part that was actually hard"}</h2>
+          </div>
+          <div className="feat-block reveal" style={{ marginTop: "8px" }}>
+            {approach?.paragraphs?.map((paragraph, index) => (
+              <p key={index} dangerouslySetInnerHTML={{ __html: paragraph }} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Results Section */}
+      <section className="section bg-navy" id="results">
+        <div className="wrap">
+          <div className="sec-head reveal">
+            <span className="eyebrow">{results?.eyebrow || "Results"}</span>
+            <h2 className="h-sec wide">{results?.title || "What was published"}</h2>
+            {results?.description && (
+              <p className="lede">{results.description}</p>
+            )}
+          </div>
+
+          <div className="metric-grid reveal">
+            {results?.metrics?.map((metric, index) => (
+              <div className="metric" key={index}>
+                <span className="m-label">{metric.label}</span>
+                <b>{metric.value}</b>
+              </div>
+            ))}
+          </div>
+
+          {results?.outcomes?.length > 0 && (
+            <>
+              <div
+                className="sec-head reveal"
+                style={{ marginTop: "clamp(46px,6vw,70px)" }}
+              >
+                <h3
+                  className="h-sec wide"
+                  style={{ fontSize: "clamp(21px,2.3vw,28px)" }}
+                >
+                  {results?.changesTitle || "What changed"}
+                </h3>
+              </div>
+              <ul className="biz-outcomes reveal">
+                {renderOutcomes(results.outcomes)}
+              </ul>
+            </>
+          )}
+        </div>
+      </section>
+
+      {/* Platforms Section */}
+      <section className="section bg-paper" id="platforms">
+        <div className="wrap">
+          <div className="sec-head reveal">
+            <span className="eyebrow">{platforms?.eyebrow || "Platforms involved"}</span>
+            <h2 className="h-sec wide">{platforms?.title || "What each product was doing here"}</h2>
+            {platforms?.description && (
+              <p className="lede">{platforms.description}</p>
+            )}
+          </div>
+          <div className="task-board">
+            {platforms?.items?.map((item, index) => (
+              <article className="task-row reveal" key={index}>
+                <div className="task-head">
+                  <span className="app-tag">{item.tag}</span>
+                  <h3>{item.title}</h3>
+                </div>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Transfers Section */}
+      <section className="section bg-mist" id="transfers">
+        <div className="wrap">
+          <div className="sec-head reveal">
+            <span className="eyebrow">{transfers?.eyebrow || "What transfers"}</span>
+            <h2 className="h-sec wide">{transfers?.title || "If you were to attempt this"}</h2>
+            {transfers?.description && (
+              <p className="lede">{transfers.description}</p>
+            )}
+          </div>
+
+          {transfers?.warningTitle && (
+            <div className="chal-note reveal" style={{ marginTop: "8px" }}>
+              <svg>
+                <use href="#i-target" />
+              </svg>
+              <p>
+                <b>{transfers.warningTitle}:</b> {transfers.warningDescription}
+              </p>
+            </div>
+          )}
+
+          {transfers?.process?.length > 0 && (
+            <>
+              <div
+                className="sec-head reveal"
+                style={{ marginTop: "clamp(46px,6vw,70px)" }}
+              >
+                <span className="eyebrow">How we would take it on</span>
+                <h2 className="h-sec wide">
+                  {transfers?.approachTitle || "Our approach to Business Applications work"}
+                </h2>
+              </div>
+              <div className="process reveal">
+                {renderProcessSteps(transfers.process)}
+              </div>
+            </>
+          )}
+        </div>
+      </section>
+
+      {/* Sourcing Section */}
+      <section className="section bg-paper" id="sourcing">
+        <div className="wrap" style={{ maxWidth: "900px" }}>
+          <div className="sec-head reveal">
+            <span className="eyebrow">{sourcing?.eyebrow || "Sourcing & confidentiality"}</span>
+            <h2 className="h-sec wide">{sourcing?.title || "Where this report comes from"}</h2>
+          </div>
+          <div className="feat-block reveal" style={{ marginTop: "8px" }}>
+            {sourcing?.paragraphs?.map((paragraph, index) => (
+              <p key={index} dangerouslySetInnerHTML={{ __html: paragraph }} />
+            ))}
+          </div>
+          {sourcing?.summary && (
+            <div className="prov-note reveal">
+              <svg>
+                <use href="#i-check" />
+              </svg>
+              <p>
+                <b>In short:</b> {sourcing.summary}
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section bg-mist">
+        <div className="wrap">
+          <div className="cta-band reveal">
+            <div>
+              <h2>{cta?.title || "Recognise the problem?"}</h2>
+              <p>{cta?.description || "If any of the above describes your organization, tell us where it hurts most. We will tell you what the same platforms could realistically do in your environment, what we would measure, and whether we think it is worth doing at all."}</p>
+            </div>
+            <div className="cta-actions">
+              <a
+                className="btn btn-primary"
+                href={cta?.primaryButton?.link || "/#contact"}
+              >
+                {cta?.primaryButton?.label || "Talk to our team"}
+                <svg>
+                  <use href="#i-arrow-r" />
+                </svg>
+              </a>
+              <a
+                className="btn btn-ghost"
+                href={cta?.secondaryButton?.link || "/success/capability-business-applications"}
+              >
+                {cta?.secondaryButton?.label || "More Business Applications stories"}
+                <svg>
+                  <use href="#i-arrow-r" />
+                </svg>
+              </a>
+              <small>{cta?.note || "We reply to every message within one business day."}</small>
+            </div>
+          </div>
+
+          {/* Related Stories */}
+          {relatedStories.length > 0 && (
+            <>
+              <div
+                className="sec-head reveal"
+                style={{ marginTop: "clamp(52px,7vw,86px)" }}
+              >
+                <span className="eyebrow">Related reports</span>
+                <h2 className="h-sec wide">{relatedStoriesTitle}</h2>
+              </div>
+              <div className="rel-grid">
+                {renderRelatedStories()}
+              </div>
+            </>
+          )}
+        </div>
+      </section>
     </main>
   );
 }
