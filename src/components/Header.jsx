@@ -443,6 +443,17 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
                   path: `/success/${item.slug}`,
                 })) || [],
           },
+          {
+            heading: "Resources",
+            icon: FileText,
+            items: [
+              { label: "Blog", path: "/blog" },
+              { label: "Guides", path: "/resources/guides" },
+              { label: "Checklists", path: "/resources/checklists" },
+              { label: "Whitepaper", path: "/resources/whitepapers" },
+              // { label: "Infographic", path: "/resources/infographics" },
+            ],
+          },
         ],
         featuredCard: {
           icon: Star,
@@ -515,55 +526,7 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
         },
       },
 
-      {
-        title: "Insights",
-        hasDropdown: true,
-        layout: "info",
-        columns: [
-          {
-            heading: "Resources",
-            icon: FileText,
-            items: [
-              { label: "Blog", path: "/blog" },
-              { label: "Guides", path: "/resources/guides" },
-              { label: "Checklists", path: "/resources/checklists" },
-              { label: "Whitepaper", path: "/resources/whitepapers" },
-              { label: "Infographic", path: "/resources/infographics" },
-            ],
-          },
-          {
-            heading: "Explore By Topic",
-            icon: Compass,
-            items: [
-              { label: "Artificial Intelligence", path: "/resources/topics/ai" },
-              { label: "Cybersecurity", path: "/resources/topics/cybersecurity" },
-              { label: "Microsoft 365", path: "/resources/topics/microsoft-365" },
-              { label: "Dynamics 365", path: "/resources/topics/dynamics-365" },
-              { label: "Data & Analytics", path: "/resources/topics/data-analytics" },
-              { label: "Cloud & Infrastructure", path: "/resources/topics/cloud-infrastructure" },
-            ],
-          },
-        ],
-        featuredCard: {
-          icon: Star,
-          heading: "Featured Insight",
-          title: "Preparing Your Organization for Microsoft Copilot",
-          description: "Learn how to build a strong foundation for Copilot success with planning, governance, and user readiness.",
-          ctaLabel: "Read The Article",
-          path: "/blog/preparing-your-organization-for-microsoft-copilot",
-        },
-        footerLinks: [
-          { icon: LayoutGrid, label: "Explore Resources", sub: "Browse articles, guides, and practical tools", path: "/resources" },
-          { icon: Calendar, label: "Upcoming Events", sub: "See webinars, sessions, and educational content", path: "/resources/events" },
-        ],
-        promo: {
-          icon: Lightbulb,
-          title: "Insights That Help You Move Forward.",
-          text: "We turn complex technical topics into practical guidance so you can make smarter decisions and drive meaningful results.",
-          cta: "View All Insights",
-          path: "/resources",
-        },
-      },
+     
 
       {
         title: "Contact Us",

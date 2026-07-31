@@ -299,8 +299,8 @@ export default function Home() {
                      project team.
                   </p>
                   <a className="link-more" href="#contact">
-                     Discuss your platform roadmap{" "}
-                     <svg>
+                     Explore all custom solutions{" "}
+                     <svg>2
                         <use href="#i-arrow-r"></use>
                      </svg>
                   </a>
@@ -394,11 +394,11 @@ export default function Home() {
                         problem each service solves, and the specialists assigned to the work.
                      </p>
                   </div>
-                  <aside className="services-guidance">
+                  {/* <aside className="services-guidance">
                      <b>One partner, not six vendors.</b>We assemble the right architects,
                      specialists and delivery leads around your requirement while keeping
                      one point of accountability.
-                  </aside>
+                  </aside> */}
                </div>
                <div className="service-catalog reveal">
                   {serviceFamilies.map((family, index) => (
@@ -547,11 +547,11 @@ export default function Home() {
                      </article>
                   ))}
                </div>
-               <p className="demo-disclaimer">
+               {/* <p className="demo-disclaimer">
                   <b>Demo content:</b> The organizations, measurements and outcomes above are
                   illustrative placeholders. Replace them with verified client results and
                   approved references before publishing the website.
-               </p>
+               </p> */}
             </div>
          </section>
 
@@ -582,9 +582,7 @@ export default function Home() {
                               ))}
                            </div>
 
-                           <span className="company-logo">
-                              {testimonial.subtitle?.split(",")[1]?.trim()}
-                           </span>
+                          
                         </div>
 
                         <blockquote>
@@ -605,6 +603,10 @@ export default function Home() {
                               <span>{testimonial.subtitle}</span>
                            </span>
                         </figcaption>
+
+                         <span className="company-logo">
+                              {testimonial.subtitle?.split(",")[1]?.trim()}
+                           </span>
                      </figure>
                   ))}
                </div>

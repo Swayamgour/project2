@@ -243,17 +243,17 @@ const Footer = () => {
               </div>
 
               {/* Our Fields - API data se */}
-              <div className={styles.footerLinks}>
+              {/* <div className={styles.footerLinks}>
                 <h3>Industries</h3>
                 {renderLinksWithViewAll(
                   footerData.ourFields,
                   "/industries",
                   "View All Industries"
                 )}
-              </div>
+              </div> */}
 
               {/* Company - Static */}
-              {/* <div className={styles.footerLinks}>
+              <div className={styles.footerLinks}>
                 <h3>Company</h3>
                 <ul>
                   {COMPANY_LINKS.map((link) => (
@@ -262,7 +262,7 @@ const Footer = () => {
                     </li>
                   ))}
                 </ul>
-              </div> */}
+              </div>
 
               <div className={styles.footerContactInfo}>
                 <div className={styles.footerContactInfoItem}>
