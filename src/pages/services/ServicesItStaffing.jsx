@@ -3,6 +3,7 @@ import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
 import { useGetServiceBySlugQuery } from "../../redux/api.jsx";
 import { useParams } from "react-router-dom";
+import HeroSection from "../../components/HeroSection.jsx";
 
 export default function ServicesItStaffing() {
   const mainRef = useRef(null);
@@ -15,7 +16,7 @@ export default function ServicesItStaffing() {
   const { slug } = useParams()
 
   const { data } = useGetServiceBySlugQuery(slug)
-  console.log(data)
+ 
 
   return (
     <main id="main" ref={mainRef}>

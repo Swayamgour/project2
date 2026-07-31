@@ -1,8 +1,8 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useMemo, useRef, useState } from "react";
+// import { motion,  } from "framer-motion";
 import {
   ArrowRight,
-  ChevronDown,
+  ArrowUpRight,
   Boxes,
   Building2,
   Layers,
@@ -24,14 +24,30 @@ import {
   Settings,
   TrendingUp,
   BookOpen,
-} from 'lucide-react';
-import { FaLinkedinIn } from 'react-icons/fa';
-import { useGetCaseStudyCategoryQuery, useGetCategoryQuery } from '../redux/api';
-import Logo from '../assets/logo1.png';
-import headerImage from '../assets/bread-contact.webp';
+  ChevronDown,
+} from "lucide-react";
+import { FaLinkedinIn } from "react-icons/fa";
+import { useNavigate } from "react-router";
+import { useGetCaseStudyCategoryQuery, useGetCategoryQuery } from "../redux/api";
+import "./Header.css";
+import logo from "../assets/logo1.png";
+import headerImage from "../assets/bread-contact.webp";
+
+/* ============================================================
+   ARROW ICON (kept from the new header)
+   ============================================================ */
+function ArrowRightIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3.8 12h15.4" />
+      <path d="m13.2 5.6 6 6.4-6 6.4" />
+    </svg>
+  );
+}
 
 /* ============================================================
    "WHAT WE DO" — category rail + subcategory columns + promo
+   (ported as-is from the old Header.jsx)
    ============================================================ */
 const CATEGORY_ICONS = {
   services: Boxes,
@@ -69,44 +85,46 @@ const CATEGORY_META = {
   },
 };
 
-const WhatWeDoContent = ({ menu, onNavigate }) => {
-  const [activeIdx, setActiveIdx] = useState(0);
-  const activeCategory = menu.groups[activeIdx] || null;
+const WhatWeDoDropdownContent = ({ menu, onNavigate }) => {
+  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
+  const activeCategory = menu.groups[activeCategoryIndex] || null;
   const meta = CATEGORY_META[activeCategory?.slug] || CATEGORY_META.services;
   const PromoIcon = CATEGORY_ICONS[activeCategory?.slug] || Boxes;
 
   return (
-    <div className="mega-grid what-we-do-grid">
-      {/* Left — category rail */}
-      <aside className="mega-rail">
+    <div className="mega-layout what-we-do-layout">
+      {/* Left — top-level category rail (Services / Industries / Platforms) */}
+      <aside className="what-we-do-category-col">
         {menu.groups.map((category, idx) => {
-          const RailIcon = CATEGORY_ICONS[category.slug] || Boxes;
-          const isActive = idx === activeIdx;
+          const Icon = CATEGORY_ICONS[category.slug] || Boxes;
+          const isActive = idx === activeCategoryIndex;
           return (
             <button
               key={category.heading}
-              className={`mega-rail-item${isActive ? ' active' : ''}`}
-              onMouseEnter={() => setActiveIdx(idx)}
-              onFocus={() => setActiveIdx(idx)}
-              onClick={() => setActiveIdx(idx)}
+              className={`what-we-do-category-item ${isActive ? "active" : ""}`}
+              onMouseEnter={() => setActiveCategoryIndex(idx)}
+              onFocus={() => setActiveCategoryIndex(idx)}
+              onClick={() => setActiveCategoryIndex(idx)}
             >
-              <span className="ic"><RailIcon size={18} /></span>
+              <span className="what-we-do-category-icon">
+                <Icon size={18} />
+              </span>
               <span>{category.heading}</span>
             </button>
           );
         })}
       </aside>
 
-      {/* Middle — subcategory columns */}
-      <div className="mega-col mega-col-wide">
-        <div className="mega-scroll">
-          <div className="mega-subcols">
+      {/* Middle — subcategory columns for the active top-level category */}
+      <section className="dropdown-main what-we-do-main">
+        <div className="dropdown-scroll">
+          <div className="dropdown-columns what-we-do-columns">
             {activeCategory?.subcategories?.map((sub) => (
-              <div className="mega-subcol" key={sub.heading}>
+              <div className="dropdown-column" key={sub.heading}>
                 <h3>{sub.heading}</h3>
-                <div className="mega-links">
+                <div className="dropdown-links">
                   {sub.items.map((item) => (
-                    <button key={item.path} className="mega-link" onClick={() => onNavigate(item.path)}>
+                    <button key={item.path} className="dropdown-link" onClick={() => onNavigate(item.path)}>
                       {item.label}
                     </button>
                   ))}
@@ -116,44 +134,55 @@ const WhatWeDoContent = ({ menu, onNavigate }) => {
           </div>
         </div>
 
-        <div className="mega-foot">
+        <div className="what-we-do-footer">
           {meta.footerLinks.map((link) => {
             const LinkIcon = link.icon;
             return (
-              <div key={link.label} onClick={() => onNavigate(link.path)} style={{ cursor: 'pointer' }}>
-                <span className="ic"><LinkIcon size={18} /></span>
-                <span><b>{link.label}</b><span>{link.sub}</span></span>
-              </div>
+              <button key={link.label} className="what-we-do-footer-link" onClick={() => onNavigate(link.path)}>
+                <span className="what-we-do-footer-icon">
+                  <LinkIcon size={18} />
+                </span>
+                <span className="what-we-do-footer-text">
+                  <strong>{link.label}</strong>
+                  <small>{link.sub}</small>
+                </span>
+              </button>
             );
           })}
         </div>
-      </div>
+      </section>
 
-      {/* Right — dark promo aside */}
-      <div className="mega-aside">
-        <div className="ic"><PromoIcon size={26} /></div>
-        <h4>{meta.title}</h4>
+      {/* Right — dark promo card, content swaps with the active category */}
+      <aside className="what-we-do-promo-card">
+        <div className="what-we-do-promo-icon">
+          <PromoIcon size={26} />
+        </div>
+        <h3>{meta.title}</h3>
         <p>{meta.text}</p>
-        <button className="btn btn-primary" onClick={() => onNavigate('contact')}>
+        <button className="what-we-do-promo-cta" onClick={() => onNavigate("contact")}>
           {meta.cta} <ArrowRight size={16} />
         </button>
-      </div>
+      </aside>
     </div>
   );
 };
 
 /* ============================================================
    GENERIC "INFO" MEGA MENU — Client Success / Why Us / Insights /
-   Contact Us
+   Contact Us (ported as-is from the old Header.jsx)
    ============================================================ */
 const InfoRow = ({ item, onNavigate }) => {
-  const RowIcon = item.icon;
+  const Icon = item.icon;
   const inner = (
     <>
-      {RowIcon && <span className="ic"><RowIcon size={16} /></span>}
-      <span>
-        <b>{item.label}</b>
-        {item.sub && <span style={{ whiteSpace: 'pre-line' }}>{item.sub}</span>}
+      {Icon && (
+        <span className="info-row-icon">
+          <Icon size={16} />
+        </span>
+      )}
+      <span className="info-row-text">
+        <strong>{item.label}</strong>
+        {item.sub && <small>{item.sub}</small>}
       </span>
     </>
   );
@@ -161,10 +190,10 @@ const InfoRow = ({ item, onNavigate }) => {
   if (item.href) {
     return (
       <a
-        className="mega-row"
+        className="info-row"
         href={item.href}
-        target={item.href.startsWith('http') ? '_blank' : undefined}
-        rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+        target={item.href.startsWith("http") ? "_blank" : undefined}
+        rel={item.href.startsWith("http") ? "noreferrer" : undefined}
       >
         {inner}
       </a>
@@ -173,34 +202,40 @@ const InfoRow = ({ item, onNavigate }) => {
 
   if (item.path) {
     return (
-      <div className="mega-row" onClick={() => onNavigate(item.path)} style={{ cursor: 'pointer' }}>
+      <button className="info-row" onClick={() => onNavigate(item.path)}>
         {inner}
-      </div>
+      </button>
     );
   }
 
-  return <div className="mega-row mega-row-static">{inner}</div>;
+  return <div className="info-row info-row-static">{inner}</div>;
 };
 
-const InfoContent = ({ menu, onNavigate }) => {
-  return (
-    <div className="mega-grid info-grid">
-      <div className="mega-col mega-col-wide">
-        <div className="mega-scroll">
-          <div className="mega-subcols">
-            {menu.columns.map((col) => (
-              <div className="mega-subcol" key={col.heading}>
-                <div className="mega-head">
-                  {col.icon && <span className="ic"><col.icon size={16} /></span>}
-                  <b>{col.heading}</b>
-                </div>
+const InfoDropdownContent = ({ menu, onNavigate }) => {
+  const columnCount = menu.columns.length + (menu.featuredCard ? 1 : 0);
 
-                <div className={col.variant === 'rows' ? 'mega-rows' : 'mega-links'}>
+  return (
+    <div className="mega-layout info-dropdown-layout">
+      <section className="dropdown-main what-we-do-main info-dropdown-main">
+        <div className="dropdown-scroll">
+          <div className={`info-columns-grid info-columns-${columnCount}`}>
+            {menu.columns.map((col) => (
+              <div className="info-column" key={col.heading}>
+                <h3 className="info-column-heading">
+                  {col.icon && (
+                    <span className="info-column-icon">
+                      <col.icon size={16} />
+                    </span>
+                  )}
+                  {col.heading}
+                </h3>
+
+                <div className={`info-column-items ${col.variant === "rows" ? "info-column-rows" : ""}`}>
                   {col.items.map((item, idx) =>
-                    col.variant === 'rows' ? (
+                    col.variant === "rows" ? (
                       <InfoRow key={item.label + idx} item={item} onNavigate={onNavigate} />
                     ) : (
-                      <button key={item.label + idx} className="mega-link" onClick={() => onNavigate(item.path)}>
+                      <button key={item.label + idx} className="dropdown-link" onClick={() => onNavigate(item.path)}>
                         {item.label}
                       </button>
                     )
@@ -208,7 +243,7 @@ const InfoContent = ({ menu, onNavigate }) => {
                 </div>
 
                 {col.footerLink && (
-                  <button className="mega-subcol-footer" onClick={() => onNavigate(col.footerLink.path)}>
+                  <button className="info-column-footer-link" onClick={() => onNavigate(col.footerLink.path)}>
                     {col.footerLink.label} <ArrowRight size={13} />
                   </button>
                 )}
@@ -216,125 +251,142 @@ const InfoContent = ({ menu, onNavigate }) => {
             ))}
 
             {menu.featuredCard && (
-              <div className="mega-subcol mega-feature">
-                <div className="mega-head">
-                  {menu.featuredCard.icon && <span className="ic"><menu.featuredCard.icon size={16} /></span>}
-                  <b>{menu.featuredCard.heading}</b>
-                </div>
+              <div className="info-column info-featured-column">
+                <h3 className="info-column-heading">
+                  {menu.featuredCard.icon && (
+                    <span className="info-column-icon">
+                      <menu.featuredCard.icon size={16} />
+                    </span>
+                  )}
+                  {menu.featuredCard.heading}
+                </h3>
 
                 {menu.featuredCard.image && (
-                  <div className="fimg-wrap">
+                  <div className="info-featured-image-wrapper">
                     <img src={menu.featuredCard.image} alt={menu.featuredCard.title} />
                   </div>
                 )}
 
-                {!menu.featuredCard.image && (
-                  <div className="fimg"><menu.featuredCard.icon size={20} /></div>
-                )}
-
-                <h4>{menu.featuredCard.title}</h4>
-                <p>{menu.featuredCard.description}</p>
-                <div className="link-more" onClick={() => onNavigate(menu.featuredCard.path)} style={{ cursor: 'pointer' }}>
-                  {menu.featuredCard.ctaLabel} <ArrowRight size={14} />
+                <div className="info-featured-card">
+                  {!menu.featuredCard.image && (
+                    <span className="info-featured-icon">
+                      <menu.featuredCard.icon size={20} />
+                    </span>
+                  )}
+                  <div className="info-featured-content">
+                    <strong>{menu.featuredCard.title}</strong>
+                    <p>{menu.featuredCard.description}</p>
+                    <button className="info-featured-cta" onClick={() => onNavigate(menu.featuredCard.path)}>
+                      {menu.featuredCard.ctaLabel} <ArrowRight size={14} />
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
           </div>
 
           {menu.extraCard && (
-            <div className="mega-extra">
-              <span className="ic"><menu.extraCard.icon size={20} /></span>
-              <div>
-                <b>{menu.extraCard.heading}</b>
+            <div className="info-extra-card">
+              <span className="info-extra-icon">
+                <menu.extraCard.icon size={20} />
+              </span>
+              <div className="info-extra-content">
+                <strong>{menu.extraCard.heading}</strong>
                 <p>{menu.extraCard.description}</p>
-                <div className="link-more" onClick={() => onNavigate(menu.extraCard.path)} style={{ cursor: 'pointer' }}>
+                <button className="info-extra-cta" onClick={() => onNavigate(menu.extraCard.path)}>
                   {menu.extraCard.ctaLabel} <ArrowRight size={14} />
-                </div>
+                </button>
               </div>
             </div>
           )}
         </div>
 
         {menu.footerLinks && (
-          <div className="mega-foot">
+          <div className="what-we-do-footer">
             {menu.footerLinks.map((link) => {
               const LinkIcon = link.icon;
               return (
-                <div key={link.label} onClick={() => onNavigate(link.path)} style={{ cursor: 'pointer' }}>
-                  <span className="ic"><LinkIcon size={18} /></span>
-                  <span><b>{link.label}</b><span>{link.sub}</span></span>
-                </div>
+                <button key={link.label} className="what-we-do-footer-link" onClick={() => onNavigate(link.path)}>
+                  <span className="what-we-do-footer-icon">
+                    <LinkIcon size={18} />
+                  </span>
+                  <span className="what-we-do-footer-text">
+                    <strong>{link.label}</strong>
+                    <small>{link.sub}</small>
+                  </span>
+                </button>
               );
             })}
           </div>
         )}
-      </div>
+      </section>
 
       {menu.promo && (
-        <div className="mega-aside">
-          <div className="ic"><menu.promo.icon size={26} /></div>
-          <h4>{menu.promo.title}</h4>
+        <aside className="what-we-do-promo-card">
+          <div className="what-we-do-promo-icon">
+            <menu.promo.icon size={26} />
+          </div>
+          <h3>{menu.promo.title}</h3>
           <p>{menu.promo.text}</p>
-          <button className="btn btn-primary" onClick={() => onNavigate(menu.promo.path)}>
+          <button className="what-we-do-promo-cta" onClick={() => onNavigate(menu.promo.path)}>
             {menu.promo.cta} <ArrowRight size={16} />
           </button>
-        </div>
+        </aside>
       )}
     </div>
   );
 };
 
+/* Flattens a menu's desktop content shape into { heading, items } groups
+   for the mobile accordion. */
+const getMobileGroups = (menu) => {
+  if (menu.title === "What We Do") {
+    return menu.groups.flatMap((category) => category.subcategories || []);
+  }
+  const groups = [...menu.columns];
+  if (menu.featuredCard) {
+    groups.push({ heading: menu.featuredCard.heading, items: [{ label: menu.featuredCard.title, path: menu.featuredCard.path }] });
+  }
+  if (menu.extraCard) {
+    groups.push({ heading: menu.extraCard.heading, items: [{ label: menu.extraCard.ctaLabel, path: menu.extraCard.path }] });
+  }
+  return groups;
+};
+
 /* ============================================================
    HEADER
    ============================================================ */
-function Header() {
-  const navigate = useNavigate();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
+  const [scrolled, setScrolled] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null); // index into menuData
-  const navRef = useRef(null);
-  const headerRef = useRef(null);
-  const closeTimerRef = useRef(null);
+  const [activeMobileSubmenu, setActiveMobileSubmenu] = useState(null);
+  const [isMobile, setIsMobile] = useState(false); // tracks the same 1080px breakpoint the CSS uses
 
+  const dropdownTimerRef = useRef(null);
+  const headerRef = useRef(null);
+
+  const navigate = useNavigate();
   const { data } = useGetCategoryQuery();
   const { data: caseStudy } = useGetCaseStudyCategoryQuery();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    document.getElementById('burger')?.setAttribute('aria-expanded', !isMenuOpen);
-  };
-
-  const openDropdown = (idx) => {
-    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
-    setActiveDropdown(idx);
-  };
-  const scheduleClose = () => {
-    closeTimerRef.current = setTimeout(() => setActiveDropdown(null), 150);
-  };
-  const stayOpen = () => {
-    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
-  };
-  const toggleDropdown = (idx) => {
-    setActiveDropdown((cur) => (cur === idx ? null : idx));
-  };
-
-  const handleNavigate = (path) => {
-    if (path) navigate(`/${path}`.replace(/^\/\//, '/'));
-    setIsMenuOpen(false);
-    setActiveDropdown(null);
-  };
-
-  // Close mega menu when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (headerRef.current && !headerRef.current.contains(event.target)) {
-        setActiveDropdown(null);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* ── Real, API-driven menu data (5 menus) ── */
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 1080px)");
+    const update = () => setIsMobile(mql.matches);
+    update();
+    mql.addEventListener("change", update);
+    return () => mql.removeEventListener("change", update);
+  }, []);
+
+  /* ── Real, API-driven menu data (5 menus) — ported from the old Navbar ── */
   const menuData = useMemo(
     () => [
       {
@@ -425,9 +477,9 @@ function Header() {
             items: [
               { label: "About Us", path: "/About" },
               { label: "Leadership & Team", path: "/why-us/team" },
-              { label: "Locations", path: "/company/locations" },
-              { label: "Partners", path: "/company/partners" },
-              { label: "Careers", path: "/company/careers" },
+              { label: "Locations", path: "/why-us/locations" },
+              { label: "Partners", path: "/why-us/partners" },
+              { label: "Careers", path: "/why-us/careers" },
             ],
           },
           {
@@ -439,18 +491,6 @@ function Header() {
               { label: "Frequently Asked Questions", path: "/why-us/faq" },
               { label: "Client Portal", path: "/client-portal" },
               { label: "Open a Support Ticket", path: "/why-us/open-a-ticket" },
-            ],
-          },
-          {
-            heading: "Explore By Topic",
-            icon: Compass,
-            items: [
-              { label: "Artificial Intelligence", path: "/resources/topics/ai" },
-              { label: "Cybersecurity", path: "/resources/topics/cybersecurity" },
-              { label: "Microsoft 365", path: "/resources/topics/microsoft-365" },
-              { label: "Dynamics 365", path: "/resources/topics/dynamics-365" },
-              { label: "Data & Analytics", path: "/resources/topics/data-analytics" },
-              { label: "Cloud & Infrastructure", path: "/resources/topics/cloud-infrastructure" },
             ],
           },
         ],
@@ -466,13 +506,13 @@ function Header() {
           { icon: Compass, label: "Our Approach", sub: "See how we guide projects from discovery to delivery", path: "/why-us/our-approach" },
           { icon: Mail, label: "Contact JJC", sub: "Connect with our team for next steps", path: "/contact" },
         ],
-        // promo: {
-        //   icon: Handshake,
-        //   title: "A Partner You Can Count On.",
-        //   text: "We blend strategy, implementation, and support with accountability at every step so you can move forward with confidence.",
-        //   cta: "Learn About JJC",
-        //   path: "/About",
-        // },
+        promo: {
+          icon: Handshake,
+          title: "A Partner You Can Count On.",
+          text: "We blend strategy, implementation, and support with accountability at every step so you can move forward with confidence.",
+          cta: "Learn About JJC",
+          path: "/About",
+        },
       },
 
       {
@@ -488,10 +528,21 @@ function Header() {
               { label: "Guides", path: "/resources/guides" },
               { label: "Checklists", path: "/resources/checklists" },
               { label: "Whitepaper", path: "/resources/whitepapers" },
-              // { label: "Infographic", path: "/resources/infographics" },
+              { label: "Infographic", path: "/resources/infographics" },
             ],
           },
-
+          {
+            heading: "Explore By Topic",
+            icon: Compass,
+            items: [
+              { label: "Artificial Intelligence", path: "/resources/topics/ai" },
+              { label: "Cybersecurity", path: "/resources/topics/cybersecurity" },
+              { label: "Microsoft 365", path: "/resources/topics/microsoft-365" },
+              { label: "Dynamics 365", path: "/resources/topics/dynamics-365" },
+              { label: "Data & Analytics", path: "/resources/topics/data-analytics" },
+              { label: "Cloud & Infrastructure", path: "/resources/topics/cloud-infrastructure" },
+            ],
+          },
         ],
         featuredCard: {
           icon: Star,
@@ -565,61 +616,195 @@ function Header() {
     [data, caseStudy]
   );
 
-  return (
-    <header className="hdr scrolled" id="hdr" ref={headerRef}>
-      <div className="wrap">
-        <div className="brand" onClick={() => handleNavigate('/')} style={{ cursor: 'pointer' }}>
-          <img src={Logo} alt="jjc systems logo" width={150} />
-        </div>
+  const closeDropdown = () => setActiveDropdown(null);
 
-        <nav className={`nav ${isMenuOpen ? 'open' : ''}`} id="nav" aria-label="Main" ref={navRef}>
+  const onNavigate = (path) => {
+    if (path) navigate(`/${path}`.replace(/^\/\//, "/"));
+    closeDropdown();
+    setNavOpen(false);
+    setActiveMobileSubmenu(null);
+  };
+
+  // Close on any scroll intent while a dropdown is open.
+  useEffect(() => {
+    if (activeDropdown === null) return;
+    const handleScrollIntent = () => closeDropdown();
+    window.addEventListener("wheel", handleScrollIntent, { passive: true });
+    window.addEventListener("touchmove", handleScrollIntent, { passive: true });
+    return () => {
+      window.removeEventListener("wheel", handleScrollIntent);
+      window.removeEventListener("touchmove", handleScrollIntent);
+    };
+  }, [activeDropdown]);
+
+  // Lock page scroll while the mobile nav or a dropdown is open.
+  useEffect(() => {
+    const shouldLock = navOpen || activeDropdown !== null;
+    document.body.style.overflow = shouldLock ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [navOpen, activeDropdown]);
+
+  // Close the dropdown on outside click.
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (headerRef.current && !headerRef.current.contains(e.target)) closeDropdown();
+    };
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, []);
+
+  const handleDropdownEnter = (idx) => {
+    if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+    setActiveDropdown(idx);
+  };
+  const handleDropdownLeave = () => {
+    dropdownTimerRef.current = setTimeout(closeDropdown, 150);
+  };
+  const handleDropdownStay = () => {
+    if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+  };
+
+  const toggleMobileSubmenu = (idx) => {
+    setActiveMobileSubmenu(activeMobileSubmenu === idx ? null : idx);
+  };
+
+  return (
+    <header className={`jjc-hdr${scrolled ? " is-scrolled" : ""}`} id="hdr" ref={headerRef}>
+      <div className="jjc-wrap">
+        <a
+          className="jjc-brand"
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/");
+            closeDropdown();
+            setNavOpen(false);
+          }}
+        >
+          <img src={logo} width={200} alt={`${brandName} ${brandSuffix}`} />
+        </a>
+
+        <nav className={`jjc-nav${navOpen ? " is-open" : ""}`} id="nav" aria-label="Main">
           {menuData.map((menu, idx) => (
             <div
               key={menu.title}
-              className={`has-mega${activeDropdown === idx ? ' active' : ''}`}
-              onMouseEnter={() => openDropdown(idx)}
-              onMouseLeave={scheduleClose}
+              className={`jjc-nav-item${activeDropdown === idx ? " is-active" : ""}`}
+              onMouseEnter={() => handleDropdownEnter(idx)}
+              onMouseLeave={handleDropdownLeave}
             >
-              <div className="mega-toggle" onClick={(e) => { e.preventDefault(); toggleDropdown(idx); }} style={{ cursor: 'pointer' }}>
-                {menu.title} <ChevronDown size={12} className="mega-chevron" />
-              </div>
+              <button
+                type="button"
+                className="jjc-nav-trigger"
+                onClick={() => isMobile && toggleMobileSubmenu(idx)}
+                aria-expanded={activeDropdown === idx || activeMobileSubmenu === idx}
+              >
+                {menu.title}
+                <ChevronDown size={15} className="chevron-icon" />
+              </button>
 
-              {activeDropdown === idx && (
-                <div
-                  className="mega"
-                  role="group"
-                  aria-label={menu.title}
-                  onMouseEnter={stayOpen}
-                  onMouseLeave={scheduleClose}
-                >
-                  {menu.title === "What We Do" ? (
-                    <WhatWeDoContent menu={menu} onNavigate={handleNavigate} />
-                  ) : (
-                    <InfoContent menu={menu} onNavigate={handleNavigate} />
-                  )}
-                </div>
-              )}
+              {/* Desktop mega dropdown */}
+              <>
+                {activeDropdown === idx && (
+                  <div
+                    className="mega-dropdown"
+                    initial={{ opacity: 0, y: -10, clipPath: "inset(100% 0% 0% 0%)" }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      clipPath: "inset(0% 0% 0% 0%)",
+                      transition: { duration: 0.32, ease: [0.16, 1, 0.3, 1] },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      y: -10,
+                      clipPath: "inset(100% 0% 0% 0%)",
+                      transition: { duration: 0.18, ease: [0.4, 0, 1, 1] },
+                    }}
+                    onMouseEnter={handleDropdownStay}
+                    onMouseLeave={handleDropdownLeave}
+                  >
+                    <div className="mega-dropdown-bridge" />
+                    <div className="mega-dropdown-content">
+                      <div className="mega-dropdown-wrapper">
+                        {menu.title === "What We Do" ? (
+                          <WhatWeDoDropdownContent menu={menu} onNavigate={onNavigate} />
+                        ) : (
+                          <InfoDropdownContent menu={menu} onNavigate={onNavigate} />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </>
+
+              {/* Mobile accordion */}
+              <div initial={false}>
+                {activeMobileSubmenu === idx && (
+                  <div
+                    className="jjc-mobile-submenu"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  >
+                    {getMobileGroups(menu).map((group, gIdx) => (
+                      <div key={gIdx}>
+                        <div className="mobile-sub-title">{group.heading}</div>
+                        {group.items.map((item, iIdx) =>
+                          item?.href ? (
+                            <a
+                              key={iIdx}
+                              href={item.href}
+                              target={item.href.startsWith("http") ? "_blank" : undefined}
+                              rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                            >
+                              {item.label}
+                              <ArrowRight size={14} />
+                            </a>
+                          ) : (
+                            <a
+                              key={iIdx}
+                              href={item?.path || "#"}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                item?.path && onNavigate(item.path);
+                              }}
+                            >
+                              {item?.label}
+                              <ArrowRight size={14} />
+                            </a>
+                          )
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </nav>
 
+
+        <a className="btn btn-primary" href="#contact">Book a Consultation <svg><use href="#i-arrow-r"></use></svg></a>
+
         <button
-          className="burger"
-          id="burger"
-          aria-expanded={isMenuOpen}
+          className="jjc-burger"
+          aria-expanded={navOpen}
           aria-controls="nav"
-          aria-label="Open menu"
-          onClick={toggleMenu}
+          aria-label={navOpen ? "Close menu" : "Open menu"}
+          onClick={() => setNavOpen((v) => !v)}
         >
-          <span></span><span></span><span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
 
-        <button className="btn btn-primary" onClick={() => handleNavigate('/contact')}>
-          Book a Consultation <ArrowRight size={16} />
-        </button>
       </div>
     </header>
   );
 }
 
-export default Header;
+
+// old styling

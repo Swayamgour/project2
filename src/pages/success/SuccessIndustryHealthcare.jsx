@@ -4,6 +4,7 @@ import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
 import { useGetCaseStudyBySlugQuery } from "../../redux/api.jsx";
 import HeroSection from "../../components/HeroSection.jsx";
+import Loader from "../../components/Loader.jsx";
 // import HeroSection from "./components/HeroSection.jsx"; // Assuming you have this component
 
 export default function SuccessIndustryHealthcare() {
@@ -27,11 +28,7 @@ export default function SuccessIndustryHealthcare() {
   // Loading state
   if (isLoading) {
     return (
-      <main id="main" ref={mainRef}>
-        <div className="wrap" style={{ padding: "60px 0", textAlign: "center" }}>
-          <p>Loading...</p>
-        </div>
-      </main>
+     <Loader />
     );
   }
 

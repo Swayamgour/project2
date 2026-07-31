@@ -1,0 +1,1159 @@
+/* ============================================================
+   ROOT VARIABLES - Brand & Design Tokens
+   ============================================================ */
+:root {
+    /* Brand */
+    --navy-900: #00142E;
+    --navy-800: #002449;
+    --navy-700: #00366D;
+    --navy-600: #07569F;
+    --navy-line: rgba(98, 164, 232, .22);
+
+    --cyan: #58A9F0;
+    /* lighter expression of the logo blue */
+    --blue: #0258B7;
+    /* primary blue sampled from the JJC logo */
+    --blue-deep: #00438F;
+    --rule-a: #F7AC13;
+    /* JJC gold */
+    --rule-b: #0258B7;
+    /* JJC blue */
+
+    --orange: #F7AC13;
+    --orange-dark: #DA9200;
+
+    /* Neutrals */
+    --ink: #0B1220;
+    --ink-soft: #22304A;
+    --body: #46546B;
+    --body-dim: #6B7A91;
+    --paper: #FFFFFF;
+    --mist: #F9FAFC;
+    --tile: #EEF5FC;
+    --line: #E4E9F2;
+
+    /* Type */
+    --display: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --text: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+    /* Space */
+    --wrap: 1220px;
+    --gutter: clamp(20px, 5vw, 48px);
+    --sec-y: clamp(64px, 8vw, 112px);
+    --r-sm: 10px;
+    --r: 16px;
+    --r-lg: 22px;
+
+    --shadow-sm: 0 1px 2px rgba(11, 18, 32, .05);
+    --shadow: 0 10px 30px -12px rgba(11, 18, 32, .16);
+    --shadow-lg: 0 26px 60px -24px rgba(11, 18, 32, .30);
+
+    /* JJC specific */
+    --jjc-brand-blue: #0258B7;
+    --jjc-brand-gold: #F7AC13;
+    --jjc-cyan-accent: #58A9F0;
+    --jjc-font-display: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --jjc-gutter: clamp(20px, 5vw, 48px);
+}
+
+/* ============================================================
+   BASE RESET & GLOBAL STYLES
+   ============================================================ */
+html {
+    scrollbar-gutter: stable;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: var(--text);
+    color: var(--body);
+    background: var(--paper);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   HEADER SHELL
+   ============================================================ */
+.jjc-hdr {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 100;
+    transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+    padding-block: 18px;
+    background: transparent;
+}
+
+.jjc-hdr.is-scrolled {
+    background: rgba(0, 10, 28, 0.92);
+    backdrop-filter: saturate(160%) blur(14px);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+    padding-block: 12px;
+}
+
+.jjc-hdr .jjc-wrap {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    /* No position here on purpose: .jjc-hdr (position: fixed) must stay the
+   nearest positioned ancestor for .mega-dropdown below. If this wrapper
+   (or .jjc-nav-item) becomes positioned too, the dropdown's
+   left:0/right:0 resolves against that narrower box instead of the
+   full header — which is exactly what made the mega menu render as a
+   tiny box under the nav label instead of a full-width panel. */
+}
+
+/* ============================================================
+   BRAND / LOGO
+   ============================================================ */
+.jjc-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--jjc-font-display);
+    font-weight: 800;
+    font-size: 22px;
+    color: #fff;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.jjc-brand-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    flex: none;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--jjc-brand-blue), var(--jjc-cyan-accent));
+    color: #fff;
+    font-weight: 800;
+    font-size: 15px;
+    filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.2));
+}
+
+.jjc-brand-name {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.28em;
+}
+
+.jjc-brand-name strong {
+    color: #fff;
+    font-weight: 800;
+}
+
+.jjc-brand-name span {
+    color: var(--jjc-brand-gold);
+    font-weight: 700;
+}
+
+/* ============================================================
+   DESKTOP NAV
+   ============================================================ */
+.jjc-nav {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    margin-left: auto;
+}
+
+.jjc-nav>a {
+    font-family: var(--jjc-font-display);
+    font-weight: 600;
+    font-size: 15px;
+    color: #d6e2f5;
+    padding: 6px 0;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.jjc-nav>a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    height: 2px;
+    background: var(--jjc-brand-gold);
+    transition: right 0.25s ease;
+}
+
+.jjc-nav>a:hover {
+    color: #fff;
+}
+
+.jjc-nav>a:hover::after {
+    right: 0;
+}
+
+/* Dropdown-capable nav item — intentionally NOT position:relative; see
+   the note on .jjc-wrap above for why. */
+.jjc-nav-item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.jjc-nav-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    font-family: var(--jjc-font-display);
+    font-weight: 600;
+    font-size: 15px;
+    color: #d6e2f5;
+    padding: 6px 0;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.jjc-nav-trigger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: -2px;
+    height: 2px;
+    background: var(--jjc-brand-gold);
+    transition: right 0.25s ease;
+}
+
+.jjc-nav-trigger:hover,
+.jjc-nav-item.is-active .jjc-nav-trigger {
+    color: #fff;
+}
+
+.jjc-nav-trigger:hover::after,
+.jjc-nav-item.is-active .jjc-nav-trigger::after {
+    right: 0;
+}
+
+.jjc-nav-trigger .chevron-icon {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.7;
+}
+
+.jjc-nav-item.is-active .chevron-icon {
+    transform: rotate(180deg);
+    opacity: 1;
+}
+
+/* Header Button */
+.jjc-hdr .jjc-btn {
+    padding: 12px 22px;
+    font-size: 15px;
+    border-radius: var(--r-sm);
+    font-weight: 700;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.jjc-btn-primary {
+    background: var(--jjc-brand-gold);
+    color: var(--navy-900);
+    border: none;
+}
+
+.jjc-btn-primary:hover {
+    background: var(--orange-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(247, 172, 19, 0.3);
+}
+
+/* ============================================================
+   BURGER / MOBILE TOGGLE
+   ============================================================ */
+.jjc-burger {
+    display: none;
+    background: none;
+    border: 0;
+    padding: 8px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.jjc-burger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    margin: 5px 0;
+    transition: 0.25s;
+}
+
+.jjc-burger[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.jjc-burger[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+}
+
+.jjc-burger[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE
+   ============================================================ */
+@media (max-width: 1080px) {
+    .jjc-nav {
+        display: none;
+    }
+
+    .jjc-nav.is-open {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: calc(100vh - 100%);
+        overflow-y: auto;
+        background: rgba(0, 10, 28, 0.98);
+        backdrop-filter: blur(14px);
+        padding: 12px var(--jjc-gutter) 22px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .jjc-nav.is-open>a {
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        font-size: 16px;
+        color: #d6e2f5;
+        text-decoration: none;
+    }
+
+    .jjc-nav.is-open>a:hover {
+        color: #fff;
+    }
+
+    .jjc-nav.is-open .jjc-nav-item {
+        flex-direction: column;
+        align-items: stretch;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .jjc-nav.is-open .jjc-nav-trigger {
+        justify-content: space-between;
+        width: 100%;
+        padding: 14px 0;
+        font-size: 16px;
+    }
+
+    .jjc-nav.is-open .jjc-nav-trigger::after {
+        display: none;
+    }
+
+    /* On mobile the desktop mega dropdown never renders (hidden below);
+   only the accordion (.jjc-mobile-submenu) shows. */
+    .jjc-nav.is-open .mega-dropdown {
+        display: none !important;
+    }
+
+    .jjc-burger {
+        display: block;
+    }
+
+    .jjc-hdr .jjc-btn {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .jjc-brand-mark {
+        width: 38px;
+        height: 38px;
+    }
+
+    .jjc-brand {
+        font-size: 20px;
+    }
+}
+
+/* ============================================================
+   MOBILE ACCORDION SUBMENU
+   ============================================================ */
+/* Defensive: the mobile accordion must never be visible on desktop —
+   desktop opens the mega dropdown on hover instead. Without this,
+   accidentally toggling activeMobileSubmenu on desktop would render
+   this inline (in normal flow) and disrupt the hover mega-dropdown. */
+@media (min-width: 1081px) {
+    .jjc-mobile-submenu {
+        display: none !important;
+    }
+}
+
+.jjc-mobile-submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+
+.jjc-mobile-submenu .mobile-sub-title {
+    font-size: 0.7rem;
+    color: rgba(214, 226, 245, 0.6);
+    text-transform: uppercase;
+    margin-top: 0.6rem;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+}
+
+.jjc-mobile-submenu a {
+    color: #d6e2f5;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.55rem 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+    transition: background-color 0.15s, color 0.15s, padding-left 0.15s;
+}
+
+.jjc-mobile-submenu a:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.06);
+    padding-left: 1rem;
+}
+
+/* ============================================================
+   MEGA DROPDOWN
+   Sits directly under the fixed header — .jjc-hdr is the nearest
+   positioned ancestor, so top: 100% tracks the header's real
+   height automatically (no matter its scrolled/unscrolled padding).
+   ============================================================ */
+.mega-dropdown {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    overflow: visible;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    will-change: opacity, transform, clip-path;
+}
+
+.mega-dropdown-bridge {
+    position: absolute;
+    top: -16px;
+    left: 0;
+    width: 100%;
+    height: 16px;
+}
+
+.mega-dropdown-content {
+    max-width: 1520px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    box-sizing: border-box;
+}
+
+.mega-dropdown-wrapper {
+    height: 600px;
+    max-height: 600px;
+    background: rgba(255, 255, 255, 0.98);
+    color: #111827;
+    border-top: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 40px 80px -16px rgba(0, 0, 0, 0.45);
+    backdrop-filter: saturate(180%) blur(24px);
+    overflow: hidden;
+}
+
+/* ============================================================
+   MEGA LAYOUT - WHAT WE DO
+   ============================================================ */
+.mega-layout {
+    display: flex;
+    align-items: stretch;
+    gap: 40px;
+    width: 100%;
+    height: 100%;
+}
+
+.what-we-do-layout {
+    gap: 0;
+}
+
+/* Left Category Rail */
+.what-we-do-category-col {
+    flex: 0 0 220px;
+    width: 220px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 28px 20px 28px 0;
+    border-right: 1px solid rgba(15, 23, 42, 0.07);
+    overflow-y: auto;
+}
+
+.what-we-do-category-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: none;
+    border: none;
+    padding: 12px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #4b5563;
+    transition: background-color 0.2s, color 0.2s;
+    width: 100%;
+}
+
+.what-we-do-category-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--jjc-brand-blue, #2563eb);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.what-we-do-category-item:hover,
+.what-we-do-category-item.active {
+    background-color: rgba(37, 99, 235, 0.06);
+    color: var(--jjc-brand-blue, #2563eb);
+}
+
+.what-we-do-category-item.active .what-we-do-category-icon {
+    background: var(--jjc-brand-blue, #2563eb);
+    color: #fff;
+}
+
+/* Main Content Area */
+.what-we-do-main {
+    flex: 1;
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.dropdown-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+}
+
+.dropdown-columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
+}
+
+.dropdown-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dropdown-column h3 {
+    position: relative;
+    margin: 0 0 8px;
+    padding-bottom: 8px;
+    color: #111827;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.dropdown-column h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--jjc-brand-blue), var(--jjc-cyan-accent));
+}
+
+.dropdown-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-link {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 2px 0;
+    cursor: pointer;
+    font-size: 14px;
+    color: #4b5563;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.dropdown-link:hover {
+    color: var(--jjc-brand-blue, #2563eb);
+    transform: translateX(4px);
+}
+
+/* Right Promo Card */
+.what-we-do-promo-card {
+    flex: 0 0 320px;
+    width: 320px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #0a1a3f;
+    color: #fff;
+    padding: 32px 28px;
+    border-bottom-right-radius: 24px;
+    overflow-y: auto;
+}
+
+.what-we-do-promo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.what-we-do-promo-card h3 {
+    margin: 0 0 12px;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.what-we-do-promo-card p {
+    margin: 0 0 24px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    line-height: 1.6;
+    flex: 1;
+}
+
+.what-we-do-promo-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--jjc-brand-gold, #22c55e);
+    color: #0a1a3f;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 9px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.2s;
+}
+
+.what-we-do-promo-cta:hover {
+    filter: brightness(0.9);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   MEGA LAYOUT - INFO DROPDOWN (Why Us, Insights, Contact)
+   ============================================================ */
+.info-dropdown-layout {
+    gap: 0;
+}
+
+.info-dropdown-main {
+    flex: 1;
+    padding: 28px 32px;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.info-columns-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 40px;
+    align-items: start;
+}
+
+.info-columns-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-column-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 6px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #111827;
+}
+
+.info-column-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--jjc-brand-blue, #2563eb);
+}
+
+.info-column-items {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: none;
+    border: none;
+    padding: 8px 6px;
+    margin: 0 -6px;
+    border-radius: 10px;
+    text-align: left;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+button.info-row,
+a.info-row {
+    cursor: pointer;
+}
+
+.info-row-static {
+    cursor: default;
+}
+
+.info-row:hover:not(.info-row-static) {
+    background-color: rgba(37, 99, 235, 0.06);
+}
+
+.info-row-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--jjc-brand-blue, #2563eb);
+}
+
+.info-row-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.info-row-text strong {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.info-row-text small {
+    font-size: 12px;
+    font-weight: 400;
+    color: #6b7280;
+    line-height: 1.4;
+    white-space: pre-line;
+}
+
+/* Featured Card */
+.info-featured-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(37, 99, 235, 0.04);
+}
+
+.info-featured-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--jjc-brand-blue, #2563eb);
+}
+
+.info-featured-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.info-featured-content strong {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.35;
+}
+
+.info-featured-content p {
+    margin: 0;
+    font-size: 12.5px;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.info-featured-image-wrapper {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.info-featured-image-wrapper img {
+    display: block;
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+}
+
+.info-featured-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    align-self: flex-start;
+    background: none;
+    border: none;
+    padding: 4px 0;
+    margin-top: 2px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--jjc-brand-blue, #2563eb);
+    cursor: pointer;
+}
+
+/* Footer Quick Links */
+.what-we-do-footer {
+    display: flex;
+    gap: 24px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(15, 23, 42, 0.07);
+    flex-shrink: 0;
+}
+
+.what-we-do-footer-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+.what-we-do-footer-link:hover {
+    background-color: rgba(37, 99, 235, 0.06);
+}
+
+.what-we-do-footer-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--jjc-brand-blue, #2563eb);
+}
+
+.what-we-do-footer-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.what-we-do-footer-text strong {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.what-we-do-footer-text small {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #6b7280;
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+@media (max-width: 1280px) {
+    .what-we-do-promo-card {
+        flex: 0 0 260px;
+        width: 260px;
+        padding: 24px 20px;
+    }
+
+    .what-we-do-promo-card h3 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1180px) {
+    .what-we-do-category-col {
+        flex: 0 0 160px;
+        width: 160px;
+        padding: 18px 12px 18px 0;
+    }
+
+    .what-we-do-category-item {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    .what-we-do-main,
+    .info-dropdown-main {
+        padding: 18px 20px;
+    }
+
+    .info-columns-grid,
+    .info-columns-3 {
+        gap: 20px;
+    }
+
+    .info-column-heading {
+        font-size: 12px;
+    }
+
+    .what-we-do-promo-card {
+        flex: 0 0 200px;
+        width: 200px;
+        padding: 18px 16px;
+    }
+
+    .what-we-do-promo-card h3 {
+        font-size: 16px;
+    }
+
+    .what-we-do-promo-card p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 1080px) {
+    .mega-dropdown {
+        display: none !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .dropdown-columns {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .info-columns-grid,
+    .info-columns-3 {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .what-we-do-promo-card {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .dropdown-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .what-we-do-category-col {
+        flex: 0 0 120px;
+        width: 120px;
+        padding: 12px 8px 12px 0;
+    }
+
+    .what-we-do-category-item {
+        font-size: 0.75rem;
+        padding: 8px 10px;
+        gap: 8px;
+    }
+
+    .what-we-do-category-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .what-we-do-main,
+    .info-dropdown-main {
+        padding: 12px 14px;
+    }
+
+    .dropdown-column h3 {
+        font-size: 14px;
+    }
+
+    .what-we-do-footer {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+
+.hdr .btn {
+    padding: 12px 22px;
+    font-size: 15px;
+}
+
+.btn-primary {
+    background: var(--orange);
+    color: var(--navy-900);
+    box-shadow: 0 12px 26px -14px rgba(247, 172, 19, .78);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -.01em;
+    padding: 16px 28px;
+    border-radius: var(--r-sm);
+    border: 0;
+    cursor: pointer;
+    transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+}
+
+.info-column-footer-link {
+    color: var(--primary, #2563eb);
+    cursor: pointer;
+    background: 0 0;
+    border: none;
+    align-self: flex-start;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+    padding: 4px 0;
+    font-size: 12.5px;
+    font-weight: 600;
+    display: inline-flex;
+}
+
+
+
+.info-extra-card {
+    border-top: 1px solid #0f172a12;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 24px;
+    padding-top: 24px;
+    display: flex;
+}
+
+
+.info-extra-icon {
+    width: 42px;
+    height: 42px;
+    color: var(--primary, #2563eb);
+    background: #2563eb14;
+    border-radius: 50%;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.info-extra-content strong {
+    color: #111827;
+    margin-bottom: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    display: block;
+}
+
+.info-extra-content p {
+    color: #6b7280;
+    max-width: 620px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.info-extra-cta {
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--primary, #2563eb);
+    cursor: pointer;
+    background: 0 0;
+    border: none;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    font-size: 12.5px;
+    font-weight: 700;
+    display: inline-flex;
+}

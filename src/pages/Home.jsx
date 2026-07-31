@@ -1,46 +1,843 @@
 import { useRef } from "react";
 import usePageEffects from "../hooks/usePageEffects.js";
 import useDocumentMeta from "../hooks/useDocumentMeta.js";
+import {
+   heroSlides,
+   whyCards,
+   partnerRows,
+   benefits,
+   industries,
+   solutions,
+   platforms,
+   serviceFamilies,
+   logos,
+   successStories,
+   testimonials,
+   insights,
+   contactInfo,
+   clientLogo
+} from "../config/data.js";
+import { useGetCategoryQuery, useGetTestimonialsQuery } from "../redux/api.jsx";
+import { Link } from "react-router-dom";
+
+
+
 
 export default function Home() {
-  const mainRef = useRef(null);
-  useDocumentMeta("JJC Systems \u2014 Microsoft Consulting, Managed IT & Business Applications", "JJC Systems is a one-stop technology partner for Microsoft consulting and adoption \u2014 Dynamics 365, Azure and Microsoft 365 \u2014 plus managed IT, security and custom business solutions built on the tools your teams already use.");
-  usePageEffects(mainRef);
+   const mainRef = useRef(null);
+   useDocumentMeta(
+      "JJC Systems \u2014 Microsoft Consulting, Managed IT & Business Applications",
+      "JJC Systems is a one-stop technology partner for Microsoft consulting and adoption \u2014 Dynamics 365, Azure and Microsoft 365 \u2014 plus managed IT, security and custom business solutions built on the tools your teams already use.",
+   );
+   usePageEffects(mainRef);
 
-  return (
-    <main id="main" ref={mainRef}>
-{/* ============================================================
-     1. HERO CAROUSEL — 5 slides
-        Headline copy is real HTML (searchable, editable, and
-        readable on a phone); the artwork sits behind it.
-     ============================================================ */}<section className="hero" id="top" aria-roledescription="carousel" aria-label="JJC Systems highlights"><div className="slides" id="slides"><article className="slide active" role="group" aria-roledescription="slide" aria-label="1 of 5: AI readiness and ROI"><div className="slide-media"><img src="/assets/img/hero-1.jpg" alt="Microsoft Copilot, agentic AI, governance and ROI roadmap concept" loading="eager"/></div><div className="slide-grid"><div className="slide-copy"><span className="eyebrow">AI Readiness & ROI</span><h1>Feeling overwhelmed by the new AI wave?</h1><p>We help you evaluate where Microsoft Copilot and agentic AI genuinely pay off, cut through the uncertainty, and build a practical roadmap you can act on.</p><a className="btn btn-primary" href="#contact">Get your free AI ROI assessment <svg><use href="#i-arrow-r"></use></svg></a></div></div></article><article className="slide" role="group" aria-roledescription="slide" aria-label="2 of 5: What we do"><div className="slide-media"><img src="/assets/img/hero-2.jpg" alt="Consulting approach from discover to optimise across the Microsoft application ecosystem" loading="lazy"/></div><div className="slide-grid"><div className="slide-copy"><span className="eyebrow">What We Do</span><h1>Technology consulting aligned to the way business works</h1><p>We start with your applications and your goals, not a product catalogue — with full vendor transparency and deep Microsoft Dynamics 365 expertise when that's the right fit.</p><a className="btn btn-primary" href="#services">Explore our services <svg><use href="#i-arrow-r"></use></svg></a></div></div></article><article className="slide" role="group" aria-roledescription="slide" aria-label="3 of 5: Customer stories"><div className="slide-media"><img src="/assets/img/hero-3.jpg" alt="Client outcomes across healthcare, manufacturing, financial services and retail" loading="lazy"/></div><div className="slide-grid"><div className="slide-copy"><span className="eyebrow">Customer Stories</span><h1>Helping clients across industries achieve real results</h1><p>Practical technology that improves how organizations operate, collaborate, see their data and grow — measured in outcomes, not deliverables.</p><a className="btn btn-primary" href="#success-stories">Explore success stories <svg><use href="#i-arrow-r"></use></svg></a></div></div></article><article className="slide" role="group" aria-roledescription="slide" aria-label="4 of 5: Custom solutions"><div className="slide-media"><img src="/assets/img/hero-4.jpg" alt="Custom solutions running inside Microsoft 365, Dynamics 365, Power Automate and Power BI" loading="lazy"/></div><div className="slide-grid"><div className="slide-copy"><span className="eyebrow">Custom Solutions</span><h1>Custom solutions built inside the tools your teams already use</h1><p>Industry- and business-focused solutions delivered through Microsoft 365, Office and Dynamics Business Applications — so your people work smarter without changing how they work.</p><a className="btn btn-primary" href="#solutions">Request your custom demo <svg><use href="#i-arrow-r"></use></svg></a></div></div></article><article className="slide" role="group" aria-roledescription="slide" aria-label="5 of 5: Client testimonials"><div className="slide-media"><img src="/assets/img/hero-5.jpg" alt="Client testimonials from IT and operations leaders" loading="lazy"/></div><div className="slide-grid"><div className="slide-copy"><span className="eyebrow">Client Testimonials</span><h1>See what our clients have to say</h1><p>Clients stay with us for the quality of the work, the speed of our response, and technology that improves both the daily grind and the long-term picture.</p><a className="btn btn-primary" href="#testimonials">Read client testimonials <svg><use href="#i-arrow-r"></use></svg></a></div></div></article></div><div className="hero-ui"><button className="arrow" id="prev" aria-label="Previous slide"><svg><use href="#i-arrow-l"></use></svg></button><div className="dots" id="dots" aria-label="Choose slide"></div><button className="arrow" id="next" aria-label="Next slide"><svg><use href="#i-arrow-r"></use></svg></button></div></section>{/* ============================================================
-     2. WHY US
-     ============================================================ */}<section className="section bg-paper" id="why"><div className="wrap"><div className="why-intro reveal"><span className="eyebrow">Why JJC Systems</span><h2 className="why-statement">We are the <span className="accent">single partner</span> behind everything Microsoft in your business — Dynamics 365, Azure and Microsoft 365 — and behind <span className="accent">the wider technology your people depend on every day.</span></h2></div><div className="why-grid"><article className="why-card reveal"><div className="icon-tile"><svg><use href="#i-users"></use></svg></div><h3>Large enough to serve, small enough to care</h3><p>You get the capability of a large consultancy with the responsiveness of a team that knows your name and picks up the phone.</p></article><article className="why-card reveal"><div className="icon-tile"><svg><use href="#i-globe"></use></svg></div><h3>A global team, working 24/7</h3><p>Work moves with the clock. An issue raised at the end of your day is often resolved before the start of your next one.</p></article><article className="why-card reveal"><div className="icon-tile"><svg><use href="#i-strategy"></use></svg></div><h3>A strategic partnership, not a transaction</h3><p>We plan around your roadmap, budget cycles and business goals — not around a ticket queue or a quota.</p></article><article className="why-card reveal"><div className="icon-tile"><svg><use href="#i-target"></use></svg></div><h3>The outcome comes before the technology</h3><p>We start with the result you are trying to reach, then choose the tools that get you there. Never the other way around.</p></article><article className="why-card reveal"><div className="icon-tile"><svg><use href="#i-erp"></use></svg></div><h3>Solutions and services under one roof</h3><p>Strategy, build, migration, integration, managed services and staffing from one team — so nothing falls through the gaps between vendors.</p></article><article className="why-card reveal"><div className="icon-tile"><svg><use href="#i-award"></use></svg></div><h3>Certified consultants on every engagement</h3><p>Microsoft-certified professionals, paired with industry specialists who have already solved this problem in your sector.</p></article></div><div className="partner-model"><aside className="partner-visual reveal" aria-label="One team and one point of contact"><div className="hex-shell"><div className="hex-inner"><svg><use href="#i-shield"></use></svg><strong>One team.<br/>One point of contact.</strong><ul><li>Applications</li><li>Infrastructure</li><li>Security & Monitoring</li><li>Adoption & Procurement</li></ul></div></div></aside><div className="partner-details"><article className="partner-row reveal"><div className="partner-icon"><svg><use href="#i-grid"></use></svg></div><div><span className="partner-tag">For large organizations</span><h3>One Partner for Your Entire Microsoft Environment</h3><p>Large organizations come to us so Dynamics 365, Microsoft Azure and Microsoft 365 are looked after together instead of being split across a different supplier for each. When Microsoft releases an update or a new security weakness comes to light, our engineers are already working on it. Nobody on your team has to watch for the announcement, judge whether it matters, or drop everything to react.</p></div></article><article className="partner-row reveal"><div className="partner-icon"><svg><use href="#i-cloud"></use></svg></div><div><span className="partner-tag">For small & mid-size organizations</span><h3>A Complete IT Function, Without Building One Yourself</h3><p>Smaller and growing organizations use us as their whole technology team. We begin with what your business actually does day to day, then choose the tools to fit — the applications your people work in, the cloud or on-site systems behind them, security, round-the-clock monitoring, training, and the right licenses at the right price. One partner, one relationship, one bill.</p></div></article><article className="partner-row reveal"><div className="partner-icon"><svg><use href="#i-automation"></use></svg></div><div><span className="partner-tag">Value add</span><h3>Ready-Made Solutions, Built on Tools Your Team Already Knows</h3><p>We have built a library of solutions for specific industries on top of Microsoft Office and Dynamics — the software your people already open every morning. That means far less to learn, far less to set up, and a much shorter wait before something is working. Every rollout includes full adoption training, so the return starts on day one rather than a year later.</p></div></article></div></div></div></section>{/* ============================================================
-     BENEFITS BAND
-     ============================================================ */}<section className="section bg-navy"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">What You Get</span><h2 className="h-sec wide">The difference shows up in your day-to-day.</h2><p className="lede">Five things our clients tell us changed once we started working together.</p></div><div className="benefits"><div className="benefit reveal"><h3>Peace of mind</h3><p>Technology changes every week. Keeping up with it is our job, not yours.</p></div><div className="benefit reveal"><h3>The skills your team doesn't have</h3><p>Specialist expertise on demand, for exactly as long as you need it — and no longer.</p></div><div className="benefit reveal"><h3>Extra hands for your projects</h3><p>Scale delivery capacity up or down without hiring, onboarding or long-term headcount.</p></div><div className="benefit reveal"><h3>Fixed, predictable project costs</h3><p>Implementation, migration, integration and support quoted up front. No open-ended meter.</p></div><div className="benefit reveal"><h3>ROI and adoption you can measure</h3><p>A system nobody uses isn't a solution. We measure success by how many people actually use what we build.</p></div></div></div></section>{/* ============================================================
-     3. INDUSTRIES
-     ============================================================ */}<section className="section bg-paper" id="industries"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">Industries</span><h2 className="h-sec">Industry and business first. Our custom solutions prove it.</h2><p className="lede">We don't lead with a product list. We start with how your industry actually runs — its deadlines, its regulators, its reporting, the way work moves between teams — and build the technology to fit it.</p></div><p style={{margin: '-14px 0 30px'}}><a className="link-more" href="/industries">Or explore all 11 industries in detail <svg><use href="#i-arrow-r"></use></svg></a></p><div className="ind-cols"><div className="reveal"><h3 className="rule-head">Regulated Industries</h3><ul className="ind-list"><li><a href="/industries/healthcare">Healthcare</a></li><li><a href="/industries/legal">Legal</a></li><li><a href="/industries/financial-services">Financial Services</a></li><li><a href="/industries/public-sector">Public Sector</a></li><li><a href="/industries/education">Education</a></li></ul></div><div className="reveal"><h3 className="rule-head">Commercial Industries</h3><ul className="ind-list"><li><a href="/industries/manufacturing">Manufacturing</a></li><li><a href="/industries/retail-distribution">Retail & Distribution</a></li><li><a href="/industries/construction-field-services">Construction & Field Services</a></li><li><a href="/industries/professional-services">Professional Services</a></li></ul></div><div className="reveal"><h3 className="rule-head">Growth & Community Organizations</h3><ul className="ind-list"><li><a href="/industries/small-mid-market">Small & Mid-Market Enterprises</a></li><li><a href="/industries/nonprofits-associations">Nonprofits & Associations</a></li></ul></div></div></div></section>{/* ============================================================
-     4. SOLUTIONS
-     ============================================================ */}<section className="section bg-mist" id="solutions"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">Custom Solutions</span><h2 className="h-sec">Built on Dynamics 365. Measured in business outcomes.</h2><p className="lede">Our solutions run inside Microsoft Dynamics 365 Business Applications and the Office tools your teams already use every day. There's no new system to learn and no separate login to remember — which is why adoption stops being a change programme and starts being a Tuesday.</p></div>{/* NOTE FOR THE TEAM: replace these six with your real named solutions.
-         Keep the pattern: industry label, plain-English name, what it fixes. */}<div className="grid g-3"><div className="card sol-card reveal"><div className="icon-tile"><svg><use href="#i-service"></use></svg></div><span className="sol-tag">Healthcare</span><h3>Patient & Referral Coordination</h3><p>Track referrals, hand-offs and follow-ups in one place, with the audit trail your compliance team expects and none of the spreadsheets they currently chase.</p></div><div className="card sol-card reveal"><div className="icon-tile"><svg><use href="#i-docs"></use></svg></div><span className="sol-tag">Legal</span><h3>Matter & Client Intake</h3><p>Intake, conflict checks, matter tracking and time capture — connected to Outlook and SharePoint, so nothing lives only in someone's inbox.</p></div><div className="card sol-card reveal"><div className="icon-tile"><svg><use href="#i-field"></use></svg></div><span className="sol-tag">Construction & Field Services</span><h3>Job Costing & Field Operations</h3><p>Estimates, change orders, crew scheduling and job profitability visible from the office and the site — including when the site has no signal.</p></div><div className="card sol-card reveal"><div className="icon-tile"><svg><use href="#i-erp"></use></svg></div><span className="sol-tag">Retail & Distribution</span><h3>Order-to-Cash Visibility</h3><p>One view of orders, stock and fulfilment from quote through to cash collected, so finance and operations stop reconciling two versions of the truth.</p></div><div className="card sol-card reveal"><div className="icon-tile"><svg><use href="#i-project"></use></svg></div><span className="sol-tag">Professional Services</span><h3>Project Delivery & Utilization</h3><p>Pipeline, resourcing, timesheets and margin in a single system that delivery leads and the finance team both trust.</p></div><div className="card sol-card reveal"><div className="icon-tile"><svg><use href="#i-target"></use></svg></div><span className="sol-tag">Nonprofits & Associations</span><h3>Donor, Member & Program Management</h3><p>Donors, members, grants and programmes managed together, without stitching five disconnected tools into a reporting nightmare each quarter.</p></div></div>{/* The five-step approach is a genuine sequence, so it is numbered. */}<div className="process reveal"><div className="step"><div className="step-n">1</div><h4>Discover</h4><p>We learn how your business actually runs today, including the workarounds.</p></div><div className="step"><div className="step-n">2</div><h4>Align</h4><p>We agree the business outcomes and what success will be measured against.</p></div><div className="step"><div className="step-n">3</div><h4>Design</h4><p>We map the solution to your process, then show it to you before we build.</p></div><div className="step"><div className="step-n">4</div><h4>Implement</h4><p>We build, migrate, integrate and train — to a fixed price and a fixed date.</p></div><div className="step"><div className="step-n">5</div><h4>Optimize</h4><p>We stay on to tune what's live and add the next thing when you're ready.</p></div></div><div className="sol-note reveal"><svg><use href="#i-check"></use></svg><p><b>Every solution ships complete.</b> Fixed-price implementation, data migration from your current systems, integration with the tools you're keeping, and adoption training for every user — not just the project team.</p></div></div></section>{/* ============================================================
-     5. PLATFORMS
-     ============================================================ */}<section className="section platforms-section" id="platforms"><div className="wrap"><div className="platforms-intro reveal"><div className="sec-head"><span className="eyebrow">Platforms</span><h2 className="h-sec">One connected Microsoft ecosystem</h2></div><p className="platforms-summary">We help organizations select, implement and support the platforms that power modern work, business operations, data and cloud infrastructure — with one accountable team across the entire environment.</p></div><p style={{margin: '-14px 0 30px'}}><a className="link-more" href="/platforms">Or explore all 17 platforms in detail <svg><use href="#i-arrow-r"></use></svg></a></p><div className="platform-board reveal" aria-label="Microsoft platforms supported by JJC Systems"><article className="platform-group"><div className="platform-group-head"><span className="platform-group-icon" aria-hidden="true"><svg><use href="#i-grid"></use></svg></span><h3>Microsoft 365 &<br/>Modern Work</h3></div><p>Secure productivity, collaboration and information governance.</p><ul className="platform-clean-list"><li><a href="/platforms/microsoft-365">Microsoft 365</a></li><li><a href="/platforms/microsoft-copilot">Microsoft Copilot</a></li><li><a href="/platforms/microsoft-intune">Microsoft Intune</a></li><li><a href="/platforms/microsoft-purview">Microsoft Purview</a></li></ul></article><article className="platform-group"><div className="platform-group-head"><span className="platform-group-icon" aria-hidden="true"><svg><use href="#i-erp"></use></svg></span><h3>Dynamics 365</h3></div><p>Connected ERP, CRM, service and project operations.</p><ul className="platform-clean-list"><li><a href="/platforms/business-central">Dynamics 365 Business Central</a></li><li><a href="/platforms/d365-finance">Dynamics 365 Finance</a></li><li><a href="/platforms/d365-sales">Dynamics 365 Sales</a></li><li><a href="/platforms/d365-customer-service">Dynamics 365 Customer Service</a></li><li><a href="/platforms/d365-field-service">Dynamics 365 Field Service</a></li><li><a href="/platforms/d365-customer-insights">Dynamics 365 Customer Insights</a></li><li><a href="/platforms/d365-contact-center">Dynamics 365 Contact Center</a></li><li><a href="/platforms/d365-project-operations">Dynamics 365 Project Operations</a></li></ul></article><article className="platform-group"><div className="platform-group-head"><span className="platform-group-icon" aria-hidden="true"><svg><use href="#i-chart"></use></svg></span><h3>Data, AI &<br/>Automation</h3></div><p>Analytics, low-code applications and intelligent automation.</p><ul className="platform-clean-list"><li><a href="/platforms/power-platform">Microsoft Power Platform</a></li><li><a href="/platforms/microsoft-fabric">Microsoft Fabric</a></li></ul></article><article className="platform-group"><div className="platform-group-head"><span className="platform-group-icon" aria-hidden="true"><svg><use href="#i-cloud"></use></svg></span><h3>Cloud, Security &<br/>Infrastructure</h3></div><p>Scalable cloud foundations, secure endpoints and modern infrastructure.</p><ul className="platform-clean-list"><li><a href="/platforms/azure-cloud">Microsoft Azure Cloud</a></li><li><a href="/platforms/azure-virtual-desktop">Microsoft Azure Virtual Desktop</a></li><li><a href="/platforms/microsoft-defender">Microsoft Defender</a></li></ul></article></div><div className="platform-board-footer reveal"><p><b>Not sure where to begin?</b> We map the right platform to your business priorities before recommending a solution.</p><a className="link-more" href="#contact">Discuss your platform roadmap <svg><use href="#i-arrow-r"></use></svg></a></div></div></section>{/* ============================================================
-     6. WHAT WE DO — SIX SERVICE FAMILIES
-     ============================================================ */}<section className="section bg-paper" id="services"><div className="wrap"><div className="services-intro-row reveal"><div className="sec-head"><span className="eyebrow">What We Do</span><h2 className="h-sec wide">Six service areas. Every capability your technology function needs.</h2><p className="lede">Each category brings related services together under one accountable delivery team. Open a category to see the full scope, the business problem each service solves, and the specialists assigned to the work.</p></div><aside className="services-guidance"><b>One partner, not six vendors.</b>We assemble the right architects, specialists and delivery leads around your requirement while keeping one point of accountability.</aside></div><div className="service-catalog reveal"><details className="service-family" open><summary><span className="service-family-icon"><svg><use href="#i-strategy"></use></svg></span><span className="service-family-title"><b>Strategy & Transformation</b><span>5 capabilities</span></span><span className="service-family-summary">Roadmaps, AI readiness, licensing, organizational change and enterprise modernization.</span><span className="service-toggle" aria-hidden="true"></span></summary><div className="service-family-body"><div className="family-team"><svg><use href="#i-users"></use></svg><span><b>Core delivery team</b>Solution architects · Industry advisors · Business analysts · AI consultants · Change and adoption specialists</span></div><div className="service-subgrid"><article className="service-subitem"><h4><a href="/services/it-strategy-consulting">IT Strategy & Consulting</a></h4><p>A solution architect translates the business outcomes you want into the technology best suited to reach them — backed by industry experts with more than 40 years of combined experience in your sector.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Solution architect · Industry advisor · Business analyst</span></div><a className="link-more" href="/services/it-strategy-consulting">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/ai-readiness-copilot-enablement">AI Readiness & Copilot Enablement</a></h4><p>A team that stays on top of Copilot implementation and support. We help you work out what you need to make it succeed — before, during and after rollout — so you know the return before you commit the budget.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>AI consultant · Data & security lead · Adoption specialist</span></div><a className="link-more" href="/services/ai-readiness-copilot-enablement">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/microsoft-licensing-optimization">Microsoft Licensing & Optimization</a></h4><p>Pay for what you actually use. We review your agreements, remove overlapping licences and align your subscriptions to real usage ahead of each renewal date.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Licensing specialist · Procurement advisor</span></div><a className="link-more" href="/services/microsoft-licensing-optimization">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/organizational-change-management">Organizational Change Management</a></h4><p>Technology only pays off when people change how they work. We plan the communication, training and floor-walking support that makes a new way of working stick.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Change lead · Trainer · Communications specialist</span></div><a className="link-more" href="/services/organizational-change-management">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/enterprise-modernization">Enterprise Modernization</a></h4><p>Retire ageing systems on a schedule your business can absorb — without losing the data, the integrations or the hard-won process knowledge built into them.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Solution architect · Migration engineer · Business analyst</span></div><a className="link-more" href="/services/enterprise-modernization">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article></div></div></details><details className="service-family"><summary><span className="service-family-icon"><svg><use href="#i-shield"></use></svg></span><span className="service-family-title"><b>Managed IT & Security</b><span>6 capabilities</span></span><span className="service-family-summary">Day-to-day support, cybersecurity, cloud, hosting, business voice and endpoint operations.</span><span className="service-toggle" aria-hidden="true"></span></summary><div className="service-family-body"><div className="family-team"><svg><use href="#i-users"></use></svg><span><b>Core delivery team</b>Service desk · Security engineers · Cloud architects · Infrastructure, voice and endpoint specialists · Service delivery managers</span></div><div className="service-subgrid"><article className="service-subitem"><h4><a href="/services/managed-it">Managed IT</a></h4><p>Day-to-day support, patching and monitoring for your people, devices and servers — with response times agreed in writing and a named service manager who owns them.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Service desk · Systems engineer · Service delivery manager</span></div><a className="link-more" href="/services/managed-it">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/cybersecurity-identity-compliance">Cybersecurity, Identity & Compliance</a></h4><p>Protect your organization with identity management, threat defense and compliance controls — and the evidence trail auditors and insurers ask for.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Security engineer · Identity specialist · Compliance analyst</span></div><a className="link-more" href="/services/cybersecurity-identity-compliance">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/cloud-infrastructure">Cloud Infrastructure</a></h4><p>Design, migrate and manage secure, scalable cloud infrastructure — with the running costs modelled before you move, not discovered on the first invoice.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Cloud architect · Migration engineer · Cost analyst</span></div><a className="link-more" href="/services/cloud-infrastructure">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/data-center-hosting">Data Center Hosting</a></h4><p>Reliable, secure hosting for the critical business systems that aren't moving to public cloud yet — private, hybrid or a mix of both.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Infrastructure engineer · Network specialist · Monitoring desk</span></div><a className="link-more" href="/services/data-center-hosting">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/teams-calling-business-voice">Teams Calling & Business Voice</a></h4><p>Move your phone system into Microsoft Teams so calls, meetings and chat live in one place, on any device, on one bill.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Voice engineer · Telecom project manager</span></div><a className="link-more" href="/services/teams-calling-business-voice">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/endpoint-device-management">Endpoint & Device Management</a></h4><p>Enrol, secure and update every laptop, desktop and phone from one console — including getting a new starter fully set up before their first morning.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Endpoint engineer · Security analyst</span></div><a className="link-more" href="/services/endpoint-device-management">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article></div></div></details><details className="service-family"><summary><span className="service-family-icon"><svg><use href="#i-erp"></use></svg></span><span className="service-family-title"><b>Business Applications</b><span>8 capabilities</span></span><span className="service-family-summary">ERP, finance, project operations, CRM, customer service, contact center, field service and customer insights.</span><span className="service-toggle" aria-hidden="true"></span></summary><div className="service-family-body"><div className="family-team"><svg><use href="#i-users"></use></svg><span><b>Core delivery team</b>ERP and CRM consultants · Functional specialists · Solution architects · Data migration, workflow and adoption leads</span></div><div className="service-subgrid"><article className="service-subitem"><h4><a href="/services/enterprise-resource-platform">Enterprise Resource Platform</a></h4><p>Run finance, operations and supply chain on one connected platform instead of separate systems that quietly disagree with each other.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>ERP consultant · Solution architect · Data migration lead</span></div><a className="link-more" href="/services/enterprise-resource-platform">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/finance">Finance</a></h4><p>Close the books faster with automated reconciliation, approval workflows and reporting your auditors can follow without a phone call.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Finance consultant · Accounting analyst · Report developer</span></div><a className="link-more" href="/services/finance">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/project-operations">Project Operations</a></h4><p>Quote, resource, deliver and invoice projects in one system — with margin visible while there's still time to protect it.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Project operations consultant · Resourcing analyst</span></div><a className="link-more" href="/services/project-operations">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/sales-crm">Sales & CRM</a></h4><p>Give your sales team one reliable view of every account, opportunity and next step — and give leadership a forecast they can actually believe.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>CRM consultant · Sales process analyst · Adoption specialist</span></div><a className="link-more" href="/services/sales-crm">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/customer-service">Customer Service</a></h4><p>Handle cases across email, phone, chat and self-service portal with the full history, SLA clock and knowledge base in front of every agent.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Service consultant · Workflow developer</span></div><a className="link-more" href="/services/customer-service">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/contact-center">Contact Center</a></h4><p>Route, record and measure every customer conversation, with live queue visibility and quality insight your supervisors can act on the same day.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Contact center architect · Voice engineer · Reporting analyst</span></div><a className="link-more" href="/services/contact-center">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/field-service">Field Service</a></h4><p>Send the right technician with the right parts to the right job, and give them everything they need on site — with or without a signal.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Field service consultant · Mobility specialist · Scheduling analyst</span></div><a className="link-more" href="/services/field-service">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/customer-insights">Customer Insights</a></h4><p>Bring scattered customer data into one profile, then use it to time the next conversation well instead of guessing.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Data consultant · Marketing technologist</span></div><a className="link-more" href="/services/customer-insights">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article></div></div></details><details className="service-family"><summary><span className="service-family-icon"><svg><use href="#i-chart"></use></svg></span><span className="service-family-title"><b>Data, AI & Integration</b><span>2 capabilities</span></span><span className="service-family-summary">Trusted business intelligence and connected systems that eliminate duplicated work and fragmented data.</span><span className="service-toggle" aria-hidden="true"></span></summary><div className="service-family-body"><div className="family-team"><svg><use href="#i-users"></use></svg><span><b>Core delivery team</b>BI developers · Data engineers · Business analysts · Integration architects · API developers</span></div><div className="service-subgrid"><article className="service-subitem"><h4><a href="/services/business-intelligence-reporting">Business Intelligence & Reporting</a></h4><p>Turn raw data into dashboards and reports people act on — one agreed set of numbers, refreshed automatically, that everyone in the meeting trusts.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>BI developer · Data engineer · Business analyst</span></div><a className="link-more" href="/services/business-intelligence-reporting">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/enterprise-system-integration">Enterprise System Integration</a></h4><p>Connect disparate systems and data sources into one seamless workflow, so information stops being re-typed from one screen into another.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Integration architect · API developer · Data engineer</span></div><a className="link-more" href="/services/enterprise-system-integration">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article></div></div></details><details className="service-family"><summary><span className="service-family-icon"><svg><use href="#i-grid"></use></svg></span><span className="service-family-title"><b>Modern Work & Automation</b><span>3 capabilities</span></span><span className="service-family-summary">Microsoft 365, intranets, document management and workflow automation for more productive work.</span><span className="service-toggle" aria-hidden="true"></span></summary><div className="service-family-body"><div className="family-team"><svg><use href="#i-users"></use></svg><span><b>Core delivery team</b>Microsoft 365 and SharePoint consultants · Information architects · Security and adoption specialists · Power Platform developers</span></div><div className="service-subgrid"><article className="service-subitem"><h4><a href="/services/modern-workplace">Modern Workplace</a></h4><p>Enable secure, flexible and collaborative work with Microsoft 365 — properly configured, properly secured and properly explained to your people.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Microsoft 365 consultant · Security engineer · Adoption specialist</span></div><a className="link-more" href="/services/modern-workplace">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/intranet-portals-document-management">Intranet Portals & Document Management</a></h4><p>One place your people can actually find things — policies, forms, projects and files — with permissions that hold up under scrutiny.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>SharePoint consultant · Information architect</span></div><a className="link-more" href="/services/intranet-portals-document-management">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article><article className="service-subitem"><h4><a href="/services/business-process-automation">Business Process Automation</a></h4><p>Replace the spreadsheets, email chains and manual approvals that slow your team down, using the Power Platform tools already in your licence.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Power Platform developer · Process analyst</span></div><a className="link-more" href="/services/business-process-automation">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article></div></div></details><details className="service-family"><summary><span className="service-family-icon"><svg><use href="#i-staffing"></use></svg></span><span className="service-family-title"><b>Technology Talent</b><span>1 capability</span></span><span className="service-family-summary">Flexible access to vetted technology professionals for contract, contract-to-hire and permanent roles.</span><span className="service-toggle" aria-hidden="true"></span></summary><div className="service-family-body"><div className="family-team"><svg><use href="#i-users"></use></svg><span><b>Core delivery team</b>Technical recruiters · Delivery managers · Engineers who validate technical capability</span></div><div className="service-subgrid"><article className="service-subitem"><h4><a href="/services/it-staffing">IT Staffing</a></h4><p>Vetted, certified technology professionals for contract, contract-to-hire or permanent roles — screened by engineers who understand the work.</p><div className="subteam"><svg><use href="#i-users"></use></svg><span><b>Your team</b>Technical recruiter · Delivery manager</span></div><a className="link-more" href="/services/it-staffing">Explore this service <svg><use href="#i-arrow-r"></use></svg></a></article></div></div></details></div></div></section>{/* ============================================================
-     7. CLIENTS THAT TRUST US
-        Swap each .logo-ph span for: <img src="logos/name.svg" alt="Name">
-        Recommended: SVG or transparent PNG, ~200px wide, greyscale.
-     ============================================================ */}<section className="section bg-mist" id="clients"><div className="wrap"><div className="sec-head center reveal"><span className="eyebrow">Clients</span><h2 className="h-sec wide">Organizations that trust us with their technology</h2><p className="lede">From regulated enterprises to growing mid-market teams and nonprofits — the mix is deliberate, and it's why we understand more than one way of working.</p></div><div className="logos reveal"><div className="logo-cell"><span className="logo-ph">CLIENT LOGO</span></div><div className="logo-cell"><span className="logo-ph">CLIENT LOGO</span></div><div className="logo-cell"><span className="logo-ph">CLIENT LOGO</span></div><div className="logo-cell"><span className="logo-ph">CLIENT LOGO</span></div><div className="logo-cell"><span className="logo-ph">CLIENT LOGO</span></div><div className="logo-cell"><span className="logo-ph">CLIENT LOGO</span></div><div className="logo-cell"><span className="logo-ph">CLIENT LOGO</span></div><div className="logo-cell"><span className="logo-ph">CLIENT LOGO</span></div><div className="logo-cell"><span className="logo-ph">CLIENT LOGO</span></div><div className="logo-cell"><span className="logo-ph">CLIENT LOGO</span></div></div></div></section>{/* ============================================================
-     8. SUCCESS STORIES — DEMO CONTENT
-     ============================================================ */}<section className="section bg-paper" id="success-stories"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">Success Stories</span><h2 className="h-sec wide">Business outcomes, not just completed implementations</h2><p className="lede">These sample stories show how the section can communicate the challenge, the solution and the measurable result in language business and technology leaders can understand.</p></div><div className="success-grid"><article className="story-card reveal"><div className="story-top"><div className="story-kicker"><span className="story-industry">Healthcare</span><span className="demo-chip">Sample story</span></div><h3>Modernizing document access without disrupting patient services</h3><p className="story-summary">A regional healthcare organization replaced fragmented file shares with a governed SharePoint environment that made information easier to find and safer to manage.</p></div><div className="story-metrics"><div className="story-metric"><b>1.8 TB</b><span>Illustrative data migrated</span></div><div className="story-metric"><b>45%</b><span>Sample improvement in search time</span></div></div><div className="story-body"><h4>What changed</h4><ul className="story-outcomes"><li><svg><use href="#i-check"></use></svg><span>Department-based information architecture and consistent permissions.</span></li><li><svg><use href="#i-check"></use></svg><span>Migration planning, validation and user adoption delivered as one engagement.</span></li><li><svg><use href="#i-check"></use></svg><span>Clear governance for ownership, retention and future site growth.</span></li></ul><a className="link-more" href="#contact">View the sample story <svg><use href="#i-arrow-r"></use></svg></a></div></article><article className="story-card reveal"><div className="story-top"><div className="story-kicker"><span className="story-industry">Manufacturing</span><span className="demo-chip">Sample story</span></div><h3>Connecting finance and operations with Dynamics 365</h3><p className="story-summary">A growing manufacturer moved from disconnected accounting and operational processes to one platform for finance, inventory, purchasing and reporting.</p></div><div className="story-metrics"><div className="story-metric"><b>32%</b><span>Sample faster month-end close</span></div><div className="story-metric"><b>24%</b><span>Sample reduction in manual handoffs</span></div></div><div className="story-body"><h4>What changed</h4><ul className="story-outcomes"><li><svg><use href="#i-check"></use></svg><span>One source of truth for orders, inventory, purchasing and financial performance.</span></li><li><svg><use href="#i-check"></use></svg><span>Role-based workflows and approvals aligned to the organization's operating model.</span></li><li><svg><use href="#i-check"></use></svg><span>Executive reporting available without spreadsheet consolidation.</span></li></ul><a className="link-more" href="#contact">View the sample story <svg><use href="#i-arrow-r"></use></svg></a></div></article><article className="story-card reveal"><div className="story-top"><div className="story-kicker"><span className="story-industry">Professional Services</span><span className="demo-chip">Sample story</span></div><h3>Turning weekly reporting into an always-current executive view</h3><p className="story-summary">A services organization automated data preparation and introduced Power BI dashboards for pipeline, utilization, delivery performance and margin.</p></div><div className="story-metrics"><div className="story-metric"><b>4 hrs → 15 min</b><span>Sample reporting cycle</span></div><div className="story-metric"><b>1 view</b><span>Leadership source of truth</span></div></div><div className="story-body"><h4>What changed</h4><ul className="story-outcomes"><li><svg><use href="#i-check"></use></svg><span>Automated data refresh replaced repetitive weekly preparation.</span></li><li><svg><use href="#i-check"></use></svg><span>Common KPI definitions gave leaders one consistent view of performance.</span></li><li><svg><use href="#i-check"></use></svg><span>Drill-down reporting helped teams act before delivery or margin issues grew.</span></li></ul><a className="link-more" href="#contact">View the sample story <svg><use href="#i-arrow-r"></use></svg></a></div></article></div><p className="demo-disclaimer"><b>Demo content:</b> The organizations, measurements and outcomes above are illustrative placeholders. Replace them with verified client results and approved references before publishing the website.</p></div></section>{/* ============================================================
-     9. CLIENT TESTIMONIALS
-        To add one: copy a whole <figure class="quote"> block.
-        Fields = stars, quote text, initials, name, title, company.
-     ============================================================ */}<section className="section bg-navy" id="testimonials"><div className="wrap"><div className="sec-head reveal"><span className="eyebrow">Client Testimonials</span><h2 className="h-sec">See what our clients have to say</h2><p className="lede">Quality of work, speed of response, and technology that improves both the daily grind and the long-term picture.</p></div><div className="quote-grid"><figure className="quote reveal"><div className="quote-head"><div className="stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></div><span className="company-logo">Company Logo</span></div><blockquote>JJC Systems delivered beyond expectations. Their team is knowledgeable, responsive, and truly a partner.</blockquote><figcaption className="who"><span className="avatar" aria-hidden="true">DI</span><span className="who-meta"><b>Client Name</b><span>Director of IT · Healthcare Organization</span></span></figcaption></figure><figure className="quote reveal"><div className="quote-head"><div className="stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></div><span className="company-logo">Company Logo</span></div><blockquote>Their solutions have streamlined our operations and given us the confidence to scale for the future.</blockquote><figcaption className="who"><span className="avatar" aria-hidden="true">VO</span><span className="who-meta"><b>Client Name</b><span>VP of Operations · Manufacturing Company</span></span></figcaption></figure><figure className="quote reveal"><div className="quote-head"><div className="stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></div><span className="company-logo">Company Logo</span></div><blockquote>From implementation to ongoing support, JJC Systems has been a trusted advisor every step of the way.</blockquote><figcaption className="who"><span className="avatar" aria-hidden="true">CF</span><span className="who-meta"><b>Client Name</b><span>CIO · Financial Services Firm</span></span></figcaption></figure></div></div></section>{/* ============================================================
-     10. INSIGHTS — BLOGS, GUIDES, RESOURCES, CHECKLISTS & FAQS
-     ============================================================ */}<section className="section bg-paper" id="insights"><div className="wrap"><div className="sec-head reveal" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: '32px', maxWidth: 'none', flexWrap: 'wrap'}}><div style={{maxWidth: '700px'}}><span className="eyebrow">Insights</span><h2 className="h-sec wide">Practical guidance for better technology decisions</h2><p className="lede">Blogs, guides, resources, checklists and straightforward answers designed for business and technology leaders.</p></div><a className="btn btn-outline" href="#insights">View all resources <svg><use href="#i-arrow-r"></use></svg></a></div><div className="insights-grid"><a className="post reveal" href="#insights"><div className="post-img"><svg><use href="#i-ai"></use></svg></div><div className="post-body"><div className="post-meta"><span className="chip">Guide</span><span>9 min read</span></div><h3>A plain-English guide to Microsoft Copilot readiness</h3><p>The questions to answer about data, permissions, security and adoption before purchasing or expanding Copilot licences.</p><span className="link-more">Read the guide <svg><use href="#i-arrow-r"></use></svg></span></div></a><a className="post reveal" href="#insights"><div className="post-img"><svg><use href="#i-chart"></use></svg></div><div className="post-body"><div className="post-meta"><span className="chip">Blog</span><span>5 min read</span></div><h3>Why reporting projects fail before the dashboard is built</h3><p>How inconsistent definitions, unclear ownership and disconnected source systems undermine otherwise well-designed reporting.</p><span className="link-more">Read the article <svg><use href="#i-arrow-r"></use></svg></span></div></a><a className="post reveal" href="#insights"><div className="post-img"><svg><use href="#i-docs"></use></svg></div><div className="post-body"><div className="post-meta"><span className="chip">Resource</span><span>Download</span></div><h3>Technology planning worksheet for the next 12 months</h3><p>A structured template for documenting business priorities, current constraints, planned investments, dependencies and success measures.</p><span className="link-more">Open the resource <svg><use href="#i-arrow-r"></use></svg></span></div></a><a className="post reveal" href="#insights"><div className="post-img"><svg><use href="#i-check"></use></svg></div><div className="post-body"><div className="post-meta"><span className="chip">Checklist</span><span>12 items</span></div><h3>SharePoint migration readiness checklist</h3><p>Review ownership, permissions, file volume, unsupported content, retention requirements, user communication and cutover planning.</p><span className="link-more">View the checklist <svg><use href="#i-arrow-r"></use></svg></span></div></a><a className="post reveal" href="#insights"><div className="post-img"><svg><use href="#i-chats"></use></svg></div><div className="post-body"><div className="post-meta"><span className="chip">FAQ</span><span>6 answers</span></div><h3>What should you expect from an initial technology consultation?</h3><p>Clear answers about discovery, access requirements, estimates, timelines, responsibilities and what happens before any work begins.</p><span className="link-more">Read the FAQs <svg><use href="#i-arrow-r"></use></svg></span></div></a></div></div></section>{/* ============================================================
-     11. CONTACT
-     ============================================================ */}<section className="section bg-mist" id="contact"><div className="wrap"><div className="sec-head center reveal"><span className="eyebrow">Get In Touch</span><h2 className="h-sec wide">Tell us what you're trying to fix</h2><p className="lede">No sales script and no obligation. Describe the situation in your own words and we'll tell you honestly whether we're the right people for it.</p></div><div className="contact-grid reveal"><aside className="contact-aside"><h2>What happens next</h2><p>Three steps, usually inside a week.</p><ol className="next-steps"><li><span className="ns-n">1</span><p>We read your message and route it to the specialist who knows the area — not a general inbox.</p></li><li><span className="ns-n">2</span><p>A 30-minute call to understand your situation properly. No pitch deck.</p></li><li><span className="ns-n">3</span><p>A written recommendation with clear scope, timeline and a fixed price.</p></li></ol><ul className="contact-facts"><li><svg><use href="#i-mail"></use></svg><span><b>Email</b>hello@jjcsystems.com</span></li><li><svg><use href="#i-phone"></use></svg><span><b>Phone</b>+1 (000) 000-0000</span></li><li><svg><use href="#i-pin"></use></svg><span><b>Head office</b>Street address, Chicago, IL</span></li><li><svg><use href="#i-clock"></use></svg><span><b>Support hours</b>24/7 global coverage</span></li></ul></aside><div className="form-panel">{/* Wire the action/method to your CRM, Power Automate flow or form handler. */}<form id="contactForm" noValidate><div className="form-row"><div className="field"><label htmlFor="fname">First name <span className="req">*</span></label><input id="fname" name="fname" type="text" autoComplete="given-name" required/><span className="err">Please enter your first name.</span></div><div className="field"><label htmlFor="lname">Last name <span className="req">*</span></label><input id="lname" name="lname" type="text" autoComplete="family-name" required/><span className="err">Please enter your last name.</span></div></div><div className="form-row"><div className="field"><label htmlFor="email">Work email <span className="req">*</span></label><input id="email" name="email" type="email" autoComplete="email" required/><span className="err">Please enter a valid email address.</span></div><div className="field"><label htmlFor="phone">Phone</label><input id="phone" name="phone" type="tel" autoComplete="tel"/></div></div><div className="form-row"><div className="field"><label htmlFor="company">Company <span className="req">*</span></label><input id="company" name="company" type="text" autoComplete="organization" required/><span className="err">Please enter your company name.</span></div><div className="field"><label htmlFor="size">Organization size</label><select id="size" name="size"><option value="">Select one</option><option>1–50 people</option><option>51–250 people</option><option>251–1,000 people</option><option>1,000+ people</option></select></div></div><div className="field"><label htmlFor="interest">What can we help with? <span className="req">*</span></label><select id="interest" name="interest" required><option value="">Select one</option><option>IT strategy & consulting</option><option>AI readiness & Copilot enablement</option><option>Managed IT & security</option><option>Cloud & infrastructure</option><option>Dynamics 365 business applications</option><option>Data, reporting & integration</option><option>Modern workplace & automation</option><option>IT staffing</option><option>Something else / not sure yet</option></select><span className="err">Please choose an option.</span></div><div className="field"><label htmlFor="message">Tell us about your situation <span className="req">*</span></label><textarea id="message" name="message" required placeholder="What's happening today, and what would a good outcome look like?"></textarea><span className="err">Please add a short description.</span></div><label className="consent" htmlFor="consent"><input id="consent" name="consent" type="checkbox" required/><span>I agree that JJC Systems may contact me about my enquiry.</span></label><button className="btn btn-primary" type="submit">Send your message <svg><use href="#i-arrow-r"></use></svg></button><p className="form-note">We reply to every message within one business day.</p></form><div className="form-done" id="formDone" role="status"><div className="ok"><svg><use href="#i-check"></use></svg></div><h3>Message sent</h3><p>Thanks — we've got it. A specialist will be in touch within one business day.</p></div></div></div></div></section>
-    </main>
-  );
+   const { data } = useGetCategoryQuery()
+   // const { data: testimonialData } = useGetTestimonialsQuery()
+   const { data: testimonialData } = useGetTestimonialsQuery();
+
+   const testimonials = testimonialData?.data?.items || [];
+
+   console.log(testimonials)
+
+   const industriesData = data?.data?.find(
+      (item) => item.name === "Industries"
+   );
+
+   const platformsData = data?.data?.find(
+      (item) => item.name === "Platforms"
+   );
+
+   const platforms = platformsData?.subcategories || [];
+
+   const industries = industriesData?.subcategories || [];
+   return (
+      <main id="main" ref={mainRef}>
+         {/* Hero Section */}
+         <section
+            className="hero"
+            id="top"
+            aria-roledescription="carousel"
+            aria-label="JJC Systems highlights"
+         >
+            <div className="slides" id="slides">
+               {heroSlides.map((slide, index) => (
+                  <article
+                     key={index}
+                     className={`slide ${index === 0 ? 'active' : ''}`}
+                     role="group"
+                     aria-roledescription="slide"
+                     aria-label={`${index + 1} of ${heroSlides.length}: ${slide.eyebrow}`}
+                  >
+                     <div className="slide-media">
+                        <img
+                           src={slide.image}
+                           alt={slide.imageAlt}
+                           loading={index === 0 ? "eager" : "lazy"}
+                        />
+                     </div>
+                     <div className="slide-grid">
+                        <div className="slide-copy">
+                           <span className="eyebrow">{slide.eyebrow}</span>
+                           <h1>{slide.title}</h1>
+                           <p>{slide.description}</p>
+                           <a className="btn btn-primary" href={slide.ctaLink}>
+                              {slide.ctaText}{" "}
+                              <svg>
+                                 <use href="#i-arrow-r"></use>
+                              </svg>
+                           </a>
+                        </div>
+                     </div>
+                  </article>
+               ))}
+            </div>
+            <div className="hero-ui">
+               <button className="arrow" id="prev" aria-label="Previous slide">
+                  <svg>
+                     <use href="#i-arrow-l"></use>
+                  </svg>
+               </button>
+               <div className="dots" id="dots" aria-label="Choose slide"></div>
+               <button className="arrow" id="next" aria-label="Next slide">
+                  <svg>
+                     <use href="#i-arrow-r"></use>
+                  </svg>
+               </button>
+            </div>
+         </section>
+
+         {/* Why Us Section */}
+         <section className="section bg-paper" id="why">
+            <div className="wrap">
+               <div className="why-intro reveal">
+                  <span className="eyebrow">Why JJC Systems</span>
+                  <h2 className="why-statement">
+                     We are the <span className="accent">single partner</span> behind
+                     everything Microsoft in your business — Dynamics 365, Azure and
+                     Microsoft 365 — and behind{" "}
+                     <span className="accent">
+                        the wider technology your people depend on every day.
+                     </span>
+                  </h2>
+               </div>
+               <div className="why-grid">
+                  {whyCards.map((card, index) => (
+                     <article key={index} className="why-card reveal">
+                        <div className="icon-tile">
+                           <svg>
+                              <use href={card.icon}></use>
+                           </svg>
+                        </div>
+                        <h3>{card.title}</h3>
+                        <p>{card.description}</p>
+                     </article>
+                  ))}
+               </div>
+               <div className="partner-model">
+                  <aside
+                     className="partner-visual reveal"
+                     aria-label="One team and one point of contact"
+                  >
+                     <div className="hex-shell">
+                        <div className="hex-inner">
+                           <svg>
+                              <use href="#i-shield"></use>
+                           </svg>
+                           <strong>
+                              One team.
+                              <br />
+                              One point of contact.
+                           </strong>
+                           <ul>
+                              <li>Applications</li>
+                              <li>Infrastructure</li>
+                              <li>Security & Monitoring</li>
+                              <li>Adoption & Procurement</li>
+                           </ul>
+                        </div>
+                     </div>
+                  </aside>
+                  <div className="partner-details">
+                     {partnerRows.map((row, index) => (
+                        <article key={index} className="partner-row reveal">
+                           <div className="partner-icon">
+                              <svg>
+                                 <use href={row.icon}></use>
+                              </svg>
+                           </div>
+                           <div>
+                              <span className="partner-tag">{row.tag}</span>
+                              <h3>{row.title}</h3>
+                              <p>{row.description}</p>
+                           </div>
+                        </article>
+                     ))}
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         {/* Benefits Section */}
+         <section className="section bg-navy">
+            <div className="wrap">
+               <div className="sec-head reveal">
+                  <span className="eyebrow">What You Get</span>
+                  <h2 className="h-sec wide">
+                     The difference shows up in your day-to-day.
+                  </h2>
+                  <p className="lede">
+                     Five things our clients tell us changed once we started working together.
+                  </p>
+               </div>
+               <div className="benefits">
+                  {benefits.map((benefit, index) => (
+                     <div key={index} className="benefit reveal">
+                        <h3>{benefit.title}</h3>
+                        <p>{benefit.description}</p>
+                     </div>
+                  ))}
+               </div>
+            </div>
+         </section>
+
+         {/* Industries Section */}
+         <section className="section bg-paper" id="industries">
+            <div className="wrap">
+               <div className="sec-head reveal">
+                  <span className="eyebrow">Industries</span>
+                  <h2 className="h-sec">
+                     Industry and business first. Our custom solutions prove it.
+                  </h2>
+                  <p className="lede">
+                     We don't lead with a product list. We start with how your industry
+                     actually runs — its deadlines, its regulators, its reporting, the
+                     way work moves between teams — and build the technology to fit it.
+                  </p>
+               </div>
+               <p style={{ margin: "-14px 0 30px" }}>
+                  <a className="link-more" href="/industries">
+                     Or explore all 11 industries in detail{" "}
+                     <svg>
+                        <use href="#i-arrow-r"></use>
+                     </svg>
+                  </a>
+               </p>
+               <div className="ind-cols">
+                  {industries.map((category) => (
+                     <div key={category._id} className="reveal">
+                        <h3 className="rule-head">
+                           {category.name}
+                        </h3>
+
+                        <ul className="ind-list">
+                           {category.items.map((item) => (
+                              <li key={item._id}>
+                                 <Link to={`/industries/${item.slug}`}>
+                                    {item.name}
+                                 </Link>
+                              </li>
+                           ))}
+                        </ul>
+                     </div>
+                  ))}
+               </div>
+            </div>
+         </section>
+
+         {/* Solutions Section */}
+         <section className="section bg-mist" id="solutions">
+            <div className="wrap">
+               <div className="sec-head reveal">
+                  <span className="eyebrow">Custom Solutions</span>
+                  <h2 className="h-sec">
+                     Built on Dynamics 365. Measured in business outcomes.
+                  </h2>
+                  <p className="lede">
+                     Our solutions run inside Microsoft Dynamics 365 Business Applications
+                     and the Office tools your teams already use every day. There's no new
+                     system to learn and no separate login to remember — which is why
+                     adoption stops being a change programme and starts being a Tuesday.
+                  </p>
+               </div>
+               <div className="grid g-3">
+                  {solutions.cards.map((sol, index) => (
+                     <div key={index} className="why-card reveal in">
+                        <div className="icon-tile">
+                           <svg>
+                              <use href={sol.icon}></use>
+                           </svg>
+                        </div>
+                        <span className="sol-tag">{sol.tag}</span>
+                        <h3>{sol.title}</h3>
+                        <p>{sol.description}</p>
+                     </div>
+                  ))}
+               </div>
+               <div className="process reveal">
+                  {solutions.process.map((step, index) => (
+                     <div key={index} className="step">
+                        <div className="step-n">{step.number}</div>
+                        <h4>{step.title}</h4>
+                        <p>{step.description}</p>
+                     </div>
+                  ))}
+               </div>
+               {/* <div className="sol-note reveal">
+                  <svg>
+                     <use href="#i-check"></use>
+                  </svg>
+                  <p>
+                     <b></b>
+                  </p>
+               </div> */}
+
+               <div className="platform-board-footer reveal">
+                  <p>
+                     <b>Every solution ships complete.</b>Fixed-price implementation,
+                     data migration from your current systems, integration with the tools
+                     you're keeping, and adoption training for every user — not just the
+                     project team.
+                  </p>
+                  <a className="link-more" href="#contact">
+                     Discuss your platform roadmap{" "}
+                     <svg>
+                        <use href="#i-arrow-r"></use>
+                     </svg>
+                  </a>
+               </div>
+            </div>
+         </section>
+
+         {/* Platforms Section */}
+         <section className="section platforms-section" id="platforms">
+            <div className="wrap">
+               <div className="platforms-intro reveal">
+                  <div className="sec-head">
+                     <span className="eyebrow">Platforms</span>
+                     <h2 className="h-sec">One connected Microsoft ecosystem</h2>
+                  </div>
+                  <p className="platforms-summary">
+                     We help organizations select, implement and support the platforms
+                     that power modern work, business operations, data and cloud
+                     infrastructure — with one accountable team across the entire
+                     environment.
+                  </p>
+               </div>
+               <p style={{ margin: "-14px 0 30px" }}>
+                  <a className="link-more" href="/platforms">
+                     Or explore all 17 platforms in detail{" "}
+                     <svg>
+                        <use href="#i-arrow-r"></use>
+                     </svg>
+                  </a>
+               </p>
+               <div
+                  className="platform-board reveal"
+                  aria-label="Microsoft platforms supported by JJC Systems"
+               >
+                  {platforms.map((platform) => (
+                     <article key={platform._id} className="platform-group">
+                        <div className="platform-group-head">
+                           {/* <span
+                              className="platform-group-icon"
+                              aria-hidden="true"
+                           >
+                              <svg>
+                                 <use href={`#${platform.icon}`}></use>
+                              </svg>
+                           </span> */}
+
+                           <h3>{platform.name}</h3>
+                        </div>
+
+                        <p>{platform.description}</p>
+
+                        <ul className="platform-clean-list">
+                           {platform.items?.map((item) => (
+                              <li key={item._id}>
+                                 <Link to={`/platforms/${item.slug}`}>
+                                    {item.name}
+                                 </Link>
+                              </li>
+                           ))}
+                        </ul>
+                     </article>
+                  ))}
+               </div>
+               <div className="platform-board-footer reveal">
+                  <p>
+                     <b>Not sure where to begin?</b> We map the right platform to your
+                     business priorities before recommending a solution.
+                  </p>
+                  <a className="link-more" href="#contact">
+                     Discuss your platform roadmap{" "}
+                     <svg>
+                        <use href="#i-arrow-r"></use>
+                     </svg>
+                  </a>
+               </div>
+            </div>
+         </section>
+
+         {/* Services Section */}
+         <section className="section bg-paper" id="services">
+            <div className="wrap">
+               <div className="services-intro-row reveal">
+                  <div className="sec-head">
+                     <span className="eyebrow">What We Do</span>
+                     <h2 className="h-sec wide">
+                        Six service areas. Every capability your technology function needs.
+                     </h2>
+                     <p className="lede">
+                        Each category brings related services together under one accountable
+                        delivery team. Open a category to see the full scope, the business
+                        problem each service solves, and the specialists assigned to the work.
+                     </p>
+                  </div>
+                  <aside className="services-guidance">
+                     <b>One partner, not six vendors.</b>We assemble the right architects,
+                     specialists and delivery leads around your requirement while keeping
+                     one point of accountability.
+                  </aside>
+               </div>
+               <div className="service-catalog reveal">
+                  {serviceFamilies.map((family, index) => (
+                     <details
+                        key={index}
+                        className="service-family"
+                        open={index === 0}
+                     >
+                        <summary>
+                           <span className="service-family-icon">
+                              <svg>
+                                 <use href={family.icon}></use>
+                              </svg>
+                           </span>
+                           <span className="service-family-title">
+                              <b>{family.title}</b>
+                              <span>{family.capabilities} capabilities</span>
+                           </span>
+                           <span className="service-family-summary">
+                              {family.summary}
+                           </span>
+                           <span className="service-toggle" aria-hidden="true"></span>
+                        </summary>
+                        <div className="service-family-body">
+                           {/* <div className="family-team">
+                              <svg>
+                                 <use href="#i-users"></use>
+                              </svg>
+                              <span>
+                                 <b>Core delivery team</b>
+                                 {family.team}
+                              </span>
+                           </div> */}
+                           <div className="service-subgrid">
+                              {family.services.map((service, idx) => (
+                                 <article key={idx} className="service-subitem">
+                                    <h4>
+                                       <a href={service.link}>{service.title}</a>
+                                    </h4>
+                                    <p>{service.description}</p>
+                                    <div className="subteam">
+                                       <svg>
+                                          <use href="#i-users"></use>
+                                       </svg>
+                                       <span>
+                                          <b>Your team</b>
+                                          {service.team}
+                                       </span>
+                                    </div>
+                                    <a className="link-more" href={service.link}>
+                                       Explore this service{" "}
+                                       <svg>
+                                          <use href="#i-arrow-r"></use>
+                                       </svg>
+                                    </a>
+                                 </article>
+                              ))}
+                           </div>
+                        </div>
+                     </details>
+                  ))}
+               </div>
+            </div>
+         </section>
+
+         {/* Clients Section */}
+         <section className="section bg-mist" id="clients">
+            <div className="wrap">
+               <div className="sec-head center reveal">
+                  <span className="eyebrow">Clients</span>
+                  <h2 className="h-sec wide">
+                     Organizations that trust us with their technology
+                  </h2>
+                  <p className="lede">
+                     From regulated enterprises to growing mid-market teams and nonprofits —
+                     the mix is deliberate, and it's why we understand more than one way of
+                     working.
+                  </p>
+               </div>
+               <div className="logos reveal">
+                  {clientLogo?.map((logo, index) => (
+                     <div key={index} className="logo-cell">
+                        {logo.image ? (
+                           <img src={logo.image} alt={logo.alt} />
+                        ) : (
+                           <span className="logo-ph">{logo.placeholder}</span>
+                        )}
+                     </div>
+                  ))}
+               </div>
+            </div>
+         </section>
+
+         {/* Success Stories Section */}
+         <section className="section bg-paper" id="success-stories">
+            <div className="wrap">
+               <div className="sec-head reveal">
+                  <span className="eyebrow">Success Stories</span>
+                  <h2 className="h-sec wide">
+                     Business outcomes, not just completed implementations
+                  </h2>
+                  <p className="lede">
+                     These sample stories show how the section can communicate the challenge,
+                     the solution and the measurable result in language business and technology
+                     leaders can understand.
+                  </p>
+               </div>
+               <div className="success-grid">
+                  {successStories.map((story, index) => (
+                     <article key={index} className="story-card reveal">
+                        <div className="story-top">
+                           <div className="story-kicker">
+                              <span className="story-industry">{story.industry}</span>
+                              <span className="demo-chip">Sample story</span>
+                           </div>
+                           <h3>{story.title}</h3>
+                           <p className="story-summary">{story.summary}</p>
+                        </div>
+                        <div className="story-metrics">
+                           {story.metrics.map((metric, idx) => (
+                              <div key={idx} className="story-metric">
+                                 <b>{metric.value}</b>
+                                 <span>{metric.label}</span>
+                              </div>
+                           ))}
+                        </div>
+                        <div className="story-body">
+                           <h4>What changed</h4>
+                           <ul className="story-outcomes">
+                              {story.outcomes.map((outcome, idx) => (
+                                 <li key={idx}>
+                                    <svg>
+                                       <use href="#i-check"></use>
+                                    </svg>
+                                    <span>{outcome}</span>
+                                 </li>
+                              ))}
+                           </ul>
+                           <a className="link-more" href="#contact">
+                              View the sample story{" "}
+                              <svg>
+                                 <use href="#i-arrow-r"></use>
+                              </svg>
+                           </a>
+                        </div>
+                     </article>
+                  ))}
+               </div>
+               <p className="demo-disclaimer">
+                  <b>Demo content:</b> The organizations, measurements and outcomes above are
+                  illustrative placeholders. Replace them with verified client results and
+                  approved references before publishing the website.
+               </p>
+            </div>
+         </section>
+
+         {/* Testimonials Section */}
+         <section className="section bg-navy" id="testimonials">
+            <div className="wrap">
+               <div className="sec-head reveal">
+                  <span className="eyebrow">Client Testimonials</span>
+                  <h2 className="h-sec">See what our clients have to say</h2>
+                  <p className="lede">
+                     Quality of work, speed of response, and technology that improves both the
+                     daily grind and the long-term picture.
+                  </p>
+               </div>
+               <div className="quote-grid">
+                  {testimonials.map((testimonial) => (
+                     <figure key={testimonial._id} className="quote reveal">
+                        <div className="quote-head">
+                           <div
+                              className="stars"
+                              role="img"
+                              aria-label="Rated 5 out of 5"
+                           >
+                              {[...Array(5)].map((_, index) => (
+                                 <svg key={index}>
+                                    <use href="#i-star"></use>
+                                 </svg>
+                              ))}
+                           </div>
+
+                           <span className="company-logo">
+                              {testimonial.subtitle?.split(",")[1]?.trim()}
+                           </span>
+                        </div>
+
+                        <blockquote>
+                           {testimonial.description}
+                        </blockquote>
+
+                        <figcaption className="who">
+                           <span className="avatar" aria-hidden="true">
+                              {testimonial.title
+                                 ?.split(" ")
+                                 .map((word) => word[0])
+                                 .join("")
+                                 .substring(0, 2)}
+                           </span>
+
+                           <span className="who-meta">
+                              <b>{testimonial.title}</b>
+                              <span>{testimonial.subtitle}</span>
+                           </span>
+                        </figcaption>
+                     </figure>
+                  ))}
+               </div>
+            </div>
+         </section>
+
+         {/* Insights Section */}
+         <section className="section bg-paper" id="insights">
+            <div className="wrap">
+               <div
+                  className="sec-head reveal"
+                  style={{
+                     display: "flex",
+                     justifyContent: "space-between",
+                     alignItems: "flex-end",
+                     gap: "32px",
+                     maxWidth: "none",
+                     flexWrap: "wrap",
+                  }}
+               >
+                  <div style={{ maxWidth: "700px" }}>
+                     <span className="eyebrow">Insights</span>
+                     <h2 className="h-sec wide">
+                        Practical guidance for better technology decisions
+                     </h2>
+                     <p className="lede">
+                        Blogs, guides, resources, checklists and straightforward answers
+                        designed for business and technology leaders.
+                     </p>
+                  </div>
+                  <a className="btn btn-outline" href="#insights">
+                     View all resources{" "}
+                     <svg>
+                        <use href="#i-arrow-r"></use>
+                     </svg>
+                  </a>
+               </div>
+               <div className="insights-grid">
+                  {insights.map((post, index) => (
+                     <a key={index} className="post reveal" href={post.link}>
+                        <div className="post-img">
+                           <svg>
+                              <use href={post.icon}></use>
+                           </svg>
+                        </div>
+                        <div className="post-body">
+                           <div className="post-meta">
+                              <span className="chip">{post.type}</span>
+                              <span>{post.meta}</span>
+                           </div>
+                           <h3>{post.title}</h3>
+                           <p>{post.description}</p>
+                           <span className="link-more">
+                              {post.cta}{" "}
+                              <svg>
+                                 <use href="#i-arrow-r"></use>
+                              </svg>
+                           </span>
+                        </div>
+                     </a>
+                  ))}
+               </div>
+            </div>
+         </section>
+
+         {/* Contact Section */}
+         <section className="section bg-mist" id="contact">
+            <div className="wrap">
+               <div className="sec-head center reveal">
+                  <span className="eyebrow">Get In Touch</span>
+                  <h2 className="h-sec wide">Tell us what you're trying to fix</h2>
+                  <p className="lede">
+                     No sales script and no obligation. Describe the situation in your own
+                     words and we'll tell you honestly whether we're the right people for it.
+                  </p>
+               </div>
+               <div className="contact-grid reveal">
+                  <aside className="contact-aside">
+                     <h2>What happens next</h2>
+                     <p>Three steps, usually inside a week.</p>
+                     <ol className="next-steps">
+                        {contactInfo.steps.map((step, index) => (
+                           <li key={index}>
+                              <span className="ns-n">{index + 1}</span>
+                              <p>{step}</p>
+                           </li>
+                        ))}
+                     </ol>
+                     <ul className="contact-facts">
+                        {contactInfo.contactDetails.map((detail, index) => (
+                           <li key={index}>
+                              <svg>
+                                 <use href={detail.icon}></use>
+                              </svg>
+                              <span dangerouslySetInnerHTML={{ __html: detail.text }} />
+                           </li>
+                        ))}
+                     </ul>
+                  </aside>
+                  <div className="form-panel">
+                     <form id="contactForm" noValidate>
+                        <div className="form-row">
+                           <div className="field">
+                              <label htmlFor="fname">
+                                 First name <span className="req">*</span>
+                              </label>
+                              <input
+                                 id="fname"
+                                 name="fname"
+                                 type="text"
+                                 autoComplete="given-name"
+                                 required
+                              />
+                              <span className="err">Please enter your first name.</span>
+                           </div>
+                           <div className="field">
+                              <label htmlFor="lname">
+                                 Last name <span className="req">*</span>
+                              </label>
+                              <input
+                                 id="lname"
+                                 name="lname"
+                                 type="text"
+                                 autoComplete="family-name"
+                                 required
+                              />
+                              <span className="err">Please enter your last name.</span>
+                           </div>
+                        </div>
+                        <div className="form-row">
+                           <div className="field">
+                              <label htmlFor="email">
+                                 Work email <span className="req">*</span>
+                              </label>
+                              <input
+                                 id="email"
+                                 name="email"
+                                 type="email"
+                                 autoComplete="email"
+                                 required
+                              />
+                              <span className="err">Please enter a valid email address.</span>
+                           </div>
+                           <div className="field">
+                              <label htmlFor="phone">Phone</label>
+                              <input
+                                 id="phone"
+                                 name="phone"
+                                 type="tel"
+                                 autoComplete="tel"
+                              />
+                           </div>
+                        </div>
+                        <div className="form-row">
+                           <div className="field">
+                              <label htmlFor="company">
+                                 Company <span className="req">*</span>
+                              </label>
+                              <input
+                                 id="company"
+                                 name="company"
+                                 type="text"
+                                 autoComplete="organization"
+                                 required
+                              />
+                              <span className="err">Please enter your company name.</span>
+                           </div>
+                           <div className="field">
+                              <label htmlFor="size">Organization size</label>
+                              <select id="size" name="size">
+                                 <option value="">Select one</option>
+                                 {contactInfo.organizationSizes.map((size, idx) => (
+                                    <option key={idx}>{size}</option>
+                                 ))}
+                              </select>
+                           </div>
+                        </div>
+                        <div className="field">
+                           <label htmlFor="interest">
+                              What can we help with? <span className="req">*</span>
+                           </label>
+                           <select id="interest" name="interest" required>
+                              <option value="">Select one</option>
+                              {contactInfo.interests.map((interest, idx) => (
+                                 <option key={idx}>{interest}</option>
+                              ))}
+                           </select>
+                           <span className="err">Please choose an option.</span>
+                        </div>
+                        <div className="field">
+                           <label htmlFor="message">
+                              Tell us about your situation <span className="req">*</span>
+                           </label>
+                           <textarea
+                              id="message"
+                              name="message"
+                              required
+                              placeholder="What's happening today, and what would a good outcome look like?"
+                           ></textarea>
+                           <span className="err">Please add a short description.</span>
+                        </div>
+                        <label className="consent" htmlFor="consent">
+                           <input id="consent" name="consent" type="checkbox" required />
+                           <span>
+                              I agree that JJC Systems may contact me about my enquiry.
+                           </span>
+                        </label>
+                        <button className="btn btn-primary" type="submit">
+                           Send your message{" "}
+                           <svg>
+                              <use href="#i-arrow-r"></use>
+                           </svg>
+                        </button>
+                        <p className="form-note">
+                           We reply to every message within one business day.
+                        </p>
+                     </form>
+                     <div className="form-done" id="formDone" role="status">
+                        <div className="ok">
+                           <svg>
+                              <use href="#i-check"></use>
+                           </svg>
+                        </div>
+                        <h3>Message sent</h3>
+                        <p>
+                           Thanks — we've got it. A specialist will be in touch within one
+                           business day.
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </main>
+   );
 }

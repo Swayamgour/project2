@@ -1,12 +1,316 @@
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useMemo } from "react";
+import styles from "./Footer.module.css";
+import logo from "../assets/logo1.png";
+import mspAllianceBadge from "../assets/MSPAlliance-International-Association-of-Cloud-and-Managed-Service-Providers-1.png";
+import bbbBadge from "../assets/BBB-Accrediation-3.png";
+import upCityBadge from "../assets/Up-City-Award-Best-IL-2023-Winner-1.png";
+import jjcBadge from "../assets/JJC-Badge-2.png";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { ChevronRight } from "lucide-react";
+import { useGetCategoryQuery } from '../redux/api'; // API import
 
-export default function Footer() {
-  useEffect(() => {
-    const yr = document.getElementById("yr");
-    if (yr) yr.textContent = new Date().getFullYear();
-  }, []);
+const COMPANY_LINKS = [
+  { label: "About Us", to: "/about-us" },
+  { label: "Team", to: "/team" },
+  { label: "Locations", to: "/contact" },
+  { label: "Partners", to: "/partners" },
+  { label: "Careers", to: "/careers" },
+];
+
+const SOCIAL_LINKS = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/jjc-systems?original_referer=https%3A%2F%2Fjjcsystems.com%2F",
+    Icon: FaLinkedinIn,
+  },
+  {
+    label: "Twitter", href: "https://twitter.com/JJCSystems",
+    Icon: FaTwitter
+  },
+  {
+    label: "FacebookIcon",
+    href: "https://www.facebook.com/people/JJC-Systems-Computer-Services-Azure-Intune/100089050985358/",
+    Icon: FaFacebookF,
+  },
+  {
+    label: "Instagram", href: "https://www.instagram.com/jjcsystems/",
+    Icon: FaInstagram
+  },
+];
+
+const Footer = () => {
+  // API se data fetch karo
+  const { data, isLoading, error } = useGetCategoryQuery();
+
+  // Helper function to render links with "View All"
+  const renderLinksWithViewAll = (links, viewAllPath, viewAllLabel = "View All") => {
+    if (!links || links.length === 0) {
+      return <ul><li>No items available</li></ul>;
+    }
+
+    const firstSix = links.slice(0, 6);
+    const hasMore = links.length > 6;
+
+    return (
+      <ul>
+        {firstSix.map((link) => (
+          <li key={link.slug || link.label}>
+            <Link to={link.to || link.path || `/${link.slug}`}>
+              {link.label || link.name}
+            </Link>
+          </li>
+        ))}
+        {hasMore && (
+          <li className={styles.viewAllLink}>
+            <Link to={viewAllPath}>
+              {viewAllLabel} <ChevronRight size={14} />
+            </Link>
+          </li>
+        )}
+      </ul>
+    );
+  };
+
+  // API data se footer links prepare karo
+  const footerData = useMemo(() => {
+    if (!data?.data) {
+      return {
+        services: [],
+        microsoftSolutions: [],
+        ourFields: [],
+      };
+    }
+
+    // Services category (slug: "services")
+    const servicesCategory = data.data.find(cat => cat.slug === "services");
+
+    // Platforms category (slug: "platforms") - Microsoft Solutions
+    const platformsCategory = data.data.find(cat => cat.slug === "platforms");
+
+    // Industries category (slug: "industries") - Our Fields
+    const industriesCategory = data.data.find(cat => cat.slug === "industries");
+
+    // Transform subcategory items into links
+    const transformItems = (items, categorySlug) => {
+      if (!items) return [];
+      return items.flatMap(sub =>
+        sub.items?.map(item => ({
+          label: item.name,
+          slug: item.slug,
+          to: `/${categorySlug}/${item.slug}`,
+          path: `/${categorySlug}/${item.slug}`,
+        })) || []
+      );
+    };
+
+    return {
+      services: transformItems(servicesCategory?.subcategories, "services"),
+      microsoftSolutions: transformItems(platformsCategory?.subcategories, "platforms"),
+      ourFields: transformItems(industriesCategory?.subcategories, "industries"),
+    };
+  }, [data]);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    const email = e.target.elements["subscription-email"].value;
+    console.log("Subscribe email:", email);
+  };
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <footer className={styles.footer}>
+        <div className="wrap">
+          <div className={styles.footerBottom}>
+            <div className={styles.container}>
+              <p>Loading footer content...</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    );
+  }
 
   return (
-<footer className="ftr"><div className="wrap"><div className="ftr-top"><div><a className="brand" href="/#top"><img className="brand-logo-mark" src="/assets/img/jjc-logo.png" alt=""/><span className="brand-name"><strong>JJC</strong><span>Systems</span></span></a><p className="ftr-about">Industry-focused, application-first technology consulting. One accountable partner for Microsoft consulting, managed IT, security and business applications.</p><div className="badge"><svg viewbox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="8.6" height="8.6" fill="#F25022"></rect><rect x="12.9" y="2.5" width="8.6" height="8.6" fill="#7FBA00"></rect><rect x="2.5" y="12.9" width="8.6" height="8.6" fill="#00A4EF"></rect><rect x="12.9" y="12.9" width="8.6" height="8.6" fill="#FFB900"></rect></svg><span><b>Microsoft Partner</b><span>Add your partner designations here</span></span></div><div className="socials"><a href="#" aria-label="LinkedIn"><svg viewbox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C20.7 8.65 22 10.9 22 14.1V21h-4v-6.1c0-1.5-.03-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21H9V9Z"></path></svg></a><a href="#" aria-label="X"><svg viewbox="0 0 24 24"><path d="M17.5 3h3.1l-6.8 7.8L21.8 21h-6.2l-4.9-6.3L5.1 21H2l7.3-8.3L2.4 3h6.4l4.4 5.8L17.5 3Zm-1.1 16.1h1.7L7.7 4.8H5.9l10.5 14.3Z"></path></svg></a><a href="#" aria-label="YouTube"><svg viewbox="0 0 24 24"><path d="M22.5 7.2a2.8 2.8 0 0 0-2-2C18.8 4.8 12 4.8 12 4.8s-6.8 0-8.5.45a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1.1 12a29 29 0 0 0 .45 4.8 2.8 2.8 0 0 0 2 2c1.7.45 8.5.45 8.5.45s6.8 0 8.5-.45a2.8 2.8 0 0 0 2-2A29 29 0 0 0 22.9 12a29 29 0 0 0-.4-4.8ZM9.8 15.3V8.7l5.7 3.3-5.7 3.3Z"></path></svg></a></div></div><div><h4>Services</h4><ul className="ftr-links"><li><a href="/services/it-strategy-consulting">IT Strategy & Consulting</a></li><li><a href="/services/ai-readiness-copilot-enablement">AI Readiness & Copilot</a></li><li><a href="/services/managed-it">Managed IT & Security</a></li><li><a href="/services/cloud-infrastructure">Cloud Infrastructure</a></li><li><a href="/services/enterprise-resource-platform">Business Applications</a></li><li><a href="/services/business-intelligence-reporting">Data, AI & Integration</a></li><li><a href="/services/modern-workplace">Modern Work & Automation</a></li><li><a href="/services/it-staffing">IT Staffing</a></li><li><a href="/services"><b>All services →</b></a></li></ul></div><div><h4>Industries</h4><ul className="ftr-links"><li><a href="/industries/healthcare">Healthcare</a></li><li><a href="/industries/legal">Legal</a></li><li><a href="/industries/financial-services">Financial Services</a></li><li><a href="/industries/public-sector">Public Sector</a></li><li><a href="/industries/education">Education</a></li><li><a href="/industries/manufacturing">Manufacturing</a></li><li><a href="/industries/retail-distribution">Retail & Distribution</a></li><li><a href="/industries/nonprofits-associations">Nonprofits & Associations</a></li></ul></div><div><h4>Company</h4><ul className="ftr-links"><li><a href="/#why">Why JJC Systems</a></li><li><a href="/#solutions">Custom Solutions</a></li><li><a href="/platforms">Platforms</a></li><li><a href="/#clients">Our Clients</a></li><li><a href="/#success-stories">Success Stories</a></li><li><a href="/#testimonials">Testimonials</a></li><li><a href="/#insights">Insights</a></li><li><a href="/#contact">Contact Us</a></li><li><a href="/#contact">Careers</a></li></ul><h4 style={{marginTop: '30px'}}>Get in touch</h4><ul className="ftr-links"><li><a href="mailto:hello@jjcsystems.com">hello@jjcsystems.com</a></li><li><a href="tel:+10000000000">+1 (000) 000-0000</a></li></ul></div></div><div className="ftr-bot"><p>© <span id="yr">2026</span> JJC Systems. All rights reserved.</p><nav aria-label="Legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Accessibility</a><a href="#">Cookie Preferences</a></nav></div></div></footer>
+    <footer className={styles.footer}>
+      <div className="wrap">
+        <div className={styles.footerTop}>
+          <div className={styles.container}>
+            <div className={styles.footerTopRow}>
+              <div className={styles.leftContent}>
+                <Link to="/" className={styles.logo}>
+                  <img src={logo} alt="JJC Systems Computer Services" />
+                </Link>
+
+                <p className={styles.tagline}>
+                  Empowering Your Business Through Managed IT,
+                  <br /> Endpoint Expertise, and Digital Innovation.
+                </p>
+
+                <form className={styles.subscribeForm} onSubmit={handleSubscribe}>
+                  <div className={styles.subscribeBox}>
+                    <input
+                      type="email"
+                      name="subscription-email"
+                      placeholder="Enter Your Email"
+                      required
+                    />
+                    <button type="submit" className={styles.themeBtn}>
+                      Get Started
+                    </button>
+                  </div>
+                </form>
+
+                <div className={styles.footerClients}>
+                  <div className={styles.footerClientImg}>
+                    <img src={mspAllianceBadge} alt="MSP Alliance International Association of Cloud and Managed Service Providers" />
+                  </div>
+                  <div className={styles.footerClientImg}>
+                    <img src={bbbBadge} alt="BBB Accreditation" />
+                  </div>
+                  <div className={styles.footerClientImg}>
+                    <img src={upCityBadge} alt="Up City Award - Best IL 2023 Winner" />
+                  </div>
+                  <div className={styles.footerClientImg}>
+                    <img src={jjcBadge} alt="JJC Badge" />
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.rightContent}>
+                <div className={styles.rightContentInner}>
+                  <h2>Let&rsquo;s get started on something great</h2>
+                  <p>
+                    Our team of IT experts looks forward to meeting with you <br /> and providing
+                    valuable insights tailored to your business.
+                  </p>
+
+                  <a
+                    href="https://outlook.office365.com/book/ConnectWithJJCSystems@jjcsystems.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.themeBtn}
+                  >
+                    Get an appointment now
+                  </a>
+
+                  <div className={styles.footerExperience}>
+                    <div className={styles.footerExperienceItem}>
+                      <h1>
+                        2 <span>Mins</span>
+                      </h1>
+                      <p>Response Time</p>
+                    </div>
+                    <div className={styles.footerExperienceItem}>
+                      <h1>99%</h1>
+                      <p>Client Satisfaction</p>
+                    </div>
+                    <div className={styles.footerExperienceItem}>
+                      <h1>
+                        15+ <span>Years</span>
+                      </h1>
+                      <p>Field Experience</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.footerBottom}>
+          <div className={styles.container}>
+            <div className={styles.footerAllLinksWrap}>
+              {/* Services - API data se */}
+              <div className={styles.footerLinks}>
+                <h3>Services</h3>
+                {renderLinksWithViewAll(
+                  footerData.services,
+                  "/services",
+                  "View All Services"
+                )}
+              </div>
+
+              {/* Microsoft Solutions - API data se */}
+              <div className={styles.footerLinks}>
+                <h3>Microsoft Solutions</h3>
+                {renderLinksWithViewAll(
+                  footerData.microsoftSolutions,
+                  "/platforms",
+                  "View All Solutions"
+                )}
+              </div>
+
+              {/* Our Fields - API data se */}
+              <div className={styles.footerLinks}>
+                <h3>Industries</h3>
+                {renderLinksWithViewAll(
+                  footerData.ourFields,
+                  "/industries",
+                  "View All Industries"
+                )}
+              </div>
+
+              {/* Company - Static */}
+              {/* <div className={styles.footerLinks}>
+                <h3>Company</h3>
+                <ul>
+                  {COMPANY_LINKS.map((link) => (
+                    <li key={link.label}>
+                      <Link to={link.to}>{link.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div> */}
+
+              <div className={styles.footerContactInfo}>
+                <div className={styles.footerContactInfoItem}>
+                  <h4>Phone</h4>
+                  <p>
+                    <a href="tel:+1-888-329-0625">+1-888-329-0625</a>
+                    <br />
+                    <a href="tel:+1-713-730-5087">+1-713-730-5087</a>
+                  </p>
+                </div>
+                <div className={styles.footerContactInfoItem}>
+                  <h4>E-Mail</h4>
+                  <p>
+                    <a href="mailto:info@jjcsystems.com">info@jjcsystems.com</a>
+                    <br />
+                    <a href="mailto:support@jjcsystems.com">support@jjcsystems.com</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.copyrightArea}>
+          <div className={styles.container}>
+            <div className={styles.copyrightRow}>
+              <ul className={styles.socialLinks}>
+                {SOCIAL_LINKS.map(({ label, href, Icon }) => (
+                  <li key={label}>
+                    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                      <Icon size={18} style={{
+                        fill: "currentColor",
+                        stroke: "none",
+                      }} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+
+              <p className={styles.copyrightText}>
+                &copy; {new Date().getFullYear()} JJC Systems. All Rights Reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
-}
+};
+
+export default Footer;

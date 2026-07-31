@@ -1,15 +1,230 @@
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
+import { Link } from "react-router-dom";
 import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
+import HeroSection from "../../components/HeroSection.jsx";
+import { useGetCategoryQuery } from "../../redux/api"; // Adjust import path as needed
+import Loader from "../../components/Loader.jsx";
 
 export default function Services() {
   const mainRef = useRef(null);
-  useDocumentMeta("Services | JJC Systems", "The full JJC Systems service catalog \u2014 strategy, managed IT and security, Dynamics 365 business applications, data and integration, modern work and automation, and IT staffing.");
+
+  // API call to fetch mega menu data
+  const { data: apiResponse, isLoading, error } = useGetCategoryQuery();
+
+  useDocumentMeta(
+    "Services | JJC Systems",
+    "The full JJC Systems service catalog \u2014 strategy, managed IT and security, Dynamics 365 business applications, data and integration, modern work and automation, and IT staffing.",
+  );
   usePageEffects(mainRef);
+
+  // Filter only the "Services" category from API response
+  const servicesData = useMemo(() => {
+    if (apiResponse?.data) {
+      return apiResponse.data.find(item => item.slug === "services");
+    }
+    return null;
+  }, [apiResponse]);
+
+  // Get subcategories (service families)
+  const categories = servicesData?.subcategories || [];
+
+  // Hero section data (can also come from API if available)
+  const heroData = {
+    eyebrow: "What we do",
+    heading: "Six service families. One accountable partner.",
+    lede: "Most organizations do not need six vendors who each own a fragment of the problem. Every service below is delivered by the same firm, under one agreement, by people who talk to each other — which is why nothing falls between the gaps.",
+    primaryCtaText: "Book a consultation",
+    primaryCtaLink: "/#contact",
+    secondaryCtaText: "Browse the catalog",
+    secondaryCtaAnchor: `#${categories[0]?.slug || "strategy-transformation"}`,
+    stats: [
+      { value: "25", label: "Individually scoped services" },
+      { value: "24/7", label: "Global support coverage" },
+      { value: "40+ yrs", label: "Combined industry experience" },
+      { value: "1 day", label: "We reply to every enquiry" }
+    ],
+    glance: {
+      title: "How to use this page",
+      items: [
+        'Not sure where a problem belongs? Start with <a href="/services/it-strategy-consulting" style="color:#8FD0FF">IT Strategy & Consulting</a>.',
+        "Every service page explains the problem it solves, what it costs you not to fix it, and how we measure success.",
+        "Services are scoped individually — you are never asked to buy a family.",
+        "If we are not the right people for it, we will tell you."
+      ]
+    }
+  };
+
+  // Breadcrumb data
+  const breadcrumbs = [
+    { label: "Home", link: "/" },
+    { label: "Services" }
+  ];
+
+  // Calculate total services across all categories
+  const totalServices = useMemo(() => {
+    return categories.reduce((total, category) => {
+      return total + (category.items?.length || 0);
+    }, 0);
+  }, [categories]);
+
+  // Update stats with actual count from API
+  const updatedHeroData = useMemo(() => {
+    if (totalServices > 0) {
+      return {
+        ...heroData,
+        stats: heroData.stats.map(stat => {
+          if (stat.label === "Individually scoped services") {
+            return { ...stat, value: totalServices.toString() };
+          }
+          return stat;
+        })
+      };
+    }
+    return heroData;
+  }, [totalServices]);
+
+  // Map icon names from API to SVG sprite references
+  const getIconRef = (iconName) => {
+    const iconMap = {
+      'Compass': 'i-strategy',
+      'Shield': 'i-shield',
+      'LayoutGrid': 'i-erp',
+      'BarChart3': 'i-chart',
+      'Monitor': 'i-grid',
+      'Users': 'i-staffing',
+      // Add more mappings as needed
+    };
+    return iconMap[iconName] || 'i-default';
+  };
+
+  if (isLoading) {
+    return (
+     <Loader />
+    );
+  }
+
+  if (error) {
+    console.error("Error fetching services data:", error);
+  }
 
   return (
     <main id="main" ref={mainRef}>
-<section className="svc-hero"><div className="wrap"><nav className="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><b>Services</b></nav><div className="svc-hero-grid"><div><span className="eyebrow">What we do</span><h1>Six service families. One accountable partner.</h1><p className="lede">Most organizations do not need six vendors who each own a fragment of the problem. Every service below is delivered by the same firm, under one agreement, by people who talk to each other — which is why nothing falls between the gaps.</p><div className="svc-cta"><a className="btn btn-primary" href="/#contact">Book a consultation <svg><use href="#i-arrow-r"></use></svg></a><a className="btn btn-ghost" href="#strategy-transformation">Browse the catalog <svg><use href="#i-arrow-r"></use></svg></a></div></div><aside className="glance"><h2>How to use this page</h2><ul><li><svg><use href="#i-check"></use></svg><span>Not sure where a problem belongs? Start with <a href="/services/it-strategy-consulting" style={{color: '#8FD0FF'}}>IT Strategy & Consulting</a>.</span></li><li><svg><use href="#i-check"></use></svg><span>Every service page explains the problem it solves, what it costs you not to fix it, and how we measure success.</span></li><li><svg><use href="#i-check"></use></svg><span>Services are scoped individually — you are never asked to buy a family.</span></li><li><svg><use href="#i-check"></use></svg><span>If we are not the right people for it, we will tell you.</span></li></ul></aside></div><div className="svc-stats"><div className="svc-stat"><b>25</b><span>Individually scoped services</span></div><div className="svc-stat"><b>24/7</b><span>Global support coverage</span></div><div className="svc-stat"><b>40+ yrs</b><span>Combined industry experience</span></div><div className="svc-stat"><b>1 day</b><span>We reply to every enquiry</span></div></div></div></section><nav className="svc-subnav" aria-label="Service families"><div className="wrap"><a href="#strategy-transformation">Strategy & Transformation</a><a href="#managed-it-security">Managed IT & Security</a><a href="#business-applications">Business Applications</a><a href="#data-ai-integration">Data, AI & Integration</a><a href="#modern-work-automation">Modern Work & Automation</a><a href="#talent">Talent</a><a className="subnav-cta link-more" href="/#contact">Talk to us <svg><use href="#i-arrow-r"></use></svg></a></div></nav><section className="section bg-paper"><div className="wrap"><section className="hub-family" id="strategy-transformation"><div className="hub-head reveal"><div className="hub-title"><span className="icon-tile"><svg><use href="#i-strategy"></use></svg></span><div><h2>Strategy & Transformation</h2><span>5 services</span></div></div><p>Deciding what to do, in what order, and what it will cost. Independent assessment, roadmaps, licensing optimization, change management and the modernization of systems that have stopped keeping up.</p></div><div className="hub-grid"><a className="hub-card reveal" href="/services/it-strategy-consulting"><b>IT Strategy & Consulting</b><p>A costed, sequenced technology plan tied to business goals.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/ai-readiness-copilot-enablement"><b>AI Readiness & Copilot Enablement</b><p>Find where AI genuinely pays off, then make it safe to deploy.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/microsoft-licensing-optimization"><b>Microsoft Licensing & Optimization</b><p>Right-size Microsoft spend without losing capability.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/organizational-change-management"><b>Organizational Change Management</b><p>Make sure the system people were given is the system they use.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/enterprise-modernization"><b>Enterprise Modernization</b><p>Retire legacy systems without stopping the business.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a></div></section><section className="hub-family" id="managed-it-security"><div className="hub-head reveal"><div className="hub-title"><span className="icon-tile"><svg><use href="#i-shield"></use></svg></span><div><h2>Managed IT & Security</h2><span>6 services</span></div></div><p>The day-to-day operation of your technology, and the controls that protect it. Support, cybersecurity, identity, cloud, hosting, business voice and device management under one accountable agreement.</p></div><div className="hub-grid"><a className="hub-card reveal" href="/services/managed-it"><b>Managed IT</b><p>24/7 service desk, monitoring and proactive maintenance.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/cybersecurity-identity-compliance"><b>Cybersecurity, Identity & Compliance</b><p>Reduce real risk and prove it to auditors, insurers and clients.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/cloud-infrastructure"><b>Cloud Infrastructure</b><p>Azure landing zones, migration and cost control that holds.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/data-center-hosting"><b>Data Center Hosting</b><p>Managed hosting for the workloads that should not move to public cloud.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/teams-calling-business-voice"><b>Teams Calling & Business Voice</b><p>Retire the phone system and run voice inside Teams.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/endpoint-device-management"><b>Endpoint & Device Management</b><p>Every device known, compliant, patched and rebuildable.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a></div></section><section className="hub-family" id="business-applications"><div className="hub-head reveal"><div className="hub-title"><span className="icon-tile"><svg><use href="#i-erp"></use></svg></span><div><h2>Business Applications</h2><span>8 services</span></div></div><p>Dynamics 365 implemented around how your organization actually runs — finance, operations, projects, sales, service, contact centre and field work, delivered in phases that each pay for themselves.</p></div><div className="hub-grid"><a className="hub-card reveal" href="/services/enterprise-resource-platform"><b>Enterprise Resource Platform</b><p>One platform for finance, operations, supply chain and reporting.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/finance"><b>Finance</b><p>Faster close, cleaner controls and reporting finance trusts.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/project-operations"><b>Project Operations</b><p>Quote, resource, deliver and bill projects in one system.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/sales-crm"><b>Sales & CRM</b><p>A pipeline your sales team maintains because it helps them.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/customer-service"><b>Customer Service</b><p>Case management that resolves faster and escalates less.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/contact-center"><b>Contact Center</b><p>Voice, chat and messaging in one queue with real reporting.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/field-service"><b>Field Service</b><p>Schedule the right engineer, with the right parts, first time.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/customer-insights"><b>Customer Insights</b><p>One customer profile, and journeys built on it.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a></div></section><section className="hub-family" id="data-ai-integration"><div className="hub-head reveal"><div className="hub-title"><span className="icon-tile"><svg><use href="#i-chart"></use></svg></span><div><h2>Data, AI & Integration</h2><span>2 services</span></div></div><p>Making information reliable, connected and usable. Agreed definitions, governed reporting, automated data pipelines and integrations that replace the manual transfers nobody counts as work.</p></div><div className="hub-grid"><a className="hub-card reveal" href="/services/business-intelligence-reporting"><b>Business Intelligence & Reporting</b><p>Numbers leadership trusts, without the weekly spreadsheet ritual.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/enterprise-system-integration"><b>Enterprise System Integration</b><p>Systems that talk to each other, reliably and observably.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a></div></section><section className="hub-family" id="modern-work-automation"><div className="hub-head reveal"><div className="hub-title"><span className="icon-tile"><svg><use href="#i-grid"></use></svg></span><div><h2>Modern Work & Automation</h2><span>3 services</span></div></div><p>Getting real value from Microsoft 365. Structured collaboration, intranets and document control people trust, and automation that removes the manual steps costing hours every week.</p></div><div className="hub-grid"><a className="hub-card reveal" href="/services/modern-workplace"><b>Modern Workplace</b><p>Microsoft 365 configured so people can find things and work together.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/intranet-portals-document-management"><b>Intranet Portals & Document Management</b><p>An intranet people use and documents they can actually find.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a><a className="hub-card reveal" href="/services/business-process-automation"><b>Business Process Automation</b><p>Remove the manual steps that cost hours and cause errors.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a></div></section><section className="hub-family" id="talent"><div className="hub-head reveal"><div className="hub-title"><span className="icon-tile"><svg><use href="#i-staffing"></use></svg></span><div><h2>Talent</h2><span>1 service</span></div></div><p>Technical people who can do the job, screened by practitioners who work in the same discipline. Contract, contract-to-hire, permanent and managed team arrangements.</p></div><div className="hub-grid"><a className="hub-card reveal" href="/services/it-staffing"><b>IT Staffing</b><p>Technical people who can do the job, available when you need them.</p><span className="link-more">Explore the service <svg><use href="#i-arrow-r"></use></svg></span></a></div></section></div></section><section className="section bg-mist"><div className="wrap"><div className="cta-band reveal"><div><h2>Not sure which of these you need?</h2><p>That is a common and reasonable position. Describe the situation in your own words and we will tell you which service fits, whether it is one conversation or a programme, and whether we are the right people for it at all.</p></div><div className="cta-actions"><a className="btn btn-primary" href="/#contact">Describe your situation <svg><use href="#i-arrow-r"></use></svg></a><a className="btn btn-ghost" href="/#success-stories">See how we work <svg><use href="#i-arrow-r"></use></svg></a><small>We reply to every message within one business day.</small></div></div></div></section>
+      {/* Hero Section */}
+      <HeroSection
+        title="Services"
+        hero={updatedHeroData}
+        breadcrumbs={breadcrumbs}
+      />
+
+      {/* Service Families Sub Navigation */}
+      {categories.length > 0 && (
+        <nav className="svc-subnav" aria-label="Service families">
+          <div className="wrap">
+            {categories.map((category) => (
+              <a key={category._id} href={`#${category.slug}`}>
+                {category.name}
+              </a>
+            ))}
+            <a className="subnav-cta link-more" href="/#contact">
+              Talk to us{" "}
+              <svg>
+                <use href="#i-arrow-r"></use>
+              </svg>
+            </a>
+          </div>
+        </nav>
+      )}
+
+      {/* Service Families Section */}
+      <section className="section bg-paper">
+        <div className="wrap">
+          {categories.length > 0 ? (
+            categories.map((category) => (
+              <section
+                className="hub-family"
+                id={category.slug}
+                key={category._id}
+              >
+                <div className="hub-head reveal">
+                  <div className="hub-title">
+                    <span className="icon-tile">
+                      <svg>
+                        <use href={`#${getIconRef(category.icon)}`}></use>
+                      </svg>
+                    </span>
+                    <div>
+                      <h2>{category.name}</h2>
+                      <span>{category.items?.length || 0} services</span>
+                    </div>
+                  </div>
+                  {/* You can add description here if available in API */}
+                  <p>
+                    {category.items?.length > 0
+                      ? `Explore our ${category.name} services designed to meet your business needs.`
+                      : "No services available in this category yet."}
+                  </p>
+                </div>
+
+                <div className="hub-grid">
+                  {category.items?.map((item) => (
+                    <Link
+                      key={item._id}
+                      className="hub-card reveal"
+                      to={`/services/${item.slug}`}
+                    >
+                      <b>{item.name}</b>
+                      <p>{item.description}</p>
+                      <span className="link-more">
+                        Explore the service{" "}
+                        <svg>
+                          <use href="#i-arrow-r"></use>
+                        </svg>
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            ))
+          ) : (
+            <div style={{ textAlign: "center", padding: "40px 0" }}>
+              <p>No services available at the moment. Please check back later.</p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section bg-mist">
+        <div className="wrap">
+          <div className="cta-band reveal">
+            <div>
+              <h2>Not sure which of these you need?</h2>
+              <p>
+                That is a common and reasonable position. Describe the situation
+                in your own words and we will tell you which service fits,
+                whether it is one conversation or a programme, and whether we
+                are the right people for it at all.
+              </p>
+            </div>
+            <div className="cta-actions">
+              <a className="btn btn-primary" href="/#contact">
+                Describe your situation{" "}
+                <svg>
+                  <use href="#i-arrow-r"></use>
+                </svg>
+              </a>
+              <a className="btn btn-ghost" href="/#success-stories">
+                See how we work{" "}
+                <svg>
+                  <use href="#i-arrow-r"></use>
+                </svg>
+              </a>
+              <small>We reply to every message within one business day.</small>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

@@ -4,6 +4,7 @@ import useDocumentMeta from "../../hooks/useDocumentMeta.js";
 import { useParams } from "react-router-dom";
 import { useGetIndustryBySlugQuery } from "../../redux/api.jsx";
 import HeroSection from "../../components/HeroSection.jsx";
+import Loader from "../../components/Loader.jsx";
 
 export default function IndustriesHealthcare() {
   const mainRef = useRef(null);
@@ -19,11 +20,7 @@ export default function IndustriesHealthcare() {
 
   if (isLoading) {
     return (
-      <main id="main" ref={mainRef}>
-        <div className="wrap" style={{ padding: "80px 0", textAlign: "center" }}>
-          <p>Loading...</p>
-        </div>
-      </main>
+     <Loader />
     );
   }
 

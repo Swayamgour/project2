@@ -43,6 +43,10 @@ export const api = createApi({
             query: () => "/categories",
             providesTags: ["Auth"],
         }),
+        getTestimonials: builder.query({
+            query: () => "/home-content/sections/testimonials",
+            providesTags: ["Auth"],
+        }),
 
         getCaseStudyCategory: builder.query({
             query: () => "/case-study-categories",
@@ -126,12 +130,14 @@ export const api = createApi({
 
 
 
+
     }),
 });
 
 export const {
 
     useGetCategoryQuery,
+    useGetTestimonialsQuery,
     useGetCaseStudyCategoryQuery,
     useGetHomeHeroQuery,
     useGetHomeSectionQuery,
