@@ -5337,3 +5337,25 @@ main section[id] {
     font-size: 0.95rem;
   }
 }
+
+
+/* ============================================================
+   PARTNER MODEL — RESPONSIVE FIX
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .jjc-book-btn {
+    display: none;
+  }
+}
+
+@media (max-width:980px) {
+
+
+  .partner-model::after {
+    width: 220px;
+    height: 220px;
+    right: 0px;
+    bottom: -120px
+  }
+}

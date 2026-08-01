@@ -750,7 +750,7 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
         </nav>
 
 
-        <a className="btn btn-primary" href="#contact">Book a Consultation <svg><use href="#i-arrow-r"></use></svg></a>
+        <a className="btn btn-primary jjc-book-btn" href="#contact">Book a Consultation <svg><use href="#i-arrow-r"></use></svg></a>
 
         <button
           className="jjc-burger"

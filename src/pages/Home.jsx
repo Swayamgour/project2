@@ -107,7 +107,7 @@ export default function Home() {
          </section>
 
          {/* Why Us Section */}
-         <section className="section bg-paper" id="why">
+         <section className="section bg-paper" >
             <div className="wrap">
                <div className="why-intro reveal">
                   <span className="eyebrow">Why JJC Systems</span>

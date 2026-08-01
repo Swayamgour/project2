@@ -93,8 +93,7 @@ body {
 }
 
 .jjc-hdr.is-scrolled {
-    background: rgba(0, 10, 28, 0.92);
-    backdrop-filter: saturate(160%) blur(14px);
+    background: #000A1C;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
     padding-block: 12px;
 }
@@ -390,6 +389,14 @@ body {
 
     .jjc-brand {
         font-size: 20px;
+    }
+
+
+}
+
+@media (min-width: 786px) {
+    .showButton {
+        display: none;
     }
 }
 
@@ -1067,26 +1074,7 @@ a.info-row {
     font-size: 15px;
 }
 
-.btn-primary {
-    background: var(--orange);
-    color: var(--navy-900);
-    box-shadow: 0 12px 26px -14px rgba(247, 172, 19, .78);
-}
 
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: -.01em;
-    padding: 16px 28px;
-    border-radius: var(--r-sm);
-    border: 0;
-    cursor: pointer;
-    transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
-}
 
 .info-column-footer-link {
     color: var(--primary, #2563eb);
