@@ -7,15 +7,16 @@ import bbbBadge from "../assets/BBB-Accrediation-3.png";
 import upCityBadge from "../assets/Up-City-Award-Best-IL-2023-Winner-1.png";
 import jjcBadge from "../assets/JJC-Badge-2.png";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Cloud } from "lucide-react";
 import { useGetCategoryQuery } from '../redux/api'; // API import
 
 const COMPANY_LINKS = [
-  { label: "About Us", to: "/about-us" },
-  { label: "Team", to: "/team" },
-  { label: "Locations", to: "/contact" },
-  { label: "Partners", to: "/partners" },
-  { label: "Careers", to: "/careers" },
+  { label: "About Us", to: "/About" },
+  { label: "Why Us", to: "/why-us" },
+  { label: "Our Approach", to: "/why-us/our-approach" },
+  { label: "Locations", to: "/why-us/locations" },
+  { label: "Partners", to: "/why-us/partners" },
+  { label: "Careers", to: "/why-us/careers" },
 ];
 
 const SOCIAL_LINKS = [
@@ -52,11 +53,12 @@ const Footer = () => {
     const firstSix = links.slice(0, 6);
     const hasMore = links.length > 6;
 
+
     return (
       <ul>
         {firstSix.map((link) => (
-          <li key={link.slug || link.label}>
-            <Link to={link.to || link.path || `/${link.slug}`}>
+          <li key={link.slug || link.label || link.name}>
+            <Link to={link.to || link.path || `/${link.slug}` || link.link}>
               {link.label || link.name}
             </Link>
           </li>
@@ -71,6 +73,83 @@ const Footer = () => {
       </ul>
     );
   };
+
+  const servicesLink = [
+    {
+      name: "Strategy & Transformation",
+      // link: "/strategy-transformation",
+      path: "/services",
+    },
+    {
+      name: "Managed IT & Security",
+      // path: "/managed-it-security",
+      path: "/services",
+    },
+    {
+      name: "Business Applications",
+      // path: "/business-applications",
+      path: "/services",
+    },
+    {
+      name: "Data, AI & Integration",
+      // path: "/data-ai-integration",
+      path: "/services",
+    },
+    {
+      name: "Modern Work & Automation",
+      // path: "/modern-work-automation",
+      path: "/services",
+    },
+    {
+      name: "Talent",
+      // path: "/talent",
+      path: "/services",
+    },
+    {
+      name: "Modern Work & Automation",
+      // path: "/modern-work-automation",
+      path: "/services",
+    },
+  ]
+
+
+  // dy 365  business center
+  // dy 365 fibance
+  // 365 sales
+  // microsoft copilet
+  // microsoft fibric
+  // microsoft azure Cloud
+
+  const microsoftSolutionsLink = [
+    {
+      name: "Dynamics 365 Business Central",
+      path: "/platforms/dynamics-365-business-central",
+    },
+    {
+      name: "Dynamics 365 Finance",
+      path: "/platforms/dynamics-365-finance",
+    },
+    {
+      name: "Dynamics 365 Sales",
+      path: "/platforms/dynamics-365-sales",
+    },
+    {
+      name: "Microsoft Copilot",
+      path: "/platforms/microsoft-copilot",
+    },
+    {
+      name: "Microsoft Fabric",
+      path: "/platforms/microsoft-fabric",
+    },
+    {
+      name: "Microsoft Azure Cloud",
+      path: "/platforms/microsoft-azure-cloud",
+    },
+    {
+      name: "Microsoft Azure Cloud",
+      path: "/platforms/microsoft-azure-cloud",
+    },
+  ];
 
   // API data se footer links prepare karo
   const footerData = useMemo(() => {
@@ -116,6 +195,15 @@ const Footer = () => {
     const email = e.target.elements["subscription-email"].value;
     console.log("Subscribe email:", email);
   };
+
+
+
+
+
+
+
+
+
 
   // Loading state
   if (isLoading) {
@@ -198,17 +286,17 @@ const Footer = () => {
                   <div className={styles.footerExperience}>
                     <div className={styles.footerExperienceItem}>
                       <h1>
-                        2 <span>Mins</span>
+                        15 <span>Mins</span>
                       </h1>
-                      <p>Response Time</p>
+                      <p>Discovery Call</p>
                     </div>
                     <div className={styles.footerExperienceItem}>
-                      <h1>99%</h1>
+                      <h1>100%</h1>
                       <p>Client Satisfaction</p>
                     </div>
                     <div className={styles.footerExperienceItem}>
                       <h1>
-                        15+ <span>Years</span>
+                        40+ <span>Years</span>
                       </h1>
                       <p>Field Experience</p>
                     </div>
@@ -226,7 +314,7 @@ const Footer = () => {
               <div className={styles.footerLinks}>
                 <h3>Services</h3>
                 {renderLinksWithViewAll(
-                  footerData.services,
+                  servicesLink,
                   "/services",
                   "View All Services"
                 )}
@@ -236,7 +324,7 @@ const Footer = () => {
               <div className={styles.footerLinks}>
                 <h3>Microsoft Solutions</h3>
                 {renderLinksWithViewAll(
-                  footerData.microsoftSolutions,
+                  microsoftSolutionsLink,
                   "/platforms",
                   "View All Solutions"
                 )}
@@ -271,10 +359,13 @@ const Footer = () => {
                     <a href="tel:+1-888-329-0625">+1-888-329-0625</a>
                     <br />
                     <a href="tel:+1-713-730-5087">+1-713-730-5087</a>
+                    <br />
+                    <a href="tel:+1-312-585-7555">+1-312-585-7555</a>
+
                   </p>
                 </div>
                 <div className={styles.footerContactInfoItem}>
-                  <h4>E-Mail</h4>
+                  <h4>Email</h4>
                   <p>
                     <a href="mailto:info@jjcsystems.com">info@jjcsystems.com</a>
                     <br />

@@ -164,7 +164,7 @@ export default function Home() {
                                  <rect x="3" y="14" width="7" height="7" rx="1" />
                                  <rect x="14" y="14" width="7" height="7" rx="1" />
                               </svg>
-                              <span className="who">For large organizations</span>
+                              <span className="who-border">For large organizations</span>
                               <h3>One Partner for Your Entire Microsoft Environment</h3>
                               <p>
                                  Large organizations come to us so that Dynamics&nbsp;365, Microsoft&nbsp;Azure and
@@ -182,7 +182,7 @@ export default function Home() {
                                  <path d="M2 21h20" />
                                  <path d="M7 11h2M7 15h2" />
                               </svg>
-                              <span className="who">For small &amp; mid-size organizations</span>
+                              <span className="who-border">For small &amp; mid-size organizations</span>
                               <h3>A Complete IT Function, Without Building One Yourself</h3>
                               <p>
                                  Smaller and growing organizations use us as their whole technology team. We begin with
@@ -198,7 +198,7 @@ export default function Home() {
                                  <path d="M12 2 4 6v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V6z" />
                                  <path d="M9 11h6M12 8v6" />
                               </svg>
-                              <span className="who">Value add</span>
+                              <span className="who-border">Value add</span>
                               <h3>Ready-Made Solutions, Built on Tools Your Team Already Knows</h3>
                               <p>
                                  We have built a library of solutions for specific industries on top of Microsoft Office
@@ -626,6 +626,26 @@ export default function Home() {
 
 
                         </div>
+
+
+
+                        {testimonial?.image?.url &&
+                           <div className="Testimonial-avatar" aria-hidden="true">
+
+                              <img
+                                 src={testimonial?.image?.url}
+                                 alt={testimonial.title}
+                                 // className="avatar-image"
+                              />
+
+                           </div>
+                        }
+
+
+
+
+
+
 
                         <blockquote>
                            {testimonial.description}

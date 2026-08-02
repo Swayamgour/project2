@@ -35,6 +35,7 @@ import ResourceTopic from "./pages/resources/Topic";
 import Loader from "./components/Loader.jsx";
 import WhitepapersDetail from "./pages/resources/WhitepapersDetail.jsx";
 import ChecklistsDetail from "./pages/resources/ChecklistsDetail.jsx";
+import WhyUS from "./pages/why-us/WhyUS.jsx";
 // import Partners from "./pages/company/partners.jsx";
 
 
@@ -72,6 +73,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
 
         {/* Why Us */}
+        <Route path="/why-us" element={<WhyUS />} />
         <Route path="/why-us/team" element={<CompanyLeadership />} />
         <Route path="/why-us/partners" element={<CompanyPartners />} />
         <Route path="/why-us/careers" element={<CompanyCareers />} />

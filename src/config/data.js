@@ -553,31 +553,22 @@ export const testimonials = [
 
 export const insights = [
     {
-        icon: "#i-ai",
-        type: "Guide",
-        meta: "9 min read",
-        title: "A plain-English guide to Microsoft Copilot readiness",
-        description: "The questions to answer about data, permissions, security and adoption before purchasing or expanding Copilot licences.",
-        cta: "Read the guide",
-        link: "#insights"
-    },
-    {
         icon: "#i-chart",
         type: "Blog",
         meta: "5 min read",
         title: "Why reporting projects fail before the dashboard is built",
         description: "How inconsistent definitions, unclear ownership and disconnected source systems undermine otherwise well-designed reporting.",
         cta: "Read the article",
-        link: "#insights"
+        link: "/blog"
     },
     {
-        icon: "#i-docs",
-        type: "Resource",
-        meta: "Download",
-        title: "Technology planning worksheet for the next 12 months",
-        description: "A structured template for documenting business priorities, current constraints, planned investments, dependencies and success measures.",
-        cta: "Open the resource",
-        link: "#insights"
+        icon: "#i-ai",
+        type: "Guide",
+        meta: "9 min read",
+        title: "A plain-English guide to Microsoft Copilot readiness",
+        description: "The questions to answer about data, permissions, security and adoption before purchasing or expanding Copilot licences.",
+        cta: "Read the guide",
+        link: "/resources/guides"
     },
     {
         icon: "#i-check",
@@ -586,8 +577,19 @@ export const insights = [
         title: "SharePoint migration readiness checklist",
         description: "Review ownership, permissions, file volume, unsupported content, retention requirements, user communication and cutover planning.",
         cta: "View the checklist",
-        link: "#insights"
+        link: "/resources/checklists"
     },
+
+    {
+        icon: "#i-docs",
+        type: "Whitepaper",
+        meta: "Download",
+        title: "Technology planning worksheet for the next 12 months",
+        description: "A structured template for documenting business priorities, current constraints, planned investments, dependencies and success measures.",
+        cta: "Open the whitepaper",
+        link: "/resources/whitepapers"
+    },
+
     {
         icon: "#i-chats",
         type: "FAQ",
@@ -595,7 +597,7 @@ export const insights = [
         title: "What should you expect from an initial technology consultation?",
         description: "Clear answers about discovery, access requirements, estimates, timelines, responsibilities and what happens before any work begins.",
         cta: "Read the FAQs",
-        link: "#insights"
+        link: "/why-us/faq"
     }
 ];
 

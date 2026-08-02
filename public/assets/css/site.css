@@ -1485,8 +1485,8 @@ ul {
 }
 
 .stars svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   fill: #FFB020;
   stroke: none
 }
@@ -1545,6 +1545,14 @@ ul {
   font-size: 14px;
   color: #8FA7C8;
   line-height: 1.4
+}
+
+.Testimonial-avatar {
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+ margin-bottom: 12px;
 }
 
 /* ============================================================
@@ -7983,9 +7991,40 @@ main section[id] {
   .detail-item h3 {
     font-size: 20px;
   }
+
+  .hex-inner strong {
+    margin-bottom: 0;
+
+  }
+
+  .hex-inner strong {
+    font-size: 14px;
+  }
+
+  .hex-inner span {
+    font-size: 10px;
+  }
+
+  .hex-inner .hex-mark {
+    margin-bottom: 8px;
+  }
 }
 
 
 .detail {
-    padding: 100px 0;
+  padding: 100px 0;
 }
+
+.who-border {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--accent-dk);
+  background: #E8F0FC;
+  padding: 5px 11px;
+  border-radius: 3px;
+  margin-bottom: 16px;
+}
+
