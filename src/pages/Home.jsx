@@ -520,16 +520,30 @@ export default function Home() {
                      working.
                   </p>
                </div>
-               <div className="logos reveal">
-                  {clientLogo?.map((logo, index) => (
-                     <div key={index} className="logo-cell">
-                        {logo.image ? (
-                           <img src={logo.image} alt={logo.alt} />
-                        ) : (
-                           <span className="logo-ph">{logo.placeholder}</span>
-                        )}
-                     </div>
-                  ))}
+
+               <div className="clients-marquee reveal">
+                  <div className="marquee-track">
+                     {/* First set */}
+                     {clientLogo?.map((logo, index) => (
+                        <div key={`first-${index}`} className="marquee-item">
+                           {logo.image ? (
+                              <img src={logo.image} alt={logo.alt} />
+                           ) : (
+                              <span className="logo-ph">{logo.placeholder}</span>
+                           )}
+                        </div>
+                     ))}
+                     {/* Duplicate for seamless looping */}
+                     {clientLogo?.map((logo, index) => (
+                        <div key={`second-${index}`} className="marquee-item">
+                           {logo.image ? (
+                              <img src={logo.image} alt={logo.alt} />
+                           ) : (
+                              <span className="logo-ph">{logo.placeholder}</span>
+                           )}
+                        </div>
+                     ))}
+                  </div>
                </div>
             </div>
          </section>
@@ -635,7 +649,7 @@ export default function Home() {
                               <img
                                  src={testimonial?.image?.url}
                                  alt={testimonial.title}
-                                 // className="avatar-image"
+                              // className="avatar-image"
                               />
 
                            </div>
