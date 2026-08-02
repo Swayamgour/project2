@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // const BASE_URL = "https://daryoo.lead.crm.amaxjobs.com/api";
-const BASE_URL = "https://jjc-backend-2.onrender.com/api";
-// const BASE_URL = "http://localhost:5008/api";
+// const BASE_URL = "https://jjc-backend-2.onrender.com/api";
+const BASE_URL = "http://localhost:5008/api";
 // const BASE_URL = "https://jjc.admin.amaxjobs.com/api";
 
 const baseQuery = fetchBaseQuery({
@@ -89,7 +89,7 @@ export const api = createApi({
 
         // Public Published Blogs
         getPublishedBlogs: builder.query({
-            query: () => "/blog/published",
+            query: () => "/blog",
             providesTags: ["Blogs"],
         }),
 
@@ -128,6 +128,31 @@ export const api = createApi({
             providesTags: ["Users"],
         }),
 
+        getGuides: builder.query({
+            query: () => "/guides",
+            providesTags: ["Blogs"],
+        }),
+        getGuideBySlug: builder.query({
+            query: (slug) => `/guides/${slug}`,
+            providesTags: ["Users"],
+        }),
+
+        getChecklists: builder.query({
+            query: () => "/checklists",
+            providesTags: ["Blogs"],
+        }),
+        getChecklistsBySlug: builder.query({
+            query: (slug) => `/checklists/${slug}`,
+            providesTags: ["Users"],
+        }),
+        getWhitepapers: builder.query({
+            query: () => "/whitepapers",
+            providesTags: ["Blogs"],
+        }),
+        getWhitepapersBySlug: builder.query({
+            query: (slug) => `/whitepapers/${slug}`,
+            providesTags: ["Users"],
+        })
 
 
 
@@ -154,6 +179,15 @@ export const {
     useGetCaseStudyBySlugQuery,
 
     useGetCaseStudyStoryBySlugQuery,
-    useGetRelatedStoryByIdQuery
+    useGetRelatedStoryByIdQuery,
+
+    useGetGuidesQuery,
+    useGetGuideBySlugQuery,
+
+    useGetChecklistsQuery,
+    useGetChecklistsBySlugQuery,
+
+    useGetWhitepapersQuery,
+    useGetWhitepapersBySlugQuery,
 
 } = api;

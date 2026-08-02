@@ -35,6 +35,7 @@ import ResourceTopic from "./pages/resources/Topic";
 import Loader from "./components/Loader.jsx";
 import WhitepapersDetail from "./pages/resources/WhitepapersDetail.jsx";
 import ChecklistsDetail from "./pages/resources/ChecklistsDetail.jsx";
+import Partners from "./pages/company/partners.jsx";
 
 
 export default function App() {
@@ -42,10 +43,10 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/About" element={<CompanyAbout />} />
-        <Route path="/company/careers" element={<CompanyCareers />} />
+        {/* <Route path="/company/careers" element={<CompanyCareers />} /> */}
         <Route path="/company/leadership" element={<CompanyLeadership />} />
         <Route path="/company/locations" element={<CompanyLocations />} />
-        <Route path="/company/partners" element={<CompanyPartners />} />
+        {/* <Route path="/company/partners" element={<CompanyPartners />} /> */}
         <Route path="/" element={<Home />} />
 
         {/* <Route path="/services/it-staffing" element={<ServicesItStaffing />} /> */}
@@ -72,6 +73,8 @@ export default function App() {
 
         {/* Why Us */}
         <Route path="/why-us/team" element={<CompanyLeadership />} />
+        <Route path="/why-us/partners" element={<CompanyPartners />} />
+        <Route path="/why-us/careers" element={<CompanyCareers />} />
         <Route path="/why-us/locations" element={<CompanyLocations />} />
         <Route path="/why-us/our-approach" element={<OurApproach />} />
         <Route path="/why-us/onboarding-guide" element={<OnboardingGuide />} />
@@ -81,7 +84,7 @@ export default function App() {
         <Route path="/client-portal" element={<ClientPortal />} />
 
         {/* Insights / Resources */}
-        
+
         <Route path="/resources" element={<Resources />} />
         <Route path="/resources/guides" element={<ResourceGuides />} />
         <Route path="/resources/guide/:slug" element={<GuideDetail />} />

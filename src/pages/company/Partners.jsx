@@ -1,0 +1,299 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+function Partners() {
+    return (
+        <main id="main">
+            {/* Hero Section */}
+            <section className="svc-hero">
+                <div className="wrap">
+                    <nav className="crumbs" aria-label="Breadcrumb">
+                        <a href="/">Home</a><span>/</span><b>Partners</b>
+                    </nav>
+                    <div className="svc-hero-grid">
+                        <div>
+                            <span className="eyebrow">Partners</span>
+                            <h1>The relationships behind the work</h1>
+                            <p className="lede">We hold partnerships with the vendors whose products your estate actually depends on. Not to collect badges, but because roadmap visibility, escalation paths and procurement leverage are things clients feel — usually on the day something has gone wrong.</p>
+                            <div className="svc-cta">
+                                <a className="btn btn-primary" href="/contact">Talk to our team <svg><use href="#i-arrow-r" /></svg></a>
+                                <a className="btn btn-ghost" href="/platforms">See the platforms we deliver <svg><use href="#i-arrow-r" /></svg></a>
+                            </div>
+                        </div>
+                        <aside className="glance">
+                            <h2>What our partnerships give you</h2>
+                            <ul>
+                                <li><svg><use href="#i-check" /></svg><span>Roadmap visibility before changes reach your environment</span></li>
+                                <li><svg><use href="#i-check" /></svg><span>Escalation that reaches an engineer, not a support tier</span></li>
+                                <li><svg><use href="#i-check" /></svg><span>Partner pricing and funding programmes applied by default</span></li>
+                                <li><svg><use href="#i-check" /></svg><span>One procurement channel, one invoice, one renewal calendar</span></li>
+                                <li><svg><use href="#i-check" /></svg><span>Recommendations driven by your requirement, not by partner status</span></li>
+                            </ul>
+                        </aside>
+                    </div>
+                    <div className="svc-stats">
+                        <div className="svc-stat"><b>11+</b><span>Named vendor partners</span></div>
+                        <div className="svc-stat"><b>1</b><span>Procurement channel</span></div>
+                        <div className="svc-stat"><b>24/7</b><span>Vendor escalation coverage</span></div>
+                        <div className="svc-stat"><b>1 day</b><span>We reply to every enquiry</span></div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Subnavigation */}
+            <nav className="svc-subnav" aria-label="On this page">
+                <div className="wrap">
+                    <a href="#why">Why it matters</a>
+                    <a href="#ecosystem">Our partners</a>
+                    <a href="#procurement">Procurement</a>
+                    <a href="#choose">How we choose</a>
+                    <a className="subnav-cta link-more" href="/contact">Talk to us <svg><use href="#i-arrow-r" /></svg></a>
+                </div>
+            </nav>
+
+            {/* Why It Matters Section */}
+            <section className="section bg-paper" id="why">
+                <div className="wrap">
+                    <div className="sec-head reveal">
+                        <span className="eyebrow">Why partnerships matter</span>
+                        <h2 className="h-sec wide">What a vendor relationship is actually worth to you</h2>
+                        <p className="lede">Partner badges are easy to collect and mostly decorative. What matters is whether the relationship produces something a client can feel — and there are only four things that qualify.</p>
+                    </div>
+                    <div className="chal-grid">
+                        <article className="chal reveal">
+                            <span className="chal-n">01</span>
+                            <div>
+                                <h3>Roadmap visibility before it affects you</h3>
+                                <p>We see what is changing in a product before it reaches your tenant. That is the difference between planning for a release wave and reacting to one after a user reports something has moved.</p>
+                            </div>
+                        </article>
+                        <article className="chal reveal">
+                            <span className="chal-n">02</span>
+                            <div>
+                                <h3>An escalation path that bypasses the queue</h3>
+                                <p>When a vendor issue is genuinely blocking you, a partner escalation reaches an engineer rather than a support tier. It is the single most valuable thing a partnership provides and the hardest to demonstrate until you need it.</p>
+                            </div>
+                        </article>
+                        <article className="chal reveal">
+                            <span className="chal-n">03</span>
+                            <div>
+                                <h3>Commercial terms you would not get alone</h3>
+                                <p>Partner pricing, funding programmes and assessment credits exist and are routinely under-claimed. We apply them by default, including where doing so reduces what we invoice.</p>
+                            </div>
+                        </article>
+                        <article className="chal reveal">
+                            <span className="chal-n">04</span>
+                            <div>
+                                <h3>One procurement channel instead of nine</h3>
+                                <p>Licences, hardware and security tooling bought through one relationship, on one invoice, with one renewal calendar. The administrative saving is real and rarely counted.</p>
+                            </div>
+                        </article>
+                    </div>
+                    <div className="chal-note reveal">
+                        <svg><use href="#i-target" /></svg>
+                        <p><b>What a partnership does not mean:</b> that we will recommend that vendor's product. We hold these relationships so we can deliver and support the estate you have or need — not so we can steer you toward whichever partner pays best. If the right answer is a product from a vendor we do not partner with, we will say so.</p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Platform & Applications */}
+            <section className="section bg-mist" id="ecosystem">
+                <div className="wrap">
+                    <div className="sec-head reveal">
+                        <span className="eyebrow">Platform &amp; applications</span>
+                        <h2 className="h-sec wide">The Microsoft estate we build most of our work on.</h2>
+                    </div>
+                    <div className="plogo-grid">
+                        <article className="plogo reveal">
+                            <div className="mark"><span>Microsoft</span></div>
+                            <b>Microsoft</b>
+                            <p>Our primary platform partner across Dynamics 365, Microsoft 365, Azure, Power Platform, Fabric and the security stack.</p>
+                        </article>
+                        <article className="plogo reveal">
+                            <div className="mark"><span>OpenText</span></div>
+                            <b>OpenText</b>
+                            <p>Information management and content services where document volume or retention obligations exceed what SharePoint should be asked to carry.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            {/* Infrastructure & Devices */}
+            <section className="section bg-paper" id="ecosystem-1">
+                <div className="wrap">
+                    <div className="sec-head reveal">
+                        <span className="eyebrow">Infrastructure &amp; devices</span>
+                        <h2 className="h-sec wide">The hardware layer underneath the platform, procured and managed through one channel.</h2>
+                    </div>
+                    <div className="plogo-grid">
+                        <article className="plogo reveal">
+                            <div className="mark"><span>Dell</span></div>
+                            <b>Dell Technologies</b>
+                            <p>Servers, storage and endpoints, including the device supply that feeds our Autopilot provisioning.</p>
+                        </article>
+                        <article className="plogo reveal">
+                            <div className="mark"><span>Lenovo</span></div>
+                            <b>Lenovo</b>
+                            <p>Endpoints and workstations, with the vendor registration that makes zero-touch deployment possible.</p>
+                        </article>
+                        <article className="plogo reveal">
+                            <div className="mark"><span>HPE</span></div>
+                            <b>HPE</b>
+                            <p>Server, storage and hybrid infrastructure for estates that keep workloads on-premises for good reasons.</p>
+                        </article>
+                        <article className="plogo reveal">
+                            <div className="mark"><span>Cisco</span></div>
+                            <b>Cisco</b>
+                            <p>Networking, switching and secure connectivity — the layer most often blamed and least often instrumented.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            {/* Security */}
+            <section className="section bg-mist" id="ecosystem-2">
+                <div className="wrap">
+                    <div className="sec-head reveal">
+                        <span className="eyebrow">Security</span>
+                        <h2 className="h-sec wide">Threat protection, network security and the human layer attackers actually target.</h2>
+                    </div>
+                    <div className="plogo-grid">
+                        <article className="plogo reveal">
+                            <div className="mark"><span>Check Point</span></div>
+                            <b>Check Point</b>
+                            <p>Network security and threat prevention for perimeter and hybrid estates.</p>
+                        </article>
+                        <article className="plogo reveal">
+                            <div className="mark"><span>Fortinet</span></div>
+                            <b>Fortinet</b>
+                            <p>Network security, secure SD-WAN and the firewall estate for distributed organizations.</p>
+                        </article>
+                        <article className="plogo reveal">
+                            <div className="mark"><span>SentinelOne</span></div>
+                            <b>SentinelOne</b>
+                            <p>Endpoint detection and response, where a client's environment or insurer requires a non-Microsoft endpoint agent.</p>
+                        </article>
+                        <article className="plogo reveal">
+                            <div className="mark"><span>Proofpoint</span></div>
+                            <b>Proofpoint</b>
+                            <p>Email security and human-layer protection against phishing and business email compromise.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            {/* Service Delivery */}
+            <section className="section bg-paper" id="ecosystem-3">
+                <div className="wrap">
+                    <div className="sec-head reveal">
+                        <span className="eyebrow">Service delivery</span>
+                        <h2 className="h-sec wide">The tooling our own managed service runs on.</h2>
+                    </div>
+                    <div className="plogo-grid">
+                        <article className="plogo reveal">
+                            <div className="mark"><span>ConnectWise</span></div>
+                            <b>ConnectWise</b>
+                            <p>Service management, monitoring and automation — the platform behind our service desk and remote monitoring.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            {/* And More */}
+            <section className="section bg-mist">
+                <div className="wrap">
+                    <div className="sec-head reveal">
+                        <span className="eyebrow">And more</span>
+                        <h2 className="h-sec wide">The list above is not the limit</h2>
+                        <p className="lede">We hold additional vendor relationships across backup, connectivity, telephony and specialist industry software, and we add new ones when a client requirement justifies it rather than when a vendor offers a programme.</p>
+                    </div>
+                    <div className="ph-note reveal">
+                        <svg><use href="#i-check" /></svg>
+                        <p><b>Placeholder content:</b> partner logos are shown as text marks. Replace each with the vendor's official logo at the size and clear-space their brand guidelines require, and confirm you hold a current agreement with each before displaying their mark. Where you hold a named designation — a Microsoft Solutions Partner area, a Gold or Titanium tier, a specialization — state it specifically alongside the logo. A named designation is verifiable and worth considerably more than an unlabelled logo wall.</p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Procurement Section */}
+            <section className="section bg-navy" id="procurement">
+                <div className="wrap">
+                    <div className="sec-head reveal">
+                        <span className="eyebrow">Procurement</span>
+                        <h2 className="h-sec wide">One channel, one invoice, one renewal calendar</h2>
+                        <p className="lede">For small and mid-market clients this is frequently the most immediately valuable thing we do, and the least discussed.</p>
+                    </div>
+                    <ul className="biz-outcomes reveal">
+                        <li>
+                            <svg><use href="#i-check" /></svg>
+                            <span><b>Licensing reviewed before renewal</b> — we check what you are entitled to and using, which regularly reduces the invoice</span>
+                        </li>
+                        <li>
+                            <svg><use href="#i-check" /></svg>
+                            <span><b>Hardware procured and provisioned together</b> — devices arrive registered for zero-touch deployment, not in a box for someone to image</span>
+                        </li>
+                        <li>
+                            <svg><use href="#i-check" /></svg>
+                            <span><b>One renewal calendar</b> — visibility of every expiry across every vendor, so nothing auto-renews unnoticed</span>
+                        </li>
+                        <li>
+                            <svg><use href="#i-check" /></svg>
+                            <span><b>Funding and assessment programmes applied</b> — vendor programmes claimed by default rather than on request</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            {/* How We Choose Section */}
+            <section className="section bg-mist" id="choose">
+                <div className="wrap">
+                    <div className="sec-head reveal">
+                        <span className="eyebrow">How we choose</span>
+                        <h2 className="h-sec wide">Why this list is shorter than it could be</h2>
+                        <p className="lede">We could hold three times as many partnerships. We do not, because a relationship we cannot staff properly is a badge rather than a capability.</p>
+                    </div>
+                    <div className="process reveal">
+                        <div className="step">
+                            <span className="step-n">1</span>
+                            <h4>Client demand first</h4>
+                            <p>We add a vendor when clients need it, not when a programme is offered to us.</p>
+                        </div>
+                        <div className="step">
+                            <span className="step-n">2</span>
+                            <h4>We staff it properly</h4>
+                            <p>Certified engineers before the badge goes on the website, not after.</p>
+                        </div>
+                        <div className="step">
+                            <span className="step-n">3</span>
+                            <h4>We keep it current</h4>
+                            <p>Certifications renewed as products change, or the partnership comes off the list.</p>
+                        </div>
+                        <div className="step">
+                            <span className="step-n">4</span>
+                            <h4>We stay honest about fit</h4>
+                            <p>Partner status never decides a recommendation. The client's requirement does.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="section bg-mist">
+                <div className="wrap">
+                    <div className="cta-band reveal">
+                        <div>
+                            <h2>Want your renewals reviewed before the next one lands?</h2>
+                            <p>Send us your current vendor list and renewal dates. We will tell you what you are paying for and not using, where entitlements overlap, and what consolidating procurement would actually save — before you commit to anything.</p>
+                        </div>
+                        <div className="cta-actions">
+                            <a className="btn btn-primary" href="/contact">Ask for a licensing review <svg><use href="#i-arrow-r" /></svg></a>
+                            <a className="btn btn-ghost" href="about.html">Read about the firm <svg><use href="#i-arrow-r" /></svg></a>
+                            <small>We reply to every message within one business day.</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    );
+}
+
+export default Partners;
