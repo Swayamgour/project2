@@ -133,47 +133,89 @@ export default function Home() {
                      </article>
                   ))}
                </div>
-               <div className="partner-model">
-                  <aside
-                     className="partner-visual reveal"
-                     aria-label="One team and one point of contact"
-                  >
-                     <div className="hex-shell">
-                        <div className="hex-inner">
-                           <svg>
-                              <use href="#i-shield"></use>
-                           </svg>
-                           <strong>
-                              One team.
-                              <br />
-                              One point of contact.
-                           </strong>
-                           <ul>
-                              <li>Applications</li>
-                              <li>Infrastructure</li>
-                              <li>Security & Monitoring</li>
-                              <li>Adoption & Procurement</li>
-                           </ul>
+
+               <div className="detail">
+                  <div className="shell">
+                     <div className="detail-inner">
+                        <div className="hex-col reveal in" style={{ transitionDelay: "280ms" }}>
+                           <div className="hex-wrap">
+                              <div className="hex-outer"></div>
+                              {/* SWAP IN A PHOTO: see the note in the .hex-inner CSS rule above */}
+                              <div className="hex-inner">
+                                 <svg className="hex-mark" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                    <path d="m9 12 2 2 4-4" />
+                                 </svg>
+                                 <strong>
+                                    One team.<br />One point of contact.
+                                 </strong>
+                                 <span>
+                                    Applications<br />Infrastructure<br />Security &amp; monitoring<br />Adoption &amp; procurement
+                                 </span>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div className="detail-list">
+                           <article className="detail-item reveal in" style={{ transitionDelay: "280ms" }}>
+                              <svg className="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                 <rect x="3" y="3" width="7" height="7" rx="1" />
+                                 <rect x="14" y="3" width="7" height="7" rx="1" />
+                                 <rect x="3" y="14" width="7" height="7" rx="1" />
+                                 <rect x="14" y="14" width="7" height="7" rx="1" />
+                              </svg>
+                              <span className="who">For large organizations</span>
+                              <h3>One Partner for Your Entire Microsoft Environment</h3>
+                              <p>
+                                 Large organizations come to us so that Dynamics&nbsp;365, Microsoft&nbsp;Azure and
+                                 Microsoft&nbsp;365 are looked after together, instead of being split across a different
+                                 supplier for each. When Microsoft releases an update, or a new security weakness comes
+                                 to light, our engineers are already working on it. Nobody on your team has to watch for
+                                 the announcement, judge whether it matters, or drop everything to react.
+                              </p>
+                           </article>
+
+                           <article className="detail-item reveal in" style={{ transitionDelay: "280ms" }}>
+                              <svg className="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                 <path d="M3 21V8l6-4 6 4v13" />
+                                 <path d="M15 21V11l6 3v7" />
+                                 <path d="M2 21h20" />
+                                 <path d="M7 11h2M7 15h2" />
+                              </svg>
+                              <span className="who">For small &amp; mid-size organizations</span>
+                              <h3>A Complete IT Function, Without Building One Yourself</h3>
+                              <p>
+                                 Smaller and growing organizations use us as their whole technology team. We begin with
+                                 what your business actually does day to day, then choose the tools to fit — the
+                                 applications your people work in, the cloud or on-site systems behind them, security,
+                                 round-the-clock monitoring, training, and buying the right licences at the right price.
+                                 One partner, one relationship, one bill.
+                              </p>
+                           </article>
+
+                           <article className="detail-item reveal in" style={{ transitionDelay: "280ms" }}>
+                              <svg className="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                 <path d="M12 2 4 6v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V6z" />
+                                 <path d="M9 11h6M12 8v6" />
+                              </svg>
+                              <span className="who">Value add</span>
+                              <h3>Ready-Made Solutions, Built on Tools Your Team Already Knows</h3>
+                              <p>
+                                 We have built a library of solutions for specific industries on top of Microsoft Office
+                                 and Dynamics — the software your people already open every morning. That means far
+                                 less to learn, far less to set up, and a much shorter wait before something is working.
+                                 Every rollout includes full adoption training, so the return starts on day one rather
+                                 than a year later.
+                              </p>
+                           </article>
                         </div>
                      </div>
-                  </aside>
-                  <div className="partner-details">
-                     {partnerRows.map((row, index) => (
-                        <article key={index} className="partner-row reveal">
-                           <div className="partner-icon">
-                              <svg>
-                                 <use href={row.icon}></use>
-                              </svg>
-                           </div>
-                           <div>
-                              <span className="partner-tag">{row.tag}</span>
-                              <h3>{row.title}</h3>
-                              <p>{row.description}</p>
-                           </div>
-                        </article>
-                     ))}
                   </div>
+
                </div>
+
+
+
             </div>
          </section>
 
@@ -582,7 +624,7 @@ export default function Home() {
                               ))}
                            </div>
 
-                          
+
                         </div>
 
                         <blockquote>
@@ -604,9 +646,9 @@ export default function Home() {
                            </span>
                         </figcaption>
 
-                         <span className="company-logo">
-                              {testimonial.subtitle?.split(",")[1]?.trim()}
-                           </span>
+                        <span className="company-logo">
+                           {testimonial.subtitle?.split(",")[1]?.trim()}
+                        </span>
                      </figure>
                   ))}
                </div>
