@@ -27,11 +27,14 @@ import Faq from "./pages/why-us/Faq";
 import OpenTicket from "./pages/why-us/OpenTicket";
 import Resources from "./pages/resources/Resources";
 import ResourceGuides from "./pages/resources/Guides";
+import GuideDetail from "./pages/resources/GuidesDetail.jsx";
 import ResourceChecklists from "./pages/resources/Checklists";
 import ResourceWhitepapers from "./pages/resources/Whitepapers";
 import ResourceEvents from "./pages/resources/Events";
 import ResourceTopic from "./pages/resources/Topic";
 import Loader from "./components/Loader.jsx";
+import WhitepapersDetail from "./pages/resources/WhitepapersDetail.jsx";
+import ChecklistsDetail from "./pages/resources/ChecklistsDetail.jsx";
 
 
 export default function App() {
@@ -51,7 +54,7 @@ export default function App() {
 
         <Route path="/industries" element={<Industries />} />
         <Route path="/industries/:slug" element={<IndustriesHealthcare />} />
-        <Route path="/platforms" element={<Platforms/>} />
+        <Route path="/platforms" element={<Platforms />} />
         <Route path="/platforms/:slug" element={<PlatformsMicrosoft365 />} />
 
         <Route path="/success/:slug" element={<SuccessIndustryHealthcare />} />
@@ -72,15 +75,24 @@ export default function App() {
         <Route path="/why-us/locations" element={<CompanyLocations />} />
         <Route path="/why-us/our-approach" element={<OurApproach />} />
         <Route path="/why-us/onboarding-guide" element={<OnboardingGuide />} />
+        {/* <Route path="/resources/guide/:slug" element={<GuidesDetail />} /> */}
         <Route path="/why-us/faq" element={<Faq />} />
         <Route path="/why-us/open-a-ticket" element={<OpenTicket />} />
         <Route path="/client-portal" element={<ClientPortal />} />
 
         {/* Insights / Resources */}
+        
         <Route path="/resources" element={<Resources />} />
         <Route path="/resources/guides" element={<ResourceGuides />} />
+        <Route path="/resources/guide/:slug" element={<GuideDetail />} />
+
+
         <Route path="/resources/checklists" element={<ResourceChecklists />} />
+        <Route path="/resources/checklists/:slug" element={<ChecklistsDetail />} />
+
         <Route path="/resources/whitepapers" element={<ResourceWhitepapers />} />
+        <Route path="/resources/whitepapers/:slug" element={<WhitepapersDetail />} />
+
         <Route path="/resources/events" element={<ResourceEvents />} />
         <Route path="/resources/topics/:topic" element={<ResourceTopic />} />
 

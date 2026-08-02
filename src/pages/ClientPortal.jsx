@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import HeroSection from "../components/HeroSection.jsx";
 import usePageEffects from "../hooks/usePageEffects.js";
 import useDocumentMeta from "../hooks/useDocumentMeta.js";
 
@@ -19,27 +18,38 @@ export default function ClientPortal() {
 
   return (
     <main id="main" ref={mainRef}>
-      <HeroSection
-        title="Client Portal"
-        breadcrumbs={[{ label: "Home", link: "/" }, { label: "Why Us" }, { label: "Client Portal" }]}
-        hero={{
-          eyebrow: "For Existing Clients",
-          heading: "Client Portal",
-          lede: "Sign in to track active work, review documentation, and reach your account team directly. Not signed in yet? Use the options below in the meantime.",
-          primaryCtaText: "Open a support ticket",
-          primaryCtaLink: "/why-us/open-a-ticket",
-          secondaryCtaText: "Talk to your account team",
-          secondaryCtaLink: "/contact",
-          glance: {
-            title: "Not a client yet?",
-            items: [
-              "See how we work in Our Approach",
-              "Read the Onboarding Guide for what to expect",
-              "Or talk to our team to get started",
-            ],
-          },
-        }}
-      />
+      <section className="svc-hero">
+        <div className="wrap">
+          <nav className="crumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a><span>/</span><b>Client Portal</b>
+          </nav>
+          <div className="svc-hero-grid">
+            <div>
+              <span className="eyebrow">For Existing Clients</span>
+              <h1>Client Portal</h1>
+              <p className="lede">Sign in to track active work, review documentation, and reach your account team directly. Not signed in yet? Use the options below in the meantime.</p>
+              <div className="svc-cta">
+                <a className="btn btn-primary" href="/why-us/open-a-ticket">Open a support ticket <svg><use href="#i-arrow-r" /></svg></a>
+                <a className="btn btn-ghost" href="/contact">Talk to your account team <svg><use href="#i-arrow-r" /></svg></a>
+              </div>
+            </div>
+            <aside className="glance">
+              <h2>Not a client yet?</h2>
+              <ul>
+                <li><svg><use href="#i-check" /></svg><span>See how we work in Our Approach</span></li>
+                <li><svg><use href="#i-check" /></svg><span>Read the Onboarding Guide for what to expect</span></li>
+                <li><svg><use href="#i-check" /></svg><span>Or talk to our team to get started</span></li>
+              </ul>
+            </aside>
+          </div>
+          <div className="svc-stats">
+            <div className="svc-stat"><b>24/7</b><span>Support coverage</span></div>
+            <div className="svc-stat"><b>1 day</b><span>We reply to every message</span></div>
+            <div className="svc-stat"><b>3</b><span>Named contacts per account</span></div>
+            <div className="svc-stat"><b>6</b><span>Onboarding stages</span></div>
+          </div>
+        </div>
+      </section>
 
       <section className="section bg-paper">
         <div className="wrap">
@@ -72,6 +82,10 @@ export default function ClientPortal() {
             <div className="cta-actions">
               <a className="btn btn-primary" href="/contact">
                 Request access
+                <svg><use href="#i-arrow-r" /></svg>
+              </a>
+              <a className="btn btn-ghost" href="/why-us/faq">
+                Read the FAQ
                 <svg><use href="#i-arrow-r" /></svg>
               </a>
               <small>We reply to every message within one business day.</small>

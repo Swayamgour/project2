@@ -1,6 +1,5 @@
 import { useMemo, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
-import HeroSection from "../../components/HeroSection.jsx";
 import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
 import { useGetPublishedBlogsQuery } from "../../redux/api.jsx";
@@ -39,23 +38,37 @@ export default function ResourceTopic() {
 
   return (
     <main id="main" ref={mainRef}>
-      <HeroSection
-        title={meta.label}
-        breadcrumbs={[
-          { label: "Home", link: "/" },
-          { label: "Why Us", link: "/About" },
-          { label: meta.label },
-        ]}
-        hero={{
-          eyebrow: "Explore by Topic",
-          heading: meta.label,
-          lede: `Everything we've published on ${meta.label.toLowerCase()} \u2014 articles, guides and updates in one place.`,
-          primaryCtaText: "Talk to our team",
-          primaryCtaLink: "/#contact",
-          secondaryCtaText: "See all resources",
-          secondaryCtaLink: "/resources",
-        }}
-      />
+      <section className="svc-hero">
+        <div className="wrap">
+          <nav className="crumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a><span>/</span><a href="/resources">Resources</a><span>/</span><b>{meta.label}</b>
+          </nav>
+          <div className="svc-hero-grid">
+            <div>
+              <span className="eyebrow">Explore by Topic</span>
+              <h1>{meta.label}</h1>
+              <p className="lede">Everything we've published on {meta.label.toLowerCase()} &mdash; articles, guides and updates in one place.</p>
+              <div className="svc-cta">
+                <a className="btn btn-primary" href="/#contact">Talk to our team <svg><use href="#i-arrow-r" /></svg></a>
+                <a className="btn btn-ghost" href="/resources">See all resources <svg><use href="#i-arrow-r" /></svg></a>
+              </div>
+            </div>
+            <aside className="glance">
+              <h2>On this page</h2>
+              <ul>
+                <li><svg><use href="#i-check" /></svg><span>{topicPosts.length} article{topicPosts.length !== 1 ? "s" : ""} tagged {meta.label}</span></li>
+                <li><svg><use href="#i-check" /></svg><span>Guidance grounded in real client engagements</span></li>
+                <li><svg><use href="#i-check" /></svg><span>New posts added as the work produces something worth sharing</span></li>
+              </ul>
+            </aside>
+          </div>
+          <div className="svc-stats">
+            <div className="svc-stat"><b>{topicPosts.length}</b><span>Articles on this topic</span></div>
+            <div className="svc-stat"><b>{posts.length || "—"}</b><span>Articles published in total</span></div>
+            <div className="svc-stat"><b>1 day</b><span>We reply to every enquiry</span></div>
+          </div>
+        </div>
+      </section>
 
       <section className="section bg-paper" id="topic-posts">
         <div className="wrap">
