@@ -19,7 +19,7 @@ function Blog() {
   const [platform, setPlatform] = useState('');
   const [service, setService] = useState('');
   const [industry, setIndustry] = useState('');
-  const [visibleCount, setVisibleCount] = useState(10);
+  const [visibleCount, setVisibleCount] = useState(30);
 
   // Get the blog posts data from API response
   const blogPosts = useMemo(() => {
