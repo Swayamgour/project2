@@ -35,7 +35,7 @@ import ResourceTopic from "./pages/resources/Topic";
 import Loader from "./components/Loader.jsx";
 import WhitepapersDetail from "./pages/resources/WhitepapersDetail.jsx";
 import ChecklistsDetail from "./pages/resources/ChecklistsDetail.jsx";
-import Partners from "./pages/company/partners.jsx";
+// import Partners from "./pages/company/partners.jsx";
 
 
 export default function App() {
