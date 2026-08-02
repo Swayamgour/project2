@@ -69,7 +69,7 @@ function Guides() {
   const [platform, setPlatform] = useState('');
   const [service, setService] = useState('');
   const [industry, setIndustry] = useState('');
-  const [visibleCount, setVisibleCount] = useState(10);
+  const [visibleCount, setVisibleCount] = useState(20);
 
   // Fetch guides data from the API
   const { data: response, isLoading, isError } = useGetGuidesQuery();
