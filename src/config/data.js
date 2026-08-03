@@ -5,7 +5,7 @@ export const heroSlides = [
         eyebrow: "AI Readiness & ROI",
         title: "Feeling overwhelmed by the new AI wave?",
         description: "We help you evaluate where Microsoft Copilot and agentic AI genuinely pay off, cut through the uncertainty, and build a practical roadmap you can act on.",
-        ctaText: "Get your free AI ROI assessment",
+        ctaText: "Get your AI ROI assessment",
         ctaLink: "#contact",
         image: "/assets/img/hero-1.jpg",
         imageAlt: "Microsoft Copilot, agentic AI, governance and ROI roadmap concept"

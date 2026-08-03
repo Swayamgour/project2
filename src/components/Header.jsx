@@ -646,7 +646,7 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
             setNavOpen(false);
           }}
         >
-          <img src={logo} width={200} alt={`${brandName} ${brandSuffix}`} />
+          <img src={logo} width={210} alt={`${brandName} ${brandSuffix}`} />
         </a>
 
         <nav className={`jjc-nav${navOpen ? " is-open" : ""}`} id="nav" aria-label="Main">
