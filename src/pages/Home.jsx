@@ -457,7 +457,7 @@ export default function Home() {
                            </span>
                            <span className="service-family-title">
                               <b>{family.title}</b>
-                              <span>{family.capabilities} capabilities</span>
+                              {/* <span>{family.capabilities} capabilities</span> */}
                            </span>
                            <span className="service-family-summary">
                               {family.summary}
@@ -643,17 +643,7 @@ export default function Home() {
 
 
 
-                        {testimonial?.image?.url &&
-                           <div className="Testimonial-avatar" aria-hidden="true">
 
-                              <img
-                                 src={testimonial?.image?.url}
-                                 alt={testimonial.title}
-                              // className="avatar-image"
-                              />
-
-                           </div>
-                        }
 
 
 
@@ -680,9 +670,21 @@ export default function Home() {
                            </span>
                         </figcaption>
 
-                        <span className="company-logo">
+                        {testimonial?.image?.url &&
+                           <div className="Testimonial-avatar" aria-hidden="true">
+
+                              <img
+                                 src={'https://jjcsystems.com/wp-content/uploads/2025/11/Rantoul-foods-.png'}
+                                 alt={testimonial.title}
+                              // className="avatar-image"
+                              />
+
+                           </div>
+                        }
+
+                        {/* <span className="company-logo">
                            {testimonial.subtitle?.split(",")[1]?.trim()}
-                        </span>
+                        </span> */}
                      </figure>
                   ))}
                </div>
@@ -749,7 +751,7 @@ export default function Home() {
          </section>
 
          {/* Contact Section */}
-        
+
       </main>
    );
 }

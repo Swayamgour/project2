@@ -604,12 +604,12 @@ export const insights = [
 export const contactInfo = {
     steps: [
         "We read your message and route it to the specialist who knows the area — not a general inbox.",
-        "A 30-minute call to understand your situation properly. No pitch deck.",
+        "A 30-minute call to understand your situation properly.",
         "A written recommendation with clear scope, timeline and a fixed price."
     ],
     contactDetails: [
-        { icon: "#i-mail", text: "<b>Email</b>hello@jjcsystems.com" },
-        { icon: "#i-phone", text: "<b>Phone</b>+1 (000) 000-0000" },
+        { icon: "#i-mail", text: "<b>Email</b>info@jjcsystems.com" },
+        { icon: "#i-phone", text: "<b>Phone</b>+1-888-329-0625" },
         { icon: "#i-pin", text: "<b>Head office</b>Street address, Chicago, IL" },
         { icon: "#i-clock", text: "<b>Support hours</b>24/7 global coverage" }
     ],

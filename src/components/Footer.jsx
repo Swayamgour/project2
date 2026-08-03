@@ -262,8 +262,7 @@ const Footer = () => {
               <span className="eyebrow">Get In Touch</span>
               <h2 className="h-sec wide">Tell us what you're trying to fix</h2>
               <p className="lede">
-                No sales script and no obligation. Describe the situation in your own
-                words and we'll tell you honestly whether we're the right people for it.
+                Describe the situation in your own words.
               </p>
             </div>
             <div className="contact-grid reveal">
@@ -383,7 +382,7 @@ const Footer = () => {
                         />
                         <span className="err">Please enter your company name.</span>
                       </div>
-                      <div className="field">
+                      {/* <div className="field">
                         <label htmlFor="footer-size">Organization size</label>
                         <select id="footer-size" name="size" defaultValue="">
                           <option value="">Select one</option>
@@ -394,22 +393,23 @@ const Footer = () => {
                           <option value="501-1000">501-1,000 employees</option>
                           <option value="1000+">1,000+ people</option>
                         </select>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="field">
                       <label htmlFor="footer-interest">
                         What can we help with? <span className="req">*</span>
                       </label>
                       <select id="footer-interest" name="interest" required defaultValue="">
+
                         <option value="">Select one</option>
-                        <option value="Cloud Migration">Cloud Migration</option>
-                        <option value="Digital Transformation">Digital Transformation</option>
-                        <option value="Security & Compliance">Security & Compliance</option>
-                        <option value="Business Process Automation">Business Process Automation</option>
-                        <option value="IT Strategy">IT Strategy</option>
+                        <option value="Cloud Migration">Strategy & Transformation</option>
+                        <option value="Digital Transformation">Managed IT & Security</option>
+                        <option value="Security & Compliance">Business Applications</option>
+                        <option value="Business Process Automation">Data, AI & Integration</option>
+                        <option value="IT Strategy">Modern Work & Automation</option>
                         <option value="Managed Services">Managed Services</option>
-                        <option value="Training & Adoption">Training & Adoption</option>
-                        <option value="Modern workplace & automation">Modern Workplace & Automation</option>
+                        <option value="Training & Adoption">Talent</option>
+                        {/* <option value="Modern workplace & automation">Modern Workplace & Automation</option> */}
                         <option value="Other">Other</option>
                       </select>
                       <span className="err">Please choose an option.</span>

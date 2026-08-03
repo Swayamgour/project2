@@ -25,6 +25,7 @@ import {
   TrendingUp,
   BookOpen,
   ChevronDown,
+  User,
 } from "lucide-react";
 import { FaLinkedinIn } from "react-icons/fa";
 import { useNavigate } from "react-router";
@@ -483,11 +484,11 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
         layout: "info",
         columns: [
           {
-            heading: "About JJC",
+            heading: "Company",
             icon: Building2,
             items: [
               { label: "About Us", path: "/About" },
-              { label: "Leadership & Team", path: "/why-us/team" },
+              { label: "Leadership", path: "/why-us/team" },
               { label: "Locations", path: "/why-us/locations" },
               { label: "Partners", path: "/why-us/partners" },
               { label: "Careers", path: "/why-us/careers" },
@@ -507,21 +508,21 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
         ],
         extraCard: {
           icon: Award,
-          heading: "Why Organizations Choose JJC",
+          heading: "Why Organizations Choose JJC systems",
           description:
-            "Organizations choose JJC for our practical guidance, accountable delivery, and experienced technology professionals who deliver results that matter.",
+            "Organizations choose JJC systems for our practical guidance, accountable delivery, and experienced technology professionals who deliver results that matter.",
           ctaLabel: "Meet JJC Systems",
           path: "/About",
         },
         footerLinks: [
           { icon: Compass, label: "Our Approach", sub: "See how we guide projects from discovery to delivery", path: "/why-us/our-approach" },
-          { icon: Mail, label: "Contact JJC", sub: "Connect with our team for next steps", path: "/contact" },
+          { icon: Mail, label: "Contact JJC systems", sub: "Connect with our team for next steps", path: "/contact" },
         ],
         promo: {
           icon: Handshake,
           title: "A Partner You Can Count On.",
           text: "We blend strategy, implementation, and support with accountability at every step so you can move forward with confidence.",
-          cta: "Learn About JJC",
+          cta: "Learn About JJC systems",
           path: "/About",
         },
       },
@@ -556,9 +557,9 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
             heading: "Connect",
             variant: "rows",
             items: [
-              { icon: Phone, label: "Call Us", sub: "(440) 471-5800", href: "tel:+14404715800" },
+              { icon: Phone, label: "Call Us", sub: "+1-888-329-0625", href: "tel:+1-888-329-0625" },
               { icon: Mail, label: "Email Us", sub: "info@jjcsi.com", href: "mailto:info@jjcsi.com" },
-              { icon: FaLinkedinIn, label: "LinkedIn", sub: "Follow Us", href: "https://www.linkedin.com/company/jjc-systems" },
+              { icon: User, label: "LinkedIn", sub: "Follow Us", href: "https://www.linkedin.com/company/jjc-systems" },
             ],
           },
         ],
