@@ -10,6 +10,8 @@ import HeroSection from "../../components/HeroSection.jsx";
 export default function SuccessStoryPatientOutreachThatPeopleActuallyRespondTo() {
   const mainRef = useRef(null);
   const { slug } = useParams();
+
+  console.log(slug)
   const { data: response, isLoading, error } = useGetCaseStudyStoryBySlugQuery(slug);
   const { data } = useGetRelatedStoryByIdQuery(response?.data?._id)
 
@@ -93,16 +95,16 @@ export default function SuccessStoryPatientOutreachThatPeopleActuallyRespondTo()
       <Link
         key={index}
         className="rel reveal"
-        to={`/success/story-${story.slug}`}
+        to={`/success/story/${story.slug}`}
       >
         {/* <span className="rel-icon"> */}
 
 
-          <div className="icon-tile">
-            <svg>
-              <use href="#i-grid" />
-            </svg>
-          </div>
+        <div className="icon-tile">
+          <svg>
+            <use href="#i-grid" />
+          </svg>
+        </div>
         {/* </span> */}
         <span>
           <b>{story.title}</b>

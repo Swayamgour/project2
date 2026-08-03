@@ -315,7 +315,7 @@ export default function Success() {
                     <span>Copilot Studio</span>
                   </div>
 
-                  <a className="link-more" style={{ marginTop: '18px' }} href="/success/story-forty-siloed-systems-into-one-citizen-record">
+                  <a className="link-more" style={{ marginTop: '18px' }} href="/success/story/forty-siloed-systems-into-one-citizen-record">
                     Read the full report <svg><use href="#i-arrow-r"></use></svg>
                   </a>
                 </div>

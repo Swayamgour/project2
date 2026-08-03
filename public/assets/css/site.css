@@ -8110,3 +8110,121 @@ main section[id] {
   height: auto;
   object-fit: contain;
 }
+
+/* {} */
+.who-they-are {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--navy-line);
+}
+
+.who-they-are b {
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+.who-they-are .role {
+  display: block;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--blue-deep);
+  margin-top: 5px;
+}
+
+.who-they-are p {
+  margin: 0 10px 10px;
+  font-size: 13.5px;
+  line-height: 1.62;
+  color: var(--body);
+  text-align: center;
+}
+
+
+
+.route-pick {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 40px
+}
+
+.rpick {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 22px 20px 20px;
+  background: var(--paper);
+  transition: border-color .18s ease, transform .18s ease;
+}
+
+.rpick:hover {
+  border-color: var(--cyan);
+  transform: translateY(-2px)
+}
+
+.rpick .ri {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--tile);
+  display: grid;
+  place-items: center;
+  margin-bottom: 13px
+}
+
+.rpick .ri svg {
+  width: 17px;
+  height: 17px;
+  fill: var(--blue-deep)
+}
+
+.rpick b {
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 15.5px;
+  color: var(--ink);
+  margin-bottom: 6px
+}
+
+.rpick p {
+  margin: 0 0 13px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--body);
+  flex: 1
+}
+
+.rpick .link-more {
+  font-size: 13px
+}
+
+.rpick.is-here {
+  border-color: var(--blue-deep);
+  background: var(--tile)
+}
+
+.rpick.is-here .ri {
+  background: #fff
+}
+
+.rpick.is-here .here-tag {
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 10.5px;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--blue-deep);
+}

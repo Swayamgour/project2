@@ -7,6 +7,7 @@ import { useCreateContactMutation } from "../redux/api.jsx";
 export default function Contact() {
   const mainRef = useRef(null);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
   const [createContact, { isLoading }] = useCreateContactMutation();
 
   useDocumentMeta(
@@ -20,14 +21,35 @@ export default function Contact() {
     e.preventDefault();
     const form = e.target;
     if (!form.checkValidity()) return;
+
+    setError("");
     const fd = new FormData(form);
-    const payload = Object.fromEntries(fd.entries());
+
+    // Map frontend form fields to backend schema
+    const payload = {
+      fname: fd.get("fname"),
+      lname: fd.get("lname"),
+      email: fd.get("email"),
+      phone: fd.get("phone") || "",
+      company: fd.get("company"),
+      jobTitle: fd.get("jobTitle") || "",
+      leadType: fd.get("leadType") || "general",
+      serviceArea: fd.get("serviceArea") || "",
+      companySize: fd.get("companySize") || "",
+      interestedIn: fd.get("interestedIn") || "",
+      message: fd.get("message"),
+      sourcePageType: "contact",
+      sourcePageTitle: "Contact Us",
+      consent: fd.get("consent") === "on",
+    };
+
     try {
       await createContact(payload).unwrap();
       setSubmitted(true);
+      form.reset();
     } catch (err) {
       console.error("Contact submission failed", err);
-      setSubmitted(true);
+      setError(err.data?.message || "There was an error submitting your message. Please try again.");
     }
   };
 
@@ -110,67 +132,117 @@ export default function Contact() {
                 </div>
               ) : (
                 <form id="contactForm" noValidate onSubmit={handleSubmit}>
+                  {error && (
+                    <div className="form-error" style={{ color: 'red', marginBottom: '1rem', padding: '0.75rem', background: '#fee', borderRadius: '4px' }}>
+                      {error}
+                    </div>
+                  )}
+
                   <div className="form-row">
                     <div className="field">
-                      <label htmlFor="c_fname">First name <span className="req">*</span></label>
-                      <input id="c_fname" name="fname" type="text" autoComplete="given-name" required />
+                      <label htmlFor="fname">First name <span className="req">*</span></label>
+                      <input id="fname" name="fname" type="text" autoComplete="given-name" required />
                       <span className="err">Please enter your first name.</span>
                     </div>
                     <div className="field">
-                      <label htmlFor="c_lname">Last name <span className="req">*</span></label>
-                      <input id="c_lname" name="lname" type="text" autoComplete="family-name" required />
+                      <label htmlFor="lname">Last name <span className="req">*</span></label>
+                      <input id="lname" name="lname" type="text" autoComplete="family-name" required />
                       <span className="err">Please enter your last name.</span>
                     </div>
                   </div>
 
                   <div className="form-row">
                     <div className="field">
-                      <label htmlFor="c_email">Work email <span className="req">*</span></label>
-                      <input id="c_email" name="email" type="email" autoComplete="email" required />
+                      <label htmlFor="email">Work email <span className="req">*</span></label>
+                      <input id="email" name="email" type="email" autoComplete="email" required />
                       <span className="err">Please enter a valid email address.</span>
                     </div>
                     <div className="field">
-                      <label htmlFor="c_phone">Phone</label>
-                      <input id="c_phone" name="phone" type="tel" autoComplete="tel" />
+                      <label htmlFor="phone">Phone</label>
+                      <input id="phone" name="phone" type="tel" autoComplete="tel" />
                     </div>
                   </div>
 
                   <div className="form-row">
                     <div className="field">
-                      <label htmlFor="c_company">Company <span className="req">*</span></label>
-                      <input id="c_company" name="company" type="text" autoComplete="organization" required />
+                      <label htmlFor="company">Company <span className="req">*</span></label>
+                      <input id="company" name="company" type="text" autoComplete="organization" required />
                       <span className="err">Please enter your company name.</span>
                     </div>
                     <div className="field">
-                      <label htmlFor="c_size">Organization size</label>
-                      <select id="c_size" name="size" defaultValue="">
+                      <label htmlFor="jobTitle">Job Title</label>
+                      <input id="jobTitle" name="jobTitle" type="text" autoComplete="organization-title" />
+                    </div>
+                  </div>
+
+                  <div className="form-row">
+                    <div className="field">
+                      <label htmlFor="leadType">What brings you here? <span className="req">*</span></label>
+                      <select id="leadType" name="leadType" required defaultValue="">
                         <option value="">Select one</option>
-                        {contactInfo.organizationSizes.map((size) => (
-                          <option key={size}>{size}</option>
-                        ))}
+                        <option value="consultation">Request a Consultation</option>
+                        <option value="assessment">Request an Assessment</option>
+                        <option value="expert">Talk to an Expert</option>
+                        <option value="general">General Inquiry</option>
+                      </select>
+                      <span className="err">Please choose an option.</span>
+                    </div>
+                    <div className="field">
+                      <label htmlFor="companySize">Organization size</label>
+                      <select id="companySize" name="companySize" defaultValue="">
+                        <option value="">Select one</option>
+                        <option value="1-10">1-10 employees</option>
+                        <option value="11-50">11-50 employees</option>
+                        <option value="51-200">51-200 employees</option>
+                        <option value="201-500">201-500 employees</option>
+                        <option value="501-1000">501-1,000 employees</option>
+                        <option value="1000+">1,000+ people</option>
                       </select>
                     </div>
                   </div>
 
                   <div className="field">
-                    <label htmlFor="interest">What can we help with? <span className="req">*</span></label>
-                    <select id="interest" name="interest" required defaultValue="">
+                    <label htmlFor="serviceArea">Microsoft Service Area</label>
+                    <select id="serviceArea" name="serviceArea" defaultValue="">
                       <option value="">Select one</option>
-                      {contactInfo.interests.map((interest) => (
-                        <option key={interest}>{interest}</option>
-                      ))}
+                      <option value="Microsoft 365">Microsoft 365</option>
+                      <option value="Azure">Azure</option>
+                      <option value="Dynamics 365">Dynamics 365</option>
+                      <option value="Power Platform">Power Platform</option>
+                      <option value="SharePoint">SharePoint</option>
+                      <option value="Security">Security</option>
+                      <option value="Business Central">Business Central</option>
+                      <option value="Teams">Teams</option>
+                      <option value="Not Sure">Not Sure</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+
+                  <div className="field">
+                    <label htmlFor="interestedIn">What can we help with? <span className="req">*</span></label>
+                    <select id="interestedIn" name="interestedIn" required defaultValue="">
+                      <option value="">Select one</option>
+                      <option value="Cloud Migration">Cloud Migration</option>
+                      <option value="Digital Transformation">Digital Transformation</option>
+                      <option value="Security & Compliance">Security & Compliance</option>
+                      <option value="Business Process Automation">Business Process Automation</option>
+                      <option value="IT Strategy">IT Strategy</option>
+                      <option value="Managed Services">Managed Services</option>
+                      <option value="Training & Adoption">Training & Adoption</option>
+                      <option value="Modern workplace & automation">Modern Workplace & Automation</option>
+                      <option value="Other">Other</option>
                     </select>
                     <span className="err">Please choose an option.</span>
                   </div>
 
                   <div className="field">
-                    <label htmlFor="c_message">Tell us about your situation <span className="req">*</span></label>
-                    <textarea id="c_message" name="message" required placeholder="What is happening today, and what would a good outcome look like?"></textarea>
+                    <label htmlFor="message">Tell us about your situation <span className="req">*</span></label>
+                    <textarea id="message" name="message" required placeholder="What is happening today, and what would a good outcome look like?"></textarea>
                     <span className="err">Please add a short description.</span>
                   </div>
 
-                  <label className="consent" htmlFor="c_consent">
-                    <input id="c_consent" name="consent" type="checkbox" required />
+                  <label className="consent" htmlFor="consent">
+                    <input id="consent" name="consent" type="checkbox" required />
                     <span>I agree that JJC Systems may contact me about my enquiry.</span>
                   </label>
 
@@ -195,9 +267,9 @@ export default function Contact() {
             </div>
             <div className="route-pick">
               <a className="rpick is-here" href="/contact"><span className="ri"><svg><use href="#i-mail" /></svg></span><b>Contact Us</b><p>A short form for anything at all. If you are not sure where your question belongs, start here.</p><span className="here-tag">You are here</span></a>
-              <a className="rpick" href="/contact#form"><span className="ri"><svg><use href="#i-strategy" /></svg></span><b>Request a Consultation</b><p>You have a project, an RFP or a problem statement. Use the same form so we can route you to the right specialists.</p><span className="link-more">Go to this form <svg><use href="#i-arrow-r" /></svg></span></a>
-              <a className="rpick" href="/contact#form"><span className="ri"><svg><use href="#i-chats" /></svg></span><b>General Inquiries</b><p>Questions about our solutions, services or how we work &mdash; before you are ready to discuss a project.</p><span className="link-more">Go to this form <svg><use href="#i-arrow-r" /></svg></span></a>
-              <a className="rpick" href="/contact#form"><span className="ri"><svg><use href="#i-award" /></svg></span><b>Partnership Opportunities</b><p>Technology partners, referral partners and organizations who want to build something with us.</p><span className="link-more">Go to this form <svg><use href="#i-arrow-r" /></svg></span></a>
+              <a className="rpick" href="#form"><span className="ri"><svg><use href="#i-strategy" /></svg></span><b>Request a Consultation</b><p>You have a project, an RFP or a problem statement. Use the same form so we can route you to the right specialists.</p><span className="link-more">Go to this form <svg><use href="#i-arrow-r" /></svg></span></a>
+              <a className="rpick" href="#form"><span className="ri"><svg><use href="#i-chats" /></svg></span><b>General Inquiries</b><p>Questions about our solutions, services or how we work &mdash; before you are ready to discuss a project.</p><span className="link-more">Go to this form <svg><use href="#i-arrow-r" /></svg></span></a>
+              <a className="rpick" href="#form"><span className="ri"><svg><use href="#i-award" /></svg></span><b>Partnership Opportunities</b><p>Technology partners, referral partners and organizations who want to build something with us.</p><span className="link-more">Go to this form <svg><use href="#i-arrow-r" /></svg></span></a>
             </div>
           </div>
         </section>
