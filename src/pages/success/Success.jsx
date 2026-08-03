@@ -194,7 +194,7 @@ export default function Success() {
               <a
                 key={industry._id}
                 className="browse-card reveal"
-                href={`/success/industry-${industry.slug}`}
+                href={`/success/${industry.slug}`}
               >
                 <span className="ic">
                   <svg><use href={`#${getIconForIndustry(industry.name)}`}></use></svg>
@@ -221,7 +221,7 @@ export default function Success() {
               <a
                 key={capability._id}
                 className="browse-card reveal"
-                href={`/success/capability-${capability.slug}`}
+                href={`/success/${capability.slug}`}
               >
                 <span className="ic">
                   <svg><use href={`#${getIconForCapability(capability.name)}`}></use></svg>

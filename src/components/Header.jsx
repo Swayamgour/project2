@@ -463,7 +463,7 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
           title: "File Server Migration to SharePoint",
           description: "See how a healthcare organization improved secure access and day-to-day collaboration.",
           ctaLabel: "Read The Story",
-          path: "/case-studies/file-server-migration-to-sharepoint",
+          path: "/FeaturedSuccess",
         },
         footerLinks: [
           { icon: BookOpen, label: "Explore All Success Stories", sub: "Browse outcomes across industries and solutions", path: "/case-studies" },
@@ -527,7 +527,7 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
         },
       },
 
-     
+
 
       {
         title: "Contact Us",

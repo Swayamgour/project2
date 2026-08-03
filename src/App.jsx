@@ -36,6 +36,7 @@ import Loader from "./components/Loader.jsx";
 import WhitepapersDetail from "./pages/resources/WhitepapersDetail.jsx";
 import ChecklistsDetail from "./pages/resources/ChecklistsDetail.jsx";
 import WhyUS from "./pages/why-us/WhyUS.jsx";
+import FeaturedSuccessStory from "./pages/FeaturedSuccessStory.jsx";
 // import Partners from "./pages/company/partners.jsx";
 
 
@@ -69,6 +70,7 @@ export default function App() {
         <Route path="/case-studies" element={<Success />} />
         <Route path="/case-studies/:slug" element={<SuccessStoryPatientOutreachThatPeopleActuallyRespondTo />} />
 
+        <Route path="/FeaturedSuccess" element={<FeaturedSuccessStory />} />
         {/* Contact Us */}
         <Route path="/contact" element={<Contact />} />
 
