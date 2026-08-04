@@ -486,6 +486,20 @@ export const logos = Array(10).fill(null).map((_, index) => ({
 
 export const successStories = [
     {
+        industry: "Healthcare",
+        title: "From a legacy file server to one searchable document center",
+        summary: "A regional healthcare organization replaced fragmented file shares with a governed SharePoint environment that made information easier to find and safer to manage.",
+        metrics: [
+            { value: "1.8 TB", label: "Illustrative data migrated" },
+            { value: "45%", label: "Sample improvement in search time" }
+        ],
+        outcomes: [
+            "Department-based information architecture and consistent permissions.",
+            "Migration planning, validation and user adoption delivered as one engagement.",
+            "Clear governance for ownership, retention and future site growth."
+        ]
+    },
+    {
         industry: "Logistics",
 
         title: "A port dispatch operation, visible in real time",
@@ -537,20 +551,20 @@ export const successStories = [
             "Vendor payments moved from paper checks to ACH, with finance workflows automated.",
         ],
     },
-    {
-        industry: "Professional Services",
-        title: "Turning weekly reporting into an always-current executive view",
-        summary: "A services organization automated data preparation and introduced Power BI dashboards for pipeline, utilization, delivery performance and margin.",
-        metrics: [
-            { value: "4 hrs → 15 min", label: "Sample reporting cycle" },
-            { value: "1 view", label: "Leadership source of truth" }
-        ],
-        outcomes: [
-            "Automated data refresh replaced repetitive weekly preparation.",
-            "Common KPI definitions gave leaders one consistent view of performance.",
-            "Drill-down reporting helped teams act before delivery or margin issues grew."
-        ]
-    }
+    // {
+    //     industry: "Professional Services",
+    //     title: "Turning weekly reporting into an always-current executive view",
+    //     summary: "A services organization automated data preparation and introduced Power BI dashboards for pipeline, utilization, delivery performance and margin.",
+    //     metrics: [
+    //         { value: "4 hrs → 15 min", label: "Sample reporting cycle" },
+    //         { value: "1 view", label: "Leadership source of truth" }
+    //     ],
+    //     outcomes: [
+    //         "Automated data refresh replaced repetitive weekly preparation.",
+    //         "Common KPI definitions gave leaders one consistent view of performance.",
+    //         "Drill-down reporting helped teams act before delivery or margin issues grew."
+    //     ]
+    // }
 ];
 
 export const testimonials = [
