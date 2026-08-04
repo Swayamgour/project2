@@ -459,7 +459,7 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
         featuredCard: {
           icon: Star,
           heading: "Featured Success Story",
-          image: headerImage,
+          image: './assets/img/story.jpg',
           title: "File Server Migration to SharePoint",
           description: "See how a healthcare organization improved secure access and day-to-day collaboration.",
           ctaLabel: "Read The Story",
@@ -512,7 +512,7 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
           description:
             "Organizations choose JJC systems for our practical guidance, accountable delivery, and experienced technology professionals who deliver results that matter.",
           ctaLabel: "Meet JJC Systems",
-          path: "/About",
+          path: "/why-us",
         },
         footerLinks: [
           { icon: Compass, label: "Our Approach", sub: "See how we guide projects from discovery to delivery", path: "/why-us/our-approach" },

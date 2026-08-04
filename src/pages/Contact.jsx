@@ -278,7 +278,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <div id="routes">
+      {/* <div id="routes">
         <section className="section bg-mist">
           <div className="wrap">
             <div className="sec-head reveal">
@@ -294,7 +294,7 @@ export default function Contact() {
             </div>
           </div>
         </section>
-      </div>
+      </div> */}
 
       <section className="section bg-paper" id="where">
         <div className="wrap">

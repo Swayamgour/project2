@@ -2987,7 +2987,7 @@ ul {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
-  background: var(--navy-line);
+  background: var(--navy-800);
   border: 1px solid var(--navy-line);
   border-radius: var(--r-lg);
   overflow: hidden;

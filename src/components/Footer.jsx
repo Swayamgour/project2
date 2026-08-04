@@ -504,6 +504,8 @@ const Footer = () => {
                   </div>
                 </div>
 
+           
+
                 <div className={styles.rightContent}>
                   <div className={styles.rightContentInner}>
                     <h2>Let&rsquo;s get started on something great</h2>

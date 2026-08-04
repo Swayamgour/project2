@@ -25,9 +25,24 @@
     flex-wrap: wrap;
 }
 
-.leftContent {
-    max-width: 460px;
+.leftContent,
+.rightContent {
+    flex: 1;
 }
+
+.rightContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.rightContent {
+    border-left: 1px solid #2b2c31;
+    padding-left: 50px;
+}
+
+
 
 .logo img {
     /* height: 44px; */
@@ -105,9 +120,9 @@
     object-fit: contain;
 }
 
-.rightContent {
+/* .rightContent {
     max-width: 440px;
-}
+} */
 
 .rightContentInner h2 {
     margin: 0 0 14px;
@@ -337,4 +352,15 @@
 
 .viewAllLink a:hover svg {
     transform: translateX(2px);
+}
+
+@media (max-width: 768px) {
+    .rightContent {
+        border-left: none;
+        padding-left: 0;
+        padding-top: 30px;
+    }
+    .footerClientImg img {
+        width: 70px;
+    }
 }

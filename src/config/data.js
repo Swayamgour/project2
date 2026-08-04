@@ -599,7 +599,10 @@ export const insights = [
         title: "Why reporting projects fail before the dashboard is built",
         description: "How inconsistent definitions, unclear ownership and disconnected source systems undermine otherwise well-designed reporting.",
         cta: "Read the article",
-        link: "/blog"
+        link: "/blog",
+        image: "/assets/img/blogs.jpg",
+
+
     },
     {
         icon: "#i-ai",
@@ -608,7 +611,8 @@ export const insights = [
         title: "A plain-English guide to Microsoft Copilot readiness",
         description: "The questions to answer about data, permissions, security and adoption before purchasing or expanding Copilot licences.",
         cta: "Read the guide",
-        link: "/resources/guides"
+        link: "/resources/guides",
+        image: "/assets/img/guide.jpg",
     },
     {
         icon: "#i-check",
@@ -617,7 +621,8 @@ export const insights = [
         title: "SharePoint migration readiness checklist",
         description: "Review ownership, permissions, file volume, unsupported content, retention requirements, user communication and cutover planning.",
         cta: "View the checklist",
-        link: "/resources/checklists"
+        link: "/resources/checklists",
+        image: "/assets/img/checklist.jpg",
     },
 
     {
@@ -627,7 +632,8 @@ export const insights = [
         title: "Technology planning worksheet for the next 12 months",
         description: "A structured template for documenting business priorities, current constraints, planned investments, dependencies and success measures.",
         cta: "Open the whitepaper",
-        link: "/resources/whitepapers"
+        link: "/resources/whitepapers",
+        image: "/assets/img/whitepaper.jpg",
     },
 
     {
@@ -637,7 +643,8 @@ export const insights = [
         title: "What should you expect from an initial technology consultation?",
         description: "Clear answers about discovery, access requirements, estimates, timelines, responsibilities and what happens before any work begins.",
         cta: "Read the FAQs",
-        link: "/why-us/faq"
+        link: "/why-us/faq",
+        image: "/assets/img/faq.jpg",
     }
 ];
 

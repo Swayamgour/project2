@@ -202,7 +202,7 @@ export default function SuccessIndustryHealthcare() {
           </div>
 
           {/* Disclaimer/Note */}
-          {successStories?.disclaimer && (
+          {/* {successStories?.disclaimer && (
             <div className="prov-note reveal">
               <svg>
                 <use href="#i-check" />
@@ -212,7 +212,7 @@ export default function SuccessIndustryHealthcare() {
                 {" "}These are reference outcomes that show what these platforms have delivered elsewhere — they are <b>not</b> JJC Systems client engagements, and we do not present them as our own results. The full source list, including every organization name and URL, is available on request.
               </p>
             </div>
-          )}
+          )} */}
 
           {/* Related Capabilities */}
           {relatedCapabilities && (

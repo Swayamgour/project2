@@ -690,7 +690,7 @@ export default function Home() {
                            <div className="Testimonial-avatar" aria-hidden="true">
 
                               <img
-                                 src={'https://jjcsystems.com/wp-content/uploads/2025/11/Rantoul-foods-.png'}
+                                 src={testimonial?.image?.url}
                                  alt={testimonial.title}
                               // className="avatar-image"
                               />
@@ -744,9 +744,11 @@ export default function Home() {
                   {insights.map((post, index) => (
                      <a key={index} className="post reveal" href={post.link}>
                         <div className="post-img">
-                           <svg>
+                           {/* <svg>
                               <use href={post.icon}></use>
-                           </svg>
+                           </svg> */}
+
+                           <img src={post?.image} alt="insits image" />
                         </div>
                         <div className="post-body">
                            <div className="post-meta">
