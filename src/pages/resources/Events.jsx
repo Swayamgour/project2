@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
+import HeroSection from "../../components/HeroSection.jsx";
 
 const events = [
   { icon: "#i-ai", title: "Preparing Your Organization for Copilot", when: "Upcoming webinar", text: "Planning, governance and user readiness before rolling out Microsoft Copilot." },
@@ -16,41 +17,53 @@ export default function Events() {
   );
   usePageEffects(mainRef);
 
+  const breadcrumbs = [
+    {
+      label: "Home",
+      link: "/",
+    },
+    {
+      label: "Resources",
+      link: "/resources",
+    },
+    {
+      label: "Events",
+    },
+  ];
+
+  const hero = {
+    eyebrow: "Insights",
+
+    heading: "Upcoming and on-demand sessions",
+
+    lede:
+      "Webinars and educational content on the platforms and problems we work with every day.",
+
+    primaryCtaText: "Talk to our team",
+    primaryCtaLink: "/#contact",
+
+    secondaryCtaText: "Back to Resources",
+    secondaryCtaAnchor: "/resources",
+
+    glance: {
+      title: "How to join",
+
+      items: [
+        "Upcoming webinars are free to register for",
+        "On-demand sessions are available any time",
+        "All sessions run by our own specialists",
+        "Recordings shared with registrants afterward",
+      ],
+    },
+  };
+
   return (
     <main id="main" ref={mainRef}>
-      <section className="svc-hero">
-        <div className="wrap">
-          <nav className="crumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a><span>/</span><a href="/resources">Resources</a><span>/</span><b>Events</b>
-          </nav>
-          <div className="svc-hero-grid">
-            <div>
-              <span className="eyebrow">Insights</span>
-              <h1>Upcoming and on-demand sessions</h1>
-              <p className="lede">Webinars and educational content on the platforms and problems we work with every day.</p>
-              <div className="svc-cta">
-                <a className="btn btn-primary" href="/#contact">Talk to our team <svg><use href="#i-arrow-r" /></svg></a>
-                <a className="btn btn-ghost" href="/resources">Back to Resources <svg><use href="#i-arrow-r" /></svg></a>
-              </div>
-            </div>
-            <aside className="glance">
-              <h2>How to join</h2>
-              <ul>
-                <li><svg><use href="#i-check" /></svg><span>Upcoming webinars are free to register for</span></li>
-                <li><svg><use href="#i-check" /></svg><span>On-demand sessions are available any time</span></li>
-                <li><svg><use href="#i-check" /></svg><span>All sessions run by our own specialists</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Recordings shared with registrants afterward</span></li>
-              </ul>
-            </aside>
-          </div>
-          <div className="svc-stats">
-            <div className="svc-stat"><b>{events.length}</b><span>Sessions listed</span></div>
-            <div className="svc-stat"><b>Free</b><span>To register</span></div>
-            <div className="svc-stat"><b>On-demand</b><span>Watch any time</span></div>
-            <div className="svc-stat"><b>1 day</b><span>We reply to every enquiry</span></div>
-          </div>
-        </div>
-      </section>
+
+      <HeroSection
+        hero={hero}
+        breadcrumbs={breadcrumbs}
+      />
 
       <section className="section bg-paper">
         <div className="wrap">

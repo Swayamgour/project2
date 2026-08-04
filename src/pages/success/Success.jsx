@@ -2,6 +2,7 @@ import { useRef, useMemo } from "react";
 import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
 import { useGetCaseStudyCategoryQuery } from "../../redux/api.jsx";
+import HeroSection from "../../components/HeroSection.jsx";
 
 export default function Success() {
   const mainRef = useRef(null);
@@ -99,87 +100,54 @@ export default function Success() {
     );
   }
 
+  const breadcrumbs = [
+    {
+      label: "Home",
+      link: "/",
+    },
+    {
+      label: "Client Success",
+    },
+  ];
+
+  const hero = {
+    eyebrow: "Client Success",
+
+    heading: "Proven results. Practical expertise.",
+
+    lede:
+      "We help organizations solve operational and technology challenges to drive measurable outcomes that matter. Browse by your industry or by the kind of work involved — and read the note on the right about where these figures come from, because we think it matters.",
+
+    primaryCtaText: "Talk to our team",
+    primaryCtaLink: "/#contact",
+
+    secondaryCtaText: "Explore all success stories",
+    secondaryCtaAnchor: "/success",
+
+    glance: {
+      title: featuredIndustry?.glanceHeading || "Where these come from",
+
+      items:
+        featuredIndustry?.glanceItems?.length > 0
+          ? featuredIndustry.glanceItems.map((item) => item.text)
+          : [
+            "Every outcome is sourced from a Microsoft-published case study.",
+            "Organization names are withheld; the published figures are unchanged.",
+            "These are reference outcomes, not JJC Systems client results.",
+            "The full source list with URLs is available on request.",
+          ],
+    },
+  };
+
   return (
     <main id="main" ref={mainRef}>
-      <section className="svc-hero">
-        <div className="wrap">
-          <nav className="crumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-            <span>/</span>
-            <b>Client Success</b>
-          </nav>
 
-          <div className="svc-hero-grid">
-            <div>
-              <span className="eyebrow">Client Success</span>
-              <h1>Proven results. Practical expertise.</h1>
-              <p className="lede">
-                We help organizations solve operational and technology challenges to drive measurable outcomes that matter. Browse by your industry or by the kind of work involved — and read the note on the right about where these figures come from, because we think it matters.
-              </p>
-              <div className="svc-cta">
-                <a className="btn btn-primary" href="/#contact">
-                  Talk to our team <svg><use href="#i-arrow-r"></use></svg>
-                </a>
-                <a className="btn btn-ghost" href="/success">
-                  Explore all success stories <svg><use href="#i-arrow-r"></use></svg>
-                </a>
-              </div>
-            </div>
+      <HeroSection
+        // title="Client Successkjh"
+        hero={hero}
+        breadcrumbs={breadcrumbs}
+      />
 
-            <aside className="glance">
-              <h2>{featuredIndustry?.glanceHeading || "Where these come from"}</h2>
-              <ul>
-                {featuredIndustry?.glanceItems?.length > 0 ? (
-                  featuredIndustry.glanceItems.map((item, index) => (
-                    <li key={index}>
-                      <svg><use href={`#${item.icon}`}></use></svg>
-                      <span>{item.text}</span>
-                    </li>
-                  ))
-                ) : (
-                  <>
-                    <li>
-                      <svg><use href="#i-check"></use></svg>
-                      <span>Every outcome is sourced from a Microsoft-published case study.</span>
-                    </li>
-                    <li>
-                      <svg><use href="#i-check"></use></svg>
-                      <span>Organization names are withheld; the published figures are unchanged.</span>
-                    </li>
-                    <li>
-                      <svg><use href="#i-check"></use></svg>
-                      <span>These are reference outcomes, not JJC Systems client results.</span>
-                    </li>
-                    <li>
-                      <svg><use href="#i-check"></use></svg>
-                      <span>The full source list with URLs is available on request.</span>
-                    </li>
-                  </>
-                )}
-              </ul>
-            </aside>
-          </div>
-
-          <div className="svc-stats">
-            <div className="svc-stat">
-              <b>{totalIndustries}</b>
-              <span>Industries covered</span>
-            </div>
-            <div className="svc-stat">
-              <b>{totalCapabilities}</b>
-              <span>Capability areas</span>
-            </div>
-            <div className="svc-stat">
-              <b>40+</b>
-              <span>Sourced outcomes</span>
-            </div>
-            <div className="svc-stat">
-              <b>1 day</b>
-              <span>We reply to every enquiry</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Industries Section */}
       <section className="section bg-paper" id="industries">

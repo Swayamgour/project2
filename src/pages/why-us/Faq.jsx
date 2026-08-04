@@ -1,43 +1,52 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import HeroSection from '../../components/HeroSection';
 
 function FAQ() {
+
+  const breadcrumbs = [
+    {
+      label: "Home",
+      link: "/",
+    },
+    {
+      label: "FAQ",
+    },
+  ];
+
+  const hero = {
+    eyebrow: "Frequently Asked Questions",
+
+    heading: "The questions you would ask on a call, answered here",
+
+    lede:
+      "We have written these the way we would answer them in a first conversation — including the ones with awkward answers. If a question you care about is not here, ask it directly and we will answer it just as plainly.",
+
+    primaryCtaText: "Ask us something else",
+    primaryCtaLink: "/contact",
+
+    secondaryCtaText: "Read our approach",
+    secondaryCtaAnchor: "/approach",
+
+    glance: {
+      title: "How to use this page",
+
+      items: [
+        "Grouped by what you are trying to find out",
+        "Written as we would answer on a call, not as marketing copy",
+        "Includes when we would tell you not to hire us",
+        "Ask anything not covered and we will answer plainly",
+      ],
+    },
+  };
+
   return (
     <main id="main">
       {/* Hero Section */}
-      <section className="svc-hero">
-        <div className="wrap">
-          <nav className="crumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a><span>/</span><b>FAQ</b>
-          </nav>
-          <div className="svc-hero-grid">
-            <div>
-              <span className="eyebrow">Frequently Asked Questions</span>
-              <h1>The questions you would ask on a call, answered here</h1>
-              <p className="lede">We have written these the way we would answer them in a first conversation — including the ones with awkward answers. If a question you care about is not here, ask it directly and we will answer it just as plainly.</p>
-              <div className="svc-cta">
-                <a className="btn btn-primary" href="/contact">Ask us something else <svg><use href="#i-arrow-r" /></svg></a>
-                <a className="btn btn-ghost" href="approach.html">Read our approach <svg><use href="#i-arrow-r" /></svg></a>
-              </div>
-            </div>
-            <aside className="glance">
-              <h2>How to use this page</h2>
-              <ul>
-                <li><svg><use href="#i-check" /></svg><span>Grouped by what you are trying to find out</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Written as we would answer on a call, not as marketing copy</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Includes when we would tell you not to hire us</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Ask anything not covered and we will answer plainly</span></li>
-              </ul>
-            </aside>
-          </div>
-          <div className="svc-stats">
-            <div className="svc-stat"><b>33</b><span>Questions answered</span></div>
-            <div className="svc-stat"><b>7</b><span>Topics covered</span></div>
-            <div className="svc-stat"><b>Fixed price</b><span>Agreed before work starts</span></div>
-            <div className="svc-stat"><b>1 day</b><span>We reply to every enquiry</span></div>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        hero={hero}
+        breadcrumbs={breadcrumbs}
+      />
 
       {/* Subnavigation */}
       <nav className="svc-subnav" aria-label="On this page">

@@ -37,6 +37,7 @@ import WhitepapersDetail from "./pages/resources/WhitepapersDetail.jsx";
 import ChecklistsDetail from "./pages/resources/ChecklistsDetail.jsx";
 import WhyUS from "./pages/why-us/WhyUS.jsx";
 import FeaturedSuccessStory from "./pages/FeaturedSuccessStory.jsx";
+import ClientSuccessStory from "./pages/ClientSuccessStory.jsx";
 // import Partners from "./pages/company/partners.jsx";
 
 
@@ -102,6 +103,8 @@ export default function App() {
 
         <Route path="/resources/events" element={<ResourceEvents />} />
         <Route path="/resources/topics/:topic" element={<ResourceTopic />} />
+
+        <Route path="/client-success" element={<ClientSuccessStory />} />
 
         <Route path="*" element={<NotFound />} />
       </Route>

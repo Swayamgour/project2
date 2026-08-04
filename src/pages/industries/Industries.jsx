@@ -4,6 +4,7 @@ import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
 import HeroSection from "../../components/HeroSection.jsx";
 import { useGetCategoryQuery } from "../../redux/api"; // Adjust import path as needed
+import Loader from "../../components/Loader.jsx";
 
 export default function Industries() {
   const mainRef = useRef(null);
@@ -91,11 +92,7 @@ export default function Industries() {
 
   if (isLoading) {
     return (
-      <main id="main" ref={mainRef}>
-        <div className="wrap" style={{ padding: "60px 0", textAlign: "center" }}>
-          <h2>Loading industries...</h2>
-        </div>
-      </main>
+     <Loader />
     );
   }
 

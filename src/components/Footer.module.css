@@ -2,10 +2,11 @@
     background-color: #16171b;
     color: #b7b8bd;
     font-family: inherit;
+    /* max-width: var(--wrap2); */
 }
 
 .container {
-    max-width: 1320px;
+    max-width: var(--wrap2);
     margin: 0 auto;
     padding: 0 24px;
 }
@@ -29,8 +30,8 @@
 }
 
 .logo img {
-    height: 44px;
-    width: auto;
+    /* height: 44px; */
+    width: 300px;
     display: block;
 }
 
@@ -99,8 +100,8 @@
 }
 
 .footerClientImg img {
-    height: 40px;
-    width: auto;
+    /* height: 40px; */
+    width: 100px;
     object-fit: contain;
 }
 
@@ -300,6 +301,12 @@
     .copyrightRow {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .logo img {
+        /* height: 44px; */
+        width: 250px;
+        display: block;
     }
 }
 

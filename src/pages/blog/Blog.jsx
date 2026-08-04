@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { useGetPublishedBlogsQuery } from '../../redux/api';
 import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader';
+import HeroSection from '../../components/HeroSection';
 
 // Helper to format date from API
 const formatDate = (dateString) => {
@@ -136,43 +137,55 @@ function Blog() {
   const uniquePlatforms = filterOptions.platformOptions.length;
   const uniqueIndustries = filterOptions.industryOptions.length;
 
+  const breadcrumbs = [
+    {
+      label: "Home",
+      link: "/",
+    },
+    {
+      label: "Insights",
+    },
+  ];
+
+  const hero = {
+    eyebrow: "Insights",
+
+    heading: "Writing for people who have to decide",
+
+    lede:
+      "Not product announcements. These are the arguments we find ourselves making in client meetings — why a project stalls, what a platform genuinely changes, and where the expensive mistakes hide. Written for executives, and honest about what we would advise against.",
+
+    primaryCtaText: "Browse the archive",
+    primaryCtaLink: "#posts",
+
+    secondaryCtaText: "Request a consultation",
+    secondaryCtaAnchor: "/contact",
+
+    glance: {
+      title: "What you will find",
+
+      items: [
+        `${totalPosts} articles across ${uniquePlatforms} Microsoft platforms`,
+        `${uniqueIndustries} industries covered`,
+        "Challenges, solutions, how-to guides and best practices",
+        "Grounded in current Microsoft product direction",
+        "Filter by platform, service or industry below",
+      ],
+    },
+
+  
+  };
+
   return (
     <main id="main">
       {/* Hero Section */}
-      <section className="svc-hero">
-        <div className="wrap">
-          <nav className="crumbs" aria-label="Breadcrumb">
-            <Link to="/">Home</Link><span>/</span><b>Insights</b>
-          </nav>
-          <div className="svc-hero-grid">
-            <div>
-              <span className="eyebrow">Insights</span>
-              <h1>Writing for people who have to decide</h1>
-              <p className="lede">Not product announcements. These are the arguments we find ourselves making in client meetings — why a project stalls, what a platform genuinely changes, and where the expensive mistakes hide. Written for executives, and honest about what we would advise against.</p>
-              <div className="svc-cta">
-                <a className="btn btn-primary" href="#posts">Browse the archive <svg><use href="#i-arrow-r" /></svg></a>
-                <Link className="btn btn-ghost" to="/contact">Request a consultation <svg><use href="#i-arrow-r" /></svg></Link>
-              </div>
-            </div>
-            <aside className="glance">
-              <h2>What you will find</h2>
-              <ul>
-                <li><svg><use href="#i-check" /></svg><span>{totalPosts} articles across {uniquePlatforms} Microsoft platforms</span></li>
-                <li><svg><use href="#i-check" /></svg><span>{uniqueIndustries} industries covered</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Challenges, solutions, how-to guides and best practices</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Grounded in current Microsoft product direction</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Filter by platform, service or industry below</span></li>
-              </ul>
-            </aside>
-          </div>
-          <div className="svc-stats">
-            <div className="svc-stat"><b>{totalPosts}</b><span>Articles published</span></div>
-            <div className="svc-stat"><b>{uniquePlatforms}</b><span>Platforms covered</span></div>
-            <div className="svc-stat"><b>{uniqueIndustries}</b><span>Industries</span></div>
-            <div className="svc-stat"><b>1 day</b><span>We reply to every enquiry</span></div>
-          </div>
-        </div>
-      </section>
+     
+
+      <HeroSection
+        hero={hero}
+        breadcrumbs={breadcrumbs}
+        showStats={false}
+      />
 
       {/* Blog Posts Section */}
       <section className="section bg-paper" id="posts">

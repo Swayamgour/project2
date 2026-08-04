@@ -4,6 +4,7 @@ import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
 import { useGetWhitepapersQuery } from '../../redux/api.jsx';
 import Loader from "../../components/Loader.jsx";
+import HeroSection from "../../components/HeroSection.jsx";
 
 export default function Whitepapers() {
   const mainRef = useRef(null);
@@ -89,83 +90,55 @@ export default function Whitepapers() {
     return icon.startsWith("#") ? icon : `#i-${icon}`;
   };
 
+  const breadcrumbs = [
+    {
+      label: "Home",
+      link: "/",
+    },
+    {
+      label: "Resources",
+      link: "/resources",
+    },
+    {
+      label: "Whitepapers",
+    },
+  ];
+
+  const hero = {
+    eyebrow: "Whitepapers",
+
+    heading: "Arguments worth circulating",
+
+    lede:
+      "Each paper takes a position, sets out the evidence for it, and offers a framework you can apply. They open with an abstract and numbered findings so a busy reader gets the argument in two minutes, and they close with references to Microsoft's own documentation so you can check the basis for yourself.",
+
+    primaryCtaText: "Browse the library",
+    primaryCtaLink: "#library",
+
+    secondaryCtaText: "Get help implementing",
+    secondaryCtaAnchor: "/contact",
+
+    glance: {
+      title: "How these are written",
+
+      items: [
+        "An abstract and four numbered findings, for the two-minute read",
+        "A named framework you can apply without us",
+        "Implications separated by role, because the argument differs",
+        `${totalReferences} references to Microsoft documentation across the library`,
+        "Written to be printed and circulated, not only read on screen",
+      ],
+    },
+  };
+
   return (
     <main id="main" ref={mainRef}>
-      <section className="svc-hero">
-        <div className="wrap">
-          <nav className="crumbs" aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <span>/</span>
-            <Link to="/resources">Resources</Link>
-            <span>/</span>
-            <b>Whitepapers</b>
-          </nav>
-          <div className="svc-hero-grid">
-            <div>
-              <span className="eyebrow">Whitepapers</span>
-              <h1>Arguments worth circulating</h1>
-              <p className="lede">
-                Each paper takes a position, sets out the evidence for it, and
-                offers a framework you can apply. They open with an abstract and
-                numbered findings so a busy reader gets the argument in two
-                minutes, and they close with references to Microsoft's own
-                documentation so you can check the basis for yourself.
-              </p>
-              <div className="svc-cta">
-                <a className="btn btn-primary" href="#library">
-                  Browse the library <svg><use href="#i-arrow-r" /></svg>
-                </a>
-                <Link className="btn btn-ghost" to="/contact">
-                  Get help implementing <svg><use href="#i-arrow-r" /></svg>
-                </Link>
-              </div>
-            </div>
-            <aside className="glance">
-              <h2>How these are written</h2>
-              <ul>
-                <li>
-                  <svg><use href="#i-check" /></svg>
-                  <span>An abstract and four numbered findings, for the two-minute read</span>
-                </li>
-                <li>
-                  <svg><use href="#i-check" /></svg>
-                  <span>A named framework you can apply without us</span>
-                </li>
-                <li>
-                  <svg><use href="#i-check" /></svg>
-                  <span>Implications separated by role, because the argument differs</span>
-                </li>
-                <li>
-                  <svg><use href="#i-check" /></svg>
-                  <span>{totalReferences} references to Microsoft documentation across the library</span>
-                </li>
-                <li>
-                  <svg><use href="#i-check" /></svg>
-                  <span>Written to be printed and circulated, not only read on screen</span>
-                </li>
-              </ul>
-            </aside>
-          </div>
-          <div className="svc-stats">
-            <div className="svc-stat">
-              <b>{whitepapers.length}</b>
-              <span>Papers published</span>
-            </div>
-            <div className="svc-stat">
-              <b>{totalReferences}</b>
-              <span>Documentation references</span>
-            </div>
-            <div className="svc-stat">
-              <b>{uniquePlatforms}</b>
-              <span>Platforms covered</span>
-            </div>
-            <div className="svc-stat">
-              <b>{uniqueIndustries}</b>
-              <span>Industries</span>
-            </div>
-          </div>
-        </div>
-      </section>
+
+      <HeroSection
+        title="Whitepapers"
+        hero={hero}
+        breadcrumbs={breadcrumbs}
+      />
 
       <section className="section bg-paper" id="library">
         <div className="wrap">

@@ -427,7 +427,14 @@ const Footer = () => {
                       <span className="err">Please add a short description.</span>
                     </div>
                     <label className="consent" htmlFor="footer-consent">
-                      <input id="footer-consent" name="consent" type="checkbox" required />
+                      {/* <input id="footer-consent" name="consent" type="checkbox" required /> */}
+                      <input
+                        id="footer-consent"
+                        name="consent"
+                        type="checkbox"
+                        defaultChecked
+                        required
+                      />
                       <span>
                         I agree that JJC Systems may contact me about my enquiry.
                       </span>
@@ -450,7 +457,7 @@ const Footer = () => {
       )}
 
       <footer className={styles.footer}>
-        <div className="wrap">
+        <div className="">
           <div className={styles.footerTop}>
             <div className={styles.container}>
               <div className={styles.footerTopRow}>
@@ -460,8 +467,11 @@ const Footer = () => {
                   </Link>
 
                   <p className={styles.tagline}>
-                    Empowering Your Business Through Managed IT,
-                    <br /> Endpoint Expertise, and Digital Innovation.
+
+                    Industry-focused technology consulting. One accountable partner for Microsoft consulting, managed IT, cybersecurity, and business applications.
+
+                    {/* Empowering Your Business Through Managed IT,
+                    <br /> Endpoint Expertise, and Digital Innovation. */}
                   </p>
 
                   <form className={styles.subscribeForm} onSubmit={handleSubscribe}>

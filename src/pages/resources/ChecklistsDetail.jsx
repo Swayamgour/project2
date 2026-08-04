@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useGetChecklistsBySlugQuery } from '../../redux/api';
 import Loader from '../../components/Loader.jsx';
+import HeroSection from '../../components/HeroSection.jsx';
 
 function ChecklistDetail() {
     const [checkedItems, setCheckedItems] = useState({});
@@ -116,78 +117,71 @@ function ChecklistDetail() {
     const hero = checklist.hero || {};
     const stats = checklist.stats || {};
 
+    const breadcrumbs = [
+        {
+            label: "Home",
+            link: "/",
+        },
+        {
+            label: "Resources",
+            link: "/resources",
+        },
+        {
+            label: "Checklists",
+            link: "/resources/checklists",
+        },
+        {
+            label: checklist.platformLabel || checklist.platform,
+        },
+    ];
+
+    const hero1 = {
+        eyebrow:
+            hero?.eyebrow ||
+            `${checklist.platformLabel || checklist.platform} · ${checklist.badge || "Readiness"
+            }`,
+
+        heading: checklist.title,
+
+        lede: checklist.description,
+
+        primaryCtaText:
+            checklist.ctaPrimary?.text || "Start the checklist",
+
+        primaryCtaLink:
+            checklist.ctaPrimary?.link || "#checklist",
+
+        secondaryCtaText:
+            checklist.ctaSecondary?.text ||
+            "Get help with the gaps",
+
+        secondaryCtaAnchor:
+            checklist.ctaSecondary?.link || "/contact",
+
+        glance: {
+            title: "Before you start",
+
+            items:
+                checklist.beforeYouStart ||
+                hero.beforeYouStart || [
+                    `${totalItems} checks across ${checklist.sections?.length || 0
+                    } sections`,
+                    stats.typicalEffort ||
+                    checklist.typicalEffort ||
+                    "Varies",
+                    "Tick only what you can genuinely evidence, not what you intend",
+                    "Nothing you tick is saved or sent anywhere",
+                ],
+        },
+    };
+
     return (
         <main id="main" ref={mainRef}>
             {/* Hero Section */}
-            <section className="svc-hero">
-                <div className="wrap">
-                    <nav className="crumbs" aria-label="Breadcrumb">
-                        <Link to="/">Home</Link>
-                        <span>/</span>
-                        <Link to="/resources">Resources</Link>
-                        <span>/</span>
-                        <Link to="/resources/checklists">Checklists</Link>
-                        <span>/</span>
-                        <b>{checklist.platformLabel || checklist.platform}</b>
-                    </nav>
-                    <div className="svc-hero-grid">
-                        <div>
-                            <span className="eyebrow">{hero.eyebrow || `${checklist.platformLabel || checklist.platform} · ${checklist.badge || 'Readiness'}`}</span>
-                            <h1>{checklist.title}</h1>
-                            <p className="lede">{checklist.description}</p>
-                            <div className="svc-cta">
-                                {checklist.ctaPrimary && (
-                                    <a className="btn btn-primary" href={checklist.ctaPrimary.link || '#checklist'}>
-                                        {checklist.ctaPrimary.text || 'Start the checklist'} <svg><use href="#i-arrow-r" /></svg>
-                                    </a>
-                                )}
-                                {checklist.ctaSecondary && (
-                                    <Link className="btn btn-ghost" to={checklist.ctaSecondary.link || '/contact'}>
-                                        {checklist.ctaSecondary.text || 'Get help with the gaps'} <svg><use href="#i-arrow-r" /></svg>
-                                    </Link>
-                                )}
-                            </div>
-                        </div>
-                        <aside className="glance">
-                            <h2>Before you start</h2>
-                            <ul>
-                                {(checklist.beforeYouStart || hero.beforeYouStart || []).map((item, index) => (
-                                    <li key={index}>
-                                        <svg><use href="#i-check" /></svg>
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                                {(!checklist.beforeYouStart && !hero.beforeYouStart) && (
-                                    <>
-                                        <li><svg><use href="#i-check" /></svg><span>{totalItems} checks across {checklist.sections?.length || 0} sections</span></li>
-                                        <li><svg><use href="#i-check" /></svg><span>{stats.typicalEffort || checklist.typicalEffort || 'Varies'}</span></li>
-                                        <li><svg><use href="#i-check" /></svg><span>Tick only what you can genuinely evidence, not what you intend</span></li>
-                                        <li><svg><use href="#i-check" /></svg><span>Nothing you tick is saved or sent anywhere</span></li>
-                                    </>
-                                )}
-                            </ul>
-                        </aside>
-                    </div>
-                    <div className="svc-stats">
-                        <div className="svc-stat">
-                            <b>{stats.totalChecks || totalItems || 20}</b>
-                            <span>Checks</span>
-                        </div>
-                        <div className="svc-stat">
-                            <b>{stats.difficulty || checklist.difficulty || 'Intermediate'}</b>
-                            <span>Difficulty</span>
-                        </div>
-                        <div className="svc-stat">
-                            <b>{stats.typicalEffort || checklist.typicalEffort || 'Varies'}</b>
-                            <span>Typical effort</span>
-                        </div>
-                        <div className="svc-stat">
-                            <b>{stats.writtenFor || checklist.writtenFor || checklist.industryLabel || 'General'}</b>
-                            <span>Written for</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <HeroSection
+                hero={hero1}
+                breadcrumbs={breadcrumbs}
+            />
 
             {/* Subnavigation */}
             <nav className="svc-subnav" aria-label="On this page">
@@ -318,11 +312,11 @@ function ChecklistDetail() {
                                     key={index}
                                     data-min={band.min}
                                     data-max={band.max}
-                                    style={{
-                                        borderColor: percentage >= band.min && percentage <= band.max ? 'var(--primary)' : 'transparent',
-                                        borderWidth: '2px',
-                                        borderStyle: 'solid'
-                                    }}
+                                    // style={{
+                                    //     borderColor: percentage >= band.min && percentage <= band.max ? 'var(--primary)' : 'transparent',
+                                    //     borderWidth: '2px',
+                                    //     borderStyle: 'solid'
+                                    // }}
                                 >
                                     <span className="rng">{band.min}–{band.max}%</span>
                                     <b>{band.label}</b>

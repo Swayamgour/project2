@@ -76,14 +76,14 @@ export default function HeroSection({
                     </aside>
                 </div>
 
-                <div className="svc-stats">
+                {/* <div className="svc-stats">
                     {hero?.stats?.map((stat, index) => (
                         <div className="svc-stat" key={index}>
                             <b>{stat.value}</b>
                             <span>{stat.label}</span>
                         </div>
                     ))}
-                </div>
+                </div> */}
 
             </div>
         </section>

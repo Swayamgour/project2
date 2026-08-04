@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
+import HeroSection from "../../components/HeroSection.jsx";
 
 const resourceTypes = [
   { icon: "#i-docs", title: "Blog", text: "Practical articles on Microsoft platforms, security, data and AI.", path: "/blog" },
@@ -27,41 +28,50 @@ export default function Resources() {
   );
   usePageEffects(mainRef);
 
+  const breadcrumbs = [
+    {
+      label: "Home",
+      link: "/",
+    },
+    {
+      label: "Resources",
+    },
+  ];
+
+  const hero = {
+    eyebrow: "Insights",
+
+    heading: "Browse articles, guides and practical tools",
+
+    lede:
+      "Everything we publish, organized by the kind of resource you're looking for — or browse by topic if you already know the area.",
+
+    primaryCtaText: "Talk to our team",
+    primaryCtaLink: "/#contact",
+
+    secondaryCtaText: "See upcoming events",
+    secondaryCtaAnchor: "/resources/events",
+
+    glance: {
+      title: "What you'll find here",
+
+      items: [
+        "Blog articles, guides, checklists and whitepapers",
+        "Organized by type and by topic",
+        "Grounded in real client engagements",
+        "New content added as the work produces something worth sharing",
+      ],
+    },
+  };
+
   return (
     <main id="main" ref={mainRef}>
-      <section className="svc-hero">
-        <div className="wrap">
-          <nav className="crumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a><span>/</span><b>Resources</b>
-          </nav>
-          <div className="svc-hero-grid">
-            <div>
-              <span className="eyebrow">Insights</span>
-              <h1>Browse articles, guides and practical tools</h1>
-              <p className="lede">Everything we publish, organized by the kind of resource you're looking for &mdash; or browse by topic if you already know the area.</p>
-              <div className="svc-cta">
-                <a className="btn btn-primary" href="/#contact">Talk to our team <svg><use href="#i-arrow-r" /></svg></a>
-                <a className="btn btn-ghost" href="/resources/events">See upcoming events <svg><use href="#i-arrow-r" /></svg></a>
-              </div>
-            </div>
-            <aside className="glance">
-              <h2>What you'll find here</h2>
-              <ul>
-                <li><svg><use href="#i-check" /></svg><span>Blog articles, guides, checklists and whitepapers</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Organized by type and by topic</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Grounded in real client engagements</span></li>
-                <li><svg><use href="#i-check" /></svg><span>New content added as the work produces something worth sharing</span></li>
-              </ul>
-            </aside>
-          </div>
-          <div className="svc-stats">
-            <div className="svc-stat"><b>5</b><span>Resource types</span></div>
-            <div className="svc-stat"><b>6</b><span>Topics covered</span></div>
-            <div className="svc-stat"><b>9</b><span>Platforms covered</span></div>
-            <div className="svc-stat"><b>1 day</b><span>We reply to every enquiry</span></div>
-          </div>
-        </div>
-      </section>
+
+      <HeroSection
+        hero={hero}
+        breadcrumbs={breadcrumbs}
+      />
+
 
       <section className="section bg-paper">
         <div className="wrap">

@@ -1,97 +1,56 @@
 import React from 'react';
+import HeroSection from '../../components/HeroSection';
+
+
 
 const WhyUS = () => {
+    const breadcrumbs = [
+        {
+            label: "Home",
+            link: "/",
+        },
+        {
+            label: "Why JJC Systems",
+        },
+    ];
+
+    const hero = {
+        eyebrow: "Why JJC Systems",
+
+        heading: "Eight reasons, and what each one actually means",
+
+        lede:
+            "Every consultancy claims expertise, certification and proven results. This page is the specific version — what those claims mean in practice, what evidence sits behind them, and what you would be able to hold us to.",
+
+        primaryCtaText: "Request a consultation",
+        primaryCtaLink: "/consultation",
+
+        secondaryCtaText: "Read about the firm",
+        secondaryCtaAnchor: "/company/about",
+
+        glance: {
+            title: "The short version",
+
+            items: [
+                "Industry and technical expertise in the same conversation",
+                "Certified, and kept current as new releases emerge",
+                "Ready-to-go industry solutions with an adoption path from day one",
+                "Applications, infrastructure, security and support in one team",
+                "Four decades of combined experience across eleven industries",
+            ],
+        },
+    };
+
     return (
         <>
 
 
             <main id="main">
-                <section className="svc-hero">
-                    <div className="wrap">
-                        <nav className="crumbs" aria-label="Breadcrumb">
-                            <a href="../index.html">Home</a>
-                            <span>/</span>
-                            <b>Why JJC Systems</b>
-                        </nav>
-                        <div className="svc-hero-grid">
-                            <div>
-                                <span className="eyebrow">Why JJC Systems</span>
-                                <h1>Eight reasons, and what each one actually means</h1>
-                                <p className="lede">
-                                    Every consultancy claims expertise, certification and proven results. This page is the specific version &mdash; what those claims mean in practice, what evidence sits behind them, and what you would be able to hold us to.
-                                </p>
-                                <div className="svc-cta">
-                                    <a className="btn btn-primary" href="consultation.html">
-                                        Request a consultation{' '}
-                                        <svg>
-                                            <use href="#i-arrow-r" />
-                                        </svg>
-                                    </a>
-                                    <a className="btn btn-ghost" href="../company/about.html">
-                                        Read about the firm{' '}
-                                        <svg>
-                                            <use href="#i-arrow-r" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                            <aside className="glance">
-                                <h2>The short version</h2>
-                                <ul>
-                                    <li>
-                                        <svg>
-                                            <use href="#i-check" />
-                                        </svg>
-                                        <span>Industry and technical expertise in the same conversation</span>
-                                    </li>
-                                    <li>
-                                        <svg>
-                                            <use href="#i-check" />
-                                        </svg>
-                                        <span>Certified, and kept current as new releases emerge</span>
-                                    </li>
-                                    <li>
-                                        <svg>
-                                            <use href="#i-check" />
-                                        </svg>
-                                        <span>Ready-to-go industry solutions with an adoption path from day one</span>
-                                    </li>
-                                    <li>
-                                        <svg>
-                                            <use href="#i-check" />
-                                        </svg>
-                                        <span>Applications, infrastructure, security and support in one team</span>
-                                    </li>
-                                    <li>
-                                        <svg>
-                                            <use href="#i-check" />
-                                        </svg>
-                                        <span>Four decades of combined experience across eleven industries</span>
-                                    </li>
-                                </ul>
-                            </aside>
-                        </div>
-                        <div className="svc-stats">
-                            <div className="svc-stat">
-                                <b>40+ yrs</b>
-                                <span>Combined experience</span>
-                            </div>
-                            <div className="svc-stat">
-                                <b>11</b>
-                                <span>Industries served</span>
-                            </div>
-                            <div className="svc-stat">
-                                <b>11+</b>
-                                <span>Vendor partnerships</span>
-                            </div>
-                            <div className="svc-stat">
-                                <b>24/7</b>
-                                <span>Global coverage</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
 
+                <HeroSection
+                    hero={hero}
+                    breadcrumbs={breadcrumbs}
+                />
                 <nav className="svc-subnav" aria-label="On this page">
                     <div className="wrap">
                         <a href="#reasons">The reasons</a>

@@ -3,6 +3,7 @@ import usePageEffects from "../hooks/usePageEffects.js";
 import useDocumentMeta from "../hooks/useDocumentMeta.js";
 import { contactInfo } from "../config/data.js";
 import { useCreateContactMutation } from "../redux/api.jsx";
+import HeroSection from "../components/HeroSection.jsx";
 
 export default function Contact() {
   const mainRef = useRef(null);
@@ -53,41 +54,54 @@ export default function Contact() {
     }
   };
 
+  const breadcrumbs = [
+    {
+      label: "Home",
+      link: "/",
+    },
+    {
+      label: "Contact Us",
+    },
+  ];
+
+  const hero = {
+    eyebrow: "Contact Us",
+
+    heading: "Start with a conversation, not a proposal",
+
+    lede:
+      "The first call is questions from us rather than slides from us. Tell us what is slow, what is manual and what keeps getting escalated — and we will tell you what we think, including when the answer is that you do not need us.",
+
+    primaryCtaText: "Jump to the form",
+    primaryCtaLink: "#form",
+
+    secondaryCtaText: "Call 312-585-7555",
+    secondaryCtaAnchor: "tel:+13125857555",
+
+    glance: {
+      title: "What to expect",
+
+      items: [
+        "A reply within one business day, from a specialist",
+        "A 30-minute call that is mostly questions",
+        "An honest view, including when we are not the right fit",
+        "No obligation and no follow-up sales sequence",
+      ],
+    },
+  };
+
+  const pageData = {
+    breadcrumbs,
+    hero,
+  };
+
   return (
     <main id="main" ref={mainRef}>
-      <section className="svc-hero">
-        <div className="wrap">
-          <nav className="crumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a><span>/</span><b>Contact Us</b>
-          </nav>
-          <div className="svc-hero-grid">
-            <div>
-              <span className="eyebrow">Contact Us</span>
-              <h1>Start with a conversation, not a proposal</h1>
-              <p className="lede">The first call is questions from us rather than slides from us. Tell us what is slow, what is manual and what keeps getting escalated &mdash; and we will tell you what we think, including when the answer is that you do not need us.</p>
-              <div className="svc-cta">
-                <a className="btn btn-primary" href="#form">Jump to the form <svg><use href="#i-arrow-r" /></svg></a>
-                <a className="btn btn-ghost" href="tel:+13125857555">Call 312-585-7555 <svg><use href="#i-arrow-r" /></svg></a>
-              </div>
-            </div>
-            <aside className="glance">
-              <h2>What to expect</h2>
-              <ul>
-                <li><svg><use href="#i-check" /></svg><span>A reply within one business day, from a specialist</span></li>
-                <li><svg><use href="#i-check" /></svg><span>A 30-minute call that is mostly questions</span></li>
-                <li><svg><use href="#i-check" /></svg><span>An honest view, including when we are not the right fit</span></li>
-                <li><svg><use href="#i-check" /></svg><span>No obligation and no follow-up sales sequence</span></li>
-              </ul>
-            </aside>
-          </div>
-          <div className="svc-stats">
-            <div className="svc-stat"><b>1 day</b><span>We reply to every message</span></div>
-            <div className="svc-stat"><b>30 min</b><span>First call, no pitch deck</span></div>
-            <div className="svc-stat"><b>24/7</b><span>Support coverage</span></div>
-            <div className="svc-stat"><b>8</b><span>Offices across three regions</span></div>
-          </div>
-        </div>
-      </section>
+
+      <HeroSection
+        hero={pageData.hero}
+        breadcrumbs={pageData.breadcrumbs}
+      />
 
       <nav className="svc-subnav" aria-label="On this page">
         <div className="wrap">
@@ -242,7 +256,14 @@ export default function Contact() {
                   </div>
 
                   <label className="consent" htmlFor="consent">
-                    <input id="consent" name="consent" type="checkbox" required />
+                    {/* <input id="consent" name="consent" type="checkbox" required /> */}
+                    <input
+                      id="footer-consent"
+                      name="consent"
+                      type="checkbox"
+                      defaultChecked
+                      required
+                    />
                     <span>I agree that JJC Systems may contact me about my enquiry.</span>
                   </label>
 

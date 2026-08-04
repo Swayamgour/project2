@@ -1,6 +1,7 @@
 import { useRef, useMemo } from "react";
 import usePageEffects from "../hooks/usePageEffects.js";
 import useDocumentMeta from "../hooks/useDocumentMeta.js";
+import HeroSection from "../components/HeroSection.jsx";
 // Assume API hook is available, but data for this specific page might be static or fetched differently
 // import { useGetCaseStudyQuery } from "../../redux/api.jsx";
 
@@ -38,64 +39,56 @@ export default function FeaturedSuccessStory() {
         ],
     };
 
+
+    const breadcrumbs = [
+        {
+            label: "Home",
+            link: "/",
+        },
+        {
+            label: "Client Success",
+            link: "/success",
+        },
+        {
+            label: "Featured Story",
+        },
+    ];
+
+    const hero = {
+        eyebrow: "Featured success story · Public Sector",
+
+        heading: storyData.title,
+
+        lede: storyData.description,
+
+        primaryCtaText: "Talk to our team",
+        primaryCtaLink: "/#contact",
+
+        secondaryCtaText: "Explore all success stories",
+        secondaryCtaAnchor: "/success",
+
+        glance: {
+            title: "Where these come from",
+
+            items: [
+                "Every outcome is sourced from a Microsoft-published case study.",
+                "Organization names are withheld; the published figures are unchanged.",
+                "These are reference outcomes, not JJC Systems client results.",
+                "The full source list with URLs is available on request.",
+            ],
+        },
+
+        stats: storyData.stats,
+    };
+
     return (
         <main id="main" ref={mainRef}>
             {/* ===================== HERO SECTION ===================== */}
-            <section className="svc-hero">
-                <div className="wrap">
-                    <nav className="crumbs" aria-label="Breadcrumb">
-                        <a href="/">Home</a>
-                        <span>/</span>
-                        <a href="/success">Client Success</a>
-                        <span>/</span>
-                        <b>Featured story</b>
-                    </nav>
-                    <div className="svc-hero-grid">
-                        <div>
-                            <span className="eyebrow">Featured success story · Public Sector</span>
-                            <h1>{storyData.title}</h1>
-                            <p className="lede">{storyData.description}</p>
-                            <div className="svc-cta">
-                                <a className="btn btn-primary" href="/#contact">
-                                    Talk to our team <svg><use href="#i-arrow-r"></use></svg>
-                                </a>
-                                <a className="btn btn-ghost" href="/success">
-                                    Explore all success stories <svg><use href="#i-arrow-r"></use></svg>
-                                </a>
-                            </div>
-                        </div>
-                        <aside className="glance">
-                            <h2>Where these come from</h2>
-                            <ul>
-                                <li>
-                                    <svg><use href="#i-check"></use></svg>
-                                    <span>Every outcome is sourced from a Microsoft-published case study.</span>
-                                </li>
-                                <li>
-                                    <svg><use href="#i-check"></use></svg>
-                                    <span>Organization names are withheld; the published figures are unchanged.</span>
-                                </li>
-                                <li>
-                                    <svg><use href="#i-check"></use></svg>
-                                    <span>These are reference outcomes, not JJC Systems client results.</span>
-                                </li>
-                                <li>
-                                    <svg><use href="#i-check"></use></svg>
-                                    <span>The full source list with URLs is available on request.</span>
-                                </li>
-                            </ul>
-                        </aside>
-                    </div>
-                    <div className="svc-stats">
-                        {storyData.stats.map((stat, index) => (
-                            <div className="svc-stat" key={index}>
-                                <b>{stat.value}</b>
-                                <span>{stat.label}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <HeroSection
+                title="Featured success story"
+                hero={hero}
+                breadcrumbs={breadcrumbs}
+            />
 
             {/* ===================== CONTENT SECTION ===================== */}
             <section className="section bg-paper">

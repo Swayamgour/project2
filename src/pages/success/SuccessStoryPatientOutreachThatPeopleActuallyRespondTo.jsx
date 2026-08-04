@@ -5,18 +5,19 @@ import useDocumentMeta from "../../hooks/useDocumentMeta.js";
 import { useParams } from "react-router-dom";
 import { useGetCaseStudyStoryBySlugQuery, useGetRelatedStoryByIdQuery } from "../../redux/api.jsx";
 import HeroSection from "../../components/HeroSection.jsx";
+import Loader from "../../components/Loader.jsx";
 // import HeroSection from "./components/HeroSection.jsx"; // Adjust the path as needed
 
 export default function SuccessStoryPatientOutreachThatPeopleActuallyRespondTo() {
   const mainRef = useRef(null);
   const { slug } = useParams();
 
-  console.log(slug)
+  // console.log(slug)
   const { data: response, isLoading, error } = useGetCaseStudyStoryBySlugQuery(slug);
   const { data } = useGetRelatedStoryByIdQuery(response?.data?._id)
 
   const pageData = response?.data;
-  console.log(pageData)
+  // console.log(pageData)
 
   // Set meta tags dynamically
   useDocumentMeta(
@@ -29,11 +30,7 @@ export default function SuccessStoryPatientOutreachThatPeopleActuallyRespondTo()
   // Loading state
   if (isLoading) {
     return (
-      <main id="main" ref={mainRef}>
-        <div className="wrap" style={{ padding: "60px 0", textAlign: "center" }}>
-          <p>Loading...</p>
-        </div>
-      </main>
+      <Loader />
     );
   }
 

@@ -20,7 +20,7 @@ export default function IndustriesHealthcare() {
 
   if (isLoading) {
     return (
-     <Loader />
+      <Loader />
     );
   }
 
@@ -78,16 +78,16 @@ export default function IndustriesHealthcare() {
   );
 
   // Helper to render stat cards
-  const renderStats = (stats) => (
-    <div className="svc-stats">
-      {stats.map((stat, index) => (
-        <div className="svc-stat" key={index}>
-          <b>{stat.value}</b>
-          <span>{stat.label}</span>
-        </div>
-      ))}
-    </div>
-  );
+  // const renderStats = (stats) => (
+  //   <div className="svc-mstats">
+  //     {stats.map((stat, index) => (
+  //       <div className="svc-stat" key={index}>
+  //         <b>{stat.value}</b>
+  //         <span>{stat.label}</span>
+  //       </div>
+  //     ))}
+  //   </div>
+  // );
 
   // Helper to render glance items
   const renderGlanceItems = (items) => (
@@ -102,16 +102,18 @@ export default function IndustriesHealthcare() {
   );
 
   // Helper to render stats bar
-  const renderStatsBar = (stats) => (
-    <div className="svc-stats">
-      {stats.map((stat, index) => (
-        <div className="svc-stat" key={index}>
-          <b>{stat.value}</b>
-          <span>{stat.label}</span>
-        </div>
-      ))}
-    </div>
-  );
+  // const renderStatsBar = (stats) => (
+  //   <div className="
+  // svc-s
+  //  tats">
+  //     {stats.map((stat, index) => (
+  //       <div className="svc-stat" key={index}>
+  //         <b>{stat.value}</b>
+  //         <span>{stat.label}</span>
+  //       </div>
+  //     ))}
+  //   </div>
+  // );
 
   // Helper to render metrics grid
   const renderMetrics = (metrics) => (
@@ -252,9 +254,9 @@ export default function IndustriesHealthcare() {
     <div className="rel-grid">
       {items.map((item, index) => (
         <a className="rel reveal" href={item.link || "#"} key={index}>
-           <div className="icon-tile">
-                      <svg><use href={`#i-${item.icon}`}></use></svg>
-                    </div>
+          <div className="icon-tile">
+            <svg><use href={`#i-${item.icon}`}></use></svg>
+          </div>
           <span>
             <b>{item.title}</b>
             <span>{item.description}</span>

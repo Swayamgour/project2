@@ -72,12 +72,12 @@ export const whyCards = [
     {
         icon: "#i-erp",
         title: "Solutions and services under one roof",
-        description: "Strategy, build, migration, integration, managed services and staffing from one team — so nothing falls through the gaps between vendors."
+        description: "Strategy, build, migration, integration, managed services and staffing from one team — so nothing falls through the gaps."
     },
     {
         icon: "#i-award",
         title: "Certified consultants on every engagement",
-        description: "Microsoft-certified professionals, paired with industry specialists who have already solved this problem in your sector."
+        description: "Certified professionals, paired with industry specialists who have already solved this problem in your sector."
     }
 ];
 
@@ -175,10 +175,10 @@ export const solutions = {
             description: "Estimates, change orders, crew scheduling and job profitability visible from the office and the site — including when the site has no signal."
         },
         {
-            icon: "#i-erp",
-            tag: "Retail & Distribution",
-            title: "Order-to-Cash Visibility",
-            description: "One view of orders, stock and fulfilment from quote through to cash collected, so finance and operations stop reconciling two versions of the truth."
+            icon: "#i-service",
+            tag: "manufacturing",
+            title: "Production Cost Control",
+            description: "Live material, labour and overhead costs flowing from the shop floor into Dynamics 365 Finance, so controllers close the month on actuals instead of chasing variances in spreadsheets."
         },
         {
             icon: "#i-project",
@@ -482,34 +482,60 @@ export const logos = Array(10).fill(null).map((_, index) => ({
     alt: `Client ${index + 1}`
 }));
 
+
+
 export const successStories = [
     {
-        industry: "Healthcare",
-        title: "Modernizing document access without disrupting patient services",
-        summary: "A regional healthcare organization replaced fragmented file shares with a governed SharePoint environment that made information easier to find and safer to manage.",
+        industry: "Logistics",
+
+        title: "A port dispatch operation, visible in real time",
+
+        summary:
+            "We built the TICO Dispatch Analytics dashboard for a Savannah, Georgia logistics operator — Power BI on Azure SQL Server and Acumatica ERP, covering truck dispatch, vessel scheduling, driver performance and late deliveries.",
+
         metrics: [
-            { value: "1.8 TB", label: "Illustrative data migrated" },
-            { value: "45%", label: "Sample improvement in search time" }
+            {
+                value: "3",
+                label: "Platforms connected into one dashboard",
+            },
+            {
+                value: "4",
+                label: "Operational domains covered in real time",
+            },
         ],
+
         outcomes: [
-            "Department-based information architecture and consistent permissions.",
-            "Migration planning, validation and user adoption delivered as one engagement.",
-            "Clear governance for ownership, retention and future site growth."
-        ]
+            "Real-time and historical dispatch intelligence in one Power BI dashboard.",
+            "Drill-through and drill-down from the big picture to the detail, with consistent visuals.",
+            "Natural-language Q&A — ask the data a question in plain English.",
+        ],
     },
+
     {
         industry: "Manufacturing",
-        title: "Connecting finance and operations with Dynamics 365",
-        summary: "A growing manufacturer moved from disconnected accounting and operational processes to one platform for finance, inventory, purchasing and reporting.",
+
+        title:
+            "A manufacturer's ERP and CRM, co-managed through growth and acquisition",
+
+        summary:
+            "A Dayton, Ohio manufacturer keeps Dynamics 365 Business Central and Dynamics 365 Sales managed, customized and optimized through co-managed support — from day-to-day changes to an acquisition-driven tenant merger.",
+
         metrics: [
-            { value: "32%", label: "Sample faster month-end close" },
-            { value: "24%", label: "Sample reduction in manual handoffs" }
+            {
+                value: "2",
+                label: "Core Dynamics 365 platforms co-managed",
+            },
+            {
+                value: "3",
+                label: "Workflow automation programs delivered",
+            },
         ],
+
         outcomes: [
-            "One source of truth for orders, inventory, purchasing and financial performance.",
-            "Role-based workflows and approvals aligned to the organization's operating model.",
-            "Executive reporting available without spreadsheet consolidation."
-        ]
+            "Business functionality consolidated from the Sales CRM into Business Central.",
+            "Two Microsoft tenants merged into one after the acquisition.",
+            "Vendor payments moved from paper checks to ACH, with finance workflows automated.",
+        ],
     },
     {
         industry: "Professional Services",
@@ -603,14 +629,14 @@ export const insights = [
 
 export const contactInfo = {
     steps: [
-        "We read your message and route it to the specialist who knows the area — not a general inbox.",
+        "We read your message and route it to the specialist who knows the area.",
         "A 30-minute call to understand your situation properly.",
         "A written recommendation with clear scope, timeline and a fixed price."
     ],
     contactDetails: [
         { icon: "#i-mail", text: "<b>Email</b>info@jjcsystems.com" },
         { icon: "#i-phone", text: "<b>Phone</b>+1-888-329-0625" },
-        { icon: "#i-pin", text: "<b>Head office</b>Street address, Chicago, IL" },
+        { icon: "#i-pin", text: "<b>Head office</b>1600 Golf Rd, Suite 1200 Rolling Meadows, IL USA" },
         { icon: "#i-clock", text: "<b>Support hours</b>24/7 global coverage" }
     ],
     organizationSizes: [

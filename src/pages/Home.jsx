@@ -50,6 +50,15 @@ export default function Home() {
    const platforms = platformsData?.subcategories || [];
 
    const industries = industriesData?.subcategories || [];
+
+   const createSlug = (title) => {
+      return title
+         .toLowerCase()
+         .replace(/[^\w\s-]/g, "")
+         .trim()
+         .replace(/\s+/g, "-");
+   };
+
    return (
       <main id="main" ref={mainRef}>
          {/* Hero Section */}
@@ -251,7 +260,7 @@ export default function Home() {
                      Industry and business first. Our custom solutions prove it.
                   </h2>
                   <p className="lede">
-                     We don't lead with a product list. We start with how your industry
+                     We start with how your industry
                      actually runs — its deadlines, its regulators, its reporting, the
                      way work moves between teams — and build the technology to fit it.
                   </p>
@@ -341,7 +350,7 @@ export default function Home() {
                      project team.
                   </p>
                   <a className="link-more" href="#contact">
-                     Explore all custom solutions{" "}
+                     Schedule Your Personalized Demo{" "}
                      <svg>2
                         <use href="#i-arrow-r"></use>
                      </svg>
@@ -428,12 +437,15 @@ export default function Home() {
                   <div className="sec-head">
                      <span className="eyebrow">What We Do</span>
                      <h2 className="h-sec wide">
-                        Six service areas. Every capability your technology function needs.
+                        {/* Six service areas. Every capability your technology function needs. */}
+                        Navigate Change. Exceed Expectations.
                      </h2>
                      <p className="lede">
-                        Each category brings related services together under one accountable
+                        {/* Each category brings related services together under one accountable
                         delivery team. Open a category to see the full scope, the business
-                        problem each service solves, and the specialists assigned to the work.
+                        problem each service solves, and the specialists assigned to the work. */}
+
+                        Each category brings related services together. Open a category to see the full scope, and the business problem each service solves.
                      </p>
                   </div>
                   {/* <aside className="services-guidance">
@@ -481,7 +493,7 @@ export default function Home() {
                                        <a href={service.link}>{service.title}</a>
                                     </h4>
                                     <p>{service.description}</p>
-                                    <div className="subteam">
+                                    {/* <div className="subteam">
                                        <svg>
                                           <use href="#i-users"></use>
                                        </svg>
@@ -489,7 +501,7 @@ export default function Home() {
                                           <b>Your team</b>
                                           {service.team}
                                        </span>
-                                    </div>
+                                    </div> */}
                                     <a className="link-more" href={service.link}>
                                        Explore this service{" "}
                                        <svg>
@@ -557,9 +569,7 @@ export default function Home() {
                      Business outcomes, not just completed implementations
                   </h2>
                   <p className="lede">
-                     These sample stories show how the section can communicate the challenge,
-                     the solution and the measurable result in language business and technology
-                     leaders can understand.
+                     These success stories convey the challenge, the solution, and the measurable result that business and technology leaders can relate to.
                   </p>
                </div>
                <div className="success-grid">
@@ -593,12 +603,16 @@ export default function Home() {
                                  </li>
                               ))}
                            </ul>
-                           <a className="link-more" href="#contact">
-                              View the sample story{" "}
+                           <Link
+                              className="link-more"
+                              to={`/success/story/${createSlug(story.title)}`}
+                           >
+                              View the sample story
+
                               <svg>
                                  <use href="#i-arrow-r"></use>
                               </svg>
-                           </a>
+                           </Link>
                         </div>
                      </article>
                   ))}
@@ -618,8 +632,10 @@ export default function Home() {
                   <span className="eyebrow">Client Testimonials</span>
                   <h2 className="h-sec">See what our clients have to say</h2>
                   <p className="lede">
-                     Quality of work, speed of response, and technology that improves both the
-                     daily grind and the long-term picture.
+                     {/* Quality of work, speed of response, and technology that improves both the
+                     daily grind and the long-term picture. */}
+
+                     The quality of work, response speed, and technology that enhance both everyday tasks and long-term goals.
                   </p>
                </div>
                <div className="quote-grid">
@@ -711,16 +727,18 @@ export default function Home() {
                         Practical guidance for better technology decisions
                      </h2>
                      <p className="lede">
-                        Blogs, guides, resources, checklists and straightforward answers
-                        designed for business and technology leaders.
+                        {/* Blogs, guides, resources, checklists and straightforward answers
+                        designed for business and technology leaders. */}
+
+                        Blogs, guides, checklists, and clear answers crafted for business and technology leaders.
                      </p>
                   </div>
-                  <a className="btn btn-outline" href="#insights">
+                  {/* <a className="btn btn-outline" href="#insights">
                      View all resources{" "}
                      <svg>
                         <use href="#i-arrow-r"></use>
                      </svg>
-                  </a>
+                  </a> */}
                </div>
                <div className="insights-grid">
                   {insights.map((post, index) => (

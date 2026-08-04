@@ -4,11 +4,12 @@ import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
 import { useGetChecklistsQuery } from "../../redux/api.jsx";
 import Loader from "../../components/Loader.jsx";
+import HeroSection from "../../components/HeroSection.jsx";
 
 export default function Checklists() {
   const mainRef = useRef(null);
   const navigate = useNavigate();
-  
+
   useDocumentMeta(
     "Checklists | JJC Systems",
     "Working readiness and audit checklists for Microsoft platforms — tick through them, see a live readiness score, and find out what to do about the gaps."
@@ -82,73 +83,54 @@ export default function Checklists() {
     );
   }
 
+  const breadcrumbs = [
+    {
+      label: "Home",
+      link: "/",
+    },
+    {
+      label: "Resources",
+      link: "/resources",
+    },
+    {
+      label: "Checklists",
+    },
+  ];
+
+  const hero = {
+    eyebrow: "Checklists",
+
+    heading: "Instruments, not reading",
+
+    lede:
+      "Every checklist here is meant to be worked through rather than read. Tick the items you can genuinely answer yes to, watch the score, and read what the result means — including when it means you are not ready.",
+
+    primaryCtaText: "Browse the library",
+    primaryCtaLink: "#library",
+
+    secondaryCtaText: "Get help implementing",
+    secondaryCtaAnchor: "/contact",
+
+    glance: {
+      title: "How these work",
+
+      items: [
+        `${checklists.length * 20} individual checks across ${checklists.length} checklists`,
+        "Tick as you go — a live score shows where you stand",
+        "Every item explains why it matters, not just what to check",
+        "Score bands say plainly whether to proceed",
+        "Print or work through them on screen; nothing is stored",
+      ],
+    },
+  };
+
   return (
     <main id="main" ref={mainRef}>
-      <section className="svc-hero">
-        <div className="wrap">
-          <nav className="crumbs" aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <span>/</span>
-            <Link to="/resources">Resources</Link>
-            <span>/</span>
-            <b>Checklists</b>
-          </nav>
-          <div className="svc-hero-grid">
-            <div>
-              <span className="eyebrow">Checklists</span>
-              <h1>Instruments, not reading</h1>
-              <p className="lede">Every checklist here is meant to be worked through rather than read. Tick the items you can genuinely answer yes to, watch the score, and read what the result means — including when it means you are not ready.</p>
-              <div className="svc-cta">
-                <a className="btn btn-primary" href="#library">Browse the library <svg><use href="#i-arrow-r" /></svg></a>
-                <Link className="btn btn-ghost" to="/contact">Get help implementing <svg><use href="#i-arrow-r" /></svg></Link>
-              </div>
-            </div>
-            <aside className="glance">
-              <h2>How these work</h2>
-              <ul>
-                <li>
-                  <svg><use href="#i-check" /></svg>
-                  <span>{checklists.length * 20} individual checks across {checklists.length} checklists</span>
-                </li>
-                <li>
-                  <svg><use href="#i-check" /></svg>
-                  <span>Tick as you go — a live score shows where you stand</span>
-                </li>
-                <li>
-                  <svg><use href="#i-check" /></svg>
-                  <span>Every item explains why it matters, not just what to check</span>
-                </li>
-                <li>
-                  <svg><use href="#i-check" /></svg>
-                  <span>Score bands say plainly whether to proceed</span>
-                </li>
-                <li>
-                  <svg><use href="#i-check" /></svg>
-                  <span>Print or work through them on screen; nothing is stored</span>
-                </li>
-              </ul>
-            </aside>
-          </div>
-          <div className="svc-stats">
-            <div className="svc-stat">
-              <b>{checklists.length}</b>
-              <span>Checklists</span>
-            </div>
-            <div className="svc-stat">
-              <b>{checklists.length * 20}</b>
-              <span>Individual checks</span>
-            </div>
-            <div className="svc-stat">
-              <b>{uniquePlatforms}</b>
-              <span>Platforms covered</span>
-            </div>
-            <div className="svc-stat">
-              <b>{uniqueIndustries}</b>
-              <span>Industries</span>
-            </div>
-          </div>
-        </div>
-      </section>
+
+      <HeroSection
+        hero={hero}
+        breadcrumbs={breadcrumbs}
+      />
 
       <section className="section bg-paper" id="library">
         <div className="wrap">
@@ -162,82 +144,82 @@ export default function Checklists() {
             <div className="frow">
               <b>Platform</b>
               <div className="chips">
-                <button 
-                  type="button" 
-                  className={"chipf" + (platform === "" ? " is-on" : "")} 
-                  onClick={() => setPlatform("")} 
+                <button
+                  type="button"
+                  className={"chipf" + (platform === "" ? " is-on" : "")}
+                  onClick={() => setPlatform("")}
                   aria-pressed={platform === ""}
                 >
                   All
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (platform === "business-central" ? " is-on" : "")} 
-                  onClick={() => setPlatform("business-central")} 
+                <button
+                  type="button"
+                  className={"chipf" + (platform === "business-central" ? " is-on" : "")}
+                  onClick={() => setPlatform("business-central")}
                   aria-pressed={platform === "business-central"}
                 >
                   Dynamics 365 Business Central
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (platform === "d365-sales" ? " is-on" : "")} 
-                  onClick={() => setPlatform("d365-sales")} 
+                <button
+                  type="button"
+                  className={"chipf" + (platform === "d365-sales" ? " is-on" : "")}
+                  onClick={() => setPlatform("d365-sales")}
                   aria-pressed={platform === "d365-sales"}
                 >
                   Dynamics 365 Sales
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (platform === "azure" ? " is-on" : "")} 
-                  onClick={() => setPlatform("azure")} 
+                <button
+                  type="button"
+                  className={"chipf" + (platform === "azure" ? " is-on" : "")}
+                  onClick={() => setPlatform("azure")}
                   aria-pressed={platform === "azure"}
                 >
                   Azure
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (platform === "fabric" ? " is-on" : "")} 
-                  onClick={() => setPlatform("fabric")} 
+                <button
+                  type="button"
+                  className={"chipf" + (platform === "fabric" ? " is-on" : "")}
+                  onClick={() => setPlatform("fabric")}
                   aria-pressed={platform === "fabric"}
                 >
                   Microsoft Fabric
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (platform === "defender" ? " is-on" : "")} 
-                  onClick={() => setPlatform("defender")} 
+                <button
+                  type="button"
+                  className={"chipf" + (platform === "defender" ? " is-on" : "")}
+                  onClick={() => setPlatform("defender")}
                   aria-pressed={platform === "defender"}
                 >
                   Microsoft Defender
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (platform === "purview" ? " is-on" : "")} 
-                  onClick={() => setPlatform("purview")} 
+                <button
+                  type="button"
+                  className={"chipf" + (platform === "purview" ? " is-on" : "")}
+                  onClick={() => setPlatform("purview")}
                   aria-pressed={platform === "purview"}
                 >
                   Microsoft Purview
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (platform === "power-bi" ? " is-on" : "")} 
-                  onClick={() => setPlatform("power-bi")} 
+                <button
+                  type="button"
+                  className={"chipf" + (platform === "power-bi" ? " is-on" : "")}
+                  onClick={() => setPlatform("power-bi")}
                   aria-pressed={platform === "power-bi"}
                 >
                   Power BI
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (platform === "intune" ? " is-on" : "")} 
-                  onClick={() => setPlatform("intune")} 
+                <button
+                  type="button"
+                  className={"chipf" + (platform === "intune" ? " is-on" : "")}
+                  onClick={() => setPlatform("intune")}
                   aria-pressed={platform === "intune"}
                 >
                   Microsoft Intune
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (platform === "sharepoint" ? " is-on" : "")} 
-                  onClick={() => setPlatform("sharepoint")} 
+                <button
+                  type="button"
+                  className={"chipf" + (platform === "sharepoint" ? " is-on" : "")}
+                  onClick={() => setPlatform("sharepoint")}
                   aria-pressed={platform === "sharepoint"}
                 >
                   SharePoint
@@ -247,58 +229,58 @@ export default function Checklists() {
             <div className="frow">
               <b>Service</b>
               <div className="chips">
-                <button 
-                  type="button" 
-                  className={"chipf" + (service === "" ? " is-on" : "")} 
-                  onClick={() => setService("")} 
+                <button
+                  type="button"
+                  className={"chipf" + (service === "" ? " is-on" : "")}
+                  onClick={() => setService("")}
                   aria-pressed={service === ""}
                 >
                   All
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (service === "strategy-transformation" ? " is-on" : "")} 
-                  onClick={() => setService("strategy-transformation")} 
+                <button
+                  type="button"
+                  className={"chipf" + (service === "strategy-transformation" ? " is-on" : "")}
+                  onClick={() => setService("strategy-transformation")}
                   aria-pressed={service === "strategy-transformation"}
                 >
                   Strategy & Transformation
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (service === "managed-it-security" ? " is-on" : "")} 
-                  onClick={() => setService("managed-it-security")} 
+                <button
+                  type="button"
+                  className={"chipf" + (service === "managed-it-security" ? " is-on" : "")}
+                  onClick={() => setService("managed-it-security")}
                   aria-pressed={service === "managed-it-security"}
                 >
                   Managed IT & Security
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (service === "business-applications" ? " is-on" : "")} 
-                  onClick={() => setService("business-applications")} 
+                <button
+                  type="button"
+                  className={"chipf" + (service === "business-applications" ? " is-on" : "")}
+                  onClick={() => setService("business-applications")}
                   aria-pressed={service === "business-applications"}
                 >
                   Business Applications
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (service === "data-ai-integration" ? " is-on" : "")} 
-                  onClick={() => setService("data-ai-integration")} 
+                <button
+                  type="button"
+                  className={"chipf" + (service === "data-ai-integration" ? " is-on" : "")}
+                  onClick={() => setService("data-ai-integration")}
                   aria-pressed={service === "data-ai-integration"}
                 >
                   Data, AI & Integration
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (service === "modern-work-automation" ? " is-on" : "")} 
-                  onClick={() => setService("modern-work-automation")} 
+                <button
+                  type="button"
+                  className={"chipf" + (service === "modern-work-automation" ? " is-on" : "")}
+                  onClick={() => setService("modern-work-automation")}
                   aria-pressed={service === "modern-work-automation"}
                 >
                   Modern Work & Automation
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (service === "talent" ? " is-on" : "")} 
-                  onClick={() => setService("talent")} 
+                <button
+                  type="button"
+                  className={"chipf" + (service === "talent" ? " is-on" : "")}
+                  onClick={() => setService("talent")}
                   aria-pressed={service === "talent"}
                 >
                   Talent
@@ -308,98 +290,98 @@ export default function Checklists() {
             <div className="frow">
               <b>Industry</b>
               <div className="chips">
-                <button 
-                  type="button" 
-                  className={"chipf" + (industry === "" ? " is-on" : "")} 
-                  onClick={() => setIndustry("")} 
+                <button
+                  type="button"
+                  className={"chipf" + (industry === "" ? " is-on" : "")}
+                  onClick={() => setIndustry("")}
                   aria-pressed={industry === ""}
                 >
                   All
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (industry === "healthcare" ? " is-on" : "")} 
-                  onClick={() => setIndustry("healthcare")} 
+                <button
+                  type="button"
+                  className={"chipf" + (industry === "healthcare" ? " is-on" : "")}
+                  onClick={() => setIndustry("healthcare")}
                   aria-pressed={industry === "healthcare"}
                 >
                   Healthcare
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (industry === "legal" ? " is-on" : "")} 
-                  onClick={() => setIndustry("legal")} 
+                <button
+                  type="button"
+                  className={"chipf" + (industry === "legal" ? " is-on" : "")}
+                  onClick={() => setIndustry("legal")}
                   aria-pressed={industry === "legal"}
                 >
                   Legal
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (industry === "financial-services" ? " is-on" : "")} 
-                  onClick={() => setIndustry("financial-services")} 
+                <button
+                  type="button"
+                  className={"chipf" + (industry === "financial-services" ? " is-on" : "")}
+                  onClick={() => setIndustry("financial-services")}
                   aria-pressed={industry === "financial-services"}
                 >
                   Financial Services
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (industry === "public-sector" ? " is-on" : "")} 
-                  onClick={() => setIndustry("public-sector")} 
+                <button
+                  type="button"
+                  className={"chipf" + (industry === "public-sector" ? " is-on" : "")}
+                  onClick={() => setIndustry("public-sector")}
                   aria-pressed={industry === "public-sector"}
                 >
                   Public Sector
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (industry === "education" ? " is-on" : "")} 
-                  onClick={() => setIndustry("education")} 
+                <button
+                  type="button"
+                  className={"chipf" + (industry === "education" ? " is-on" : "")}
+                  onClick={() => setIndustry("education")}
                   aria-pressed={industry === "education"}
                 >
                   Education
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (industry === "manufacturing" ? " is-on" : "")} 
-                  onClick={() => setIndustry("manufacturing")} 
+                <button
+                  type="button"
+                  className={"chipf" + (industry === "manufacturing" ? " is-on" : "")}
+                  onClick={() => setIndustry("manufacturing")}
                   aria-pressed={industry === "manufacturing"}
                 >
                   Manufacturing
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (industry === "retail-distribution" ? " is-on" : "")} 
-                  onClick={() => setIndustry("retail-distribution")} 
+                <button
+                  type="button"
+                  className={"chipf" + (industry === "retail-distribution" ? " is-on" : "")}
+                  onClick={() => setIndustry("retail-distribution")}
                   aria-pressed={industry === "retail-distribution"}
                 >
                   Retail & Distribution
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (industry === "construction-field-services" ? " is-on" : "")} 
-                  onClick={() => setIndustry("construction-field-services")} 
+                <button
+                  type="button"
+                  className={"chipf" + (industry === "construction-field-services" ? " is-on" : "")}
+                  onClick={() => setIndustry("construction-field-services")}
                   aria-pressed={industry === "construction-field-services"}
                 >
                   Construction & Field Services
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (industry === "professional-services" ? " is-on" : "")} 
-                  onClick={() => setIndustry("professional-services")} 
+                <button
+                  type="button"
+                  className={"chipf" + (industry === "professional-services" ? " is-on" : "")}
+                  onClick={() => setIndustry("professional-services")}
                   aria-pressed={industry === "professional-services"}
                 >
                   Professional Services
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (industry === "small-mid-market" ? " is-on" : "")} 
-                  onClick={() => setIndustry("small-mid-market")} 
+                <button
+                  type="button"
+                  className={"chipf" + (industry === "small-mid-market" ? " is-on" : "")}
+                  onClick={() => setIndustry("small-mid-market")}
                   aria-pressed={industry === "small-mid-market"}
                 >
                   Small & Mid-Market
                 </button>
-                <button 
-                  type="button" 
-                  className={"chipf" + (industry === "nonprofits-associations" ? " is-on" : "")} 
-                  onClick={() => setIndustry("nonprofits-associations")} 
+                <button
+                  type="button"
+                  className={"chipf" + (industry === "nonprofits-associations" ? " is-on" : "")}
+                  onClick={() => setIndustry("nonprofits-associations")}
                   aria-pressed={industry === "nonprofits-associations"}
                 >
                   Nonprofits & Associations
@@ -446,13 +428,13 @@ export default function Checklists() {
                       <span>
                         {item.publishedAt
                           ? new Date(item.publishedAt).toLocaleDateString(
-                              "en-US",
-                              {
-                                day: "numeric",
-                                month: "long",
-                                year: "numeric",
-                              }
-                            )
+                            "en-US",
+                            {
+                              day: "numeric",
+                              month: "long",
+                              year: "numeric",
+                            }
+                          )
                           : "Recent"}{" "}
                         · {item.totalChecks || 20} checks
                       </span>

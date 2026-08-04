@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useGetGuidesQuery } from '../../redux/api';
 import Loader from '../../components/Loader';
+import HeroSection from '../../components/HeroSection';
 
 // Platform labels mapping
 const PLATFORM_LABELS = {
@@ -140,7 +141,7 @@ function Guides() {
   // Loading state
   if (isLoading) {
     return (
-     <Loader />
+      <Loader />
     );
   }
 
@@ -157,43 +158,50 @@ function Guides() {
     );
   }
 
+  const breadcrumbs = [
+    {
+      label: "Home",
+      link: "/",
+    },
+    {
+      label: "Guides",
+    },
+  ];
+
+  const hero = {
+    eyebrow: "Guides",
+
+    heading: "How to actually configure it",
+
+    lede:
+      "Each guide opens with what the change means for the business and what it will involve technically, then works through prerequisites, configuration, verification and the pitfalls that catch most first attempts. Written to be used, not skimmed.",
+
+    primaryCtaText: "Browse the library",
+    primaryCtaLink: "#guides",
+
+    secondaryCtaText: "Get help implementing",
+    secondaryCtaAnchor: "/contact",
+
+    glance: {
+      title: "How these are written",
+
+      items: [
+        "Every guide opens with a business summary and a technical summary",
+        "Prerequisites stated upfront — licensing, roles, data and decisions",
+        "Configuration steps with the actual settings, not screenshots",
+        "Verification steps so you can confirm it worked",
+        "Pitfalls, because most of them are avoidable if you know about them",
+      ],
+    },
+  };
+
   return (
     <main id="main">
       {/* Hero Section */}
-      <section className="svc-hero">
-        <div className="wrap">
-          <nav className="crumbs" aria-label="Breadcrumb">
-            <Link to="/">Home</Link><span>/</span><b>Guides</b>
-          </nav>
-          <div className="svc-hero-grid">
-            <div>
-              <span className="eyebrow">Guides</span>
-              <h1>How to actually configure it</h1>
-              <p className="lede">Each guide opens with what the change means for the business and what it will involve technically, then works through prerequisites, configuration, verification and the pitfalls that catch most first attempts. Written to be used, not skimmed.</p>
-              <div className="svc-cta">
-                <a className="btn btn-primary" href="#guides">Browse the library <svg><use href="#i-arrow-r" /></svg></a>
-                <Link className="btn btn-ghost" to="/contact">Get help implementing <svg><use href="#i-arrow-r" /></svg></Link>
-              </div>
-            </div>
-            <aside className="glance">
-              <h2>How these are written</h2>
-              <ul>
-                <li><svg><use href="#i-check" /></svg><span>Every guide opens with a business summary and a technical summary</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Prerequisites stated upfront — licensing, roles, data and decisions</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Configuration steps with the actual settings, not screenshots</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Verification steps so you can confirm it worked</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Pitfalls, because most of them are avoidable if you know about them</span></li>
-              </ul>
-            </aside>
-          </div>
-          <div className="svc-stats">
-            <div className="svc-stat"><b>{pagination.total || guidesData.length}</b><span>Guides published</span></div>
-            <div className="svc-stat"><b>{platforms.length}</b><span>Platforms covered</span></div>
-            <div className="svc-stat"><b>{industries.length}</b><span>Industries</span></div>
-            <div className="svc-stat"><b>1 day</b><span>We reply to every enquiry</span></div>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        hero={hero}
+        breadcrumbs={breadcrumbs}
+      />
 
       {/* Guides Library Section */}
       <section className="section bg-paper" id="guides">

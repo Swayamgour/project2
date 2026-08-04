@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
+import HeroSection from "../../components/HeroSection.jsx";
 
 // Leadership team data
 const leadershipTeam = [
@@ -148,85 +149,49 @@ export default function CompanyLeadership() {
   );
   usePageEffects(mainRef);
 
+  const breadcrumbs = [
+    {
+      label: "Home",
+      link: "/",
+    },
+    {
+      label: "Leadership",
+    },
+  ];
+
+  const hero = {
+    eyebrow: "Leadership",
+
+    heading: "The people accountable for the work",
+
+    lede:
+      "A consultancy is only as good as the judgement of the people running it. This is the team that decides what we take on, what we decline, and what happens when an engagement is not going the way it should.",
+
+    primaryCtaText: "Talk to our team",
+    primaryCtaLink: "/#contact",
+
+    secondaryCtaText: "Read about the firm",
+    secondaryCtaAnchor: "/company/about",
+
+    glance: {
+      title: "How to read this page",
+
+      items: [
+        "Each role is listed by what it is accountable for, not by biography",
+        "Senior people stay on the engagement they scoped",
+        "A named director is your escalation from day one",
+        "Photographs and names are placeholders pending your sign-off",
+      ],
+    },
+  };
+
   return (
     <main id="main" ref={mainRef}>
-      <section className="svc-hero">
-        <div className="wrap">
-          <nav className="crumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-            <span>/</span>
-            <b>Leadership</b>
-          </nav>
-          <div className="svc-hero-grid">
-            <div>
-              <span className="eyebrow">Leadership</span>
-              <h1>The people accountable for the work</h1>
-              <p className="lede">
-                A consultancy is only as good as the judgement of the people
-                running it. This is the team that decides what we take on, what
-                we decline, and what happens when an engagement is not going the
-                way it should.
-              </p>
-              <div className="svc-cta">
-                <a className="btn btn-primary" href="/#contact">
-                  Talk to our team{" "}
-                  <svg>
-                    <use href="#i-arrow-r"></use>
-                  </svg>
-                </a>
-                <a className="btn btn-ghost" href="/company/about">
-                  Read about the firm{" "}
-                  <svg>
-                    <use href="#i-arrow-r"></use>
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <aside className="glance">
-              <h2>How to read this page</h2>
-              <ul>
-                <li>
-                  <svg>
-                    <use href="#i-check"></use>
-                  </svg>
-                  <span>
-                    Each role is listed by what it is accountable for, not by
-                    biography
-                  </span>
-                </li>
-                <li>
-                  <svg>
-                    <use href="#i-check"></use>
-                  </svg>
-                  <span>Senior people stay on the engagement they scoped</span>
-                </li>
-                <li>
-                  <svg>
-                    <use href="#i-check"></use>
-                  </svg>
-                  <span>A named director is your escalation from day one</span>
-                </li>
-                <li>
-                  <svg>
-                    <use href="#i-check"></use>
-                  </svg>
-                  <span>
-                    Photographs and names are placeholders pending your sign-off
-                  </span>
-                </li>
-              </ul>
-            </aside>
-          </div>
-          <div className="svc-stats">
-            {heroStats.map((stat, index) => (
-              <div className="svc-stat" key={index}>
-                <b>{stat.value}</b>
-                <span>{stat.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
+      <HeroSection
+        hero={hero}
+        breadcrumbs={breadcrumbs}
+      />
 
       <nav className="svc-subnav" aria-label="On this page">
         <div className="wrap">

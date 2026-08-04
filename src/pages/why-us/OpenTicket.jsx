@@ -2,43 +2,51 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Support() {
+
+  const breadcrumbs = [
+    {
+      label: "Home",
+      link: "/",
+    },
+    {
+      label: "Open a Support Ticket",
+    },
+  ];
+
+  const hero = {
+    eyebrow: "Support",
+
+    heading: "Open a support ticket",
+
+    lede:
+      "Simply log in, provide the necessary details, and our team will start working on your issue right away. Three routes are available — the portal, email, or the phone if something is genuinely urgent — and all three create a tracked ticket.",
+
+    primaryCtaText: "Raise a ticket in the portal",
+    primaryCtaLink: "#portal",
+
+    secondaryCtaText: "Call 312-585-7555",
+    secondaryCtaAnchor: "tel:+13125857555",
+
+    glance: {
+      title: "Three ways to reach us",
+
+      items: [
+        "Help desk portal — fastest for non-urgent issues",
+        "Email support@jjcsystems.com — creates a ticket automatically",
+        "Call 312-585-7555 option 1 — for immediate assistance",
+        "All three routes are tracked; nothing sits in an inbox",
+        "Service desk staffed 24/7 across three regions",
+      ],
+    },
+  };
+
   return (
     <main id="main">
       {/* Hero Section */}
-      <section className="svc-hero">
-        <div className="wrap">
-          <nav className="crumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a><span>/</span><b>Open a Support Ticket</b>
-          </nav>
-          <div className="svc-hero-grid">
-            <div>
-              <span className="eyebrow">Support</span>
-              <h1>Open a support ticket</h1>
-              <p className="lede">Simply log in, provide the necessary details, and our team will start working on your issue right away. Three routes are available — the portal, email, or the phone if something is genuinely urgent — and all three create a tracked ticket.</p>
-              <div className="svc-cta">
-                <a className="btn btn-primary" href="#portal">Raise a ticket in the portal <svg><use href="#i-arrow-r" /></svg></a>
-                <a className="btn btn-ghost" href="tel:+13125857555">Call 312-585-7555 <svg><use href="#i-arrow-r" /></svg></a>
-              </div>
-            </div>
-            <aside className="glance">
-              <h2>Three ways to reach us</h2>
-              <ul>
-                <li><svg><use href="#i-check" /></svg><span>Help desk portal — fastest for non-urgent issues</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Email support@jjcsystems.com — creates a ticket automatically</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Call 312-585-7555 option 1 — for immediate assistance</span></li>
-                <li><svg><use href="#i-check" /></svg><span>All three routes are tracked; nothing sits in an inbox</span></li>
-                <li><svg><use href="#i-check" /></svg><span>Service desk staffed 24/7 across three regions</span></li>
-              </ul>
-            </aside>
-          </div>
-          <div className="svc-stats">
-            <div className="svc-stat"><b>24/7</b><span>Staffed service desk</span></div>
-            <div className="svc-stat"><b>3</b><span>Ways to reach us</span></div>
-            <div className="svc-stat"><b>Immediate</b><span>Ticket logged and referenced</span></div>
-            <div className="svc-stat"><b>Option 1</b><span>For support on the phone</span></div>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        hero={hero}
+        breadcrumbs={breadcrumbs}
+      />
 
       {/* Subnavigation */}
       <nav className="svc-subnav" aria-label="On this page">

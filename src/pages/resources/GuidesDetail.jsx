@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useGetGuideBySlugQuery } from '../../redux/api';
 import Loader from '../../components/Loader';
+import HeroSection from '../../components/HeroSection';
 
 function GuideDetail() {
   const { slug } = useParams();
@@ -33,69 +34,65 @@ function GuideDetail() {
   const hero = guide.hero || {};
   const stats = guide.stats || {};
 
+  const breadcrumbs = [
+    {
+      label: "Home",
+      link: "/",
+    },
+    {
+      label: "Guides",
+      link: "/guides",
+    },
+    {
+      label: guide.platformLabel || guide.platform,
+    },
+  ];
+
+  const heroData = {
+    eyebrow:
+      hero?.eyebrow ||
+      `${guide.platformLabel || guide.platform} · ${guide.level || "Advanced"
+      }`,
+
+    heading: guide.title,
+
+    lede: guide.description,
+
+    primaryCtaText:
+      guide.ctaPrimary?.text || "Start implementation",
+
+    primaryCtaLink:
+      guide.ctaPrimary?.link || "#guide",
+
+    secondaryCtaText:
+      guide.ctaSecondary?.text || "Get expert help",
+
+    secondaryCtaAnchor:
+      guide.ctaSecondary?.link || "/contact",
+
+    glance: {
+      title: "Key practices",
+
+      items:
+        hero?.keyPractices || [
+          "Understand the prerequisites before you begin",
+          "Verify licensing, permissions, and dependencies",
+          "Test changes in a separate environment first",
+          "Document the configuration for future maintenance",
+        ],
+    },
+  };
+
+
+
   return (
     <main id="main">
       {/* Hero Section */}
-      <section className="svc-hero">
-        <div className="wrap">
-          <nav className="crumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a><span>/</span>
-            <a href="/guides">Guides</a><span>/</span>
-            <b>{guide.platformLabel || guide.platform}</b>
-          </nav>
-          <div className="svc-hero-grid">
-            <div>
-              <span className="eyebrow">{hero.eyebrow || `${guide.platformLabel} · ${guide.level}`}</span>
-              <h1>{guide.title}</h1>
-              <p className="lede">{guide.description}</p>
-              <div className="svc-cta">
-                {guide.ctaPrimary && (
-                  <a className="btn btn-primary" href={guide.ctaPrimary.link}>
-                    {guide.ctaPrimary.text} <svg><use href="#i-arrow-r" /></svg>
-                  </a>
-                )}
-                {guide.ctaSecondary && (
-                  <a className="btn btn-ghost" href={guide.ctaSecondary.link}>
-                    {guide.ctaSecondary.text} <svg><use href="#i-arrow-r" /></svg>
-                  </a>
-                )}
-              </div>
-            </div>
-            {hero.keyPractices && hero.keyPractices.length > 0 && (
-              <aside className="glance">
-                <h2>Key practices</h2>
-                <ul>
-                  {hero.keyPractices.map((practice, index) => (
-                    <li key={index}>
-                      <svg><use href="#i-check" /></svg>
-                      <span>{practice}</span>
-                    </li>
-                  ))}
-                </ul>
-              </aside>
-            )}
-          </div>
-          <div className="svc-stats">
-            <div className="svc-stat">
-              <b>{stats.difficulty || guide.level || 'Advanced'}</b>
-              <span>Difficulty</span>
-            </div>
-            <div className="svc-stat">
-              <b>{stats.readTime || guide.readTime || '12 min'}</b>
-              <span>Read time</span>
-            </div>
-            <div className="svc-stat">
-              <b>{stats.typicalEffort || guide.typicalEffort || '3–6 weeks'}</b>
-              <span>Typical effort</span>
-            </div>
-            <div className="svc-stat">
-              <b>{stats.writtenFor || guide.writtenFor || 'Manufacturing'}</b>
-              <span>Written for</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <HeroSection
+        title={guide.title}
+        hero={heroData}
+        breadcrumbs={breadcrumbs}
+      />
       {/* Subnavigation */}
       <nav className="svc-subnav" aria-label="On this page">
         <div className="wrap">

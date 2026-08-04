@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
+import HeroSection from "../../components/HeroSection.jsx";
 
 export default function CompanyAbout() {
   const mainRef = useRef(null);
@@ -10,108 +11,50 @@ export default function CompanyAbout() {
   );
   usePageEffects(mainRef);
 
+  const breadcrumbs = [
+    {
+      label: "Home",
+      link: "/",
+    },
+    {
+      label: "About Us",
+    },
+  ];
+
+  const hero = {
+    eyebrow: "About JJC Systems",
+
+    heading: "One partner. One point of contact. One invoice.",
+
+    lede:
+      "We simplify your operational relationships. For large organizations we are a comprehensive Microsoft consulting partner; for growing businesses we are a complete technology function — applications, network and systems, security, monitoring, adoption and procurement. Either way, there is one team accountable for the outcome.",
+
+    primaryCtaText: "Talk to our team",
+    primaryCtaLink: "/#contact",
+
+    secondaryCtaText: "Meet the leadership",
+    secondaryCtaAnchor: "/company/leadership",
+
+    glance: {
+      title: "What defines us",
+
+      items: [
+        "One accountable partner across applications, infrastructure and security",
+        "Four decades of combined experience across eleven industries",
+        "Microsoft-certified engineers, PMP-certified project managers",
+        "Independent third-party customer satisfaction measurement",
+        "A global team working 24/7 across three regions",
+      ],
+    },
+  };
+
   return (
     <main id="main" ref={mainRef}>
-      <section className="svc-hero">
-        <div className="wrap">
-          <nav className="crumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-            <span>/</span>
-            <b>About Us</b>
-          </nav>
-          <div className="svc-hero-grid">
-            <div>
-              <span className="eyebrow">About JJC Systems</span>
-              <h1>One partner. One point of contact. One invoice.</h1>
-              <p className="lede">
-                We simplify your operational relationships. For large
-                organizations we are a comprehensive Microsoft consulting
-                partner; for growing businesses we are a complete technology
-                function — applications, network and systems, security,
-                monitoring, adoption and procurement. Either way, there is one
-                team accountable for the outcome.
-              </p>
-              <div className="svc-cta">
-                <a className="btn btn-primary" href="/#contact">
-                  Talk to our team{" "}
-                  <svg>
-                    <use href="#i-arrow-r"></use>
-                  </svg>
-                </a>
-                <a className="btn btn-ghost" href="/company/leadership">
-                  Meet the leadership{" "}
-                  <svg>
-                    <use href="#i-arrow-r"></use>
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <aside className="glance">
-              <h2>What defines us</h2>
-              <ul>
-                <li>
-                  <svg>
-                    <use href="#i-check"></use>
-                  </svg>
-                  <span>
-                    One accountable partner across applications, infrastructure
-                    and security
-                  </span>
-                </li>
-                <li>
-                  <svg>
-                    <use href="#i-check"></use>
-                  </svg>
-                  <span>
-                    Four decades of combined experience across eleven industries
-                  </span>
-                </li>
-                <li>
-                  <svg>
-                    <use href="#i-check"></use>
-                  </svg>
-                  <span>
-                    Microsoft-certified engineers, PMP-certified project
-                    managers
-                  </span>
-                </li>
-                <li>
-                  <svg>
-                    <use href="#i-check"></use>
-                  </svg>
-                  <span>
-                    Independent third-party customer satisfaction measurement
-                  </span>
-                </li>
-                <li>
-                  <svg>
-                    <use href="#i-check"></use>
-                  </svg>
-                  <span>A global team working 24/7 across three regions</span>
-                </li>
-              </ul>
-            </aside>
-          </div>
-          <div className="svc-stats">
-            <div className="svc-stat">
-              <b>40+ yrs</b>
-              <span>Combined experience</span>
-            </div>
-            <div className="svc-stat">
-              <b>11</b>
-              <span>Industries served</span>
-            </div>
-            <div className="svc-stat">
-              <b>24/7</b>
-              <span>Global coverage</span>
-            </div>
-            <div className="svc-stat">
-              <b>1</b>
-              <span>Invoice, one contact</span>
-            </div>
-          </div>
-        </div>
-      </section>
+     
+      <HeroSection
+        hero={hero}
+        breadcrumbs={breadcrumbs}
+      />
       <nav className="svc-subnav" aria-label="On this page">
         <div className="wrap">
           <a href="#mission">Our mission</a>

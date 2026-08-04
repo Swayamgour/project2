@@ -39,6 +39,7 @@
 
   /* Space */
   --wrap: 1220px;
+  --wrap2: 1330px;
   --gutter: clamp(20px, 5vw, 48px);
   --sec-y: clamp(64px, 8vw, 112px);
   --r-sm: 10px;
@@ -1288,7 +1289,7 @@ ul {
   place-items: center;
   min-width: 140px;
   padding: 0 16px;
-  opacity: 0.7;
+  opacity: 1;
   border-left: 1px solid var(--line);
   border-left: 1px solid var(--line);
 }
