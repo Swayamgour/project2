@@ -58,6 +58,10 @@ export const api = createApi({
             query: () => "/home-content/hero",
             providesTags: ["HomeHero"],
         }),
+        getTeam: builder.query({
+            query: () => "/home-content/sections/leadershipTeam",
+            providesTags: ["HomeHero"],
+        }),
 
         // Generic: any home-content card section by its sectionKey
         // e.g. useGetHomeSectionQuery("whyChooseUs")
@@ -189,5 +193,7 @@ export const {
 
     useGetWhitepapersQuery,
     useGetWhitepapersBySlugQuery,
+
+    useGetTeamQuery,
 
 } = api;

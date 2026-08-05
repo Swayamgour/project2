@@ -13,11 +13,11 @@ export const heroSlides = [
     {
         eyebrow: "What We Do",
         title: "Technology consulting aligned to the way business works",
-        description: "We start with your applications and your goals, not a product catalogue — with full vendor transparency and deep Microsoft Dynamics 365 expertise when that's the right fit.",
+        description: "We start with your applications and your goals — with full vendor transparency and deep Microsoft Dynamics 365 expertise when that's the right fit.",
         ctaText: "Explore our services",
         ctaLink: "#services",
         image: "/assets/img/hero-2.jpg",
-        imageAlt: "Consulting approach from discover to optimise across the Microsoft application ecosystem"
+        imageAlt: "Consulting approach from discover to optimize across the Microsoft application ecosystem"
     },
     {
         eyebrow: "Customer Stories",
@@ -40,7 +40,7 @@ export const heroSlides = [
     {
         eyebrow: "Client Testimonials",
         title: "See what our clients have to say",
-        description: "Clients stay with us for the quality of the work, the speed of our response, and technology that improves both the daily grind and the long-term picture.",
+        description: "The quality of work, response speed, and technology that enhance both everyday tasks and long-term goals.",
         ctaText: "Read client testimonials",
         ctaLink: "#testimonials",
         image: "/assets/img/hero-5.jpg",
@@ -490,7 +490,7 @@ export const successStories = [
         title: "From a legacy file server to one searchable document center",
         summary: "A regional healthcare organization replaced fragmented file shares with a governed SharePoint environment that made information easier to find and safer to manage.",
         metrics: [
-            { value: "1.8 TB", label: "Illustrative data migrated" },
+            { value: "4.8 TB", label: "Illustrative data migrated" },
             { value: "45%", label: "Sample improvement in search time" }
         ],
         outcomes: [
@@ -505,7 +505,7 @@ export const successStories = [
         title: "A port dispatch operation, visible in real time",
 
         summary:
-            "We built the TICO Dispatch Analytics dashboard for a Savannah, Georgia logistics operator — Power BI on Azure SQL Server and Acumatica ERP, covering truck dispatch, vessel scheduling, driver performance and late deliveries.",
+            "We built the Dispatch Analytics dashboard for a  Georgia logistics operator — Power BI on Azure SQL Server and Acumatica ERP, covering truck dispatch, vessel scheduling, driver performance and late deliveries.",
 
         metrics: [
             {
@@ -532,7 +532,7 @@ export const successStories = [
             "A manufacturer's ERP and CRM, co-managed through growth and acquisition",
 
         summary:
-            "A Dayton, Ohio manufacturer keeps Dynamics 365 Business Central and Dynamics 365 Sales managed, customized and optimized through co-managed support — from day-to-day changes to an acquisition-driven tenant merger.",
+            "A Ohio manufacturer keeps Dynamics 365 Business Central and Dynamics 365 Sales managed, customized and optimized through co-managed support — from day-to-day changes to an acquisition-driven tenant merger.",
 
         metrics: [
             {

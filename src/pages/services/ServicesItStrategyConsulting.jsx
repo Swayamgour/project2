@@ -76,7 +76,7 @@ export default function ServicesItStrategyConsulting() {
                     <a href="#why-us">Why us</a>
                     <a href="#stories">Success stories</a>
                     <a href="#insights">Insights</a>
-                    <a className="subnav-cta link-more" href="/#contact?topic=IT strategy & consulting">
+                    <a className="subnav-cta link-more" href="/contact">
                         Talk to us{" "}
                         <svg><use href="#i-arrow-r"></use></svg>
                     </a>
@@ -338,10 +338,10 @@ export default function ServicesItStrategyConsulting() {
                                 <h2 className="h-sec wide">{insights.title}</h2>
                                 <p className="lede">{insights.subtitle}</p>
                             </div>
-                            <a className="btn btn-outline" href="/#insights">
+                            {/* <a className="btn btn-outline" href="/#insights">
                                 View all resources{" "}
                                 <svg><use href="#i-arrow-r"></use></svg>
-                            </a>
+                            </a> */}
                         </div>
                         <div className="insights-grid">
                             {insights.posts?.map((post, index) => (

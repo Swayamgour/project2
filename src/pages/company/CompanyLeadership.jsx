@@ -2,66 +2,7 @@ import { useRef } from "react";
 import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
 import HeroSection from "../../components/HeroSection.jsx";
-
-// Leadership team data
-const leadershipTeam = [
-  {
-    id: 1,
-    name: "Name to be added",
-    role: "Chief Executive Officer",
-    description: "Sets the direction and owns the client relationships that matter most. Spends more time in client environments than in the office, which is deliberate.",
-    icon: "i-users"
-  },
-  {
-    id: 2,
-    name: "Name to be added",
-    role: "Chief Technology Officer",
-    description: "Owns the technical strategy and the standards every engagement is held to. The person who decides when we say no to an architecture.",
-    icon: "i-users"
-  },
-  {
-    id: 3,
-    name: "Name to be added",
-    role: "VP, Consulting Services",
-    description: "Runs the consulting practice across strategy, business applications and data. Accountable for whether engagements deliver what was scoped.",
-    icon: "i-users"
-  },
-  {
-    id: 4,
-    name: "Name to be added",
-    role: "VP, Managed Services",
-    description: "Owns the 24/7 service desk and the managed estate. Judged on response times and on how rarely clients need to escalate.",
-    icon: "i-users"
-  },
-  {
-    id: 5,
-    name: "Name to be added",
-    role: "Director, Business Applications",
-    description: "Leads the Dynamics 365 practice. Responsible for the implementation methodology and the fixed-price commitments behind it.",
-    icon: "i-users"
-  },
-  {
-    id: 6,
-    name: "Name to be added",
-    role: "Director, Cybersecurity",
-    description: "Owns security architecture, incident response and the compliance posture we design clients toward.",
-    icon: "i-users"
-  },
-  {
-    id: 7,
-    name: "Name to be added",
-    role: "Director, Customer Experience",
-    description: "Runs the customer experience function — the independent feedback programme and what we do about what it says.",
-    icon: "i-users"
-  },
-  {
-    id: 8,
-    name: "Name to be added",
-    role: "Director, People & Talent",
-    description: "Owns certification, in-house training and recruitment. The reason engineers here are current rather than merely credentialed.",
-    icon: "i-users"
-  }
-];
+import { useGetTeamQuery } from "../../redux/api.jsx";
 
 // Hero stats data
 const heroStats = [
@@ -143,6 +84,12 @@ const subnavLinks = [
 export default function CompanyLeadership() {
   const mainRef = useRef(null);
 
+  const { data, isLoading, error } = useGetTeamQuery();
+  const teamData = data?.data?.items || [];
+
+  // Sort team by order if available
+  const sortedTeam = [...teamData].sort((a, b) => (a.order || 0) - (b.order || 0));
+
   useDocumentMeta(
     "Leadership | JJC Systems",
     "The JJC Systems leadership team, and what each of them is accountable for.",
@@ -185,9 +132,16 @@ export default function CompanyLeadership() {
     },
   };
 
+  // Helper function to get image URL
+  const getImageUrl = (member) => {
+    if (member.image?.url) return member.image.url;
+    if (member.icon) return member.icon;
+    return null;
+  };
+
   return (
     <main id="main" ref={mainRef}>
-      
+
       <HeroSection
         hero={hero}
         breadcrumbs={breadcrumbs}
@@ -224,22 +178,46 @@ export default function CompanyLeadership() {
               needs making, and who carries it when a commitment is missed.
             </p>
           </div>
-          <div className="team-grid">
-            {leadershipTeam.map((member) => (
-              <article className="member reveal" key={member.id}>
-                <div className="photo">
-                  <svg>
-                    <use href={`#${member.icon}`}></use>
-                  </svg>
-                </div>
-                <div className="who-they-are">
-                  <b>{member.name}</b>
-                  <span className="role">{member.role}</span>
-                  <p>{member.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+
+          {isLoading ? (
+            <div className="loading-state">
+              <p>Loading team members...</p>
+            </div>
+          ) : error ? (
+            <div className="error-state">
+              <p>Unable to load team members. Please try again later.</p>
+            </div>
+          ) : sortedTeam.length === 0 ? (
+            <div className="empty-state">
+              <p>No team members found.</p>
+            </div>
+          ) : (
+            <div className="team-grid">
+              {sortedTeam.map((member) => (
+                <article className="member reveal" key={member._id}>
+                  <div className="photo">
+                    {getImageUrl(member) ? (
+                      <img
+                        src={getImageUrl(member)}
+                        alt={member.title}
+                        loading="lazy"
+                      />
+                    ) : (
+                      <svg>
+                        <use href="#i-users"></use>
+                      </svg>
+                    )}
+                  </div>
+                  <div className="who-they-are">
+                    <b>{member.title}</b>
+                    <span className="role">{member.subtitle}</span>
+                    {member.description && <p>{member.description}</p>}
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+
           <div className="ph-note reveal">
             <svg>
               <use href="#i-check"></use>

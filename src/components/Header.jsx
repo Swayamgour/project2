@@ -548,7 +548,7 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
             heading: "Office Locations",
             variant: "rows",
             items: [
-              { icon: MapPin, label: "Westlake, OH (Headquarters)", sub: "24900 Sperry Drive, Suite 300\nWestlake, OH 44145" },
+              { icon: MapPin, label: " (Headquarters)", sub: "1600 Golf Rd Suite 1200, Rolling \nMeadows, IL 60008" },
               { icon: MapPin, label: "Cleveland, OH", sub: "600 Superior Avenue East\nSuite 1400, Cleveland, OH 44114" },
             ],
             footerLink: { label: "View All Locations", path: "/why-us/locations" },
@@ -751,7 +751,7 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
         </nav>
 
 
-        <a className="btn btn-primary jjc-book-btn" href="#contact">Book a Consultation <svg><use href="#i-arrow-r"></use></svg></a>
+        <a className="btn btn-primary jjc-book-btn" href="/contact">Book a Consultation <svg><use href="#i-arrow-r"></use></svg></a>
 
         <button
           className="jjc-burger"

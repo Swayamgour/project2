@@ -37,7 +37,7 @@ export default function HeroSection({
                         <div className="svc-cta">
                             <a
                                 className="btn btn-primary"
-                                href={hero?.primaryCtaLink || "/contact"}
+                                href={ "/contact"}
                             >
                                 {hero?.primaryCtaText || "Book a consultation"}
 

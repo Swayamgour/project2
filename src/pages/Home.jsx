@@ -267,7 +267,7 @@ export default function Home() {
                </div>
                <p style={{ margin: "-14px 0 30px" }}>
                   <a className="link-more" href="/industries">
-                     Or explore all 11 industries in detail{" "}
+                     Or explore all industries in detail{" "}
                      <svg>
                         <use href="#i-arrow-r"></use>
                      </svg>
@@ -376,7 +376,7 @@ export default function Home() {
                </div>
                <p style={{ margin: "-14px 0 30px" }}>
                   <a className="link-more" href="/platforms">
-                     Or explore all 17 platforms in detail{" "}
+                     Or explore all platforms in detail{" "}
                      <svg>
                         <use href="#i-arrow-r"></use>
                      </svg>
@@ -403,7 +403,7 @@ export default function Home() {
 
                         <p>{platform.description}</p>
 
-                        <ul className="platform-clean-list">
+                        <ul className="ind-list">
                            {platform.items?.map((item) => (
                               <li key={item._id}>
                                  <Link to={`/platforms/${item.slug}`}>
@@ -578,7 +578,7 @@ export default function Home() {
                         <div className="story-top">
                            <div className="story-kicker">
                               <span className="story-industry">{story.industry}</span>
-                              <span className="demo-chip">Sample story</span>
+                              {/* <span className="demo-chip">Sample story</span> */}
                            </div>
                            <h3>{story.title}</h3>
                            <p className="story-summary">{story.summary}</p>
@@ -607,7 +607,7 @@ export default function Home() {
                               className="link-more"
                               to={`/success/story/${createSlug(story.title)}`}
                            >
-                              View the sample story
+                              View the success story
 
                               <svg>
                                  <use href="#i-arrow-r"></use>
