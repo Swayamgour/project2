@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // const BASE_URL = "https://daryoo.lead.crm.amaxjobs.com/api";
-const BASE_URL = "https://jjc-backend-2.onrender.com/api";
+// const BASE_URL = "https://jjc-backend-2.onrender.com/api";
 // const BASE_URL = "http://localhost:5008/api";
-// const BASE_URL = "https://jjc.admin.amaxjobs.com/api";
+const BASE_URL = "https://jjc.admin.amaxjobs.com/api";
 
 const baseQuery = fetchBaseQuery({
     baseUrl: BASE_URL,

@@ -37,7 +37,7 @@
     --text: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
 
     /* Space */
-    --wrap: 1220px;
+    /* --wrap: 1220px; */
     --gutter: clamp(20px, 5vw, 48px);
     --sec-y: clamp(64px, 8vw, 112px);
     --r-sm: 10px;
