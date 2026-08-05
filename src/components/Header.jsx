@@ -32,7 +32,7 @@ import { useNavigate } from "react-router";
 import { useGetCaseStudyCategoryQuery, useGetCategoryQuery } from "../redux/api";
 import "./Header.css";
 import logo from "../assets/logo1.png";
-import headerImage from "../assets/bread-contact.webp";
+// import headerImage from "../assets/bread-contact.webp";
 
 /* ============================================================
    ARROW ICON (kept from the new header)
@@ -459,7 +459,7 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
         featuredCard: {
           icon: Star,
           heading: "Featured Success Story",
-          image: './assets/img/story.jpg',
+          image: '../assets/img/story.jpg',
           title: "File Server Migration to SharePoint",
           description: "See how a healthcare organization improved secure access and day-to-day collaboration.",
           ctaLabel: "Read The Story",
