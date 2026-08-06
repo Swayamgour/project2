@@ -620,7 +620,7 @@ const Footer = () => {
                 </ul>
 
                 <p className={styles.copyrightText}>
-                  &copy; {new Date().getFullYear()} JJC Systems. All Rights Reserved.
+                  &copy; {new Date().getFullYear()} JJC Systems. All Rights Reserved. swayam
                 </p>
               </div>
             </div>
