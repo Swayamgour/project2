@@ -48,6 +48,72 @@ export default function CompanyLocations() {
       ],
     },
   };
+  // Eastern
+
+  const locations = [
+    {
+      title: "Location one",
+      timezone: "Central time",
+      city: "Chicago, IL",
+      address: "1600 Golf Rd Suite 1200, Rolling Meadows, IL 60008",
+    },
+    {
+      title: "Location two",
+      timezone: "Eastern time",
+      city: "Atlanta, GA",
+      address: "44 Peachtree Pl NW, Atlanta, GA 30309",
+    },
+    {
+      title: "Location three",
+      timezone: "Eastern time",
+      city: "Westmont, IL",
+      address: "999 Oakmont Plaza Dr, Westmont, IL 60559",
+    },
+    {
+      title: "Location four",
+      timezone: "Eastern time",
+      city: "Houston, TX",
+      address: "16821 Buccaneer Ln., Suite 200, Houston, Texas, 77058",
+    },
+
+  ];
+
+
+  const locationSuid = [
+    {
+      title: "Location five",
+      timezone: "Arabian Standard Time",
+      city: "Riyadh, Saudi Arabia",
+      address:
+        "Northern Gate, Ibn Qunjouth Street, Al Safarat, Riyadh 12513, Saudi Arabia",
+    },
+    {
+      title: "Location six",
+      timezone: "Arabian Standard Time",
+      city: "United, Arab Emirates",
+      address:
+        "UAE - Business Center, Sharjah, United Arab Emirates",
+    },
+
+  ]
+
+
+  const locationIndia = [
+    {
+      title: "Location seven",
+      timezone: "India Standard Time",
+      city: "India",
+      address:
+        "India - NearWoodbine School, Anoopshar Road, Aligarh, UP 202001",
+    },
+    {
+      title: "Location eight",
+      timezone: "India Standard Time",
+      city: "India",
+      address:
+        "India - G.S Center Point Panjagutta Cross Road, Hyderabad, TS 500082",
+    },
+  ]
 
   return (
     <main id="main" ref={mainRef}>
@@ -84,39 +150,20 @@ export default function CompanyLocations() {
                 business hours and out-of-hours escalation.
               </p>
             </div>
+
+
+
+            {/* </div> */}
             <div className="loc-grid">
-              <article className="loc reveal">
-                <b>Location one</b>
-                <span className="tz">Eastern time</span>
-                <p>
-                  Head office. Executive leadership, consulting practice and
-                  client delivery for the eastern seaboard.
-                </p>
-              </article>
-              <article className="loc reveal">
-                <b>Location two</b>
-                <span className="tz">Central time</span>
-                <p>
-                  Consulting delivery and managed services for central-region
-                  clients, plus the procurement function.
-                </p>
-              </article>
-              <article className="loc reveal">
-                <b>Location three</b>
-                <span className="tz">Mountain time</span>
-                <p>
-                  Regional consulting and project delivery, with a focus on
-                  public sector and education clients.
-                </p>
-              </article>
-              <article className="loc reveal">
-                <b>Location four</b>
-                <span className="tz">Pacific time</span>
-                <p>
-                  West coast consulting and delivery, and the later half of the
-                  North American support window.
-                </p>
-              </article>
+              {locations?.map((e) => (
+                <article className="loc reveal">
+                  <b>{e?.title}</b>
+                  <span className="tz">{e?.timezone}</span>
+                  <p>
+                    {e?.address}
+                  </p>
+                </article>
+              ))}
             </div>
           </div>
         </div>
@@ -134,22 +181,15 @@ export default function CompanyLocations() {
               </p>
             </div>
             <div className="loc-grid">
-              <article className="loc reveal">
-                <b>Saudi Arabia</b>
-                <span className="tz">Arabia standard time</span>
-                <p>
-                  Consulting and delivery for Saudi clients, including
-                  engagements with local data residency requirements.
-                </p>
-              </article>
-              <article className="loc reveal">
-                <b>United Arab Emirates</b>
-                <span className="tz">Gulf standard time</span>
-                <p>
-                  Regional hub for UAE and wider Gulf clients, covering
-                  consulting, delivery and account management.
-                </p>
-              </article>
+              {locationSuid?.map((e) => (
+                <article className="loc reveal">
+                  <b>{e?.title}</b>
+                  <span className="tz">{e?.timezone}</span>
+                  <p>
+                    {e?.address}
+                  </p>
+                </article>
+              ))}
             </div>
           </div>
         </div>
@@ -167,22 +207,15 @@ export default function CompanyLocations() {
               </p>
             </div>
             <div className="loc-grid">
-              <article className="loc reveal">
-                <b>Location one</b>
-                <span className="tz">India standard time</span>
-                <p>
-                  Engineering, managed services and the service desk covering
-                  the Americas overnight window.
-                </p>
-              </article>
-              <article className="loc reveal">
-                <b>Location two</b>
-                <span className="tz">India standard time</span>
-                <p>
-                  Development, application support and the platform engineering
-                  team.
-                </p>
-              </article>
+              {locationIndia?.map((e) => (
+                <article className="loc reveal">
+                  <b>{e?.title}</b>
+                  <span className="tz">{e?.timezone}</span>
+                  <p>
+                    {e?.address}
+                  </p>
+                </article>
+              ))}
             </div>
           </div>
         </div>

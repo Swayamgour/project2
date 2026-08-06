@@ -159,7 +159,7 @@ function BlogPost() {
               <h1>{heroData.title}</h1>
               <p className="lede">{heroData.lede}</p>
               <div className="svc-cta">
-                <a className="btn btn-primary" href={heroData.ctaPrimary?.link || '/contact'}>
+                <a className="btn btn-primary" href={'/contact'}>
                   {heroData.ctaPrimary?.text || 'Talk to us about this'}
                   <svg><use href="#i-arrow-r" /></svg>
                 </a>

@@ -300,7 +300,7 @@ export default function OnboardingGuide() {
               <p>Tell us the scope you have in mind and we will map it against these six stages &mdash; with a realistic timeline, the hours we would need from your team, and the points where your decisions become the critical path.</p>
             </div>
             <div className="cta-actions">
-              <a className="btn btn-primary" href="/#contact">Start a conversation <svg><use href="#i-arrow-r" /></svg></a>
+              <a className="btn btn-primary" href="/contact">Start a conversation <svg><use href="#i-arrow-r" /></svg></a>
               <a className="btn btn-ghost" href="/why-us/faq">Read the FAQ <svg><use href="#i-arrow-r" /></svg></a>
               <small>We reply to every message within one business day.</small>
             </div>

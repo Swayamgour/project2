@@ -231,7 +231,7 @@ export default function OurApproach() {
               <p>You do not need a defined requirement or a budget to have the first conversation. Describe the symptom &mdash; the process that keeps breaking, the report nobody trusts, the thing that takes three weeks and should take three days &mdash; and we will ask the questions that get to the cause.</p>
             </div>
             <div className="cta-actions">
-              <a className="btn btn-primary" href="/#contact">Start a conversation <svg><use href="#i-arrow-r" /></svg></a>
+              <a className="btn btn-primary" href="/contact">Start a conversation <svg><use href="#i-arrow-r" /></svg></a>
               <a className="btn btn-ghost" href="/why-us/faq">Read the FAQ <svg><use href="#i-arrow-r" /></svg></a>
               <small>We reply to every message within one business day.</small>
             </div>

@@ -191,7 +191,7 @@ export default function IndustriesHealthcare() {
           <div className="story-top">
             <div className="story-kicker">
               <span className="story-industry">{story.industry}</span>
-              {story.isSample && <span className="demo-chip">Sample story</span>}
+              {/* {story.isSample && <span className="demo-chip">Sample story</span>} */}
             </div>
             <h3>{story.title}</h3>
             <p className="story-summary">{story.summary}</p>
@@ -293,7 +293,7 @@ export default function IndustriesHealthcare() {
           {whyUs?.items?.length > 0 && <a href="#why-us">Why JJC</a>}
           {successStories?.stories?.length > 0 && <a href="#stories">Success stories</a>}
           {insights?.posts?.length > 0 && <a href="#insights">Insights</a>}
-          <a className="subnav-cta link-more" href={cta?.primaryLink || "/#contact"}>
+          <a className="subnav-cta link-more" href={"/contact"|| "/#contact"}>
             Request a demo{" "}
             <svg><use href="#i-arrow-r"></use></svg>
           </a>
@@ -500,11 +500,11 @@ export default function IndustriesHealthcare() {
               successStories.subtitle
             )}
             {renderSuccessStories(successStories.stories)}
-            {successStories.disclaimer && (
+            {/* {successStories.disclaimer && (
               <p className="demo-disclaimer">
                 <b>Demo content:</b> {successStories.disclaimer}
               </p>
-            )}
+            )} */}
           </div>
         </section>
       )}
@@ -526,10 +526,10 @@ export default function IndustriesHealthcare() {
                 <h2 className="h-sec wide">{insights.title}</h2>
                 <p className="lede">{insights.subtitle}</p>
               </div>
-              <a className="btn btn-outline" href="/#insights">
+              {/* <a className="btn btn-outline" href="/#insights">
                 View all resources{" "}
                 <svg><use href="#i-arrow-r"></use></svg>
-              </a>
+              </a> */}
             </div>
             {renderInsights(insights.posts)}
           </div>
@@ -546,7 +546,7 @@ export default function IndustriesHealthcare() {
                 <p>{cta.description}</p>
               </div>
               <div className="cta-actions">
-                <a className="btn btn-primary" href={cta.primaryLink}>
+                <a className="btn btn-primary" href={'/contact'}>
                   {cta.primaryLabel}{" "}
                   <svg><use href="#i-arrow-r"></use></svg>
                 </a>

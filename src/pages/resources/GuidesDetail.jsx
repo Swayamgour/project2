@@ -315,7 +315,7 @@ function GuideDetail() {
                 </div>
                 <div className="cta-actions">
                   {guide.ctaBandPrimary && (
-                    <a className="btn btn-primary" href={guide.ctaBandPrimary.link}>
+                    <a className="btn btn-primary" href={'/contact'}>
                       {guide.ctaBandPrimary.text} <svg><use href="#i-arrow-r" /></svg>
                     </a>
                   )}

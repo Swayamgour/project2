@@ -585,7 +585,7 @@ export default function ServicesItStaffing() {
               <div className="story-top">
                 <div className="story-kicker">
                   <span className="story-industry">Financial Services</span>
-                  <span className="demo-chip">Sample story</span>
+                  {/* <span className="demo-chip">Sample story</span> */}
                 </div>
                 <h3>Interim cover after an unexpected departure</h3>
                 <p className="story-summary">
@@ -645,7 +645,7 @@ export default function ServicesItStaffing() {
               <div className="story-top">
                 <div className="story-kicker">
                   <span className="story-industry">Manufacturing</span>
-                  <span className="demo-chip">Sample story</span>
+                  {/* <span className="demo-chip">Sample story</span> */}
                 </div>
                 <h3>A team rather than a sequence of individual hires</h3>
                 <p className="story-summary">
@@ -703,12 +703,12 @@ export default function ServicesItStaffing() {
               </div>
             </article>
           </div>
-          <p className="demo-disclaimer">
+          {/* <p className="demo-disclaimer">
             <b>Demo content:</b> the organizations and measurements above are
             illustrative placeholders written to show the structure of a real
             story. Replace them with verified client results and approved
             references before publishing.
-          </p>
+          </p> */}
         </div>
       </section>
       {/* ===================== 8. INSIGHTS ===================== */}
@@ -732,12 +732,12 @@ export default function ServicesItStaffing() {
                 Material for leaders trying to fill difficult technical roles.
               </p>
             </div>
-            <a className="btn btn-outline" href="/#insights">
+            {/* <a className="btn btn-outline" href="/#insights">
               View all resources{" "}
               <svg>
                 <use href="#i-arrow-r"></use>
               </svg>
-            </a>
+            </a> */}
           </div>
           <div className="insights-grid">
             <a className="post reveal" href="/#insights">

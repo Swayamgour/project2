@@ -612,7 +612,7 @@ export const insights = [
         description: "The questions to answer about data, permissions, security and adoption before purchasing or expanding Copilot licences.",
         cta: "Read the guide",
         link: "/resources/guides",
-        image: "/assets/img/guide.jpg",
+        image: "/assets/img/guide1.jpg",
     },
     {
         icon: "#i-check",

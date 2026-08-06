@@ -548,8 +548,8 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
             heading: "Office Locations",
             variant: "rows",
             items: [
-              { icon: MapPin, label: " (Headquarters)", sub: "1600 Golf Rd Suite 1200, Rolling \nMeadows, IL 60008" },
-              { icon: MapPin, label: "Cleveland, OH", sub: "600 Superior Avenue East\nSuite 1400, Cleveland, OH 44114" },
+              { icon: MapPin, label: "Chicago, IL (Headquarters)", sub: "1600 Golf Rd Suite 1200, Rolling \nMeadows, IL 60008" },
+              { icon: MapPin, label: "Westmont, IL", sub: "999 Oakmont Plaza Dr, Westmont, IL 60559\n Westmont IL" },
             ],
             footerLink: { label: "View All Locations", path: "/why-us/locations" },
           },
@@ -558,7 +558,7 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
             variant: "rows",
             items: [
               { icon: Phone, label: "Call Us", sub: "+1-888-329-0625", href: "tel:+1-888-329-0625" },
-              { icon: Mail, label: "Email Us", sub: "info@jjcsi.com", href: "mailto:info@jjcsi.com" },
+              { icon: Mail, label: "Email Us", sub: "info@jjcsystems.com", href: "mailto:info@jjcsystems.com" },
               { icon: User, label: "LinkedIn", sub: "Follow Us", href: "https://www.linkedin.com/company/jjc-systems" },
             ],
           },

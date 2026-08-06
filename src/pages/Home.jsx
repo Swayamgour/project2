@@ -89,7 +89,7 @@ export default function Home() {
                            <span className="eyebrow">{slide.eyebrow}</span>
                            <h1>{slide.title}</h1>
                            <p>{slide.description}</p>
-                           <a className="btn btn-primary" href={slide.ctaLink}>
+                           <a className="btn btn-primary" href={'/contact'}>
                               {slide.ctaText}{" "}
                               <svg>
                                  <use href="#i-arrow-r"></use>
@@ -617,11 +617,7 @@ export default function Home() {
                      </article>
                   ))}
                </div>
-               {/* <p className="demo-disclaimer">
-                  <b>Demo content:</b> The organizations, measurements and outcomes above are
-                  illustrative placeholders. Replace them with verified client results and
-                  approved references before publishing the website.
-               </p> */}
+               
             </div>
          </section>
 

@@ -32,7 +32,7 @@ export default function Services() {
   // Hero section data (can also come from API if available)
   const heroData = {
     eyebrow: "What we do",
-    heading: "Six service families. One accountable partner.",
+    heading: "One accountable partner.",
     lede: "Most organizations do not need six vendors who each own a fragment of the problem. Every service below is delivered by the same firm, under one agreement, by people who talk to each other — which is why nothing falls between the gaps.",
     primaryCtaText: "Book a consultation",
     primaryCtaLink: "/#contact",
@@ -47,7 +47,7 @@ export default function Services() {
     glance: {
       title: "How to use this page",
       items: [
-        'Not sure where a problem belongs? Start with <a href="/services/it-strategy-consulting" style="color:#8FD0FF">IT Strategy & Consulting</a>.',
+        'Start with IT Strategy & Consulting.',
         "Every service page explains the problem it solves, what it costs you not to fix it, and how we measure success.",
         "Services are scoped individually — you are never asked to buy a family.",
         "If we are not the right people for it, we will tell you."
@@ -100,7 +100,7 @@ export default function Services() {
 
   if (isLoading) {
     return (
-     <Loader />
+      <Loader />
     );
   }
 

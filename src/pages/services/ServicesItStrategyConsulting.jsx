@@ -281,7 +281,7 @@ export default function ServicesItStrategyConsulting() {
                                     <div className="story-top">
                                         <div className="story-kicker">
                                             <span className="story-industry">{story.industry}</span>
-                                            {story.isSample && <span className="demo-chip">Sample story</span>}
+                                            {/* {story.isSample && <span className="demo-chip">Sample story</span>} */}
                                         </div>
                                         <h3>{story.title}</h3>
                                         <p className="story-summary">{story.summary}</p>
@@ -312,11 +312,11 @@ export default function ServicesItStrategyConsulting() {
                                 </article>
                             ))}
                         </div>
-                        {successStories.disclaimer && (
+                        {/* {successStories.disclaimer && (
                             <p className="demo-disclaimer">
                                 <b>Demo content:</b> {successStories.disclaimer}
                             </p>
-                        )}
+                        )} */}
                     </div>
                 </section>
             )}
@@ -377,7 +377,7 @@ export default function ServicesItStrategyConsulting() {
                             <p>{cta?.description || "Tell us what is stuck. We will tell you whether it needs a strategy engagement, a small piece of delivery work, or nothing at all."}</p>
                         </div>
                         <div className="cta-actions">
-                            <a className="btn btn-primary" href={cta?.primaryLink || "/#contact?topic=IT strategy & consulting"}>
+                            <a className="btn btn-primary" href={"/contact"}>
                                 {cta?.primaryLabel || "Book a consultation"}{" "}
                                 <svg><use href="#i-arrow-r"></use></svg>
                             </a>
