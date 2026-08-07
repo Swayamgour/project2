@@ -2,6 +2,7 @@ import { useRef } from "react";
 import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
 import HeroSection from "../../components/HeroSection.jsx";
+import { locationIndia, locations, locationSuid } from "../../config/data.js";
 
 export default function CompanyLocations() {
   const mainRef = useRef(null);
@@ -25,10 +26,10 @@ export default function CompanyLocations() {
     eyebrow: "Locations",
 
     heading:
-      "Eight offices, three regions, one working day that never ends",
+      "Eight Offices, three continents, one working day that never ends",
 
     lede:
-      "Our locations are not a map for a marketing page. They are the reason we can say 24/7 and mean that someone is at their desk rather than reachable by phone — and the reason we can meet data residency and on-site requirements in the Gulf and across the United States.",
+      "Our strategic locations are why we can say 24/7 and mean someone is at their desk when you call or email — and why we can meet data residency and on-site requirements across three regions.",
 
     primaryCtaText: "Talk to our team",
     primaryCtaLink: "/#contact",
@@ -40,80 +41,17 @@ export default function CompanyLocations() {
       title: "At a glance",
 
       items: [
-        "Four offices across the United States",
-        "Saudi Arabia and the United Arab Emirates",
-        "Two engineering and service locations in India",
-        "Follow-the-sun coverage with documented shift handover",
+        "Strategic locations across three continents ensuring 24/7 global coverage",
         "Local presence for data residency and on-site requirements",
+        "One accountable partner across applications, infrastructure, security, and support",
+        "Four decades of combined experience across several industries",
+        "An account manager as your single point of contact"
       ],
     },
   };
   // Eastern
 
-  const locations = [
-    {
-      title: "Location one",
-      timezone: "Central time",
-      city: "Chicago, IL",
-      address: "1600 Golf Rd Suite 1200, Rolling Meadows, IL 60008",
-    },
-    {
-      title: "Location two",
-      timezone: "Eastern time",
-      city: "Atlanta, GA",
-      address: "44 Peachtree Pl NW, Atlanta, GA 30309",
-    },
-    {
-      title: "Location three",
-      timezone: "Eastern time",
-      city: "Westmont, IL",
-      address: "999 Oakmont Plaza Dr, Westmont, IL 60559",
-    },
-    {
-      title: "Location four",
-      timezone: "Eastern time",
-      city: "Houston, TX",
-      address: "16821 Buccaneer Ln., Suite 200, Houston, Texas, 77058",
-    },
 
-  ];
-
-
-  const locationSuid = [
-    {
-      title: "Location five",
-      timezone: "Arabian Standard Time",
-      city: "Riyadh, Saudi Arabia",
-      address:
-        "Northern Gate, Ibn Qunjouth Street, Al Safarat, Riyadh 12513, Saudi Arabia",
-    },
-    {
-      title: "Location six",
-      timezone: "Arabian Standard Time",
-      city: "United, Arab Emirates",
-      address:
-        "UAE - Business Center, Sharjah, United Arab Emirates",
-    },
-
-  ]
-
-
-  const locationIndia = [
-    {
-      title: "Location seven",
-      timezone: "India Standard Time",
-      city: "India",
-      address:
-        "India - NearWoodbine School, Anoopshar Road, Aligarh, UP 202001",
-    },
-    {
-      title: "Location eight",
-      timezone: "India Standard Time",
-      city: "India",
-      address:
-        "India - G.S Center Point Panjagutta Cross Road, Hyderabad, TS 500082",
-    },
-  ]
 
   return (
     <main id="main" ref={mainRef}>
@@ -123,6 +61,7 @@ export default function CompanyLocations() {
         breadcrumbs={breadcrumbs}
       />
 
+      {/* {locations , locationIndia , locationSuid} */}
 
       <nav className="svc-subnav" aria-label="On this page">
         <div className="wrap">
@@ -130,7 +69,7 @@ export default function CompanyLocations() {
           <a href="#mea">Middle East</a>
           <a href="#india">India</a>
           <a href="#follow">How coverage works</a>
-          <a className="subnav-cta link-more" href="/#contact">
+          <a className="subnav-cta link-more" href="/contact">
             Talk to us{" "}
             <svg>
               <use href="#i-arrow-r"></use>
@@ -201,9 +140,7 @@ export default function CompanyLocations() {
               <h3>India</h3>
               <span>2 offices</span>
               <p>
-                Engineering, managed services and the overnight half of our
-                follow-the-sun coverage — which is why an incident raised at 2am
-                in the United States is picked up by someone at their desk.
+                Managed services and the overnight half of our follow-the-sun coverage—which is why incidents raised in the evening in the United States are resolved by the next morning.
               </p>
             </div>
             <div className="loc-grid">
@@ -225,12 +162,10 @@ export default function CompanyLocations() {
           <div className="sec-head reveal">
             <span className="eyebrow">How coverage works</span>
             <h2 className="h-sec wide">
-              24/7 is a staffing model, not a phone number
+              Get Peace of Mind with Our Reliable 24/7 Support
             </h2>
             <p className="lede">
-              Plenty of providers advertise round-the-clock support and deliver
-              an on-call engineer who was asleep eight minutes ago. Ours works
-              differently, and the difference is where our offices are.
+              You can reach an on-call engineer any time by email or phone, day or night. Our offices are set up in key locations so we can help you quickly.
             </p>
           </div>
           <ul className="biz-outcomes reveal">
@@ -271,16 +206,16 @@ export default function CompanyLocations() {
               </span>
             </li>
           </ul>
-          <p className="metric-note">
+          {/* <p className="metric-note">
             <b>What this changes:</b> the practical test of a support
             arrangement is what happens at 3am on a Sunday. If the answer
             involves waking somebody up, response times will reflect that. If
             the answer is that a fully staffed team in another timezone is
             already working, they will not.
-          </p>
+          </p> */}
         </div>
       </section>
-      <section className="section bg-paper">
+      {/* <section className="section bg-paper">
         <div className="wrap">
           <div className="sec-head reveal">
             <span className="eyebrow">Getting in touch</span>
@@ -306,17 +241,14 @@ export default function CompanyLocations() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="section bg-mist">
         <div className="wrap">
           <div className="cta-band reveal">
             <div>
               <h2>Need someone in your timezone, or in your country?</h2>
               <p>
-                Tell us where your teams are and what hours your systems have to
-                be available. We will tell you which of our locations would
-                carry your account, who the named contacts would be, and what
-                our coverage would actually look like on a bad night.
+                Please let us know your team locations. We will assign named contacts to provide 24/7 coverage and outline our response process for challenging situations.
               </p>
             </div>
             <div className="cta-actions">

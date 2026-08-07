@@ -657,7 +657,7 @@ export const contactInfo = {
     contactDetails: [
         { icon: "#i-mail", text: "<b>Email</b>info@jjcsystems.com" },
         { icon: "#i-phone", text: "<b>Phone</b>+1-888-329-0625" },
-        { icon: "#i-pin", text: "<b>Head office</b>1600 Golf Rd, Suite 1200 Rolling Meadows, IL USA" },
+        { icon: "#i-pin", text: "<b>Head office</b> (Chicago, IL) – 1600 Golf Rd Suite 1200, Rolling Meadows, IL 60008 USA" },
         { icon: "#i-clock", text: "<b>Support hours</b>24/7 global coverage" }
     ],
     organizationSizes: [
@@ -791,3 +791,70 @@ export const clientLogo = [
         image: "https://jjcsystems.com/wp-content/uploads/2025/04/JJC-Client-Carr.png"
     },
 ];
+
+
+
+export const locations = [
+    {
+        title: "Location one",
+        timezone: "Central time",
+        city: "Chicago, IL",
+        address: "1600 Golf Rd Suite 1200, Rolling Meadows, IL 60008",
+    },
+    {
+        title: "Location two",
+        timezone: "Eastern time",
+        city: "Atlanta, GA",
+        address: "44 Peachtree Pl NW, Atlanta, GA 30309",
+    },
+    {
+        title: "Location three",
+        timezone: "Eastern time",
+        city: "Westmont, IL",
+        address: "999 Oakmont Plaza Dr, Westmont, IL 60559",
+    },
+    {
+        title: "Location four",
+        timezone: "Eastern time",
+        city: "Houston, TX",
+        address: "16821 Buccaneer Ln., Suite 200, Houston, Texas, 77058",
+    },
+
+];
+
+
+export const locationSuid = [
+    {
+        title: "Location five",
+        timezone: "Arabian Standard Time",
+        city: "Riyadh, Saudi Arabia",
+        address:
+            "Northern Gate, Ibn Qunjouth Street, Al Safarat, Riyadh 12513, Saudi Arabia",
+    },
+    {
+        title: "Location six",
+        timezone: "Arabian Standard Time",
+        city: "United, Arab Emirates",
+        address:
+            "UAE - Business Center, Sharjah, United Arab Emirates",
+    },
+
+]
+
+
+export const locationIndia = [
+    {
+        title: "Location seven",
+        timezone: "India Standard Time",
+        city: "India",
+        address:
+            "India - NearWoodbine School, Anoopshar Road, Aligarh, UP 202001",
+    },
+    {
+        title: "Location eight",
+        timezone: "India Standard Time",
+        city: "India",
+        address:
+            "India - G.S Center Point Panjagutta Cross Road, Hyderabad, TS 500082",
+    },
+]
