@@ -1,9 +1,14 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /
+RewriteEngine On
 
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
+# Redirect non-www to www
+RewriteCond %{HTTP_HOST} ^jjcsystems\.com$ [NC]
+RewriteRule ^(.*)$ https://www.jjcsystems.com/$1 [R=301,L]
 
-    RewriteRule ^(.*)$ index.html [L]
-</IfModule>
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://www.jjcsystems.com/$1 [R=301,L]
+
+# React SPA
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
