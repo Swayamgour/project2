@@ -80,14 +80,14 @@ export default function Home() {
                      <div className="slide-media">
                         <img
                            src={slide.image}
-                           alt={slide.imageAlt}
+                           alt={slide.imageAlt || slide.title || "JJC Systems"}
                            loading={index === 0 ? "eager" : "lazy"}
                         />
                      </div>
                      <div className="slide-grid">
                         <div className="slide-copy">
                            <span className="eyebrow">{slide.eyebrow}</span>
-                           <h1>{slide.title}</h1>
+                           {index === 0 ? <h1>{slide.title}</h1> : <h2>{slide.title}</h2>}
                            <p>{slide.description}</p>
                            <a className="btn btn-primary" href={'/contact'}>
                               {slide.ctaText}{" "}
@@ -538,23 +538,15 @@ export default function Home() {
                      {/* First set */}
                      {clientLogo?.map((logo, index) => (
                         <div key={`first-${index}`} className="marquee-item">
-                           {logo.image ? (
-                              <img src={logo.image} alt={logo.alt} />
+                           {logo.image_1 ? (
+                              <img src={logo.image_1} alt={logo.alt || logo.placeholder || "JJC Systems client logo"} />
                            ) : (
                               <span className="logo-ph">{logo.placeholder}</span>
                            )}
                         </div>
                      ))}
-                     {/* Duplicate for seamless looping */}
-                     {clientLogo?.map((logo, index) => (
-                        <div key={`second-${index}`} className="marquee-item">
-                           {logo.image ? (
-                              <img src={logo.image} alt={logo.alt} />
-                           ) : (
-                              <span className="logo-ph">{logo.placeholder}</span>
-                           )}
-                        </div>
-                     ))}
+                   
+                     
                   </div>
                </div>
             </div>
@@ -687,7 +679,7 @@ export default function Home() {
 
                               <img
                                  src={testimonial?.image?.url}
-                                 alt={testimonial.title}
+                                 alt={testimonial.title || "Client testimonial"}
                               // className="avatar-image"
                               />
 
@@ -744,7 +736,7 @@ export default function Home() {
                               <use href={post.icon}></use>
                            </svg> */}
 
-                           <img src={post?.image} alt="insits image" />
+                           <img src={post?.image} alt={post?.title || "JJC Systems insight"} />
                         </div>
                         <div className="post-body">
                            <div className="post-meta">

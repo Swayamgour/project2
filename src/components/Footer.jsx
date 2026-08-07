@@ -211,15 +211,15 @@ const Footer = () => {
 
                     <div className={styles.footerExperience}>
                       <div className={styles.footerExperienceItem}>
-                        <h1>15 <span>Mins</span></h1>
+                        <p className={styles.footerStat}>15 <span>Mins</span></p>
                         <p>Discovery Call</p>
                       </div>
                       <div className={styles.footerExperienceItem}>
-                        <h1>100%</h1>
+                        <p className={styles.footerStat}>100%</p>
                         <p>Client Satisfaction</p>
                       </div>
                       <div className={styles.footerExperienceItem}>
-                        <h1>40+ <span>Years</span></h1>
+                        <p className={styles.footerStat}>40+ <span>Years</span></p>
                         <p>Field Experience</p>
                       </div>
                     </div>

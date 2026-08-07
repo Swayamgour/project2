@@ -684,111 +684,111 @@ export const clientLogo = [
 
     {
         name: "Adama US",
-        image: "https://jjcsystems.com/wp-content/uploads/2025/07/Adama-JJC-Client.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2025/07/Adama-JJC-Client.png"
     },
     {
         name: "Infleqtion",
-        image: "https://jjcsystems.com/wp-content/uploads/2025/06/JJC-Client-Infleqtion.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2025/06/JJC-Client-Infleqtion.png"
     },
     {
         name: "Sharps",
-        image: "https://jjcsystems.com/wp-content/uploads/2026/04/Sharps-JJC-Client.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2026/04/Sharps-JJC-Client.png"
     },
     {
         name: "WCBDD",
-        image: "https://jjcsystems.com/wp-content/uploads/2026/02/WCBDD-JJC-Client.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2026/02/WCBDD-JJC-Client.png"
     },
     {
         name: "OSS",
-        image: "https://jjcsystems.com/wp-content/uploads/2026/02/OSS-JJC-Client-1.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2026/02/OSS-JJC-Client-1.png"
     },
     {
         name: "Rantoul Foods",
-        image: "https://jjcsystems.com/wp-content/uploads/2025/11/Rantoul-foods-.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2025/11/Rantoul-foods-.png"
     },
     {
         name: "Hohman",
-        image: "https://jjcsystems.com/wp-content/uploads/2025/03/JJC-Client-Hohman.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2025/03/JJC-Client-Hohman.png"
     },
     {
         name: "Phillips Murrah",
-        image: "https://jjcsystems.com/wp-content/uploads/2025/09/Phillips-Murrah-Client.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2025/09/Phillips-Murrah-Client.png"
     },
     {
         name: "High Plains",
-        image: "https://jjcsystems.com/wp-content/uploads/2026/02/High-Plains-JJC-Client-1.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2026/02/High-Plains-JJC-Client-1.png"
     },
     {
         name: "Bali",
-        image: "https://jjcsystems.com/wp-content/uploads/2025/04/JJC-Bali-Client.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2025/04/JJC-Bali-Client.png"
     },
     {
         name: "ESS",
-        image: "https://jjcsystems.com/wp-content/uploads/2025/11/ESS-.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2025/11/ESS-.png"
     },
     {
         name: "JJC Client 4",
-        image: "https://jjcsystems.com/wp-content/uploads/2024/08/JJC-Client-4.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2024/08/JJC-Client-4.png"
     },
     {
         name: "Conrad Polygraph",
-        image: "https://jjcsystems.com/wp-content/uploads/2024/08/Conrad-Polygraph-JJC-Client-1-1.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2024/08/Conrad-Polygraph-JJC-Client-1-1.png"
     },
     {
         name: "QPR",
-        image: "https://jjcsystems.com/wp-content/uploads/2024/08/QPR-JJC-Client-2-2.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2024/08/QPR-JJC-Client-2-2.png"
     },
     {
         name: "JJC Client 3",
-        image: "https://jjcsystems.com/wp-content/uploads/2024/08/JJC-Client-3.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2024/08/JJC-Client-3.png"
     },
     {
         name: "JJC Client 6",
-        image: "https://jjcsystems.com/wp-content/uploads/2024/08/JJC-Client-6.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2024/08/JJC-Client-6.png"
     },
     {
         name: "JJC Client 7",
-        image: "https://jjcsystems.com/wp-content/uploads/2024/09/JJC-Client-7.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2024/09/JJC-Client-7.png"
     },
     {
         name: "JJC Client 8",
-        image: "https://jjcsystems.com/wp-content/uploads/2024/08/JJC-Client-8.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2024/08/JJC-Client-8.png"
     },
     {
         name: "JJC Client 5",
-        image: "https://jjcsystems.com/wp-content/uploads/2024/08/JJC-Client-5.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2024/08/JJC-Client-5.png"
     },
     {
         name: "JJC Client 9",
-        image: "https://jjcsystems.com/wp-content/uploads/2024/08/JJC-Client-9.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2024/08/JJC-Client-9.png"
     },
     {
         name: "JJC Client 10",
-        image: "https://jjcsystems.com/wp-content/uploads/2024/08/JJC-Client-10.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2024/08/JJC-Client-10.png"
     },
     {
         name: "JJC VA Affairs",
-        image: "https://jjcsystems.com/wp-content/uploads/2025/04/JJC-VA-Affairs.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2025/04/JJC-VA-Affairs.png"
     },
     {
         name: "GSA",
-        image: "https://jjcsystems.com/wp-content/uploads/2025/02/GSA-Logo-1.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2025/02/GSA-Logo-1.png"
     },
     {
         name: "ACU",
-        image: "https://jjcsystems.com/wp-content/uploads/2025/01/JJC-Client-ACU.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2025/01/JJC-Client-ACU.png"
     },
     {
         name: "Tico Tractors",
-        image: "https://jjcsystems.com/wp-content/uploads/2025/05/JJC-Tico-Tractors.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2025/05/JJC-Tico-Tractors.png"
     },
     {
         name: "Invio Automation",
-        image: "https://jjcsystems.com/wp-content/uploads/2025/06/Invio-Automation-JJC-Client.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2025/06/Invio-Automation-JJC-Client.png"
     },
     {
         name: "Carr",
-        image: "https://jjcsystems.com/wp-content/uploads/2025/04/JJC-Client-Carr.png"
+        image_1: "https://jjcsystems.com/wp-content/uploads/2025/04/JJC-Client-Carr.png"
     },
 ];
 

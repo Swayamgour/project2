@@ -264,7 +264,7 @@ const InfoDropdownContent = ({ menu, onNavigate }) => {
 
                 {menu.featuredCard.image && (
                   <div className="info-featured-image-wrapper">
-                    <img src={menu.featuredCard.image} alt={menu.featuredCard.title} />
+                    <img src={menu.featuredCard.image} alt={menu.featuredCard.title || "JJC Systems"} />
                   </div>
                 )}
 
@@ -647,7 +647,7 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
             setNavOpen(false);
           }}
         >
-          <img src={logo} width={210} alt={`${brandName} ${brandSuffix}`} />
+          <img src={logo} width={210} alt={`${brandName} ${brandSuffix}`.trim() || "JJC Systems"} />
         </a>
 
         <nav className={`jjc-nav${navOpen ? " is-open" : ""}`} id="nav" aria-label="Main">

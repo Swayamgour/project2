@@ -199,7 +199,7 @@ export default function CompanyLeadership() {
                     {getImageUrl(member) ? (
                       <img
                         src={getImageUrl(member)}
-                        alt={member.title}
+                        alt={member.title || "JJC Systems team member"}
                         loading="lazy"
                       />
                     ) : (

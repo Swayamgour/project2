@@ -145,14 +145,14 @@
     flex-wrap: wrap;
 }
 
-.footerExperienceItem h1 {
+.footerExperienceItem .footerStat {
     margin: 0;
     font-size: 30px;
     font-weight: 700;
     color: #fff;
 }
 
-.footerExperienceItem h1 span {
+.footerExperienceItem .footerStat span {
     font-size: 15px;
     font-weight: 500;
     color: #9b9ca3;
