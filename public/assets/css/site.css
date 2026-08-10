@@ -7970,3 +7970,105 @@ main section[id] {
     text-transform: uppercase;
     color: var(--blue-deep)
 }
+
+
+.reason-list {
+  border-top: 1px solid var(--line);
+  margin-top: 44px
+}
+
+.rz {
+  display: grid;
+  grid-template-columns: 56px 1fr 250px;
+  gap: 26px;
+  align-items: start;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.rz .rn {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--blue-deep);
+  background: var(--tile);
+  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+}
+
+.rz h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(17px, 1.9vw, 20px);
+  color: var(--ink);
+  margin: 0 0 7px;
+  letter-spacing: -.015em;
+}
+
+.rz p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--body)
+}
+
+.rz .proof {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--blue-deep);
+  padding-top: 2px;
+}
+
+.rz .proof span {
+  display: block;
+  font-family: var(--text);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--body);
+  margin-top: 5px;
+}
+
+
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, .16);
+  border-bottom: 1px solid rgba(255, 255, 255, .16);
+  margin-top: 44px
+}
+
+.diff {
+  padding: 26px 22px 26px 0
+}
+
+.diff:not(:last-child) {
+  border-right: 1px solid rgba(255, 255, 255, .16)
+}
+
+.diff:not(:first-child) {
+  padding-left: 22px
+}
+
+.diff b {
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 15.5px;
+  color: #fff;
+  line-height: 1.32;
+  margin-bottom: 7px;
+  letter-spacing: -.01em
+}
+
+.diff span {
+  display: block;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #B9CCE2
+}

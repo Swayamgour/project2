@@ -24,7 +24,7 @@ export default function OurApproach() {
   const hero = {
     eyebrow: "Our Approach",
 
-    heading: "We start by asking questions, then we listen",
+    heading: "We start by asking questions",
 
     lede:
       "A good first call is one where you do seventy per cent of the talking. Everything else we do — the proofs of concept, the fixed pricing, the delivery model we recommend — depends on having genuinely understood the problem first, which is harder and less impressive than presenting a solution.",
@@ -39,11 +39,11 @@ export default function OurApproach() {
       title: "What to expect",
 
       items: [
-        "A first conversation that is questions, not a presentation",
-        "Structured requirements-gathering built from four decades of engagements",
+        "A first conversation that is mostly questions",
+        "Structured requirements-gathering built from decades of engagements",
         "A working proof of concept before any commercial discussion",
         "Pricing and timeline agreed only once the solution satisfies you",
-        "Seven delivery models — we will tell you which one you need",
+        "Seven delivery models",
       ],
     },
   };
@@ -74,54 +74,56 @@ export default function OurApproach() {
         <div className="wrap">
           <div className="sec-head reveal">
             <span className="eyebrow">We listen first</span>
-            <h2 className="h-sec wide">A good first call is one where you talk for seventy per cent of it</h2>
-            <p className="lede">That is not a courtesy. It is the only way to find out what is actually wrong, and it is the opposite of how most technology conversations run &mdash; where a vendor arrives with a deck, presents for forty minutes and leaves having learned nothing.</p>
+            <h2 className="h-sec wide"> On the first call, you answer, and we ask questions. </h2>
+            <p className="lede">We prioritize identifying current challenges, including areas that are slow or require manual effort. </p>
           </div>
 
           <div className="seg-grid">
             <article className="seg reveal">
               <h3>We ask, then we listen</h3>
-              <p>The first meeting is questions. What is slow, what is manual, what keeps being escalated, what did you try before and why did it not stick. We take notes rather than presenting slides.</p>
+              <p>The first meeting is questions. What is slow, what is manual, what keeps being escalated, what did you try before and why did it not stick. We take notes.
+
+              </p>
             </article>
             <article className="seg reveal">
-              <h3>The questions are not improvised</h3>
-              <p>We have built structured requirements-gathering question sets from four decades of engagements across eleven industries. They exist because we have learned which questions expose the real constraint and which ones produce a polite answer.</p>
+              <h3>Our questions are carefully developed</h3>
+              <p>We have built structured requirements-gathering question sets from decades of engagements across multiple industries. They exist because we have learned which questions expose the real constraints and challenges.</p>
             </article>
             <article className="seg reveal">
-              <h3>We follow the answers, not the script</h3>
-              <p>The question set is a floor, not a ceiling. Most of the useful information in a discovery call arrives when someone mentions a workaround in passing and we stop to ask about it.</p>
+              <h3>up questions based on answers</h3>
+              <p>Most of the valuable information gathered during a discovery call enables us to schedule a follow-up. Our industry-specific solutions ensure client adoption and ROI from day one.</p>
             </article>
           </div>
 
-          <div className="value-note reveal">
+          {/* <div className="value-note reveal">
             <h3>Why this matters more than it sounds</h3>
             <p>The single most expensive mistake in technology consulting is solving the wrong problem competently. It happens when a supplier arrives with a solution already in mind and asks questions designed to confirm it. By the time the mismatch is obvious, a budget has been committed and everyone involved has a reason not to say so. Talking less at the start is the cheapest possible insurance against that, and it costs us nothing but the temptation to sound impressive.</p>
-          </div>
+          </div> */}
         </div>
       </section>
 
       <section className="section bg-mist" id="prove">
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">We prove it before you buy it</span>
+            <span className="eyebrow">Proven & Adopted Industry-specific solutions</span>
             <h2 className="h-sec wide">See it working before anyone signs anything</h2>
-            <p className="lede">We maintain a set of in-house proofs of concept and custom solutions we can walk you through immediately &mdash; and where none of them fits, we will build one for your specific use case.</p>
+            <p className="lede">We maintain a set of in-house proofs of concept and custom solutions built in Microsoft Dynamics 365 that we can walk you through immediately—and if none of them fit, we will build one for your specific use case.</p>
           </div>
           <div className="chal-grid">
             <article className="chal reveal"><span className="chal-n">01</span><div>
               <h3>Walk through what already exists</h3>
-              <p>We hold working demonstrations across the platforms we implement. Not a recorded video or a vendor's sandbox &mdash; a running environment we can configure in front of you and answer awkward questions about.</p></div></article>
+              <p>We hold working demonstrations across the platforms we implement. A demo running environment is available for you to try. We answer all your questions.</p></div></article>
             <article className="chal reveal"><span className="chal-n">02</span><div>
               <h3>Or we build one for your case</h3>
               <p>If your situation is genuinely different, we will put together a proof of concept for it. Give us a real process, some anonymised data and your terminology, and we will show you your own scenario rather than a generic one.</p></div></article>
             <article className="chal reveal"><span className="chal-n">03</span><div>
               <h3>You decide when it is right</h3>
-              <p>We do not move to commercials until the solution satisfies you. If the proof of concept shows the approach is wrong, that is a good outcome discovered cheaply &mdash; and we would rather find it there than in month four.</p></div></article>
+              <p>We do not move to commercials until the solution satisfies you. If the proof of concept shows the approach is wrong, that is a good outcome discovered cheaply, and we work closely until you find your fit. </p></div></article>
           </div>
-          <div className="chal-note reveal">
+          {/* <div className="chal-note reveal">
             <svg><use href="#i-target" /></svg>
             <p><b>We believe in relationships, which has a practical consequence.</b> A client who signs something that does not work is a client we lose in eighteen months and never hear from again. Proving the approach first is not generosity &mdash; it is the version of this business that is still here in ten years.</p>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -129,8 +131,8 @@ export default function OurApproach() {
         <div className="wrap">
           <div className="sec-head reveal">
             <span className="eyebrow">We agree the terms</span>
-            <h2 className="h-sec wide">Pricing and timeline come after the solution, not before</h2>
-            <p className="lede">Once a solution meets your satisfaction, we put together the pricing and the timeline. Doing it in that order means the number is based on something you have actually seen rather than on an estimate of something nobody has defined yet.</p>
+            <h2 className="h-sec wide">Pricing and timeline come after the solution</h2>
+            <p className="lede">Once a solution meets your satisfaction, we put together the pricing and the timeline.</p>
           </div>
           <div className="metric-grid reveal">
             <div className="metric"><span className="m-label">Commercial model</span><b>Fixed price</b><p>Agreed before work starts, for defined scope</p></div>
@@ -138,7 +140,7 @@ export default function OurApproach() {
             <div className="metric"><span className="m-label">Scope changes</span><b>In writing</b><p>Raised when they arise, never absorbed silently</p></div>
             <div className="metric"><span className="m-label">Success measures</span><b>Baselined</b><p>Agreed with you before design begins</p></div>
           </div>
-          <p className="metric-note"><b>What we will not do:</b> quote a range so wide it means nothing, or price a discovery phase whose only deliverable is a proposal to do more work. If a discovery genuinely is needed, we will say what it costs and what you will own at the end of it &mdash; including if you take that document to somebody else.</p>
+          {/* <p className="metric-note"><b>What we will not do:</b> quote a range so wide it means nothing, or price a discovery phase whose only deliverable is a proposal to do more work. If a discovery genuinely is needed, we will say what it costs and what you will own at the end of it &mdash; including if you take that document to somebody else.</p> */}
         </div>
       </section>
 
@@ -147,7 +149,7 @@ export default function OurApproach() {
           <div className="sec-head reveal">
             <span className="eyebrow">We deliver</span>
             <h2 className="h-sec wide">Implement, configure, secure, train, support</h2>
-            <p className="lede">Five verbs that describe one continuous responsibility. Most suppliers stop after the second, hand over a document, and treat everything after that as a new sale.</p>
+            <p className="lede">One Relationship. One ongoing responsibility. Provides peace of mind and comprehensive support across Applications, Network & Systems, Security, Monitoring, Training, and Procurement. </p>
           </div>
           <div className="process reveal">
             <div className="step"><span className="step-n">1</span><h4>Implement</h4><p>Build, migrate and integrate to the agreed design, with a rollback path at every wave.</p></div>
@@ -156,10 +158,10 @@ export default function OurApproach() {
             <div className="step"><span className="step-n">4</span><h4>Train</h4><p>Administrators, makers and end users &mdash; because a system nobody understands produces no return regardless of how well it was built.</p></div>
             <div className="step"><span className="step-n">5</span><h4>Support</h4><p>As much or as little as you need afterwards. Some clients want everything run for them; some want us gone. Both are legitimate.</p></div>
           </div>
-          <div className="sol-note reveal">
+          {/* <div className="sol-note reveal">
             <svg><use href="#i-check" /></svg>
             <p>We regard a client who no longer needs us for routine changes as a success rather than a lost account. If the only way to modify your own system is to raise a purchase order with us, we designed it badly.</p>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -179,10 +181,10 @@ export default function OurApproach() {
             <article className="model reveal"><span className="mi"><svg><use href="#i-staffing" /></svg></span><div><h3>Technology Resourcing &amp; Support</h3><p>Certified engineers and consultants embedded in your team, on your terms, for as long as the work requires. Your management, our people and our bench behind them.</p><span className="who">Best when you need hands, not a delivery model</span></div></article>
             <article className="model reveal"><span className="mi"><svg><use href="#i-users" /></svg></span><div><h3>Training Services</h3><p>Enablement for your team &mdash; administrators, makers, end users and the champions who drive adoption. Delivered as part of a project or on its own.</p><span className="who">Best when adoption is the constraint, not capability</span></div></article>
           </div>
-          <div className="chal-note reveal">
+          {/* <div className="chal-note reveal">
             <svg><use href="#i-target" /></svg>
             <p><b>How to choose:</b> if the decision is not made, start with advisory. If it is made and defined, take professional services. If you need it working next month rather than built, look at the as-a-service options. If you are short of people rather than direction, take resourcing. We will tell you which of these you actually need, including when the answer is the cheapest one.</p>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -209,14 +211,14 @@ export default function OurApproach() {
           <div className="sec-head reveal">
             <span className="eyebrow">What we bring</span>
             <h2 className="h-sec wide">The part that is about people rather than process</h2>
-            <p className="lede">Methodology is easy to copy. What actually differs between consultancies is who turns up, what they are allowed to say, and whether they are still learning.</p>
+            <p className="lede">We put people first, believing that investing in our team drives our growth. Our sole focus is to ensure your digital experience is reliable, secure, and scalable.</p>
           </div>
           <div className="trait-grid">
-            <article className="trait reveal"><b>Diverse Expertise</b><span>Applications, infrastructure, security, data and adoption &mdash; across eleven industries and three regions. Breadth is what lets us tell you the answer is not the thing you asked about.</span></article>
+            <article className="trait reveal"><b>Diverse Expertise</b><span>Applications, infrastructure, security, data and adoption — across multiple industries and three regions. Breadth is what lets us tell you the answer is not the thing you asked about.</span></article>
             <article className="trait reveal"><b>Collaborative Culture</b><span>We work alongside your team, not around them. Your people know things we do not, and an engagement that ignores that produces a system nobody wanted.</span></article>
-            <article className="trait reveal"><b>Customer-Centric Approach</b><span>The outcome you need comes before the technology we would enjoy building. If a smaller engagement gets you there, that is what we will propose.</span></article>
+            <article className="trait reveal"><b>Customer-Centric Approach</b><span> The outcome you need comes before the technology we would enjoy building. We recommend the best solutions for your industry-specific use case.</span></article>
             <article className="trait reveal"><b>Passion for Excellence</b><span>Fixed price, agreed outcomes, measured against a baseline. Work is finished when it does what we said it would, not when the hours are used up.</span></article>
-            <article className="trait reveal"><b>Empowered Learning</b><span>Certification is funded and scheduled here. Our engineers are current because we make it their job to be, not because they study at weekends.</span></article>
+            <article className="trait reveal"><b>Empowered Learning</b><span>Certification is funded and scheduled. Our engineers are current because we make it their job to be.</span></article>
             <article className="trait reveal"><b>Exceptional Customer Service</b><span>Named contacts, independent feedback, and a director you can reach directly. Service quality is measured by someone other than the person who wants your renewal.</span></article>
           </div>
         </div>

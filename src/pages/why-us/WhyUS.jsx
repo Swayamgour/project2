@@ -36,7 +36,7 @@ const WhyUS = () => {
                 "Certified, and kept current as new releases emerge",
                 "Ready-to-go industry solutions with an adoption path from day one",
                 "Applications, infrastructure, security and support in one team",
-                "Four decades of combined experience across eleven industries",
+                "Decades of combined experience across multiple industries",
             ],
         },
     };
@@ -71,9 +71,9 @@ const WhyUS = () => {
                     <div className="wrap">
                         <div className="sec-head reveal">
                             <span className="eyebrow">The reasons</span>
-                            <h2 className="h-sec wide">Eight reasons, and the evidence behind each</h2>
+                            <h2 className="h-sec wide">A few reasons, and the evidence behind</h2>
                             <p className="lede">
-                                Every consultancy claims expertise, certification and results. What follows is the specific version &mdash; what each claim actually means in practice, and what you can hold us to.
+                                With decades of industry-focused expertise, we offer clients peace of mind, cost-effective, and future-ready technology solutions.
                             </p>
                         </div>
                         <div className="reason-list">
@@ -82,52 +82,52 @@ const WhyUS = () => {
                                 <div>
                                     <h3>Industry and technical expertise, in the same conversation</h3>
                                     <p>
-                                        Most suppliers give you one or the other &mdash; an account manager who understands your sector but not the platform, or an engineer who understands the platform but not why your month end matters. Our consultants carry both, which is why the first call gets to the real constraint rather than to a requirements list.
+                                        Our team has experience in your industry sector and with the technology platform your users use. We have worked with various industries and major technology vendors, providing you with a competitive advantage and a strong start.
                                     </p>
                                 </div>
-                                <div className="proof">
+                                {/* <div className="proof">
                                     11 industries
                                     <span>Regulated, commercial and growth organizations</span>
-                                </div>
+                                </div> */}
                             </article>
                             <article className="rz reveal">
                                 <span className="rn">02</span>
                                 <div>
                                     <h3>Always current, because we make that someone&rsquo;s job</h3>
                                     <p>
-                                        Microsoft ships two major release waves a year, and vendors disclose vulnerabilities continuously. A dedicated team tracks all of it, runs internal training and briefs the engineers &mdash; so the advice you get reflects where the platforms are going, not where they were when someone last certified.
+                                      Microsoft ships two major release waves a year, and vendors disclose vulnerabilities continuously. A dedicated team tracks all of it, runs internal training and briefs the engineers — so the advice you get reflects where the platforms are going.
                                     </p>
                                 </div>
-                                <div className="proof">
+                                {/* <div className="proof">
                                     2 waves / year
                                     <span>Release readiness reviewed before changes reach you</span>
-                                </div>
+                                </div> */}
                             </article>
                             <article className="rz reveal">
                                 <span className="rn">03</span>
                                 <div>
                                     <h3>Vendor-accredited and certified, and kept that way</h3>
                                     <p>
-                                        Every engineer holds Microsoft certification plus the vendor-specific credentials their specialism requires. Project and account managers are certified. As new releases land we certify against them rather than waiting for a client engagement to expose the gap.
+                                      Every engineer holds Microsoft certification plus the vendor-specific credentials their specialism requires. Project and account managers are certified. As new releases land, we certify against them.
                                     </p>
                                 </div>
-                                <div className="proof">
+                                {/* <div className="proof">
                                     Certified
                                     <span>Microsoft plus vendor-specific, renewed as products change</span>
-                                </div>
+                                </div> */}
                             </article>
                             <article className="rz reveal">
                                 <span className="rn">04</span>
                                 <div>
                                     <h3>Proven results, backed by clients who will speak to you</h3>
                                     <p>
-                                        We do not publish client names without written approval, which is why the reference outcomes on our Client Success pages are drawn from published sources and clearly labelled as such. For a live reference conversation, ask &mdash; we will arrange it with a client in a comparable sector.
+                                      We measure our success by the business outcomes our clients achieve through our solutions. Our proven expertise and results can be seen through our testimonials. 
                                     </p>
                                 </div>
-                                <div className="proof">
+                                {/* <div className="proof">
                                     References
                                     <span>Arranged on request, in your sector</span>
-                                </div>
+                                </div> */}
                             </article>
                             <article className="rz reveal">
                                 <span className="rn">05</span>
@@ -137,10 +137,10 @@ const WhyUS = () => {
                                         We maintain working proofs of concept and pre-built industry solutions you can see running immediately, then deploy and use rather than fund a build first. Where nothing fits, we will construct a proof of concept for your specific case before any commercial discussion.
                                     </p>
                                 </div>
-                                <div className="proof">
+                                {/* <div className="proof">
                                     Day 1
                                     <span>Deploy and use, not design and wait</span>
-                                </div>
+                                </div> */}
                             </article>
                             <article className="rz reveal">
                                 <span className="rn">06</span>
@@ -150,10 +150,10 @@ const WhyUS = () => {
                                         Applications, infrastructure, security, data, adoption and procurement under one roof &mdash; which means when the application problem turns out to be an identity problem, the same team fixes it rather than opening a conversation about whose fault it is.
                                     </p>
                                 </div>
-                                <div className="proof">
+                                {/* <div className="proof">
                                     One team
                                     <span>Applications, infrastructure, security and support</span>
-                                </div>
+                                </div> */}
                             </article>
                             <article className="rz reveal">
                                 <span className="rn">07</span>
@@ -163,10 +163,10 @@ const WhyUS = () => {
                                         Working relationships with Microsoft, Dell, Lenovo, HPE, Cisco, Fortinet, Check Point, SentinelOne, Proofpoint, OpenText and ConnectWise &mdash; giving roadmap visibility, escalation paths that reach an engineer, and one procurement channel instead of nine.
                                     </p>
                                 </div>
-                                <div className="proof">
+                                {/* <div className="proof">
                                     11+ partners
                                     <span>One channel, one invoice, one renewal calendar</span>
-                                </div>
+                                </div> */}
                             </article>
                             <article className="rz reveal">
                                 <span className="rn">08</span>
@@ -176,10 +176,10 @@ const WhyUS = () => {
                                         Combined experience across consulting, delivery and managed service. Long enough to have seen most of the ways these projects fail, which is the part that actually saves clients money.
                                     </p>
                                 </div>
-                                <div className="proof">
+                                {/* <div className="proof">
                                     40+ years
                                     <span>Combined consulting and delivery experience</span>
-                                </div>
+                                </div> */}
                             </article>
                         </div>
                     </div>
@@ -191,7 +191,7 @@ const WhyUS = () => {
                             <span className="eyebrow">Voice of the customer</span>
                             <h2 className="h-sec wide">The only opinion of our service that counts is not ours</h2>
                             <p className="lede">
-                                We commission independent third-party surveys rather than running our own, because a satisfaction score a supplier collects about itself is not evidence. The results shape what we change, not only what we publish.
+                                We commission independent surveys. The results shape what we change.
                             </p>
                         </div>
                         <div className="metric-grid reveal">
@@ -216,9 +216,9 @@ const WhyUS = () => {
                                 <p>Staffed across three regions, not on-call</p>
                             </div>
                         </div>
-                        <p className="metric-note">
+                        {/* <p className="metric-note">
                             <b>Before publishing:</b> both 100% figures should carry the survey provider, the sample size and the period covered, and retention should state whether it is measured by logo, by revenue or by renewal. An unqualified 100% invites scepticism from exactly the executive readers this page is written for; the same number with a named provider and an <em>n</em> value is genuinely persuasive.
-                        </p>
+                        </p> */}
                     </div>
                 </section>
 
@@ -352,26 +352,26 @@ const WhyUS = () => {
                         <div className="sec-head reveal">
                             <span className="eyebrow">What is different</span>
                             <h2 className="h-sec wide">Solutions and services under one roof</h2>
-                            <p className="lede">Five commitments that shape how we scope, staff and price every engagement.</p>
+                            {/* <p className="lede">Five commitments that shape how we scope, staff and price every engagement.</p> */}
                         </div>
                         <div className="diff-grid">
-                            <article className="diff reveal">
+                            <article className="diff ">
                                 <b>Large enough to serve</b>
                                 <span>Depth across every Microsoft platform, plus the network, security and procurement layers around them.</span>
                             </article>
-                            <article className="diff reveal">
+                            <article className="diff ">
                                 <b>Small enough to care</b>
                                 <span>Named people who know your environment, not a ticket queue and a rotating cast.</span>
                             </article>
-                            <article className="diff reveal">
+                            <article className="diff ">
                                 <b>A global team, working 24/7</b>
                                 <span>Three regions, so every hour of the day is somebody's working day rather than an on-call rota.</span>
                             </article>
-                            <article className="diff reveal">
+                            <article className="diff ">
                                 <b>A partnership, not a transaction</b>
                                 <span>Measured on outcomes agreed together, not on hours billed or licences moved.</span>
                             </article>
-                            <article className="diff reveal">
+                            <article className="diff ">
                                 <b>Outcome before technology</b>
                                 <span>We start from what the business needs to be true, then decide what to build.</span>
                             </article>
@@ -410,14 +410,14 @@ const WhyUS = () => {
                                 <p>One accountable team across applications, infrastructure, security and support &mdash; so there is nobody to point at when something needs fixing.</p>
                             </article>
                         </div>
-                        <div className="chal-note reveal">
+                        {/* <div className="chal-note reveal">
                             <svg>
                                 <use href="#i-target" />
                             </svg>
                             <p>
                                 <b>Trust is the one underneath the others.</b> It is also the only one we cannot claim &mdash; it is either extended to us by clients over time or it is not. Everything above is simply what we do to earn it.
                             </p>
-                        </div>
+                        </div> */}
                     </div>
                 </section>
 
@@ -427,12 +427,12 @@ const WhyUS = () => {
                             <div>
                                 <h2>Worth a thirty-minute conversation?</h2>
                                 <p>
-                                    You do not need a defined requirement or a budget. Describe the symptom &mdash; the process that keeps breaking, the report nobody trusts, the thing that takes three weeks and should take three days &mdash; and we will tell you honestly whether we are the right people for it.
+                                   You do not need a defined requirement or a budget. Describe the symptom — the process that keeps breaking, the report nobody trusts, the thing that takes three weeks and should take three days — and we will tell you what we think.
                                 </p>
                             </div>
                             <div className="cta-actions">
-                                <a className="btn btn-primary" href="consultation.html">
-                                    Request a consultation{' '}
+                                <a className="btn btn-primary" href="/contact">
+                                   Request a consultation & Just ask a question
                                     <svg>
                                         <use href="#i-arrow-r" />
                                     </svg>

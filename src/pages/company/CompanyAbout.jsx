@@ -537,15 +537,7 @@ export default function CompanyAbout() {
                   )}
                 </div>
               ))}
-              {clientLogo?.map((logo, index) => (
-                <div key={`first-${index}`} className="marquee-item">
-                  {logo.image_1 ? (
-                    <img src={logo?.image_1} alt={logo.alt || logo.placeholder || "JJC Systems client logo"} />
-                  ) : (
-                    <span className="logo-ph">{logo.placeholder}</span>
-                  )}
-                </div>
-              ))}
+             
 
 
             </div>

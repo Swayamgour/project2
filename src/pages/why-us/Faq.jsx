@@ -20,7 +20,7 @@ function FAQ() {
     heading: "The questions you would ask on a call, answered here",
 
     lede:
-      "We have written these the way we would answer them in a first conversation — including the ones with awkward answers. If a question you care about is not here, ask it directly and we will answer it just as plainly.",
+      "If a question you care about is not here, submit it from the contact form. We will answer it.",
 
     primaryCtaText: "Ask us something else",
     primaryCtaLink: "/contact",
@@ -32,10 +32,10 @@ function FAQ() {
       title: "How to use this page",
 
       items: [
-        "Grouped by what you are trying to find out",
+        "Grouped and can be scrolled by what you are trying to find out",
         "Written as we would answer on a call, not as marketing copy",
         "Includes when we would tell you not to hire us",
-        "Ask anything not covered and we will answer plainly",
+        "Ask anything not covered, and we will answer",
       ],
     },
   };
@@ -68,7 +68,7 @@ function FAQ() {
           <div className="sec-head reveal">
             <span className="eyebrow">Before you get in touch</span>
             <h2 className="h-sec wide">The questions people actually ask</h2>
-            <p className="lede">These are the questions we get asked most often in first conversations, answered the way we would answer them on a call. Where the honest answer is "it depends", we have said so and explained what it depends on rather than writing something reassuring and useless.</p>
+            <p className="lede">These are the questions we get asked most often in first conversations.</p>
           </div>
 
           {/* Getting Started */}
@@ -87,7 +87,8 @@ function FAQ() {
                 <summary>Do we need a defined requirement before contacting you?<span className="pm"></span></summary>
                 <div className="ans">
                   <p>No, and most clients do not have one. Describing a symptom is enough — the report nobody trusts, the process that takes three weeks, the system everyone works around. Turning that into a requirement is part of what you are hiring us for.</p>
-                  <p>If you do arrive with a detailed specification we will read it carefully, and we will tell you if we think it specifies the wrong solution.</p>
+                  <p>
+                    If you do arrive with a detailed specification, we will read it carefully, and we will tell you what we think.</p>
                 </div>
               </details>
               <details>
@@ -100,7 +101,7 @@ function FAQ() {
               <details>
                 <summary>How quickly can you start?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>It depends on the size of the engagement and the specialists involved. Small pieces of work can usually start within two to three weeks; a large implementation needs longer to staff properly. We would rather give you a date we can meet than the date you want to hear.</p>
+                  <p>It depends on the size of the engagement and the specialists involved. Small projects can usually start within two to three weeks; a large implementation might take longer to staff properly. We discuss the timeline during the agreement review. </p>
                 </div>
               </details>
             </div>
@@ -120,34 +121,34 @@ function FAQ() {
               <details>
                 <summary>Are we too large or too complex?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>We run multi-entity, multi-country implementations across regulated industries, and we have a global team to staff them. If a programme genuinely exceeds what we can deliver well, we will tell you that rather than take it and struggle.</p>
+                  <p>We run multi-entity, multi-country implementations across regulated industries, and we have a global team to staff them. We are here to solve complex problems at a large scale.</p>
                 </div>
               </details>
               <details>
                 <summary>Do you only work with Microsoft technology?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>Microsoft is our centre of gravity and where our deepest expertise sits. But we hold partnerships across infrastructure, networking and security — Dell, Lenovo, HPE, Cisco, Fortinet, Check Point, SentinelOne, Proofpoint and others — because a real estate is never one vendor.</p>
-                  <p>We also integrate with whatever you are keeping. We have no interest in a rip-and-replace project for its own sake, and we will say so when your existing system is fine.</p>
+                  <p>Microsoft is our center of gravity and where our deepest expertise sits. But we hold partnerships across infrastructure, networking and security — Dell, Lenovo, HPE, Cisco, Fortinet, Check Point, Sentinel One, Proofpoint and others.</p>
+                  <p>
+                    We integrate with whatever you are keeping. We have no interest in a rip-and-replace project for its own sake, and we will say so when your existing system is fine.
+                  </p>
                 </div>
               </details>
               <details>
                 <summary>Our industry is not on your list. Does that matter?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>Less than you would think. The disciplines that make an industry solution work — understanding the process, the regulator and the reporting obligation — transfer further than the sector label suggests. Describe your operation and we will tell you honestly whether we are the right people for it.</p>
+                  <p>Less than you would think. The disciplines that make an industry solution work — understanding the process, the regulator and the reporting obligation — transfer further than the sector label suggests. Describe your operation, and we will tell you what we think. </p>
                 </div>
               </details>
               <details>
                 <summary>Will you replace our internal IT team?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>Only if that is what you want. Most of our managed services work sits alongside an internal team, taking the parts they do not have capacity or specialism for. Some clients have no internal function and want everything run; both models work.</p>
-                  <p>What we will not do is quietly make an internal team redundant by degrees without that being an explicit, agreed decision.</p>
+                  <p>Most of our managed services work sits alongside an internal team, taking on the parts they do not have capacity or specialization for. Some clients have no internal function and want everything run by us.</p>
                 </div>
               </details>
               <details>
                 <summary>When would you tell us not to hire you?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>Regularly. Common examples: when your existing licensing already covers what you are about to buy, when a Power Platform application on your current systems would solve the problem more cheaply than the ERP you were considering, when a Copilot deployment should wait until permissions are cleaned up, and when a workload should not move to cloud at all.</p>
-                  <p>Recommending the smaller engagement costs us revenue every time. It is also the reason clients come back.</p>
+                  <p>Regularly. Common examples: when your existing licensing already covers what you are about to buy, when a Power Platform application on your current systems would solve the problem more cheaply than the SAAS subscription you were considering, when a Copilot deployment should wait until permissions are cleaned up, and when a workload should not move to cloud at all.</p>
                 </div>
               </details>
             </div>
@@ -161,36 +162,35 @@ function FAQ() {
               <details>
                 <summary>How do you price engagements?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>Defined project work is fixed price, agreed before anything starts. We will not quote a range so wide it means nothing, and we do not begin work on a scope we have not written down.</p>
+                  <p>Defined project work is fixed price, agreed before anything starts. </p>
                   <p>Managed services are priced per period against agreed service levels. Resourcing is priced per person per period. Advisory can be either, depending on whether the outcome is defined.</p>
                 </div>
               </details>
               <details>
                 <summary>What happens if the scope changes mid-project?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>It is raised in writing when it arises, with the cost and schedule impact stated, and you decide. We do not absorb scope silently and then present a variation at the end, and we do not perform out-of-scope work and invoice for it afterwards.</p>
-                  <p>Some scope changes are our fault — a design we got wrong, an estimate we missed. Those we absorb, and we will say which is which.</p>
+                  <p>It is raised in writing when it arises, with the cost and schedule impact stated, and you decide. We do not perform out-of-scope work and invoice for it afterward.</p>
+                  {/* <p>Some scope changes are our fault — a design we got wrong, an estimate we missed. Those we absorb, and we will say which is which.</p> */}
                 </div>
               </details>
               <details>
                 <summary>Do you resell Microsoft licences?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>We can, and many clients find it simpler to procure through one channel with one invoice and one renewal calendar. But our first piece of work is frequently a licensing review that <em>reduces</em> what you buy, and we do that even where it lowers our own revenue.</p>
-                  <p>If you would rather buy licences elsewhere and use us only for services, that is entirely fine and changes nothing about how we work with you.</p>
+                  <p>We can, and many clients find it simpler to procure through one channel with one invoice and one renewal calendar. But our first piece of work is frequently a licensing review that reduces what you buy.</p>
+                  <p>If you would rather buy licenses elsewhere and use us only for services, that is entirely fine and changes nothing about how we work with you.</p>
                 </div>
               </details>
               <details>
                 <summary>Are there long-term contract commitments?<span className="pm"></span></summary>
                 <div className="ans">
                   <p>Project work is contracted for the project. Managed services typically run on a twelve-month term with a notice period, because a service desk has to be staffed against a known volume — but we will discuss shorter initial terms where you want to try before committing.</p>
-                  <p>We do not use auto-renewal clauses that roll you into another year without a conversation.</p>
+                  <p>It varies too much for a number here to be honest. A licensing and entitlement review is a small, defined piece of work. A Power Platform application for one process is modest. A multi-entity ERP implementation is a different order of magnitude entirely.</p>
                 </div>
               </details>
               <details>
                 <summary>What does a typical first engagement cost?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>It varies too much for a number here to be honest. A licensing and entitlement review is a small, defined piece of work. A Power Platform application for one process is modest. A multi-entity ERP implementation is a different order of magnitude entirely.</p>
-                  <p>What we can tell you is that we will give you a fixed number before you commit, and we will scope phase one so it pays back before phase two is authorised.</p>
+                  <p>What we can tell you is that we will give you a fixed number before you commit, and we will scope phase one so it pays back before phase two is authorized.</p>
                 </div>
               </details>
             </div>
@@ -204,22 +204,30 @@ function FAQ() {
               <details>
                 <summary>Who will actually work on our project?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>Named people, introduced at kick-off, and the same people through delivery. The person who scoped your work stays involved — we do not staff a pitch with directors and hand the project to whoever was free.</p>
-                  <p>Every engagement of any size has three named roles: a PMP-certified project manager, a customer experience manager and a technical lead, plus a director named as escalation.</p>
+                  <p>Named people, introduced at kick-off, and the same people through delivery. The person who scoped your work stays involved.
+
+                  </p>
+                  <p>
+
+                    Every engagement of any size has three named roles: a PMP-certified project manager, a customer experience manager, and a technical lead, plus a director named as escalation.</p>
                 </div>
               </details>
               <details>
                 <summary>Do you use offshore teams?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>We have teams in the United States, the Middle East and India, and we are open about which parts of an engagement each covers. Our India locations carry engineering, application support and the overnight half of our 24/7 coverage — which is why an incident raised at 2am in the US is picked up by someone at their desk rather than someone woken up.</p>
-                  <p>If your procurement or regulatory position requires work to be performed in a specific country, tell us early and we will confirm in writing whether we can meet it.</p>
+                  <p>We have teams in the United States, the Middle East, and India, and we are open about which parts of an engagement each covers. </p>
+                  <p>
+
+                    If your procurement or regulatory position requires work to be performed in a specific country, please inform us, and we will confirm in writing.</p>
                 </div>
               </details>
               <details>
                 <summary>What happens if the project runs late?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>You hear about it as soon as we know, not at the next steering meeting. Weekly status reports against the original dates — not revised ones — so a slip is visible while there is still time to respond.</p>
-                  <p>Where the delay is ours, we absorb the cost. Where it is caused by something on your side, we will have flagged the dependency in advance and will replan with you.</p>
+                  <p>You hear about it as soon as we know. Weekly status reports against the original dates — so a slip is visible while there is still time to respond.</p>
+                  <p>
+
+                    If caused by something on your side, we will have flagged the dependency in advance and will replan with you.</p>
                 </div>
               </details>
               <details>
@@ -232,8 +240,7 @@ function FAQ() {
               <details>
                 <summary>How do you measure whether the work succeeded?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>Against a baseline agreed with you in writing before design starts — the current numbers, the target, and the method by which both will be measured. We report against those figures afterwards, including where we fell short.</p>
-                  <p>A supplier who defines success after the fact will always have succeeded. That is not a useful measurement.</p>
+                  <p>Against a baseline agreed with you in writing before design starts — the current numbers, the target, and the method by which both will be measured. We report against those figures afterward, including if we fell short.</p>
                 </div>
               </details>
             </div>
@@ -247,8 +254,12 @@ function FAQ() {
               <details>
                 <summary>What access will you need to our systems?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>The minimum required for the work, at the lowest privilege that will do the job, granted for the period it is needed and revoked afterwards. Access is named to individuals rather than shared, and privileged actions are logged.</p>
-                  <p>We are happy to work within your privileged access management process, including just-in-time elevation and session recording where you use them.</p>
+                  <p>The minimum required for the work, at the lowest privilege that will do the job, granted for the period it is needed and revoked afterward.
+                  </p>
+
+                  <p>
+
+                    We are happy to work within your privileged access management process.</p>
                 </div>
               </details>
               <details>
@@ -260,14 +271,19 @@ function FAQ() {
               <details>
                 <summary>Can you meet data residency requirements?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>Often, yes — we have local presence in the United States, Saudi Arabia, the United Arab Emirates and India, and Microsoft's regional cloud offerings cover most residency obligations. But the honest answer depends on your specific requirement.</p>
-                  <p>Raise it in the first conversation rather than at contract stage. It is much cheaper to design for than to retrofit.</p>
+                  <p>Yes — we have a local presence in the United States, Saudi Arabia, the United Arab Emirates, and India.
+                  </p>
+
+
+                  <p>
+
+                    Please inform us of any data residency requirements if we missed bringing them up.</p>
                 </div>
               </details>
               <details>
                 <summary>Do you use subcontractors?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>Predominantly our own people. Where a niche specialism genuinely requires a third party, we tell you who and why before they are engaged, and they work under the same access and confidentiality terms we do. You will never find out about a subcontractor by seeing an unfamiliar name in an audit log.</p>
+                  <p>Yes, as needed. </p>
                 </div>
               </details>
               <details>
@@ -287,8 +303,11 @@ function FAQ() {
               <details>
                 <summary>What are your support hours?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>Our managed service operates 24/7, staffed across three regions rather than by an on-call rota. That distinction matters: at 3am your time, somebody in another region is at their desk working a normal shift.</p>
-                  <p>Support is reached through the help desk portal, by email to support@jjcsystems.com, or by phone on 312-585-7555 option 1.</p>
+                  <p>Our managed service operates 24/7, staffed across three regions and with an on-call engineer at your local office. That distinction matters: at 3 am your time, someone in another region is at their desk working a normal shift, in addition to your local team.
+                  </p>
+                  <p>
+
+                    Support is available through the help desk portal, by email at support@jjcsystems.com, or by phone.</p>
                 </div>
               </details>
               <details>
@@ -327,21 +346,23 @@ function FAQ() {
               <details>
                 <summary>Are we locked in to you?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>Deliberately not. We build with configuration over code wherever possible and train your team to maintain it, because a client who can only change their own system by raising a purchase order with us is a client we have failed.</p>
-                  <p>We would rather you stayed because the work is good than because leaving is painful.</p>
+                  <p>Deliberately not. We build with configuration over code wherever possible and train your team to maintain it.</p>
                 </div>
               </details>
               <details>
                 <summary>What happens if we want to move to another provider?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>We hand over properly — documentation, credentials, configuration detail and a transition period with our people available to answer questions. We have done this and will do it again, and how a supplier behaves on the way out says more about them than anything on a website.</p>
+                  <p>We hand over properly — documentation, credentials, configuration detail and a transition period with our people available to answer questions. We have done this and will do it again.</p>
                 </div>
               </details>
               <details>
                 <summary>Do you have client references we can speak to?<span className="pm"></span></summary>
                 <div className="ans">
-                  <p>Yes, subject to those clients agreeing. We do not publish client names without written approval, which is why the reference outcomes on our Client Success pages are drawn from published sources and clearly marked as such rather than presented as our own work.</p>
-                  <p>For a live reference conversation, ask your account manager and we will arrange it with a client in a comparable sector.</p>
+                  <p>Yes, subject to those clients agreeing. </p>
+
+                  <p>
+
+                    For a live reference conversation, ask your account manager, and we will arrange it with a client in a comparable sector.</p>
                 </div>
               </details>
             </div>
@@ -350,7 +371,7 @@ function FAQ() {
       </section>
 
       {/* Four Questions Section */}
-      <section className="section bg-navy">
+      {/* <section className="section bg-navy">
         <div className="wrap">
           <div className="sec-head reveal">
             <span className="eyebrow">Still unanswered</span>
@@ -376,7 +397,7 @@ function FAQ() {
             </li>
           </ul>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="section bg-mist">
@@ -384,7 +405,7 @@ function FAQ() {
           <div className="cta-band reveal">
             <div>
               <h2>Not covered above?</h2>
-              <p>Ask us directly. We will answer plainly, including where the answer is that we are not the right firm for what you need — which is worth finding out in an email rather than in month three of an engagement.</p>
+              <p>Please fill out the contact form below with your question. We will answer it.</p>
             </div>
             <div className="cta-actions">
               <a className="btn btn-primary" href="/contact">Ask your question <svg><use href="#i-arrow-r" /></svg></a>

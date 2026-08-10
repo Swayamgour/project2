@@ -24,7 +24,7 @@ export default function OnboardingGuide() {
   const hero = {
     eyebrow: "Onboarding Guide",
 
-    heading: "Six stages, three named people, and no surprises",
+    heading: "Onboarding Stages, three named people, and no surprises",
 
     lede:
       "You are assigned a certified project manager and an account manager as your single point of contact — and an independent customer success team whose only job is to make sure that relationship is working. We believe in a personal touch and in people success first.",
@@ -39,14 +39,50 @@ export default function OnboardingGuide() {
       title: "What you get",
 
       items: [
-        "A PMP-certified project manager, named from day one",
+        "A PMP-certified project manager",
         "An account manager as your single point of contact",
-        "An independent customer success team checking on both",
+        "An independent customer success team",
         "A written plan with owners and dates on both sides",
-        "A 90-day checklist you can hold us to",
       ],
     },
   };
+
+  const stages = [
+    {
+      number: "01",
+      title: "Initial Consultation and Needs Assessment",
+      description:
+        "Before anything is planned, we establish what you actually need — which is frequently different from what the original inquiry described.",
+      whatWeDo: [
+        "Structured discovery against our industry question sets",
+        "Current-state review of the systems in scope",
+        "Success measures and baseline agreed in writing",
+        "Named contacts introduced on both sides",
+      ],
+    },
+    {
+      number: "02",
+      title: "Customized Onboarding Plan",
+      description:
+        "Based on the Initial Assessment and Delivery Approach selected, we write the plan for your organization. It states what happens in which order, who owns each step, what we need from you, and when.",
+      whatWeDo: [
+        "Sequenced plan with owners and dates on both sides",
+        "Risks and dependencies stated upfront",
+        "Agreed communication rhythm and escalation path",
+        "Time commitment from your team quantified in hours",
+      ],
+    },
+    {
+      number: "03",
+      title: "Continuous Support and Optimization",
+      description:
+        "If it was a project-based or professional services engagement, after go-live the relationship changes shape rather than ending. We stay connected and keep you ahead of technology changes.",
+      whatWeDo: [
+        "Sales & Accounts team follows up quarterly",
+        "Technology shift release updates",
+      ],
+    },
+  ]
 
   return (
     <main id="main" ref={mainRef}>
@@ -59,7 +95,7 @@ export default function OnboardingGuide() {
       <nav className="svc-subnav" aria-label="On this page">
         <div className="wrap">
           <a href="#team">Your team</a>
-          <a href="#stages">The six stages</a>
+          <a href="#stages">Onboarding Stages</a>
           <a href="#first90">First 90 days</a>
           <a href="#you">What we need from you</a>
           <a className="subnav-cta link-more" href="/#contact">Talk to us <svg><use href="#i-arrow-r" /></svg></a>
@@ -72,7 +108,7 @@ export default function OnboardingGuide() {
           <div className="sec-head reveal">
             <span className="eyebrow">Your team</span>
             <h2 className="h-sec wide">One point of contact, and somebody independent checking on them</h2>
-            <p className="lede">You are assigned a certified project manager and an account manager who together are your single point of contact for every aspect of the relationship. Then there is a third team, which is the part most firms do not have.</p>
+            <p className="lede">You are assigned a certified project manager and an account manager who serve as your single point of contact for all aspects of the relationship. Additionally, a third team is responsible for monitoring the health of the account and project relationship.</p>
           </div>
           <div className="pillar-grid">
             <article className="pillar reveal">
@@ -106,44 +142,80 @@ export default function OnboardingGuide() {
               </ul>
             </article>
           </div>
-          <div className="chal-note reveal">
+          {/* <div className="chal-note reveal">
             <svg><use href="#i-target" /></svg>
             <p><b>Why independence matters here.</b> If the person asking whether you are happy is the same person whose renewal depends on the answer, you will get a polite response and we will learn nothing. Separating those two roles is the only structural way to hear about a problem while it is still small.</p>
-          </div>
-          <div className="ph-note reveal"><svg><use href="#i-check" /></svg><p><b>Placeholder content:</b> the site states a 100% client retention and success rate. Before publishing, state the period this covers and how retention is defined &mdash; by logo, by revenue, or by contract renewal. An unqualified 100% invites scepticism from the executive readers this page is written for; the same figure with a stated period and definition is genuinely persuasive.</p></div>
+          </div> */}
+          {/* <div className="ph-note reveal"><svg><use href="#i-check" /></svg><p><b>Placeholder content:</b> the site states a 100% client retention and success rate. Before publishing, state the period this covers and how retention is defined &mdash; by logo, by revenue, or by contract renewal. An unqualified 100% invites scepticism from the executive readers this page is written for; the same figure with a stated period and definition is genuinely persuasive.</p></div> */}
         </div>
       </section>
 
       <section className="section bg-mist" id="stages">
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">The six stages</span>
+            <span className="eyebrow">Onboarding Stages</span>
             <h2 className="h-sec wide">What onboarding actually looks like, week by week</h2>
             <p className="lede">Each stage lists what we do and what we need from you. The second column is the one worth reading &mdash; onboarding projects almost never fail on the supplier's tasks. They fail because the client's people were never actually available, and nobody said so at the start.</p>
           </div>
           <div className="stage-list">
-            <article className="stage reveal">
-              <div className="stage-n">01</div>
-              <div className="stage-b">
-                <span className="stage-when">Week 1</span>
-                <h3>Initial Consultation and Needs Assessment</h3>
-                <p>Before anything is planned, we establish what you actually need &mdash; which is frequently different from what the original enquiry described. Your project manager, account manager and a technical lead all attend, so nothing has to be relayed second-hand.</p>
-                <div className="stage-cols">
-                  <div><h4>What we do</h4><ul>
-                    <li><svg><use href="#i-check" /></svg><span>Structured discovery against our industry question sets</span></li>
-                    <li><svg><use href="#i-check" /></svg><span>Current-state review of the systems in scope</span></li>
-                    <li><svg><use href="#i-check" /></svg><span>Success measures and baseline agreed in writing</span></li>
-                    <li><svg><use href="#i-check" /></svg><span>Named contacts introduced on both sides</span></li>
-                  </ul></div>
-                  <div className="yours"><h4>What we need from you</h4><ul>
-                    <li><svg><use href="#i-check" /></svg><span>The people who actually run the process, for two hours</span></li>
-                    <li><svg><use href="#i-check" /></svg><span>Access to review current configuration, read-only</span></li>
-                    <li><svg><use href="#i-check" /></svg><span>Your view of what has been tried before and why it did not stick</span></li>
-                  </ul></div>
+
+            {stages?.map((stage, index) => (
+              <article className="stage reveal" key={stage.number || index}>
+                <div className="stage-n">
+                  {stage.number || String(index + 1).padStart(2, "0")}
                 </div>
-              </div>
-            </article>
-            <article className="stage reveal">
+
+                <div className="stage-b">
+                  {stage.when && (
+                    <span className="stage-when">{stage.when}</span>
+                  )}
+
+                  <h3>{stage.title}</h3>
+
+                  <p>{stage.description}</p>
+
+                  <div className="stage-cols">
+                    {/* What we do */}
+                    {stage.whatWeDo?.length > 0 && (
+                      <div>
+                        <h4>What we do</h4>
+
+                        <ul>
+                          {stage.whatWeDo.map((item, itemIndex) => (
+                            <li key={itemIndex}>
+                              <svg>
+                                <use href="#i-check" />
+                              </svg>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* What we need from you */}
+                    {stage.whatWeNeed?.length > 0 && (
+                      <div className="yours">
+                        <h4>What we need from you</h4>
+
+                        <ul>
+                          {stage.whatWeNeed.map((item, itemIndex) => (
+                            <li key={itemIndex}>
+                              <svg>
+                                <use href="#i-check" />
+                              </svg>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+            {/* */}
+            {/* <article className="stage reveal">
               <div className="stage-n">02</div>
               <div className="stage-b">
                 <span className="stage-when">Week 1&ndash;2</span>
@@ -163,8 +235,8 @@ export default function OnboardingGuide() {
                   </ul></div>
                 </div>
               </div>
-            </article>
-            <article className="stage reveal">
+            </article> */}
+            {/* <article className="stage reveal">
               <div className="stage-n">03</div>
               <div className="stage-b">
                 <span className="stage-when">Week 2&ndash;4</span>
@@ -184,8 +256,8 @@ export default function OnboardingGuide() {
                   </ul></div>
                 </div>
               </div>
-            </article>
-            <article className="stage reveal">
+            </article> */}
+            {/* <article className="stage reveal">
               <div className="stage-n">04</div>
               <div className="stage-b">
                 <span className="stage-when">Week 3&ndash;5</span>
@@ -205,8 +277,8 @@ export default function OnboardingGuide() {
                   </ul></div>
                 </div>
               </div>
-            </article>
-            <article className="stage reveal">
+            </article> */}
+            {/* <article className="stage reveal">
               <div className="stage-n">05</div>
               <div className="stage-b">
                 <span className="stage-when">Week 4&ndash;6</span>
@@ -226,8 +298,8 @@ export default function OnboardingGuide() {
                   </ul></div>
                 </div>
               </div>
-            </article>
-            <article className="stage reveal">
+            </article> */}
+            {/* <article className="stage reveal">
               <div className="stage-n">06</div>
               <div className="stage-b">
                 <span className="stage-when">Ongoing</span>
@@ -247,12 +319,12 @@ export default function OnboardingGuide() {
                   </ul></div>
                 </div>
               </div>
-            </article>
+            </article> */}
           </div>
         </div>
       </section>
 
-      <section className="section bg-navy" id="first90">
+      {/* <section className="section bg-navy" id="first90">
         <div className="wrap">
           <div className="sec-head reveal">
             <span className="eyebrow">First 90 days</span>
@@ -268,9 +340,9 @@ export default function OnboardingGuide() {
             <li><svg><use href="#i-check" /></svg><span><b>Customer success has contacted you independently</b> &mdash; and you have told them something you would not have told your account manager</span></li>
           </ul>
         </div>
-      </section>
+      </section> */}
 
-      <section className="section bg-paper" id="you">
+      {/* <section className="section bg-paper" id="you">
         <div className="wrap">
           <div className="sec-head reveal">
             <span className="eyebrow">What we need from you</span>
@@ -289,7 +361,7 @@ export default function OnboardingGuide() {
               <p>If our consultant is not landing with your team, or the design feels wrong, say so in week three rather than at close-out. We would much rather have an uncomfortable conversation early than a polite one followed by a non-renewal.</p></div></article>
           </div>
         </div>
-      </section>
+      </section> */}
 
 
       <section className="section bg-mist">
@@ -297,7 +369,7 @@ export default function OnboardingGuide() {
           <div className="cta-band reveal">
             <div>
               <h2>Thinking about what a first engagement would look like?</h2>
-              <p>Tell us the scope you have in mind and we will map it against these six stages &mdash; with a realistic timeline, the hours we would need from your team, and the points where your decisions become the critical path.</p>
+              <p>Tell us the scope you have in mind, and we will map it against our delivery models — with a realistic timeline, the hours we would need, and the points where your decisions become the critical path.</p>
             </div>
             <div className="cta-actions">
               <a className="btn btn-primary" href="/contact">Start a conversation <svg><use href="#i-arrow-r" /></svg></a>
