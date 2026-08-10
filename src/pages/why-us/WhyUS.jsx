@@ -17,10 +17,10 @@ const WhyUS = () => {
     const hero = {
         eyebrow: "Why JJC Systems",
 
-        heading: "Eight reasons, and what each one actually means",
+        heading: "One partner. One point of contact. One invoice.",
 
         lede:
-            "Every consultancy claims expertise, certification and proven results. This page is the specific version — what those claims mean in practice, what evidence sits behind them, and what you would be able to hold us to.",
+            "We are a technology company delivering industry-specific solutions. Small and mid-size firms rely on us as a one-stop shop for applications, network and systems, security, monitoring, adoption, and procurement. Our Microsoft consulting team includes certified experts in Dynamics 365, Microsoft Azure, and Microsoft 365. Large firms engage us as their comprehensive Microsoft consulting partner.",
 
         primaryCtaText: "Request a consultation",
         primaryCtaLink: "/consultation",

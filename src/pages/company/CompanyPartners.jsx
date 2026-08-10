@@ -2,6 +2,7 @@ import { useRef } from "react";
 import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
 import HeroSection from "../../components/HeroSection.jsx";
+import { clientLogo } from "../../config/data.js";
 
 export default function CompanyPartners() {
   const mainRef = useRef(null);
@@ -27,23 +28,23 @@ export default function CompanyPartners() {
     heading: "The relationships behind the work",
 
     lede:
-      "We hold partnerships with the vendors whose products your estate actually depends on. Not to collect badges, but because roadmap visibility, escalation paths and procurement leverage are things clients feel — usually on the day something has gone wrong.",
+      "We hold partnerships with the vendors whose products your users use every day. Our experts work closely with their teams to provide the roadmap, visibility, escalation paths, and procurement leverage our clients feel—usually on the day something has gone wrong.",
 
     primaryCtaText: "Talk to our team",
-    primaryCtaLink: "/#contact",
+    primaryCtaLink: "/contact",
 
     secondaryCtaText: "See the platforms we deliver",
-    secondaryCtaAnchor: "/platforms",
+    secondaryCtaAnchor: "/services",
 
     glance: {
       title: "What our partnerships give you",
 
       items: [
         "Roadmap visibility before changes reach your environment",
-        "Escalation that reaches an engineer, not a support tier",
+        // "Escalation that reaches an engineer, not a support tier",
         "Partner pricing and funding programmes applied by default",
         "One procurement channel, one invoice, one renewal calendar",
-        "Recommendations driven by your requirement, not by partner status",
+        // "Recommendations driven by your requirement, not by partner status",
       ],
     },
   };
@@ -61,8 +62,8 @@ export default function CompanyPartners() {
           <a href="#why">Why it matters</a>
           <a href="#ecosystem">Our partners</a>
           <a href="#procurement">Procurement</a>
-          <a href="#choose">How we choose</a>
-          <a className="subnav-cta link-more" href="/#contact">
+          <a href="#choose">Talk to us</a>
+          <a className="subnav-cta link-more" href="/contact">
             Talk to us{" "}
             <svg>
               <use href="#i-arrow-r"></use>
@@ -78,9 +79,7 @@ export default function CompanyPartners() {
               What a vendor relationship is actually worth to you
             </h2>
             <p className="lede">
-              Partner badges are easy to collect and mostly decorative. What
-              matters is whether the relationship produces something a client
-              can feel — and there are only four things that qualify.
+              Many organizations struggle to keep up with rapid technology changes. We simplify decisions and help you stay ahead by working closely with major technology vendors. Our customer service team understands your business and recommends the best solutions to give you a competitive advantage.
             </p>
           </div>
           <div className="chal-grid">
@@ -108,7 +107,7 @@ export default function CompanyPartners() {
                 </p>
               </div>
             </article>
-            <article className="chal reveal">
+            {/* <article className="chal reveal">
               <span className="chal-n">03</span>
               <div>
                 <h3>Commercial terms you would not get alone</h3>
@@ -118,9 +117,9 @@ export default function CompanyPartners() {
                   default, including where doing so reduces what we invoice.
                 </p>
               </div>
-            </article>
+            </article> */}
             <article className="chal reveal">
-              <span className="chal-n">04</span>
+              <span className="chal-n">03</span>
               <div>
                 <h3>One procurement channel instead of nine</h3>
                 <p>
@@ -131,7 +130,7 @@ export default function CompanyPartners() {
               </div>
             </article>
           </div>
-          <div className="chal-note reveal">
+          {/* <div className="chal-note reveal">
             <svg>
               <use href="#i-target"></use>
             </svg>
@@ -142,40 +141,40 @@ export default function CompanyPartners() {
               steer you toward whichever partner pays best. If the right answer
               is a product from a vendor we do not partner with, we will say so.
             </p>
-          </div>
+          </div> */}
         </div>
       </section>
       <section className="section bg-mist" id="ecosystem">
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">Platform & applications</span>
+            <span className="eyebrow">Our partners</span>
             <h2 className="h-sec wide">
               The Microsoft estate we build most of our work on.
             </h2>
           </div>
-          <div className="plogo-grid">
-            <article className="plogo reveal">
-              <div className="mark">
-                <span>Microsoft</span>
+
+         
+
+              <div className="clients-marquee reveal">
+                <div className="marquee-track">
+                  {/* First set */}
+                  {clientLogo?.map((logo, index) => (
+                    <div key={`first-${index}`} className="marquee-item">
+                      {logo.image_1 ? (
+                        <img src={logo.image_1} alt={logo.alt || logo.placeholder || "JJC Systems client logo"} />
+                      ) : (
+                        <span className="logo-ph">{logo.placeholder}</span>
+                      )}
+                    </div>
+                  ))}
+
+
+                </div>
               </div>
-              <b>Microsoft</b>
-              <p>
-                Our primary platform partner across Dynamics 365, Microsoft 365,
-                Azure, Power Platform, Fabric and the security stack.
-              </p>
-            </article>
-            <article className="plogo reveal">
-              <div className="mark">
-                <span>OpenText</span>
-              </div>
-              <b>OpenText</b>
-              <p>
-                Information management and content services where document
-                volume or retention obligations exceed what SharePoint should be
-                asked to carry.
-              </p>
-            </article>
-          </div>
+            {/* </div>
+          </section> */}
+
+
         </div>
       </section>
       <section className="section bg-paper" id="ecosystem-1">
@@ -343,8 +342,7 @@ export default function CompanyPartners() {
               One channel, one invoice, one renewal calendar
             </h2>
             <p className="lede">
-              For small and mid-market clients this is frequently the most
-              immediately valuable thing we do, and the least discussed.
+              For our clients, this is frequently the most immediately valuable thing we do, and the least discussed.
             </p>
           </div>
           <ul className="biz-outcomes reveal">
@@ -381,14 +379,14 @@ export default function CompanyPartners() {
                 <use href="#i-check"></use>
               </svg>
               <span>
-                <b>Funding and assessment programmes applied</b> — vendor
-                programmes claimed by default rather than on request
+                <b>Funding and assessment programmes redeemed </b> — vendor
+                programmes claimed if applicable
               </span>
             </li>
           </ul>
         </div>
       </section>
-      <section className="section bg-mist" id="choose">
+      {/* <section className="section bg-mist" id="choose">
         <div className="wrap">
           <div className="sec-head reveal">
             <span className="eyebrow">How we choose</span>
@@ -436,7 +434,7 @@ export default function CompanyPartners() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="section bg-mist">
         <div className="wrap">
           <div className="cta-band reveal">
@@ -450,13 +448,13 @@ export default function CompanyPartners() {
               </p>
             </div>
             <div className="cta-actions">
-              <a className="btn btn-primary" href="/#contact">
+              <a className="btn btn-primary" href="/contact">
                 Ask for a licensing review{" "}
                 <svg>
                   <use href="#i-arrow-r"></use>
                 </svg>
               </a>
-              <a className="btn btn-ghost" href="/company/about">
+              <a className="btn btn-ghost" href="/About">
                 Read about the firm{" "}
                 <svg>
                   <use href="#i-arrow-r"></use>

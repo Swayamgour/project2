@@ -109,25 +109,26 @@ export default function CompanyLeadership() {
   const hero = {
     eyebrow: "Leadership",
 
-    heading: "The people accountable for the work",
+    heading: "The Executive team responsible for the success and growth",
 
     lede:
-      "A consultancy is only as good as the judgement of the people running it. This is the team that decides what we take on, what we decline, and what happens when an engagement is not going the way it should.",
+      " Our management team consists of industry leaders with extensive IT expertise. Our success and growth result from a clear strategy, focused goals, and a commitment to delivering best-in-class solutions and value-added services that help customers achieve meaningful business outcomes.",
 
     primaryCtaText: "Talk to our team",
-    primaryCtaLink: "/#contact",
+    primaryCtaLink: "/contact",
 
     secondaryCtaText: "Read about the firm",
-    secondaryCtaAnchor: "/company/about",
+    secondaryCtaAnchor: "/services",
 
     glance: {
       title: "How to read this page",
 
       items: [
-        "Each role is listed by what it is accountable for, not by biography",
-        "Senior people stay on the engagement they scoped",
-        "A named director is your escalation from day one",
-        "Photographs and names are placeholders pending your sign-off",
+        "Decades of combined experience across multiple industries",
+        "Industry and technical expertise in the same conversation",
+        "Ready-to-go industry solutions with an adoption path from day one",
+        "An account manager as your single point of contact",
+        "A global team working 24/7 across three regions",
       ],
     },
   };
@@ -168,7 +169,7 @@ export default function CompanyLeadership() {
         <div className="wrap">
           <div className="sec-head reveal">
             <span className="eyebrow">Leadership team</span>
-            <h2 className="h-sec wide">
+            {/* <h2 className="h-sec wide">
               Eight people, and what each of them is accountable for
             </h2>
             <p className="lede">
@@ -176,7 +177,7 @@ export default function CompanyLeadership() {
               our experience the useful question a prospective client asks is
               not where someone studied — it is who to talk to when a decision
               needs making, and who carries it when a commitment is missed.
-            </p>
+            </p> */}
           </div>
 
           {isLoading ? (
@@ -218,27 +219,14 @@ export default function CompanyLeadership() {
             </div>
           )}
 
-          <div className="ph-note reveal">
-            <svg>
-              <use href="#i-check"></use>
-            </svg>
-            <p>
-              <b>Placeholder content:</b> names, photographs and individual
-              biographies are placeholders. Replace each with the person's name,
-              a professional headshot at 1:1 aspect ratio, and two or three
-              sentences in their own voice. Where someone holds a relevant
-              certification or industry credential, name it specifically — a
-              stated PMP or Microsoft credential is worth considerably more to
-              an executive reader than a generic claim of experience.
-            </p>
-          </div>
+
         </div>
       </section>
 
       <section className="section bg-mist" id="how">
         <div className="wrap">
           <div className="sec-head reveal">
-            <span className="eyebrow">How we lead</span>
+            <span className="eyebrow">Talk to us</span>
             <h2 className="h-sec wide">What this team does differently</h2>
             <p className="lede">
               Three habits that shape how engagements are run, and that clients
@@ -303,10 +291,7 @@ export default function CompanyLeadership() {
             <div>
               <h2>Want to talk to one of them?</h2>
               <p>
-                Tell us what you are trying to decide and we will put you in
-                front of the person who actually owns that area — not a
-                salesperson who will relay the question. If we are not the right
-                firm for what you need, we will say so on that call.
+                Please let us know your decision-making needs, and we will connect you with the appropriate subject matter expert. Our trusted technology professionals are here to support you whenever you need assistance.
               </p>
             </div>
             <div className="cta-actions">

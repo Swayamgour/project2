@@ -4526,7 +4526,7 @@ main section[id] {
 }
 
 .member .photo::after {
-    content: "Photo placeholder";
+    /* content: "Photo placeholder"; */
     position: absolute;
     bottom: 10px;
     left: 0;

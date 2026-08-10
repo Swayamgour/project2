@@ -80,11 +80,11 @@ export default function Contact() {
     secondaryCtaAnchor: "tel:+8883290625",
 
     glance: {
-      title: "What to expect",
+      title: "AT A GLANCE",
 
       items: [
         "One accountable partner across applications, infrastructure, security, and support",
-        "Four decades of combined experience across eleven industries",
+        "Decades of combined experience across multiple industries",
         "An account manager as your single point of contact",
         "A global team working 24/7 across three regions",
         "Local presence for data residency and on-site requirements",
@@ -118,7 +118,7 @@ export default function Contact() {
 
       <ContactSection />
 
-     
+
 
       {/* <div id="routes">
         <section className="section bg-mist">
@@ -143,8 +143,16 @@ export default function Contact() {
           <div className="sec-head reveal">
             <span className="eyebrow">Where we are</span> */}
 
+
+
+
       <section className="section bg-paper" id="americas">
         <div className="wrap">
+          <div class="sec-head reveal">
+            <span class="eyebrow">WHERE WE ARE</span>
+            {/* <h2 class="h-sec wide">Sorted by most recent</h2> */}
+            {/* <p class="lede">Filter by the platform, the service area or the industry you care about. Filters combine, so you can narrow to a single platform within a single sector.</p> */}
+          </div>
           <div className="loc-region">
             <div className="loc-head reveal">
               <h3>United States</h3>

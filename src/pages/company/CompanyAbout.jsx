@@ -2,6 +2,7 @@ import { useRef } from "react";
 import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
 import HeroSection from "../../components/HeroSection.jsx";
+import { clientLogo } from "../../config/data.js";
 
 export default function CompanyAbout() {
   const mainRef = useRef(null);
@@ -27,22 +28,22 @@ export default function CompanyAbout() {
     heading: "One partner. One point of contact. One invoice.",
 
     lede:
-      "We simplify your operational relationships. For large organizations we are a comprehensive Microsoft consulting partner; for growing businesses we are a complete technology function — applications, network and systems, security, monitoring, adoption and procurement. Either way, there is one team accountable for the outcome.",
+      "We are a technology company delivering industry-specific solutions. Small and mid-size firms rely on us as a one-stop shop for applications, network and systems, security, monitoring, adoption, and procurement. Our Microsoft consulting team includes certified experts in Dynamics 365, Microsoft Azure, and Microsoft 365. Large firms engage us as their comprehensive Microsoft consulting partner.",
 
     primaryCtaText: "Talk to our team",
     primaryCtaLink: "/#contact",
 
-    secondaryCtaText: "Meet the leadership",
-    secondaryCtaAnchor: "/company/leadership",
+    secondaryCtaText: "Explore All Services",
+    secondaryCtaAnchor: "/services",
 
     glance: {
       title: "What defines us",
 
       items: [
         "One accountable partner across applications, infrastructure and security",
-        "Four decades of combined experience across eleven industries",
-        "Microsoft-certified engineers, PMP-certified project managers",
-        "Independent third-party customer satisfaction measurement",
+        "Decades of combined experience across several industries",
+        "Certified engineers, project & account managers",
+        "Independent customer satisfaction measurement for 100% client retention",
         "A global team working 24/7 across three regions",
       ],
     },
@@ -50,7 +51,7 @@ export default function CompanyAbout() {
 
   return (
     <main id="main" ref={mainRef}>
-     
+
       <HeroSection
         hero={hero}
         breadcrumbs={breadcrumbs}
@@ -135,7 +136,7 @@ export default function CompanyAbout() {
           <div className="sec-head reveal">
             <span className="eyebrow">What we promise</span>
             <h2 className="h-sec wide">
-              Solutions and services under one roof
+              Reliable Technology Solutions to Empower Your Business
             </h2>
             <p className="lede">
               Five commitments that shape how we scope, staff and price every
@@ -232,7 +233,7 @@ export default function CompanyAbout() {
               </p>
             </article>
           </div>
-          <div className="chal-note reveal">
+          {/* <div className="chal-note reveal">
             <svg>
               <use href="#i-target"></use>
             </svg>
@@ -242,7 +243,7 @@ export default function CompanyAbout() {
               time or it is not. Everything above is simply what we do to earn
               it.
             </p>
-          </div>
+          </div> */}
         </div>
       </section>
       <section className="section bg-mist" id="expertise">
@@ -250,7 +251,7 @@ export default function CompanyAbout() {
           <div className="sec-head reveal">
             <span className="eyebrow">Industry leadership</span>
             <h2 className="h-sec wide">
-              Four decades of doing this, across eleven industries
+              Decades of experience doing this, across several industries
             </h2>
             <p className="lede">
               Deep knowledge, broad expertise and a customer focus that shows up
@@ -261,33 +262,18 @@ export default function CompanyAbout() {
           </div>
           <div className="metric-grid reveal">
             <div className="metric">
-              <span className="m-label">Combined experience</span>
-              <b>40+ yrs</b>
-              <p>Across consulting, delivery and managed service</p>
+              <span className="m-label">CLIENT RELATIONSHIPS </span>
+              <b>100%</b>
+              <p>Retention across the client base </p>
             </div>
-            <div className="metric">
-              <span className="m-label">Industries served</span>
-              <b>11</b>
-              <p>Regulated, commercial and growth organizations</p>
-            </div>
-            <div className="metric">
-              <span className="m-label">Microsoft platforms</span>
-              <b>17</b>
-              <p>Implemented, extended and supported</p>
-            </div>
+
             <div className="metric">
               <span className="m-label">Coverage</span>
               <b>24/7</b>
               <p>Follow-the-sun across three regions</p>
             </div>
           </div>
-          <p className="metric-note">
-            <b>On awards and recognition:</b> this is where your awards, analyst
-            recognition and Microsoft partner designations should be listed with
-            the awarding body and the year. We have left the space rather than
-            filling it with generic badges — a specific, verifiable credential
-            is worth more than five vague ones.
-          </p>
+
         </div>
       </section>
       <section className="section bg-paper" id="voice">
@@ -539,40 +525,30 @@ export default function CompanyAbout() {
               It also means we can procure through one channel rather than five.
             </p>
           </div>
-          <div className="rel-grid">
-            <a className="rel reveal" href="/company/partners">
-              <span className="rel-icon">
-                <svg>
-                  <use href="#i-award"></use>
-                </svg>
-              </span>
-              <span>
-                <b>Our partner ecosystem</b>
-                <span>Microsoft, Dell, Lenovo, Cisco, Fortinet and more</span>
-              </span>
-            </a>
-            <a className="rel reveal" href="/platforms">
-              <span className="rel-icon">
-                <svg>
-                  <use href="#i-grid"></use>
-                </svg>
-              </span>
-              <span>
-                <b>Platforms we implement</b>
-                <span>17 Microsoft platforms, end to end</span>
-              </span>
-            </a>
-            <a className="rel reveal" href="/services">
-              <span className="rel-icon">
-                <svg>
-                  <use href="#i-strategy"></use>
-                </svg>
-              </span>
-              <span>
-                <b>Services we deliver</b>
-                <span>25 services across six capability areas</span>
-              </span>
-            </a>
+          <div className="clients-marquee reveal">
+            <div className="marquee-track">
+              {/* First set */}
+              {clientLogo?.map((logo, index) => (
+                <div key={`first-${index}`} className="marquee-item">
+                  {logo.image_1 ? (
+                    <img src={logo?.image_1} alt={logo.alt || logo.placeholder || "JJC Systems client logo"} />
+                  ) : (
+                    <span className="logo-ph">{'ijuhgf'}</span>
+                  )}
+                </div>
+              ))}
+              {clientLogo?.map((logo, index) => (
+                <div key={`first-${index}`} className="marquee-item">
+                  {logo.image_1 ? (
+                    <img src={logo?.image_1} alt={logo.alt || logo.placeholder || "JJC Systems client logo"} />
+                  ) : (
+                    <span className="logo-ph">{logo.placeholder}</span>
+                  )}
+                </div>
+              ))}
+
+
+            </div>
           </div>
         </div>
       </section>
@@ -582,14 +558,11 @@ export default function CompanyAbout() {
             <div>
               <h2>Fewer vendors. Fewer arguments about whose problem it is.</h2>
               <p>
-                Tell us how your technology relationships are arranged today —
-                how many suppliers, how many contracts, and who gets called when
-                something breaks. We will tell you honestly whether
-                consolidating would help you or simply move the problem.
+               Please describe your current technology relationships, including the number of suppliers, contracts, and your process for addressing issues. We will then present our industry-specific approach.
               </p>
             </div>
             <div className="cta-actions">
-              <a className="btn btn-primary" href="/#contact">
+              <a className="btn btn-primary" href="/contact">
                 Talk to our team{" "}
                 <svg>
                   <use href="#i-arrow-r"></use>

@@ -27,7 +27,7 @@ export default function CompanyCareers() {
     heading: "Diverse expertise. Endless talent. A place to grow.",
 
     lede:
-      "We are a consultancy that gets hired because our people know what they are doing and will say so plainly. That only works if the people are given time to learn, exposure to real problems, and permission to disagree — which shapes how we hire and how we run engagements.",
+      "We are an organization that gets hired because our people know what they are doing. That only works if the people are given time to learn, exposure to real problems, and permission to disagree.",
 
     primaryCtaText: "See open roles",
     primaryCtaLink: "#roles",
@@ -39,11 +39,11 @@ export default function CompanyCareers() {
       title: "What we offer",
 
       items: [
-        "Certification funded, including the study time",
-        "In-house training aligned to Microsoft release waves",
-        "Work across eleven industries and three regions",
-        "Senior people on delivery, so you learn by working with them",
-        "A four-step hiring process with no unpaid weekend projects",
+        "Competitive pay",
+        "Regionally regulated retirement and health care accounts",
+        "Personal benefits like fitness, vacation, parental and sick days",
+        "Professional growth benefits such as certification funding, in-house training, global team, and events",
+        "Work across multiple industries and vendors",
       ],
     },
   };
@@ -60,10 +60,10 @@ export default function CompanyCareers() {
       <nav className="svc-subnav" aria-label="On this page">
         <div className="wrap">
           <a href="#why">Why here</a>
-          <a href="#growth">How you grow</a>
+          {/* <a href="#growth">How you grow</a> */}
           <a href="#roles">Open roles</a>
-          <a href="#hiring">How we hire</a>
-          <a className="subnav-cta link-more" href="/#contact">
+          {/* <a href="#hiring">How we hire</a> */}
+          <a className="subnav-cta link-more" href="/contact">
             Talk to us{" "}
             <svg>
               <use href="#i-arrow-r"></use>
@@ -76,12 +76,10 @@ export default function CompanyCareers() {
           <div className="sec-head reveal">
             <span className="eyebrow">Why work here</span>
             <h2 className="h-sec wide">
-              A place to grow, which is a claim we can be held to
+             A place to grow, with our people first.
             </h2>
             <p className="lede">
-              Every consultancy says it invests in people. The test is whether
-              learning is scheduled work or something you are expected to do at
-              the weekend. Here it is scheduled.
+              We invest in our people.
             </p>
           </div>
           <div className="val-grid">
@@ -89,12 +87,10 @@ export default function CompanyCareers() {
               <span className="n">01</span>
               <h3>Certification is paid for and planned</h3>
               <p>
-                We certify staff as new releases land rather than waiting for a
-                client engagement to expose the gap. Exam costs, study time and
-                the training itself are the company's responsibility, not yours.
+               We certify staff as new releases are released. Exam costs and the training itself are our responsibility.
               </p>
             </article>
-            <article className="val reveal">
+            {/* <article className="val reveal">
               <span className="n">02</span>
               <h3>You work on the whole problem</h3>
               <p>
@@ -102,29 +98,25 @@ export default function CompanyCareers() {
                 touches identity, integration and change management, you will be
                 involved in all three rather than handing off at each boundary.
               </p>
-            </article>
+            </article> */}
             <article className="val reveal">
-              <span className="n">03</span>
-              <h3>Senior people stay on delivery</h3>
+              <span className="n">02</span>
+              <h3>Competitive package, Retirement & Health accounts</h3>
               <p>
-                Our directors are on client engagements, which means you learn
-                by working next to them rather than by reading their methodology
-                document.
+              We offer a competitive salary package. Regional, regulated retirement and health accounts, personal benefits such as fitness subscriptions, vacation, and maternal and sick days, and more.
               </p>
             </article>
             <article className="val reveal">
-              <span className="n">04</span>
+              <span className="n">03</span>
               <h3>Diverse expertise, genuinely</h3>
               <p>
-                Three regions, eleven industries and a deliberately broad
-                technical estate. The variety is the point — it is what stops a
-                career here becoming ten years of the same implementation.
+               Three regions, multiple industries, and a deliberately broad technical estate. The variety is the point.
               </p>
             </article>
           </div>
         </div>
       </section>
-      <section className="section bg-navy" id="growth">
+      {/* <section className="section bg-navy" id="growth">
         <div className="wrap">
           <div className="sec-head reveal">
             <span className="eyebrow">How you grow</span>
@@ -194,7 +186,7 @@ export default function CompanyCareers() {
             </li>
           </ul>
         </div>
-      </section>
+      </section> */}
       <section className="section bg-paper" id="roles">
         <div className="wrap">
           <div className="sec-head reveal">
@@ -311,7 +303,7 @@ export default function CompanyCareers() {
           </div>
         </div>
       </section>
-      <section className="section bg-mist" id="hiring">
+      {/* <section className="section bg-mist" id="hiring">
         <div className="wrap">
           <div className="sec-head reveal">
             <span className="eyebrow">How we hire</span>
@@ -371,28 +363,25 @@ export default function CompanyCareers() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="section bg-mist">
         <div className="wrap">
           <div className="cta-band reveal">
             <div>
               <h2>Nothing here quite fits?</h2>
               <p>
-                Send us a note anyway. We hire when we meet someone good more
-                often than when a vacancy is open, and a speculative message
-                that shows you understand what we do is worth more than an
-                application to a role you half want.
+                Please check back in later or follow us on LinkedIn.
               </p>
             </div>
             <div className="cta-actions">
-              <a className="btn btn-primary" href="/#contact">
+              <a className="btn btn-primary" href="/contact">
                 Get in touch{" "}
                 <svg>
                   <use href="#i-arrow-r"></use>
                 </svg>
               </a>
               <a className="btn btn-ghost" href="/company/leadership">
-                Meet the leadership{" "}
+               Follow us on Linkedin{" "}
                 <svg>
                   <use href="#i-arrow-r"></use>
                 </svg>

@@ -657,7 +657,7 @@ export const contactInfo = {
     contactDetails: [
         { icon: "#i-mail", text: "<b>Email</b>info@jjcsystems.com" },
         { icon: "#i-phone", text: "<b>Phone</b>+1-888-329-0625" },
-        { icon: "#i-pin", text: "<b>Head office</b> (Chicago, IL) – 1600 Golf Rd Suite 1200, Rolling Meadows, IL 60008 USA" },
+        { icon: "#i-pin", text: "<b>Head office (Chicago, IL)</b> 1600 Golf Rd Suite 1200, Rolling Meadows, IL 60008 USA" },
         { icon: "#i-clock", text: "<b>Support hours</b>24/7 global coverage" }
     ],
     organizationSizes: [
