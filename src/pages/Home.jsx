@@ -87,7 +87,7 @@ export default function Home() {
                      <div className="slide-grid">
                         <div className="slide-copy">
                            <span className="eyebrow">{slide.eyebrow}</span>
-                           {index === 0 ? <h1>{slide.title}</h1> : <h2>{slide.title}</h2>}
+                           {index === 0 ? <h1>{slide.title}</h1> : <h1>{slide.title}</h1>}
                            <p>{slide.description}</p>
                            <a className="btn btn-primary" href={'/contact'}>
                               {slide.ctaText}{" "}
