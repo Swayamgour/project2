@@ -41,7 +41,7 @@ export default function CompanyAbout() {
 
       items: [
         "One accountable partner across applications, infrastructure and security",
-        "Decades of combined experience across several industries",
+        "Decades of combined experience across multiple industries",
         "Certified engineers, project & account managers",
         "Independent customer satisfaction measurement for 100% client retention",
         "A global team working 24/7 across three regions",
@@ -271,6 +271,11 @@ export default function CompanyAbout() {
               <span className="m-label">Coverage</span>
               <b>24/7</b>
               <p>Follow-the-sun across three regions</p>
+            </div>
+            <div className="metric">
+              <span className="m-label">Offices</span>
+              <b>11</b>
+              <p>Strategically located to support wherever you are</p>
             </div>
           </div>
 
@@ -537,7 +542,7 @@ export default function CompanyAbout() {
                   )}
                 </div>
               ))}
-             
+
 
 
             </div>
@@ -550,7 +555,7 @@ export default function CompanyAbout() {
             <div>
               <h2>Fewer vendors. Fewer arguments about whose problem it is.</h2>
               <p>
-               Please describe your current technology relationships, including the number of suppliers, contracts, and your process for addressing issues. We will then present our industry-specific approach.
+                Please describe your current technology relationships, including the number of suppliers, contracts, and your process for addressing issues. We will then present our industry-specific approach.
               </p>
             </div>
             <div className="cta-actions">

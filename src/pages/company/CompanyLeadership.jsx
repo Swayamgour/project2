@@ -76,9 +76,9 @@ const accountabilityRoles = [
 // Subnav links data
 const subnavLinks = [
   { id: 1, label: "The team", href: "#team" },
-  { id: 2, label: "How we lead", href: "#how" },
+  // { id: 2, label: "How we lead", href: "#how" },
   { id: 3, label: "Accountability", href: "#accountability" },
-  { id: 4, label: "Talk to us", href: "/#contact", isCta: true }
+  { id: 4, label: "Talk to us", href: "/contact", isCta: true }
 ];
 
 export default function CompanyLeadership() {

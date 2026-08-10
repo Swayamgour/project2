@@ -44,7 +44,7 @@ export default function CompanyLocations() {
         "Strategic locations across three continents ensuring 24/7 global coverage",
         "Local presence for data residency and on-site requirements",
         "One accountable partner across applications, infrastructure, security, and support",
-        "Four decades of combined experience across several industries",
+        "Decades of combined experience across multiple industries",
         "An account manager as your single point of contact"
       ],
     },
