@@ -101,7 +101,7 @@ export const api = createApi({
 
         // Blog detail
         getBlogBySlug: builder.query({
-            query: (slug) => `/blog/${slug}`,
+            query: (slug) => `/blog/slug/${slug}`,
             providesTags: ["Blogs"],
         }),
 

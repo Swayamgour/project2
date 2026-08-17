@@ -245,8 +245,14 @@ function BlogPost() {
                       data-industry={post.industry}
                     >
                       <a className="bimg" href={`/blog/${post.slug}`} aria-label={post.title}>
-                        <svg><use href={`#i-${postIcon}`} /></svg>
-                        <span className="plat">{postPlatform}</span>
+                        {!post?.featureImage ? (
+                          <>
+                            <svg><use href={`#i-${postIcon}`} /></svg>
+                            <span className="plat">{postPlatform}</span>
+                          </>
+                        ) :
+                          <img src={post?.featureImage} alt={post?.featureImage || "featureImage"} />
+                        }
                       </a>
                       <div className="bbody">
                         <div className="bmeta">

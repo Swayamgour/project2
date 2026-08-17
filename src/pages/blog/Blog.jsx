@@ -173,13 +173,13 @@ function Blog() {
       ],
     },
 
-  
+
   };
 
   return (
     <main id="main">
       {/* Hero Section */}
-     
+
 
       <HeroSection
         hero={hero}
@@ -286,9 +286,16 @@ function Blog() {
                 data-service={post.service}
                 data-industry={post.industry}
               >
+                {/* {console.log(visiblePosts?.)} */}
                 <Link className="bimg" to={`/blog/${post.slug}`} aria-label={post.title}>
-                  {getIcon(post.icon)}
-                  <span className="plat">{post.platformLabel}</span>
+                  {!post?.featureImage ?
+                    (<>
+                      {getIcon(post.icon)}
+                      <span className="plat">{post.platformLabel}</span>
+                    </>) :
+
+                    <img src={post?.featureImage} alt={post?.featureImage || "featureImage"} />
+                  }
                 </Link>
                 <div className="bbody">
                   <div className="bmeta">
