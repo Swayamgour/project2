@@ -292,7 +292,7 @@ export default function SuccessStoryPatientOutreachThatPeopleActuallyRespondTo()
       </section>
 
       {/* Sourcing Section */}
-      <section className="section bg-paper" id="sourcing">
+      {/* <section className="section bg-paper" id="sourcing">
         <div className="wrap" style={{ maxWidth: "900px" }}>
           <div className="sec-head reveal">
             <span className="eyebrow">{sourcing?.eyebrow || "Sourcing & confidentiality"}</span>
@@ -314,7 +314,7 @@ export default function SuccessStoryPatientOutreachThatPeopleActuallyRespondTo()
             </div>
           )}
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="section bg-mist">
