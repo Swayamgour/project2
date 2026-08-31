@@ -1,12 +1,24 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useGetGuideBySlugQuery } from '../../redux/api';
+import useDocumentMeta from '../../hooks/useDocumentMeta.js';
 import Loader from '../../components/Loader';
 import HeroSection from '../../components/HeroSection';
 
 function GuideDetail() {
   const { slug } = useParams();
   const { data, isLoading, error } = useGetGuideBySlugQuery(slug);
+
+  const guideData = data?.data;
+  useDocumentMeta(
+    guideData?.seo?.metaTitle || (guideData?.title ? `${guideData.title} | JJC Systems Guides` : "JJC Systems Guides"),
+    guideData?.seo?.metaDescription || guideData?.description || "",
+    {
+      keywords: guideData?.seo?.keywords,
+      canonicalUrl: guideData?.seo?.canonicalUrl,
+      ogImage: guideData?.seo?.ogImage,
+    }
+  );
 
   // Helper to get icon SVG
   const getIcon = (iconName) => {

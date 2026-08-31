@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useGetBlogBySlugQuery } from '../../redux/api'
+import useDocumentMeta from '../../hooks/useDocumentMeta.js';
 import Loader from '../../components/Loader';
 
 function BlogPost() {
@@ -21,6 +22,17 @@ function BlogPost() {
 
   const { slug } = useParams();
   const { data: blogPost, isLoading, isError } = useGetBlogBySlugQuery(slug);
+
+  const blogData = blogPost?.data;
+  useDocumentMeta(
+    blogData?.seo?.metaTitle || (blogData?.title ? `${blogData.title} | JJC Systems Blog` : "JJC Systems Blog"),
+    blogData?.seo?.metaDescription || blogData?.description || "",
+    {
+      keywords: blogData?.seo?.keywords,
+      canonicalUrl: blogData?.seo?.canonicalUrl,
+      ogImage: blogData?.seo?.ogImage || blogData?.featureImage,
+    }
+  );
 
   // Loading state
   if (isLoading) {

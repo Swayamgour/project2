@@ -21,6 +21,11 @@ export default function SuccessIndustryHealthcare() {
   useDocumentMeta(
     pageData?.seo?.metaTitle || "Healthcare Success Stories | JJC Systems",
     pageData?.seo?.metaDescription || "Documented Microsoft platform outcomes in Healthcare, with the challenge, the approach and the measured result.",
+    {
+      keywords: pageData?.seo?.keywords,
+      canonicalUrl: pageData?.seo?.canonicalUrl,
+      ogImage: pageData?.seo?.ogImage,
+    }
   );
 
   usePageEffects(mainRef);

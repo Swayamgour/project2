@@ -15,7 +15,12 @@ export default function PlatformsMicrosoft365() {
   // Set meta from API data
   useDocumentMeta(
     pageData?.seo?.metaTitle || "Microsoft 365 Consulting & Implementation | JJC Systems",
-    pageData?.seo?.metaDescription || "Microsoft 365 consulting, migration and optimization. Get the collaboration, security and governance capability you already pay for actually working."
+    pageData?.seo?.metaDescription || "Microsoft 365 consulting, migration and optimization. Get the collaboration, security and governance capability you already pay for actually working.",
+    {
+      keywords: pageData?.seo?.keywords,
+      canonicalUrl: pageData?.seo?.canonicalUrl,
+      ogImage: pageData?.seo?.ogImage,
+    }
   );
   usePageEffects(mainRef);
 

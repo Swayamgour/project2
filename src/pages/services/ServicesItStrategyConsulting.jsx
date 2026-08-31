@@ -15,7 +15,12 @@ export default function ServicesItStrategyConsulting() {
     // Set meta from API data or fallback
     useDocumentMeta(
         pageData?.seo?.metaTitle || "IT Strategy & Consulting | JJC Systems",
-        pageData?.seo?.metaDescription || "Independent IT strategy and consulting for mid-sized organizations — technology assessments, costed roadmaps, architecture decisions and budget planning tied to business outcomes."
+        pageData?.seo?.metaDescription || "Independent IT strategy and consulting for mid-sized organizations — technology assessments, costed roadmaps, architecture decisions and budget planning tied to business outcomes.",
+        {
+            keywords: pageData?.seo?.keywords,
+            canonicalUrl: pageData?.seo?.canonicalUrl,
+            ogImage: pageData?.seo?.ogImage,
+        }
     );
     usePageEffects(mainRef);
 

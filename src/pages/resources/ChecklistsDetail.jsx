@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useGetChecklistsBySlugQuery } from '../../redux/api';
+import useDocumentMeta from '../../hooks/useDocumentMeta.js';
 import Loader from '../../components/Loader.jsx';
 import HeroSection from '../../components/HeroSection.jsx';
 
@@ -14,6 +15,16 @@ function ChecklistDetail() {
 
     const checklist = apiData?.data;
     const related = apiData?.related || [];
+
+    useDocumentMeta(
+        checklist?.seo?.metaTitle || (checklist?.title ? `${checklist.title} | JJC Systems Checklists` : "JJC Systems Checklists"),
+        checklist?.seo?.metaDescription || checklist?.description || "",
+        {
+            keywords: checklist?.seo?.keywords,
+            canonicalUrl: checklist?.seo?.canonicalUrl,
+            ogImage: checklist?.seo?.ogImage,
+        }
+    );
 
     // Get all checklist items from sections
     const getAllItems = () => {

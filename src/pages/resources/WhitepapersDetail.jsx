@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useGetWhitepapersBySlugQuery } from '../../redux/api';
+import useDocumentMeta from '../../hooks/useDocumentMeta.js';
 import Loader from '../../components/Loader.jsx';
 
 function WhitepapersDetail() {
@@ -10,6 +11,16 @@ function WhitepapersDetail() {
 
     const whitepaper = apiData?.data;
     const related = apiData?.related || [];
+
+    useDocumentMeta(
+        whitepaper?.seo?.metaTitle || (whitepaper?.title ? `${whitepaper.title} | JJC Systems Whitepapers` : "JJC Systems Whitepapers"),
+        whitepaper?.seo?.metaDescription || whitepaper?.description || "",
+        {
+            keywords: whitepaper?.seo?.keywords,
+            canonicalUrl: whitepaper?.seo?.canonicalUrl,
+            ogImage: whitepaper?.seo?.ogImage,
+        }
+    );
 
     // Get icon href
     const getIconHref = (icon) => {

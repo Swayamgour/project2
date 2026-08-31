@@ -14,7 +14,12 @@ export default function IndustriesHealthcare() {
 
   useDocumentMeta(
     pageData?.seo?.metaTitle || "Healthcare Technology Consulting | JJC Systems",
-    pageData?.seo?.metaDescription || "Microsoft technology consulting for healthcare providers, payers and life sciences."
+    pageData?.seo?.metaDescription || "Microsoft technology consulting for healthcare providers, payers and life sciences.",
+    {
+      keywords: pageData?.seo?.keywords,
+      canonicalUrl: pageData?.seo?.canonicalUrl,
+      ogImage: pageData?.seo?.ogImage,
+    }
   );
   usePageEffects(mainRef);
 

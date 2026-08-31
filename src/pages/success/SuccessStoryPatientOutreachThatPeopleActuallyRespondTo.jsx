@@ -21,8 +21,13 @@ export default function SuccessStoryPatientOutreachThatPeopleActuallyRespondTo()
 
   // Set meta tags dynamically
   useDocumentMeta(
-    pageData?.seo?.title || "Patient outreach that people actually respond to | Client Success | JJC Systems",
-    pageData?.seo?.description || "Communication delays and fragmented patient data were limiting access to care. Outreach was generic, arrived late, and the organization could not tell which channels were working.",
+    pageData?.seo?.metaTitle || "Patient outreach that people actually respond to | Client Success | JJC Systems",
+    pageData?.seo?.metaDescription || "Communication delays and fragmented patient data were limiting access to care. Outreach was generic, arrived late, and the organization could not tell which channels were working.",
+    {
+      keywords: pageData?.seo?.keywords,
+      canonicalUrl: pageData?.seo?.canonicalUrl,
+      ogImage: pageData?.seo?.ogImage,
+    }
   );
 
   usePageEffects(mainRef);
