@@ -37,6 +37,7 @@ import WhitepapersDetail from "./pages/resources/WhitepapersDetail.jsx";
 import ChecklistsDetail from "./pages/resources/ChecklistsDetail.jsx";
 import WhyUS from "./pages/why-us/WhyUS.jsx";
 import FeaturedSuccessStory from "./pages/FeaturedSuccessStory.jsx";
+
 // import ClientSuccessStory from "./pages/ClientSuccessStory.jsx";
 // import Partners from "./pages/company/partners.jsx";
 
