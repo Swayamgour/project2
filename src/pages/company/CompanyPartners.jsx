@@ -3,6 +3,7 @@ import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
 import HeroSection from "../../components/HeroSection.jsx";
 import { clientLogo } from "../../config/data.js";
+import { useGetHomeSectionQuery } from "../../redux/api.jsx";
 
 export default function CompanyPartners() {
   const mainRef = useRef(null);
@@ -11,6 +12,9 @@ export default function CompanyPartners() {
     "Our vendor and technology partnerships: Microsoft, Dell, Lenovo, OpenText, ConnectWise, Cisco, Check Point, Fortinet, HPE, SentinelOne, Proofpoint and more.",
   );
   usePageEffects(mainRef);
+
+  const { data: clientLogoData } = useGetHomeSectionQuery("clientLogos");
+  const clientLogos = clientLogoData?.data?.items || [];
 
   const breadcrumbs = [
     {
@@ -153,25 +157,22 @@ export default function CompanyPartners() {
             </h2>
           </div>
 
-         
 
-              <div className="clients-marquee reveal">
-                <div className="marquee-track">
-                  {/* First set */}
-                  {clientLogo?.map((logo, index) => (
-                    <div key={`first-${index}`} className="marquee-item">
-                      {logo.image_1 ? (
-                        <img src={logo.image_1} alt={logo.alt || logo.placeholder || "JJC Systems client logo"} />
-                      ) : (
-                        <span className="logo-ph">{logo.placeholder}</span>
-                      )}
-                    </div>
-                  ))}
 
+          <div className="clients-marquee reveal">
+            <div className="marquee-track">
+              {/* First set */}
+              {clientLogos?.map((logo, index) => (
+                <div key={`first-${index}`} className="marquee-item">
+                  <img src={logo.image?.url} alt={logo.alt || logo.placeholder || "JJC Systems client logo"} />
 
                 </div>
-              </div>
-            {/* </div>
+              ))}
+
+
+            </div>
+          </div>
+          {/* </div>
           </section> */}
 
 

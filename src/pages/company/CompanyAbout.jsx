@@ -3,6 +3,7 @@ import usePageEffects from "../../hooks/usePageEffects.js";
 import useDocumentMeta from "../../hooks/useDocumentMeta.js";
 import HeroSection from "../../components/HeroSection.jsx";
 import { clientLogo } from "../../config/data.js";
+import { useGetHomeSectionQuery } from "../../redux/api.jsx";
 
 export default function CompanyAbout() {
   const mainRef = useRef(null);
@@ -11,6 +12,9 @@ export default function CompanyAbout() {
     "One partner, one point of contact, one invoice. Four decades of Microsoft consulting and managed IT across eleven industries.",
   );
   usePageEffects(mainRef);
+
+   const { data: clientLogoData } = useGetHomeSectionQuery("clientLogos");
+     const clientLogos = clientLogoData?.data?.items || [];
 
   const breadcrumbs = [
     {
@@ -533,13 +537,10 @@ export default function CompanyAbout() {
           <div className="clients-marquee reveal">
             <div className="marquee-track">
               {/* First set */}
-              {clientLogo?.map((logo, index) => (
+              {clientLogos?.map((logo, index) => (
                 <div key={`first-${index}`} className="marquee-item">
-                  {logo.image_1 ? (
-                    <img src={logo?.image_1} alt={logo.alt || logo.placeholder || "JJC Systems client logo"} />
-                  ) : (
-                    <span className="logo-ph">{'ijuhgf'}</span>
-                  )}
+                  <img src={logo.image?.url} alt={logo.alt || logo.placeholder || "JJC Systems client logo"} />
+
                 </div>
               ))}
 

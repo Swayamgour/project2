@@ -17,7 +17,7 @@ import {
    contactInfo,
    clientLogo
 } from "../config/data.js";
-import { useGetCategoryQuery, useGetTestimonialsQuery } from "../redux/api.jsx";
+import { useGetCategoryQuery, useGetTestimonialsQuery, useGetHomeSectionQuery } from "../redux/api.jsx";
 import { Link } from "react-router-dom";
 
 
@@ -34,10 +34,14 @@ export default function Home() {
    const { data } = useGetCategoryQuery()
    // const { data: testimonialData } = useGetTestimonialsQuery()
    const { data: testimonialData } = useGetTestimonialsQuery();
+   const { data: clientLogoData } = useGetHomeSectionQuery("clientLogos");
+   const clientLogos = clientLogoData?.data?.items || [];
 
+   
    const testimonials = testimonialData?.data?.items || [];
-
-   console.log(testimonials)
+   
+   // console.log(clientLogos)
+   // console.log(testimonials)
 
    const industriesData = data?.data?.find(
       (item) => item.name === "Industries"
@@ -536,17 +540,14 @@ export default function Home() {
                <div className="clients-marquee reveal">
                   <div className="marquee-track">
                      {/* First set */}
-                     {clientLogo?.map((logo, index) => (
+                     {clientLogos?.map((logo, index) => (
                         <div key={`first-${index}`} className="marquee-item">
-                           {logo.image_1 ? (
-                              <img src={logo.image_1} alt={logo.alt || logo.placeholder || "JJC Systems client logo"} />
-                           ) : (
-                              <span className="logo-ph">{logo.placeholder}</span>
-                           )}
+                           <img src={logo.image?.url} alt={logo.alt || logo.placeholder || "JJC Systems client logo"} />
+                          
                         </div>
                      ))}
-                   
-                     
+
+
                   </div>
                </div>
             </div>
@@ -609,7 +610,7 @@ export default function Home() {
                      </article>
                   ))}
                </div>
-               
+
             </div>
          </section>
 

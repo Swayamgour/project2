@@ -6,6 +6,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // const BASE_URL = "https://jjc.admin.amaxjobs.com/api";
 const BASE_URL = "https://admin.jjcsystems.com/api";
 
+// https://admin.jjcsystems.com/api/home-content/sections/clientLogos
+
 const baseQuery = fetchBaseQuery({
     baseUrl: BASE_URL,
     prepareHeaders: (headers) => {
