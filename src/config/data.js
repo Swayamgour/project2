@@ -2,9 +2,9 @@
 
 export const heroSlides = [
     {
-        eyebrow: "AI Readiness & ROI",
-        title: "Feeling overwhelmed by the new AI wave?",
-        description: "We help you evaluate where Microsoft Copilot and agentic AI genuinely pay off, cut through the uncertainty, and build a practical roadmap you can act on.",
+        eyebrow: "Managed IT, Microsoft Consulting & AI Readiness",
+        title: "Your Single Microsoft Partner for Managed IT, Dynamics 365 & Azure",
+        description: "One accountable team for managed IT services, Dynamics 365, Azure and Microsoft 365 — including practical guidance on where Microsoft Copilot and agentic AI genuinely pay off, so you can cut through the uncertainty and act on a real roadmap.",
         ctaText: "Get your AI ROI assessment",
         ctaLink: "#contact",
         image: "/assets/img/hero-1.jpg",
@@ -657,7 +657,7 @@ export const contactInfo = {
     contactDetails: [
         { icon: "#i-mail", text: "<b>Email</b>info@jjcsystems.com" },
         { icon: "#i-phone", text: "<b>Phone</b>+1-888-329-0625" },
-        { icon: "#i-pin", text: "<b>Head office (Chicago, IL)</b> 1600 Golf Rd Suite 1200, Rolling Meadows, IL 60008 USA" },
+        { icon: "#i-pin", text: "<b>Head office (Rolling Meadows, IL)</b> 1600 Golf Rd Suite 1200, Rolling Meadows, IL 60008 USA" },
         { icon: "#i-clock", text: "<b>Support hours</b>24/7 global coverage" }
     ],
     organizationSizes: [
@@ -798,7 +798,7 @@ export const locations = [
     {
         title: "Location one",
         timezone: "Central time",
-        city: "Chicago, IL",
+        city: "Rolling Meadows, IL",
         address: "1600 Golf Rd Suite 1200, Rolling Meadows, IL 60008",
     },
     {

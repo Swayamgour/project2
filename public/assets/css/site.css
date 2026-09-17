@@ -1234,7 +1234,7 @@ ul {
     display: flex;
     align-items: center;
     gap: 48px;
-    animation: marquee-scroll 30s linear infinite;
+    animation: marquee-scroll 240s linear infinite;
     width: max-content
 }
 
@@ -7844,11 +7844,11 @@ main section[id] {
     margin-bottom: 16px
 }
 
-.clients-marquee {
+/* .clients-marquee {
     display: flex;
     align-items: center;
     justify-content: center
-}
+} */
 
 .logo-cell img {
     max-width: 180px;

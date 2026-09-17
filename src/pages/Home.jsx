@@ -37,9 +37,9 @@ export default function Home() {
    const { data: clientLogoData } = useGetHomeSectionQuery("clientLogos");
    const clientLogos = clientLogoData?.data?.items || [];
 
-   
+
    const testimonials = testimonialData?.data?.items || [];
-   
+
    // console.log(clientLogos)
    // console.log(testimonials)
 
@@ -304,6 +304,9 @@ export default function Home() {
             <div className="wrap">
                <div className="sec-head reveal">
                   <span className="eyebrow">Custom Solutions</span>
+                  <p className="kw-label" style={{ fontWeight: 600, margin: "0 0 6px" }}>
+                     Dynamics 365 Business Applications &amp; Custom Software Development
+                  </p>
                   <h2 className="h-sec">
                      Built on Dynamics 365. Measured in business outcomes.
                   </h2>
@@ -440,6 +443,9 @@ export default function Home() {
                <div className="services-intro-row reveal">
                   <div className="sec-head">
                      <span className="eyebrow">What We Do</span>
+                     <p className="kw-label" style={{ fontWeight: 600, margin: "0 0 6px" }}>
+                        Managed IT, Cloud &amp; Microsoft Consulting Services
+                     </p>
                      <h2 className="h-sec wide">
                         {/* Six service areas. Every capability your technology function needs. */}
                         Navigate Change. Exceed Expectations.
@@ -543,7 +549,7 @@ export default function Home() {
                      {clientLogos?.map((logo, index) => (
                         <div key={`first-${index}`} className="marquee-item">
                            <img src={logo.image?.url} alt={logo.alt || logo.placeholder || "JJC Systems client logo"} />
-                          
+
                         </div>
                      ))}
 

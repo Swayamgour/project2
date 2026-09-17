@@ -68,8 +68,7 @@ export default function useDocumentMeta(title, description, options = {}) {
     // CANONICAL URL
     // ==========================================
 
-    const cleanPath =
-      location.pathname.replace(/\/+$/, "") || "/";
+    const cleanPath = location.pathname.replace(/\/+$/, "") || "/";
 
     let resolvedCanonical;
 
