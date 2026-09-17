@@ -61,6 +61,7 @@ export default function App() {
         <Route path="/industries/:slug" element={<IndustriesHealthcare />} />
         <Route path="/platforms" element={<Platforms />} />
         <Route path="/platforms/:slug" element={<PlatformsMicrosoft365 />} />
+        
 
         <Route path="/success/:slug" element={<SuccessIndustryHealthcare />} />
         <Route path="/success/story/:slug" element={<SuccessStoryPatientOutreachThatPeopleActuallyRespondTo />} />
