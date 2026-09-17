@@ -281,6 +281,7 @@ function Blog() {
             {visiblePosts.map(post => (
               <article
                 key={post._id}
+                
                 className="bpost"
                 data-platform={post.platform}
                 data-service={post.service}
