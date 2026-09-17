@@ -415,6 +415,7 @@ function FAQ() {
           </div>
         </div>
       </section>
+      
     </main>
   );
 }
