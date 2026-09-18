@@ -411,6 +411,7 @@ function FAQ() {
               <a className="btn btn-primary" href="/contact">Ask your question <svg><use href="#i-arrow-r" /></svg></a>
               <a className="btn btn-ghost" href="onboarding.html">See the onboarding guide <svg><use href="#i-arrow-r" /></svg></a>
               <small>We reply to every message within one business day.</small>
+              
             </div>
           </div>
         </div>
