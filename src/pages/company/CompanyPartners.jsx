@@ -159,7 +159,8 @@ export default function CompanyPartners() {
 
 
 
-          <div className="marquee-container reveal">
+          {/* <div className="marquee-container reveal"> */}
+              <div style={{ overflow: 'hidden' }} className="wrap">
             <div className="marquee-track">
               {/* First set */}
               {clientLogos?.map((logo, index) => (

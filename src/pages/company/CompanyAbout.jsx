@@ -13,8 +13,8 @@ export default function CompanyAbout() {
   );
   usePageEffects(mainRef);
 
-   const { data: clientLogoData } = useGetHomeSectionQuery("clientLogos");
-     const clientLogos = clientLogoData?.data?.items || [];
+  const { data: clientLogoData } = useGetHomeSectionQuery("clientLogos");
+  const clientLogos = clientLogoData?.data?.items || [];
 
   const breadcrumbs = [
     {
@@ -534,7 +534,8 @@ export default function CompanyAbout() {
               It also means we can procure through one channel rather than five.
             </p>
           </div>
-          <div className="marquee-container reveal">
+          {/* <div className="marquee-container reveal"> */}
+          <div style={{ overflow: 'hidden' }} className="wrap">
             <div className="marquee-track">
               {/* First set */}
               {clientLogos?.map((logo, index) => (
