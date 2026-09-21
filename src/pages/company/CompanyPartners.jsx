@@ -160,16 +160,36 @@ export default function CompanyPartners() {
 
 
           {/* <div className="marquee-container reveal"> */}
-              <div style={{ overflow: 'hidden' }} className="wrap">
+          <div className="marquee-container">
             <div className="marquee-track">
+
               {/* First set */}
               {clientLogos?.map((logo, index) => (
                 <div key={`first-${index}`} className="marquee-item">
-                  <img src={logo.image?.url} alt={logo.alt || logo.placeholder || "JJC Systems client logo"} />
-
+                  <img
+                    src={logo.image?.url}
+                    alt={
+                      logo.alt ||
+                      logo.placeholder ||
+                      "JJC Systems client logo"
+                    }
+                  />
                 </div>
               ))}
 
+              {/* Duplicate set */}
+              {clientLogos?.map((logo, index) => (
+                <div key={`second-${index}`} className="marquee-item">
+                  <img
+                    src={logo.image?.url}
+                    alt={
+                      logo.alt ||
+                      logo.placeholder ||
+                      "JJC Systems client logo"
+                    }
+                  />
+                </div>
+              ))}
 
             </div>
           </div>

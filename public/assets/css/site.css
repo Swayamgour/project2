@@ -378,6 +378,7 @@ ul {
     letter-spacing: -.03em;
     margin-bottom: 22px
 }
+
 .slide-copy h2 {
     color: #fff;
     font-size: clamp(34px, 4.6vw, 60px);
@@ -1220,53 +1221,45 @@ ul {
     margin-right: 4px
 }
 
+
 .marquee-container {
     position: relative;
     width: 100%;
+    max-width: var(--wrap);
     overflow: hidden;
     background: #fff;
     border: 1px solid var(--line);
     border-radius: var(--r);
     padding: 24px 0;
-    max-width: var(--wrap);
-    /* o */
-
-
 }
 
 .marquee-track {
     display: flex;
     align-items: center;
+    width: max-content;
     gap: 48px;
     animation: marquee-scroll 30s linear infinite;
-    width: max-content
+    will-change: transform;
 }
 
 .marquee-item {
     flex: 0 0 auto;
     display: grid;
     place-items: center;
+    width: 140px;
     min-width: 140px;
+    height: 60px;
     padding: 0 16px;
-    opacity: 1;
     border-left: 1px solid var(--line);
-    border-left: 1px solid var(--line)
-}
-
-.marquee-item:hover {
-    opacity: 1
 }
 
 .marquee-item img {
-    max-height: 50px;
+    display: block;
     width: auto;
+    max-width: 120px;
+    height: auto;
+    max-height: 50px;
     object-fit: contain;
-    filter: grayscale(0%);
-    transition: filter .3s ease
-}
-
-.marquee-item:hover img {
-    filter: grayscale(0%)
 }
 
 .marquee-item .logo-ph {
@@ -1276,50 +1269,56 @@ ul {
     letter-spacing: .04em;
     color: #a9b6ca;
     text-align: center;
-    white-space: nowrap
+    white-space: nowrap;
 }
 
 @keyframes marquee-scroll {
     0% {
-        transform: translateX(0)
+        transform: translate3d(0, 0, 0);
     }
 
     100% {
-        transform: translateX(-50%)
+        transform: translate3d(-50%, 0, 0);
     }
 }
 
 .marquee-container:hover .marquee-track {
-    animation-play-state: paused
+    animation-play-state: paused;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
     .marquee-track {
-        gap: 32px
+        gap: 32px;
     }
 
     .marquee-item {
+        width: 100px;
         min-width: 100px;
-        padding: 0 12px
+        height: 50px;
+        padding: 0 12px;
     }
 
     .marquee-item img {
-        max-height: 36px
+        max-width: 90px;
+        max-height: 36px;
     }
 }
 
-@media (max-width:480px) {
+@media (max-width: 480px) {
     .marquee-track {
-        gap: 24px
+        gap: 24px;
     }
 
     .marquee-item {
+        width: 80px;
         min-width: 80px;
-        padding: 0 8px
+        height: 42px;
+        padding: 0 8px;
     }
 
     .marquee-item img {
-        max-height: 28px
+        max-width: 72px;
+        max-height: 28px;
     }
 }
 
@@ -7846,7 +7845,6 @@ main section[id] {
     padding: 5px 11px;
     border-radius: 3px;
     margin-bottom: 16px
-    
 }
 
 
@@ -7974,102 +7972,102 @@ main section[id] {
 
 
 .reason-list {
-  border-top: 1px solid var(--line);
-  margin-top: 44px
+    border-top: 1px solid var(--line);
+    margin-top: 44px
 }
 
 .rz {
-  display: grid;
-  grid-template-columns: 56px 1fr 250px;
-  gap: 26px;
-  align-items: start;
-  padding: 26px 0;
-  border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 56px 1fr 250px;
+    gap: 26px;
+    align-items: start;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
 }
 
 .rz .rn {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 15px;
-  color: var(--blue-deep);
-  background: var(--tile);
-  border-radius: 8px;
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--blue-deep);
+    background: var(--tile);
+    border-radius: 8px;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
 }
 
 .rz h3 {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(17px, 1.9vw, 20px);
-  color: var(--ink);
-  margin: 0 0 7px;
-  letter-spacing: -.015em;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(17px, 1.9vw, 20px);
+    color: var(--ink);
+    margin: 0 0 7px;
+    letter-spacing: -.015em;
 }
 
 .rz p {
-  margin: 0;
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: var(--body)
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--body)
 }
 
 .rz .proof {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 12.5px;
-  line-height: 1.55;
-  color: var(--blue-deep);
-  padding-top: 2px;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--blue-deep);
+    padding-top: 2px;
 }
 
 .rz .proof span {
-  display: block;
-  font-family: var(--text);
-  font-weight: 400;
-  font-size: 13px;
-  color: var(--body);
-  margin-top: 5px;
+    display: block;
+    font-family: var(--text);
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--body);
+    margin-top: 5px;
 }
 
 
 .diff-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0;
-  border-top: 1px solid rgba(255, 255, 255, .16);
-  border-bottom: 1px solid rgba(255, 255, 255, .16);
-  margin-top: 44px
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(255, 255, 255, .16);
+    border-bottom: 1px solid rgba(255, 255, 255, .16);
+    margin-top: 44px
 }
 
 .diff {
-  padding: 26px 22px 26px 0
+    padding: 26px 22px 26px 0
 }
 
 .diff:not(:last-child) {
-  border-right: 1px solid rgba(255, 255, 255, .16)
+    border-right: 1px solid rgba(255, 255, 255, .16)
 }
 
 .diff:not(:first-child) {
-  padding-left: 22px
+    padding-left: 22px
 }
 
 .diff b {
-  display: block;
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 15.5px;
-  color: #fff;
-  line-height: 1.32;
-  margin-bottom: 7px;
-  letter-spacing: -.01em
+    display: block;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 15.5px;
+    color: #fff;
+    line-height: 1.32;
+    margin-bottom: 7px;
+    letter-spacing: -.01em
 }
 
 .diff span {
-  display: block;
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: #B9CCE2
+    display: block;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #B9CCE2
 }
