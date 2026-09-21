@@ -1220,7 +1220,7 @@ ul {
     margin-right: 4px
 }
 
-.marquee-container {
+.clients-marquee {
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -1228,6 +1228,9 @@ ul {
     border: 1px solid var(--line);
     border-radius: var(--r);
     padding: 24px 0
+    /* o */
+
+
 }
 
 .marquee-track {
@@ -1285,7 +1288,7 @@ ul {
     }
 }
 
-.marquee-container:hover .marquee-track {
+.clients-marquee:hover .marquee-track {
     animation-play-state: paused
 }
 
@@ -8068,6 +8071,4 @@ main section[id] {
   font-size: 13.5px;
   line-height: 1.6;
   color: #B9CCE2
-
-
 }

@@ -534,7 +534,7 @@ export default function CompanyAbout() {
               It also means we can procure through one channel rather than five.
             </p>
           </div>
-          <div className="marquee-container reveal">
+          <div className="clients-marquee reveal">
             <div className="marquee-track">
               {/* First set */}
               {clientLogos?.map((logo, index) => (
