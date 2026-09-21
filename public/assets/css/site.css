@@ -1220,7 +1220,7 @@ ul {
     margin-right: 4px
 }
 
-.clients-marquee {
+.marquee-container {
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -1288,7 +1288,7 @@ ul {
     }
 }
 
-.clients-marquee:hover .marquee-track {
+.marquee-container:hover .marquee-track {
     animation-play-state: paused
 }
 
