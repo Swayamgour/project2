@@ -16,6 +16,8 @@
     --rule-b: #0258B7;
     --orange: #F7AC13;
     --orange-dark: #DA9200;
+    --gold: #F7AC13;
+    --gold-dark: #DA9200;
     --ink: #0B1220;
     --ink-soft: #22304A;
     --body: #46546B;
@@ -8185,7 +8187,7 @@ main section[id] {
     color: var(--blue)
 }
 
-.faq .pm {
+.fpm {
     flex: none;
     width: 34px;
     height: 34px;
@@ -8197,7 +8199,7 @@ main section[id] {
     transition: transform .2s, background .2s
 }
 
-.faq .pm svg {
+.fpm  svg {
     width: 16px;
     height: 16px
 }
@@ -8317,8 +8319,21 @@ main section[id] {
 
 .ms-card .ico-tile {
     background: rgba(88, 169, 240, .16);
-    color: var(--cyan)
+    /* color: var(--cyan);
+    width: 52px;
+    height: 52px; */
+
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    /* background: var(--tile); */
+    color: var(--cyan);
+    display: grid;
+    place-items: center;
+    flex: none;
 }
+
+/* .ico-tile {} */
 
 .ms-card h3 {
     color: #fff;
@@ -8345,7 +8360,7 @@ main section[id] {
 }
 
 
-.why .card {
+.services-why-card {
     display: flex;
     gap: 22px;
     align-items: flex-start
@@ -8354,6 +8369,27 @@ main section[id] {
 .why .card h3 {
     margin: 2px 0 8px;
     font-size: 21px
+}
+
+.ico-tile {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--tile);
+    color: var(--blue);
+    display: grid;
+    place-items: center;
+    flex: none;
+}
+
+.ico {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 

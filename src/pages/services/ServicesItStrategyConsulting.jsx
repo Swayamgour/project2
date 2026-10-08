@@ -5,12 +5,134 @@ import { useParams } from "react-router-dom";
 import { useGetServiceBySlugQuery } from "../../redux/api.jsx";
 import HeroSection from "../../components/HeroSection.jsx";
 import Loader from "../../components/Loader.jsx";
+import { CgMicrosoft } from "react-icons/cg";
+import { MdOutlineHub } from "react-icons/md";
+
 
 export default function ServicesItStrategyConsulting() {
     const mainRef = useRef(null);
     const { slug } = useParams();
     const { data, isLoading, error } = useGetServiceBySlugQuery(slug);
     const pageData = data?.data;
+
+    const microsoftPlatforms = [
+        {
+            title: "Microsoft 365 and licensing",
+            description:
+                "Which plans you actually need, and where you're paying for entitlements nobody uses.",
+            icon: "grid",
+        },
+        {
+            title: "Azure",
+            description:
+                "What belongs in the cloud, what stays where it is, and how to keep cloud costs predictable.",
+            icon: "cloud",
+        },
+        {
+            title: "Dynamics 365",
+            description:
+                "Whether an older ERP or CRM should be replaced, and when.",
+            icon: "apps",
+        },
+        {
+            title: "Security and identity",
+            description:
+                "How Microsoft Entra ID, Defender and Purview fit into your risk and compliance goals.",
+            icon: "shield",
+        },
+        {
+            title: "Copilot and AI readiness",
+            description:
+                "Whether your data, permissions and processes are ready before you roll anything out.",
+            icon: "spark",
+        },
+    ];
+
+    const strategyLayers = [
+        {
+            icon: "route",
+            title: "Strategy",
+            description: "Where to go, in what order",
+            tag: "This page",
+        },
+        {
+            icon: "hub",
+            title: "Architecture",
+            description: "How it fits together",
+            tag: "Consulting",
+        },
+        {
+            icon: "wrench",
+            title: "Implementation",
+            description: "Building it",
+            tag: "Delivery",
+        },
+        {
+            icon: "shield",
+            title: "Security",
+            description: "Protecting it",
+            tag: "Delivery",
+        },
+        {
+            icon: "loop",
+            title: "Managed support",
+            description: "Running it",
+            tag: "Ongoing",
+        },
+    ];
+
+
+    const faqItems = [
+        {
+            question: "What does an IT strategy consultant do?",
+            answer:
+                "They assess your current technology, work with leadership to understand business goals, and produce a prioritized, costed roadmap. A good consultant also documents the reasoning behind decisions and helps you govern the plan afterwards.",
+            open: true,
+        },
+        {
+            question:
+                "What's the difference between IT consulting services and IT strategy consulting?",
+            answer:
+                "IT consulting services is the broader category, covering advice on architecture, security, cloud, applications and support. IT strategy consulting is the planning part: deciding what to do, in what order and at what cost. JJC Systems offers both.",
+        },
+        {
+            question: "How long does an IT strategy engagement take?",
+            answer:
+                "It depends on the size and complexity of the environment. A focused assessment can be short, while a full roadmap with business cases takes longer. We give you a timeline after a first conversation, and not before.",
+        },
+        {
+            question: "How much does IT strategy consulting cost?",
+            answer:
+                "Cost depends on scope, number of systems and how much stakeholder input is needed. We scope the work after an initial conversation and agree the price before starting.",
+        },
+        {
+            question: "Do you only work with Microsoft technology?",
+            answer:
+                "Microsoft is our core focus, including Microsoft 365, Azure and Dynamics 365. Roadmaps cover the whole estate, and we'll recommend other tools where they fit better.",
+        },
+        {
+            question: "Is this only for large enterprises?",
+            answer:
+                "No. Mid-sized organizations often get value quickly because spend and priorities are spread across fewer people who are already stretched. The method scales to the size of the estate.",
+        },
+        {
+            question: "What will we have at the end?",
+            answer:
+                "A documented current state, a cost baseline, a sequenced roadmap with owners and dependencies, a business case for the major moves, and decision records for key technical choices.",
+        },
+        {
+            question: "Can you help deliver the plan too?",
+            answer: (
+                <>
+                    Yes. JJC Systems also provides implementation,{" "}
+                    <a href="/services/managed-it-services">managed IT</a> and{" "}
+                    <a href="/services/cybersecurity">security services</a>, so
+                    you can hand parts of the roadmap to us or to another partner
+                    of your choice.
+                </>
+            ),
+        },
+    ];
 
     // Set meta from API data or fallback
     useDocumentMeta(
@@ -91,31 +213,68 @@ export default function ServicesItStrategyConsulting() {
             {/* ===================== basic  ===================== */}
             <section className="section" id="definition">
                 <div className="wrap define">
+
                     <div className="rv">
-                        <span className="eyebrow">The basics</span>
-                        <h2 className="h-sec wide">What is IT strategy consulting?</h2>
-                        <div className="layers" aria-label="Where strategy sits within IT consulting and services">
-                            <div className="layer">
-                                {/* <svg className="ico" ><use href="#i-route" /></svg> */}
-                                <b>Strategy</b>Where to go, in what order <span className="tag">This page</span></div>
-                            <div className="layer">
-                                {/* <svg className="ico"><use href="#i-hub" /></svg> */}
-                                <b>Architecture</b>How it fits together <span className="tag">Consulting</span></div>
-                            <div className="layer">
-                                {/* <svg className="ico"><use href="#i-wrench" /></svg> */}
-                                <b>Implementation</b>Building it <span className="tag">Delivery</span></div>
-                            <div className="layer">
-                                {/* <svg className="ico"><use href="#i-shield" /></svg> */}
-                                <b>Security</b>Protecting it <span className="tag">Delivery</span></div>
-                            <div className="layer">
-                                {/* <svg className="ico"><use href="#i-loop" /></svg> */}
-                                <b>Managed support</b>Running it <span className="tag">Ongoing</span></div>
+                        <span className="eyebrow">
+                            The basics
+                        </span>
+
+                        <h2 className="h-sec wide">
+                            What is IT strategy consulting?
+                        </h2>
+
+                        <div
+                            className="layers"
+                            aria-label="Where strategy sits within IT consulting and services"
+                        >
+                            {strategyLayers.map((layer, index) => (
+                                <div
+                                    className="layer"
+                                    key={`${layer.title}-${index}`}
+                                >
+                                    {/* {layer.icon && (
+                                        <MdOutlineHub />
+                                        // <svg className="ico">
+                                        //     <use href={`#i-${layer.icon}`} />
+                                        // </svg>
+                                    )} */}
+
+                                    <b>{layer.title}</b>
+
+                                    {layer.description}
+
+                                    {layer.tag && (
+                                        <span className="tag">
+                                            {layer.tag}
+                                        </span>
+                                    )}
+                                </div>
+                            ))}
                         </div>
                     </div>
+
                     <div className="copy rv">
-                        <p>IT strategy consulting is outside help in deciding what technology your organization should invest in, in what order, and why. A good engagement ends with a written plan: what you have today, what it costs, what to change first, who owns each piece, and how the spending ties back to business goals.</p>
-                        <p>It sits upstream of broader IT consulting services. Strategy decides where to go and in what sequence. The wider range of IT consulting and services, including architecture, implementation, security and <a href="/services/managed-it-services">managed support</a>, then makes it happen. JJC Systems does both, which keeps the plan grounded in what can actually be built.</p>
+                        <p>
+                            IT strategy consulting is outside help in deciding what
+                            technology your organization should invest in, in what order,
+                            and why. A good engagement ends with a written plan: what you
+                            have today, what it costs, what to change first, who owns each
+                            piece, and how the spending ties back to business goals.
+                        </p>
+
+                        <p>
+                            It sits upstream of broader IT consulting services. Strategy
+                            decides where to go and in what sequence. The wider range of
+                            IT consulting and services, including architecture,
+                            implementation, security and{" "}
+                            <a href="/services/managed-it-services">
+                                managed support
+                            </a>
+                            , then makes it happen. JJC Systems does both, which keeps the
+                            plan grounded in what can actually be built.
+                        </p>
                     </div>
+
                 </div>
             </section>
 
@@ -283,8 +442,9 @@ export default function ServicesItStrategyConsulting() {
                         <span className="eyebrow">Who it's for</span>
                         <h2>Who IT strategy consulting is for</h2>
                         <p className="lede">Organizations tend to look for IT consulting services at a few recognizable points.</p>
-                        <div className="honest"><svg className="ico"><use href="#i-scale" /></svg><span>If you have a stable environment, a clear plan and a team that agrees on priorities, you probably don't need us yet.</span></div>
+                        <div className="honest"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scale preview-icon"><path d="M12 3v18" /><path d="m19 8 3 8a5 5 0 0 1-6 0zV7" /><path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" /><path d="m5 8 3 8a5 5 0 0 1-6 0zV7" /><path d="M7 21h10" /></svg><span>If you have a stable environment, a clear plan and a team that agrees on priorities, you probably don't need us yet.</span></div>
                     </div>
+
                     <ul className="checks rv">
                         <li><svg className="ico"><use href="#i-check" /></svg>Leadership is approving technology budgets without a clear view of what's already spent or what comes next.</li>
                         <li><svg className="ico"><use href="#i-check" /></svg>A new CIO, IT director or CEO needs an independent read on the current estate.</li>
@@ -297,68 +457,57 @@ export default function ServicesItStrategyConsulting() {
 
             {/* <!-- ===== SECTION 11 · MICROSOFT PLATFORMS ===== -->
             <!-- Editor note: confirm JJC's current Microsoft partner designations before naming any on the page. --> */}
+
+
+
             <section className="section bg-navy" id="microsoft">
                 <div className="wrap">
                     <div className="sec-head rv">
                         <span className="eyebrow">Microsoft platforms</span>
-                        <h2>Where Microsoft technology fits into the plan</h2>
-                        <p className="lede">JJC Systems is a Microsoft-focused consultancy, so most roadmaps we produce involve decisions across the Microsoft stack. Typical questions include:</p>
+
+                        <h2>
+                            Where Microsoft technology fits into the plan
+                        </h2>
+
+                        <p className="lede">
+                            JJC Systems is a Microsoft-focused consultancy, so most
+                            roadmaps we produce involve decisions across the Microsoft
+                            stack. Typical questions include:
+                        </p>
                     </div>
+
                     <div className="ms-grid">
-                        <article className="ms-card rv"><div className="ico-tile">
-                            {/* <svg className="ico"><use href="#i-grid" /></svg> */}
-                        </div><h3>Microsoft 365 and licensing</h3><p>Which plans you actually need, and where you're paying for entitlements nobody uses.</p></article>
-                        <article className="ms-card rv"><div className="ico-tile">
-                            {/* <svg className="ico"><use href="#i-cloud" /></svg> */}
-                        </div><h3>Azure</h3><p>What belongs in the cloud, what stays where it is, and how to keep cloud costs predictable.</p></article>
-                        <article className="ms-card rv"><div className="ico-tile">
-                            {/* <svg className="ico"><use href="#i-apps" /></svg> */}
-                        </div><h3>Dynamics 365</h3><p>Whether an older ERP or CRM should be replaced, and when.</p></article>
-                        <article className="ms-card rv"><div className="ico-tile">
-                            {/* <svg className="ico"><use href="#i-shield" /></svg> */}
-                        </div><h3>Security and identity</h3><p>How Microsoft Entra ID, Defender and Purview fit into your risk and compliance goals.</p></article>
-                        <article className="ms-card rv"><div className="ico-tile">
-                            {/* <svg className="ico"><use href="#i-spark" /></svg> */}
-                        </div><h3>Copilot and AI readiness</h3><p>Whether your data, permissions and processes are ready before you roll anything out.</p></article>
+                        {microsoftPlatforms.map((platform, index) => (
+                            <article
+                                className="ms-card rv"
+                                key={`${platform.title}-${index}`}
+                            >
+                                <div className="ico-tile">
+                                    <CgMicrosoft />
+                                    {/* <svg className="ico"> */}
+                                    {/* <use href={`#i-${platform.icon}`} /> */}
+
+                                    {/* </svg> */}
+                                </div>
+
+                                <h3>{platform.title}</h3>
+
+                                <p>{platform.description}</p>
+                            </article>
+                        ))}
                     </div>
-                    <p className="ms-note rv"><svg className="ico"><use href="#i-unlock" /></svg>Where a non-Microsoft tool is the better answer, the plan says so.</p>
+
+                    <p className="ms-note rv">
+                        <svg className="ico">
+                            <use href="#i-unlock" />
+                        </svg>
+
+                        Where a non-Microsoft tool is the better answer, the plan says so.
+                    </p>
                 </div>
             </section>
 
             {/* ===================== 6. WHY CHOOSE US ===================== */}
-            <section className="section" id="why">
-                <div className="wrap">
-                    <div className="sec-head rv">
-                        <span className="eyebrow">Why JJC Systems</span>
-                        <h2>Why organizations choose us for this</h2>
-                        <p className="lede">Strategy is easy to sell and hard to hold anyone accountable for. Here's how we make it accountable.</p>
-                    </div>
-                    <div className="grid-2">
-                        {whyUs.items.map((item, index) => (
-                            <article className="card rv">
-                                <div className="ico-tile">
-                                    {/* <svg className="ico"><use href="#i-scale" /></svg> */}
-                                    <img
-                                        src={item.image}
-                                        alt={item.title || "Why JJC Systems"}
-                                        loading="lazy"
-                                    />
-                                </div>
-                                <div><h3>We're willing to recommend less</h3><p>Some initiatives don't earn their cost. We'll tell you which, and show the numbers behind the call.</p></div></article>
-                        ))}
-
-                        {/* <article className="card rv"><div className="ico-tile">
-                        </div><div><h3>Practitioners, not strategists</h3><p>The people shaping your roadmap have implemented Microsoft, managed IT and security work, so plans reflect what delivery really takes.</p></div></article>
-                        <article className="card rv"><div className="ico-tile"> */}
-                        {/* <svg className="ico"><use href="#i-wrench" /></svg> */}
-                        {/* <svg className="ico"><use href="#i-hub" /></svg> */}
-                        {/* <svg className="ico"><use href="#i-unlock" /></svg> */}
-                        {/* </div><div><h3>Whole-estate view, one accountable partner</h3><p>Infrastructure, security, applications and licensing are looked at together, not in separate reports.</p></div></article>
-                        <article className="card rv"><div className="ico-tile">
-                        </div><div><h3>Independent on licensing and vendors</h3><p>Our advice isn't tied to selling you a particular product. Where we have a commercial relationship, we say so.</p></div></article> */}
-                    </div>
-                </div>
-            </section>
 
             {whyUs && whyUs.items?.length > 0 && (
                 <section className="section" id="why">
@@ -380,10 +529,10 @@ export default function ServicesItStrategyConsulting() {
 
                         <div className="grid-2">
                             {whyUs.items.map((item, index) => (
-                                <article className="card rv" key={item._id || index}>
+                                <article className="services-why-card rv" key={item._id || index}>
 
                                     {/* Image */}
-                                    {item.image && (
+                                    {/* {item.image && (
                                         <div className="why-image">
                                             <img
                                                 src={item.image}
@@ -391,7 +540,7 @@ export default function ServicesItStrategyConsulting() {
                                                 loading="lazy"
                                             />
                                         </div>
-                                    )}
+                                    )} */}
 
                                     {/* Icon */}
                                     {item.icon && (
@@ -413,31 +562,6 @@ export default function ServicesItStrategyConsulting() {
                 </section>
             )}
 
-            {/* ===================== 6. WHY CHOOSE US ===================== */}
-            {whyUs && whyUs.items?.length > 0 && (
-                <section className="section bg-navy" id="why-us">
-                    <div className="wrap">
-                        <div className="sec-head reveal">
-                            <span className="eyebrow">{"Why JJC Systems" || whyUs.eyebrow}</span>
-                            <h2 className="h-sec wide">{whyUs.title}</h2>
-                            <p className="lede">{whyUs.subtitle}</p>
-                        </div>
-                        <div className="reason-grid">
-                            {whyUs.items?.map((item, index) => (
-                                <article className="reason reveal" key={index}>
-                                    <span className="reason-icon">
-                                        <svg><use href={`#i-${item.icon}`}></use></svg>
-                                    </span>
-                                    <div>
-                                        <h3>{item.title}</h3>
-                                        <p>{item.description}</p>
-                                    </div>
-                                </article>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            )}
 
             {/* ===================== 7. CUSTOMER SUCCESS / SUCCESS STORIES ===================== */}
             {successStories && successStories.stories?.length > 0 && (
@@ -591,26 +715,46 @@ export default function ServicesItStrategyConsulting() {
 
             {/* !-- ===== SECTION 17 · FAQS ===== --> */}
 
-            <section className="sec" id="faq">
+            <section className="faq" >
                 <div className="wrap faq-wrap">
+
                     <div className="sec-head rv">
                         <span className="eyebrow">FAQs</span>
+
                         <h2>Frequently asked questions</h2>
-                        <p>Can't find your question? <a href="#talk">Ask us directly</a>.</p>
+
+                        <p>
+                            Can't find your question?{" "}
+                            <a href="#talk">Ask us directly</a>.
+                        </p>
                     </div>
+
                     <div className="faq rv">
-                        <details open><summary>What does an IT strategy consultant do?<span className="pm"><svg className="ico"><use href="#i-plus" /></svg></span></summary><p>They assess your current technology, work with leadership to understand business goals, and produce a prioritized, costed roadmap. A good consultant also documents the reasoning behind decisions and helps you govern the plan afterwards.</p></details>
-                        <details><summary>What's the difference between IT consulting services and IT strategy consulting?<span className="pm"><svg className="ico"><use href="#i-plus" /></svg></span></summary><p>IT consulting services is the broader category, covering advice on architecture, security, cloud, applications and support. IT strategy consulting is the planning part: deciding what to do, in what order and at what cost. JJC Systems offers both.</p></details>
-                        <details><summary>How long does an IT strategy engagement take?<span className="pm"><svg className="ico"><use href="#i-plus" /></svg></span></summary><p>It depends on the size and complexity of the environment. A focused assessment can be short, while a full roadmap with business cases takes longer. We give you a timeline after a first conversation, and not before.</p></details>
-                        {/* <!-- Editor note: confirm pricing approach (e.g. fixed fee per phase) and add it to this answer. --> */}
-                        <details><summary>How much does IT strategy consulting cost?<span className="pm"><svg className="ico"><use href="#i-plus" /></svg></span></summary><p>Cost depends on scope, number of systems and how much stakeholder input is needed. We scope the work after an initial conversation and agree the price before starting.</p></details>
-                        <details><summary>Do you only work with Microsoft technology?<span className="pm"><svg className="ico"><use href="#i-plus" /></svg></span></summary><p>Microsoft is our core focus, including Microsoft 365, Azure and Dynamics 365. Roadmaps cover the whole estate, and we'll recommend other tools where they fit better.</p></details>
-                        <details><summary>Is this only for large enterprises?<span className="pm"><svg className="ico"><use href="#i-plus" /></svg></span></summary><p>No. Mid-sized organizations often get value quickly because spend and priorities are spread across fewer people who are already stretched. The method scales to the size of the estate.</p></details>
-                        <details><summary>What will we have at the end?<span className="pm"><svg className="ico"><use href="#i-plus" /></svg></span></summary><p>A documented current state, a cost baseline, a sequenced roadmap with owners and dependencies, a business case for the major moves, and decision records for key technical choices.</p></details>
-                        <details><summary>Can you help deliver the plan too?<span className="pm"><svg className="ico"><use href="#i-plus" /></svg></span></summary><p>Yes. JJC Systems also provides implementation, <a href="/services/managed-it-services">managed IT</a> and <a href="/services/cybersecurity">security services</a>, so you can hand parts of the roadmap to us or to another partner of your choice.</p></details>
+                        {faqItems.map((item, index) => (
+                            <details
+                                key={index}
+                                open={item.open || false}
+                            >
+                                <summary>
+                                    {item.question}
+
+                                    <span className="fpm">
+                                        {/* <svg > */}
+                                        <svg className="ico" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus preview-icon"><path d="M5 12h14" /><path d="M12 5v14" /></svg>
+                                        {/* </svg> */}
+                                    </span>
+                                </summary>
+
+                                <p>
+                                    {item.answer}
+                                </p>
+                            </details>
+                        ))}
                     </div>
+
                 </div>
             </section>
+
         </main>
     );
 }
