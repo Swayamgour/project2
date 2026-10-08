@@ -1,82 +1,23 @@
 /* ============================================================
-   ROOT VARIABLES - Brand & Design Tokens
+   HEADER-ONLY TOKENS
+   Shared tokens (--navy-*, --blue, --ink, --body, --display, --text,
+   --gutter, --wrap ...) and the global reset (html / * / body) live in
+   the global stylesheet and are NOT redeclared here, so they cannot
+   override it. Only header-specific tokens are defined below.
    ============================================================ */
 :root {
-    /* Brand */
-    --navy-900: #00142E;
-    --navy-800: #002449;
-    --navy-700: #00366D;
-    --navy-600: #07569F;
-    --navy-line: rgba(98, 164, 232, .22);
-
-    --cyan: #58A9F0;
-    /* lighter expression of the logo blue */
-    --blue: #0258B7;
-    /* primary blue sampled from the JJC logo */
-    --blue-deep: #00438F;
-    --rule-a: #F7AC13;
-    /* JJC gold */
-    --rule-b: #0258B7;
-    /* JJC blue */
-
-    --orange: #F7AC13;
-    --orange-dark: #DA9200;
-
-    /* Neutrals */
-    --ink: #0B1220;
-    --ink-soft: #22304A;
-    --body: #46546B;
-    --body-dim: #6B7A91;
-    --paper: #FFFFFF;
-    --mist: #F9FAFC;
-    --tile: #EEF5FC;
-    --line: #E4E9F2;
-
-    /* Type */
-    --display: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
-    --text: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
-
-    /* Space */
-    /* --wrap: 1220px; */
-    --gutter: clamp(20px, 5vw, 48px);
-    --sec-y: clamp(64px, 8vw, 112px);
-    --r-sm: 10px;
-    --r: 16px;
-    --r-lg: 22px;
-
-    --shadow-sm: 0 1px 2px rgba(11, 18, 32, .05);
-    --shadow: 0 10px 30px -12px rgba(11, 18, 32, .16);
-    --shadow-lg: 0 26px 60px -24px rgba(11, 18, 32, .30);
-
-    /* JJC specific */
     --jjc-brand-blue: #0258B7;
     --jjc-brand-gold: #F7AC13;
     --jjc-cyan-accent: #58A9F0;
-    --jjc-font-display: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --jjc-font-display: var(--display);
     --jjc-gutter: clamp(20px, 5vw, 48px);
 }
 
-/* ============================================================
-   BASE RESET & GLOBAL STYLES
-   ============================================================ */
 html {
     scrollbar-gutter: stable;
-    box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
 }
 
 body {
-    font-family: var(--text);
-    color: var(--body);
-    background: var(--paper);
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
@@ -1077,10 +1018,6 @@ a.info-row {
 }
 
 
-.hdr .btn {
-    padding: 12px 22px;
-    font-size: 15px;
-}
 
 
 
