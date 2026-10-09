@@ -3,9 +3,11 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+
+  // Important for deployment on domain root
+  base: '/',
+
   build: {
-    // Split large, rarely-changing vendor code into its own chunks so
-    // the browser can cache them separately and the main bundle stays small.
     rollupOptions: {
       output: {
         manualChunks: {
@@ -15,6 +17,7 @@ export default defineConfig({
         },
       },
     },
+
     chunkSizeWarningLimit: 600,
   },
 })
