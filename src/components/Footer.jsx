@@ -1,11 +1,14 @@
-import { Link, useLocation } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 import styles from "./Footer.module.css";
-import logo from "../assets/logo1.png";
-import mspAllianceBadge from "../assets/MSPAlliance-International-Association-of-Cloud-and-Managed-Service-Providers-1.png";
-import bbbBadge from "../assets/BBB-Accrediation-3.png";
-import upCityBadge from "../assets/Up-City-Award-Best-IL-2023-Winner-1.png";
-import jjcBadge from "../assets/JJC-Badge-2.png";
+import logoImg from "../assets/logo1.png";
+import mspAllianceBadgeImg from "../assets/MSPAlliance-International-Association-of-Cloud-and-Managed-Service-Providers-1.png";
+import bbbBadgeImg from "../assets/BBB-Accrediation-3.png";
+import upCityBadgeImg from "../assets/Up-City-Award-Best-IL-2023-Winner-1.png";
+import jjcBadgeImg from "../assets/JJC-Badge-2.png";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import { ChevronRight } from "lucide-react";
 import { useGetCategoryQuery } from '../redux/api';
@@ -45,7 +48,7 @@ const SOCIAL_LINKS = [
 
 const Footer = () => {
   const { data, isLoading } = useGetCategoryQuery();
-  const location = useLocation();
+  const pathname = usePathname();
 
   const renderLinksWithViewAll = (links, viewAllPath, viewAllLabel = "View All") => {
     if (!links || links.length === 0) {
@@ -59,14 +62,14 @@ const Footer = () => {
       <ul>
         {firstSix.map((link) => (
           <li key={link.slug || link.label || link.name}>
-            <Link to={link.to || link.path || `/${link.slug}` || link.link}>
+            <Link href={link.to || link.path || `/${link.slug}` || link.link}>
               {link.label || link.name}
             </Link>
           </li>
         ))}
         {hasMore && (
           <li className={styles.viewAllLink}>
-            <Link to={viewAllPath}>
+            <Link href={viewAllPath}>
               {viewAllLabel} <ChevronRight size={14} />
             </Link>
           </li>
@@ -145,7 +148,7 @@ const Footer = () => {
   return (
     <>
       {/* 👇 Contact Section - Ab component use kar rahe hain */}
-      {location.pathname !== "/contact" && <ContactSection />}
+      {pathname !== "/contact" && <ContactSection />}
 
       {/* Footer Section */}
       <footer className={styles.footer}>
@@ -154,8 +157,8 @@ const Footer = () => {
             <div className={styles.container}>
               <div className={styles.footerTopRow}>
                 <div className={styles.leftContent}>
-                  <Link to="/" className={styles.logo}>
-                    <img src={logo} alt="JJC Systems Computer Services" />
+                  <Link href="/" className={styles.logo}>
+                    <img src={logoImg.src} alt="JJC Systems Computer Services" />
                   </Link>
 
                   <p className={styles.tagline}>
@@ -178,16 +181,16 @@ const Footer = () => {
 
                   <div className={styles.footerClients}>
                     <div className={styles.footerClientImg}>
-                      <img src={mspAllianceBadge} alt="MSP Alliance" />
+                      <img src={mspAllianceBadgeImg.src} alt="MSP Alliance" />
                     </div>
                     <div className={styles.footerClientImg}>
-                      <img src={bbbBadge} alt="BBB Accreditation" />
+                      <img src={bbbBadgeImg.src} alt="BBB Accreditation" />
                     </div>
                     <div className={styles.footerClientImg}>
-                      <img src={upCityBadge} alt="Up City Award" />
+                      <img src={upCityBadgeImg.src} alt="Up City Award" />
                     </div>
                     <div className={styles.footerClientImg}>
-                      <img src={jjcBadge} alt="JJC Badge" />
+                      <img src={jjcBadgeImg.src} alt="JJC Badge" />
                     </div>
                   </div>
                 </div>
@@ -247,7 +250,7 @@ const Footer = () => {
                   <ul>
                     {COMPANY_LINKS.map((link) => (
                       <li key={link.label}>
-                        <Link to={link.to}>{link.label}</Link>
+                        <Link href={link.to}>{link.label}</Link>
                       </li>
                     ))}
                   </ul>

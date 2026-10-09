@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useState } from "react";
 import { useCreateContactMutation } from "../redux/api";
 import { contactInfo } from "../config/data.js";

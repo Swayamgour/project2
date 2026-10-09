@@ -602,6 +602,9 @@ export const insights = [
         link: "/blog",
         image: "/assets/img/blogs.jpg",
 
+        // image: "/assets/img/hero-1.jpg",
+
+
 
     },
     {

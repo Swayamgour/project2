@@ -1,27 +1,22 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-// const BASE_URL = "https://daryoo.lead.crm.amaxjobs.com/api";
-// const BASE_URL = "https://jjc-backend-2.onrender.com/api";
-// const BASE_URL = "http://localhost:5002/api";
-// const BASE_URL = "https://jjc.admin.amaxjobs.com/api";
-const BASE_URL = "https://admin.jjcsystems.com/api";
-
-// https://admin.jjcsystems.com/api/home-content/sections/clientLogos
+import { API_URL } from "../lib/site";
+import { endpoints } from "../lib/endpoints";
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: BASE_URL,
+    baseUrl: API_URL,
     prepareHeaders: (headers) => {
+        // Only runs in the browser when a request is made
+        if (typeof window !== "undefined") {
+            const token =
+                window.localStorage.getItem("token") ||
+                window.sessionStorage.getItem("token");
 
-        const token =
-            localStorage.getItem("token") ||
-            sessionStorage.getItem("token");
-
-        if (token) {
-            headers.set("authorization", `Bearer ${token}`);
+            if (token) {
+                headers.set("authorization", `Bearer ${token}`);
+            }
         }
 
         headers.set("Content-Type", "application/json");
-
         return headers;
     },
 });
@@ -29,83 +24,29 @@ const baseQuery = fetchBaseQuery({
 export const api = createApi({
     reducerPath: "api",
     baseQuery,
-    tagTypes: [
-        "Auth",
-        "Users",
-        "HomeHero",
-        "HomeSection",
-        "BlogCategories",
-        "Blogs",
-    ],
+    tagTypes: ["Auth", "Users", "HomeHero", "HomeSection", "BlogCategories", "Blogs", "Contact"],
 
     endpoints: (builder) => ({
+        getCategory: builder.query({ query: endpoints.getCategory, providesTags: ["Auth"] }),
+        getTestimonials: builder.query({ query: endpoints.getTestimonials, providesTags: ["Auth"] }),
+        getCaseStudyCategory: builder.query({ query: endpoints.getCaseStudyCategory, providesTags: ["Auth"] }),
 
+        getHomeHero: builder.query({ query: endpoints.getHomeHero, providesTags: ["HomeHero"] }),
+        getTeam: builder.query({ query: endpoints.getTeam, providesTags: ["HomeHero"] }),
 
-
-        getCategory: builder.query({
-            query: () => "/categories",
-            providesTags: ["Auth"],
-        }),
-        getTestimonials: builder.query({
-            query: () => "/home-content/sections/testimonials",
-            providesTags: ["Auth"],
-        }),
-
-        getCaseStudyCategory: builder.query({
-            query: () => "/case-study-categories",
-            providesTags: ["Auth"],
-        }),
-
-        // Home page hero (singleton)
-        getHomeHero: builder.query({
-            query: () => "/home-content/hero",
-            providesTags: ["HomeHero"],
-        }),
-        getTeam: builder.query({
-            query: () => "/home-content/sections/leadershipTeam",
-            providesTags: ["HomeHero"],
-        }),
-
-        // Generic: any home-content card section by its sectionKey
-        // e.g. useGetHomeSectionQuery("whyChooseUs")
+        // Generic: any home-content card section by its sectionKey, e.g. useGetHomeSectionQuery("clientLogos")
         getHomeSection: builder.query({
-            query: (key) => `/home-content/sections/${key}`,
+            query: endpoints.getHomeSection,
             providesTags: (result, error, key) => [{ type: "HomeSection", id: key }],
         }),
 
+        getPlatformBySlug: builder.query({ query: endpoints.getPlatformBySlug, providesTags: ["Users"] }),
+        getServiceBySlug: builder.query({ query: endpoints.getServiceBySlug, providesTags: ["Users"] }),
+        getIndustryBySlug: builder.query({ query: endpoints.getIndustryBySlug, providesTags: ["Users"] }),
 
-
-
-        getPlatformBySlug: builder.query({
-            query: (slug) => `/pages/platform/${slug}`,
-            providesTags: ["Users"],
-        }),
-        getServiceBySlug: builder.query({
-            query: (slug) => `/pages/service/${slug}`,
-            providesTags: ["Users"],
-        }),
-        getIndustryBySlug: builder.query({
-            query: (slug) => `/pages/industry/${slug}`,
-            providesTags: ["Users"],
-        }),
-
-        getBlogCategories: builder.query({
-            query: () => "/blog-categories",
-            providesTags: ["BlogCategories"],
-        }),
-
-        // Public Published Blogs
-        getPublishedBlogs: builder.query({
-            query: () => "/blog",
-            providesTags: ["Blogs"],
-        }),
-
-
-        // Blog detail
-        getBlogBySlug: builder.query({
-            query: (slug) => `/blog/slug/${slug}`,
-            providesTags: ["Blogs"],
-        }),
+        getBlogCategories: builder.query({ query: endpoints.getBlogCategories, providesTags: ["BlogCategories"] }),
+        getPublishedBlogs: builder.query({ query: endpoints.getPublishedBlogs, providesTags: ["Blogs"] }),
+        getBlogBySlug: builder.query({ query: endpoints.getBlogBySlug, providesTags: ["Blogs"] }),
 
         createContact: builder.mutation({
             query: (data) => ({
@@ -116,58 +57,24 @@ export const api = createApi({
             invalidatesTags: ["Contact"],
         }),
 
-        getCategoriesBySlug: builder.query({
-            query: (slug) => `/categories/${slug}/items`,
-            providesTags: ["Users"],
-        }),
-        getCaseStudyBySlug: builder.query({
-            query: (slug) => `/case-studies/slug/${slug}`,
-            providesTags: ["Users"],
-        }),
+        getCategoriesBySlug: builder.query({ query: endpoints.getCategoriesBySlug, providesTags: ["Users"] }),
+        getCaseStudyBySlug: builder.query({ query: endpoints.getCaseStudyBySlug, providesTags: ["Users"] }),
+        getCaseStudyStoryBySlug: builder.query({ query: endpoints.getCaseStudyStoryBySlug, providesTags: ["Users"] }),
+        getRelatedStoryById: builder.query({ query: endpoints.getRelatedStoryById, providesTags: ["Users"] }),
 
+        getGuides: builder.query({ query: endpoints.getGuides, providesTags: ["Blogs"] }),
+        getGuideBySlug: builder.query({ query: endpoints.getGuideBySlug, providesTags: ["Users"] }),
 
-        getCaseStudyStoryBySlug: builder.query({
-            query: (slug) => `/case-study-stories/slug/${slug}`,
-            providesTags: ["Users"],
-        }),
-        getRelatedStoryById: builder.query({
-            query: (id) => `/case-study-stories/${id}/related`,
-            providesTags: ["Users"],
-        }),
+        // NOTE: the page/limit args are accepted by the hook but not sent (same as the original app)
+        getChecklists: builder.query({ query: () => endpoints.getChecklists(), providesTags: ["Blogs"] }),
+        getChecklistsBySlug: builder.query({ query: endpoints.getChecklistsBySlug, providesTags: ["Users"] }),
 
-        getGuides: builder.query({
-            query: () => "/guides",
-            providesTags: ["Blogs"],
-        }),
-        getGuideBySlug: builder.query({
-            query: (slug) => `/guides/${slug}`,
-            providesTags: ["Users"],
-        }),
-
-        getChecklists: builder.query({
-            query: () => "/checklists",
-            providesTags: ["Blogs"],
-        }),
-        getChecklistsBySlug: builder.query({
-            query: (slug) => `/checklists/${slug}`,
-            providesTags: ["Users"],
-        }),
-        getWhitepapers: builder.query({
-            query: () => "/whitepapers",
-            providesTags: ["Blogs"],
-        }),
-        getWhitepapersBySlug: builder.query({
-            query: (slug) => `/whitepapers/${slug}`,
-            providesTags: ["Users"],
-        })
-
-
-
+        getWhitepapers: builder.query({ query: endpoints.getWhitepapers, providesTags: ["Blogs"] }),
+        getWhitepapersBySlug: builder.query({ query: endpoints.getWhitepapersBySlug, providesTags: ["Users"] }),
     }),
 });
 
 export const {
-
     useGetCategoryQuery,
     useGetTestimonialsQuery,
     useGetCaseStudyCategoryQuery,
@@ -198,5 +105,4 @@ export const {
     useGetWhitepapersBySlugQuery,
 
     useGetTeamQuery,
-
 } = api;

@@ -1,38 +1,33 @@
-# JJC Systems — React Conversion (proper JSX, one component per page)
+# JJC Systems — Next.js (App Router)
 
-Every one of the 124 original pages is now a real React component with actual
-JSX markup — no `dangerouslySetInnerHTML`, no raw-HTML injection.
+Converted from the React + Vite + react-router app. SSG/ISR + SSR, per-page `generateMetadata()`.
 
-## Structure
-- `src/main.jsx` — app entry
-- `src/App.jsx` — React Router route table, one explicit `<Route>` + import per page (generated from `src/data/routes.json`, which just records the route→component→file mapping)
-- `src/components/Layout.jsx` — persistent shell: icon sprite + header + `<Outlet/>` + footer, SPA link interception, hash-scroll on navigation
-- `src/components/Header.jsx`, `Footer.jsx` — real JSX components (converted from the original markup), each with their own small `useEffect` for scroll state / mobile menu / year
-- `src/components/IconSprite.jsx` — the shared SVG `<symbol>` sprite, mounted once
-- `src/hooks/usePageEffects.js` — re-implements the page-level parts of the original `site.js` (hero carousel, scroll-reveal, sub-nav scroll-spy, contact form validation) as a React hook every page calls
-- `src/hooks/useDocumentMeta.js` — sets `document.title` / meta description per page
-- `src/pages/**/*.jsx` — **124 real page components** (e.g. `src/pages/industries/IndustriesHealthcare.jsx`), each with genuine JSX (`className`, `strokeWidth`, `style={{...}}` objects, etc.) matching the original markup 1:1
-- `public/assets/` — original images + `site.css`, unchanged
+## Setup
+1. `npm install`
+2. `cp .env.example .env.local`
+3. Copy your Vite project's `public/` folder into `./public/` (hero images under `/assets/img/*`, `og-default.jpg`, favicon).
+4. Put your global CSS in `src/app/globals.css` (it lived outside `src/` in the Vite app — index.html `<link>` / `public/`).
+   Fonts, favicon and analytics tags from the old `index.html` go in `src/app/layout.jsx` (`<head>` block).
+5. `npm run dev`  — or —  `npm run build && npm start`
 
-Internal links were rewritten from the old relative file paths
-(`../industries/healthcare.html`) to router paths (`/industries/healthcare`).
+Node >= 20.9.
 
-## Run it
-```
-npm install
-npm run dev
-```
+## How it works
+- `src/app/**/page.jsx` — one Server Component per route (37 routes, same URLs as the old `App.jsx`).
+  - Static pages: `export const metadata = buildMetadata(...)` (title/description copied from the old `useDocumentMeta` calls).
+  - `[slug]` pages: `generateMetadata()` reads `seo.metaTitle / metaDescription / keywords / canonicalUrl / ogImage` from the API,
+    `generateStaticParams()` pre-builds known slugs at `next build`, other slugs are rendered on first request (ISR).
+    Everything revalidates every 10 min (`export const revalidate = 600`).
+  - API 404 → real HTTP 404 (`notFound()`).
+- `src/views/**` — the old `pages/` components (renamed: `src/pages` is reserved by Next). Marked `"use client"`; logic unchanged.
+- `src/components/PreloadApi.jsx` — seeds the RTK Query cache with the data the server already fetched, so views
+  (which still call `useGetXxxQuery`) render real content in the HTML, with no loader flash and no duplicate request.
+- `src/lib/endpoints.js` — API paths, shared by RTK Query (browser) and `fetchApi()` (server).
+- `src/lib/seo.js` — `buildMetadata()` (replacement for `useDocumentMeta`: title, description, keywords, canonical, og:*, twitter:*).
+- `src/lib/server-data.js` — `fetchApi()` + `assertUpstream()`. If the API is down at runtime, the page errors (5xx) instead of
+  caching a half-empty page; ISR keeps serving the last good version. During `next build` an unreachable API never fails the build.
+- `src/components/AppShell.jsx` — replaces `Layout.jsx` (internal-link interception, hash/top scrolling).
+- `src/proxy.js` — `/about` → `/About`, `/featuredsuccess` → `/FeaturedSuccess` (react-router was case-insensitive, Next is not).
 
-## Build for production
-```
-npm run build
-npm run preview
-```
-
-## Notes
-- HTML → JSX conversion handled attribute renaming (`class`→`className`, `for`→`htmlFor`,
-  `stroke-width`→`strokeWidth`, inline `style="..."` → `style={{...}}` objects, boolean
-  attributes like `required`/`novalidate`, etc.) and escaped stray `<`/`>`/`{`/`}` in text.
-- `assets/css/site.css` is loaded globally exactly as before — no CSS changes were made.
-- The client-logo placeholder (`logos/name.svg`) was already broken in the original static
-  site (no such asset existed in the zip) — left as-is.
+## Env
+`NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_SITE_URL` (see `.env.example`). Both are inlined at build time.

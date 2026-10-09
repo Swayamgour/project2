@@ -406,7 +406,19 @@ body {
     background: transparent;
     border: none;
     box-shadow: none;
-    will-change: opacity, transform, clip-path;
+    will-change: opacity, transform;
+    animation: megaDropdownEntrance 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes megaDropdownEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .mega-dropdown-bridge {

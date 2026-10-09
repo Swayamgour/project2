@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import React from 'react'
 
 export default function HeroSection({
@@ -14,7 +16,7 @@ export default function HeroSection({
                     {breadcrumbs.map((item, index) => (
                         <React.Fragment key={index}>
                             {item.link ? (
-                                <Link to={item.link}>{item.label}</Link>
+                                <Link href={item.link}>{item.label}</Link>
                             ) : (
                                 <b>{item.label}</b>
                             )}

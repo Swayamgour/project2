@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useMemo, useRef, useState } from "react";
 // import { motion,  } from "framer-motion";
 import {
@@ -28,10 +30,10 @@ import {
   User,
 } from "lucide-react";
 import { FaLinkedinIn } from "react-icons/fa";
-import { useNavigate } from "react-router";
+import { useRouter } from "next/navigation";
 import { useGetCaseStudyCategoryQuery, useGetCategoryQuery } from "../redux/api";
 import "./Header.css";
-import logo from "../assets/logo1.png";
+import logoImg from "../assets/logo1.png";
 // import headerImage from "../assets/bread-contact.webp";
 
 /* ============================================================
@@ -367,7 +369,7 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
   const dropdownTimerRef = useRef(null);
   const headerRef = useRef(null);
 
-  const navigate = useNavigate();
+  const router = useRouter();
   const { data } = useGetCategoryQuery();
   const { data: caseStudy } = useGetCaseStudyCategoryQuery();
 
@@ -583,7 +585,7 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
   const closeDropdown = () => setActiveDropdown(null);
 
   const onNavigate = (path) => {
-    if (path) navigate(`/${path}`.replace(/^\/\//, "/"));
+    if (path) router.push(`/${path}`.replace(/^\/\//, "/"));
     closeDropdown();
     setNavOpen(false);
     setActiveMobileSubmenu(null);
@@ -642,12 +644,12 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
           href="/"
           onClick={(e) => {
             e.preventDefault();
-            navigate("/");
+            router.push("/");
             closeDropdown();
             setNavOpen(false);
           }}
         >
-          <img src={logo} width={210} alt={`${brandName} ${brandSuffix}`.trim() || "JJC Systems"} />
+          <img src={logoImg.src} width={210} alt={`${brandName} ${brandSuffix}`.trim() || "JJC Systems"} />
         </a>
 
         <nav className={`jjc-nav${navOpen ? " is-open" : ""}`} id="nav" aria-label="Main">
@@ -673,19 +675,6 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
                 {activeDropdown === idx && (
                   <div
                     className="mega-dropdown"
-                    initial={{ opacity: 0, y: -10, clipPath: "inset(100% 0% 0% 0%)" }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      clipPath: "inset(0% 0% 0% 0%)",
-                      transition: { duration: 0.32, ease: [0.16, 1, 0.3, 1] },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      y: -10,
-                      clipPath: "inset(100% 0% 0% 0%)",
-                      transition: { duration: 0.18, ease: [0.4, 0, 1, 1] },
-                    }}
                     onMouseEnter={handleDropdownStay}
                     onMouseLeave={handleDropdownLeave}
                   >
@@ -704,15 +693,9 @@ export default function Header({ brandName = "JJC", brandSuffix = "Systems" }) {
               </>
 
               {/* Mobile accordion */}
-              <div initial={false}>
+              <div>
                 {activeMobileSubmenu === idx && (
-                  <div
-                    className="jjc-mobile-submenu"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                  >
+                  <div className="jjc-mobile-submenu">
                     {getMobileGroups(menu).map((group, gIdx) => (
                       <div key={gIdx}>
                         <div className="mobile-sub-title">{group.heading}</div>
