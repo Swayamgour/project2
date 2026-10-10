@@ -7117,9 +7117,9 @@ main section[id] {
   max-width: 640px
 }
 
-.faq {
+/* .faq {
   border-top: 1px solid var(--line)
-}
+} */
 
 .faq details {
   border-bottom: 1px solid var(--line)
@@ -8167,9 +8167,9 @@ main section[id] {
   top: 160px
 }
 
-.faq {
+/* .faq {
   border-top: 1px solid var(--line)
-}
+} */
 
 .faq details {
   border-bottom: 1px solid var(--line)

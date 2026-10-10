@@ -26,7 +26,7 @@ export default function SuccessIndustryHealthcare() {
   // Loading state
   if (isLoading) {
     return (
-     <Loader />
+      <Loader />
     );
   }
 
@@ -180,17 +180,23 @@ export default function SuccessIndustryHealthcare() {
                       </div>
 
                       {/* {story.button && ( */}
-                        < Link
-                          className="link-more"
-                          style={{ marginTop: "18px" }}
-                          to={`/success/story/${slugify(story?.title)}`}
-                        >
-                          {/* {console.log()} */}
-                          Read the full report
-                          <svg>
-                            <use href="#i-arrow-r" />
-                          </svg>
-                        </Link>
+
+                      <Link
+                        className="link-more"
+                        style={{ marginTop: "18px" }}
+                        href={`/success/story/${slugify(story?.title)}`}
+                      >
+                      {/* < Link
+                        className="link-more"
+                        style={{ marginTop: "18px" }}
+                        to={`/success/story/${slugify(story?.title)}`}
+                      > */}
+                        {/* {console.log()} */}
+                        Read the full report
+                        <svg>
+                          <use href="#i-arrow-r" />
+                        </svg>
+                      </Link>
                       {/* )} */}
                     </div>
                   </div>
