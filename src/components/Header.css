@@ -43,7 +43,7 @@ body {
     display: flex;
     align-items: center;
     gap: 28px;
-    max-width: var(--wrap);
+    max-width: var(--wrap2);
     margin: 0 auto;
     padding: 0 var(--gutter);
     /* No position here on purpose: .jjc-hdr (position: fixed) must stay the
