@@ -140,15 +140,15 @@ export default function Contact() {
           <div className="sec-head reveal">
             <span className="eyebrow">Where we are</span> */}
 
-            
+
 
 
 
 
       <section className="section bg-paper" id="americas">
         <div className="wrap">
-          <div class="sec-head reveal">
-            <span class="eyebrow">WHERE WE ARE</span>
+          <div className="sec-head reveal">
+            <span className="eyebrow">WHERE WE ARE</span>
             {/* <h2 class="h-sec wide">Sorted by most recent</h2> */}
             {/* <p class="lede">Filter by the platform, the service area or the industry you care about. Filters combine, so you can narrow to a single platform within a single sector.</p> */}
           </div>

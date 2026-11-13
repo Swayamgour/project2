@@ -37,9 +37,20 @@ export default function HeroSection({
                         <p className="lede">{hero?.lede}</p>
 
                         <div className="svc-cta">
+                            {/* <a
+                                className="btn btn-primary"
+                                href={"/contact"}
+                            >
+                                {hero?.primaryCtaText || "Book a consultation"}
+
+                                <svg>
+                                    <use href="#i-arrow-r" />
+                                </svg>
+                            </a> */}
+
                             <a
                                 className="btn btn-primary"
-                                href={ "/contact"}
+                                href="#contact"
                             >
                                 {hero?.primaryCtaText || "Book a consultation"}
 
